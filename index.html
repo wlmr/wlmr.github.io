@@ -24,9 +24,11 @@
   // You create variables that store values with var
   // Prompt opens a popup that requests info
   var yourName = prompt("What is your name?");
- 
+  
+  if(yourName == "Ivan"){
+    document.getElementById("sayHello").innerHTML = "Hello faget";
   // If performs different actions depending on conditions
-  if(yourName != null){
+  } else if(yourName != null){
  
     // Set text in an HTML element with the id sayHello
     // You concatenate (combine) strings with +
