@@ -23,7 +23,7 @@ function draw() {
   background(0);
   noFill();
   noStroke();
-  rotateX(PI/3*constrain((-sq(mouseY-height/2)/(height*20)+1),0,1));
+  rotateX(PI/3*(atan((mouseY-height/2)/100)+10)/10);
   translate(-windowWidth*0.7,-windowHeight*0.7);
   flying -= 0.004;
   buildMesh(rows,cols,genTerr(flying,rows,cols),scl);
