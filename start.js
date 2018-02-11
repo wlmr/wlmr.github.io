@@ -34,11 +34,8 @@ function draw() {
   background(0);
   noStroke();
 
-  var xscl = constrain(frac*mouseX-width/2,0,width);
-  var yscl = constrain(frac*mouseY-height/2,0,height);
-
-  angleX = atan(yscl/height-2/3);
-  angleZ = atan(1/2-xscl/width)/(abs(a*1.3)+1);
+  angleX = atan(mouseY/height-2/3);
+  angleZ = atan(1/2-mouseX/width)/(abs(a*1.3)+1);
   angleY = angleY + angleZ*v/10;
 
   rotateY(PI/4*angleZ);
