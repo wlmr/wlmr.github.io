@@ -36,7 +36,7 @@ function draw() {
   angleZ = -atan(mouseX/width-1/2);
   angleY += angleZ/20;
   angleX = atan(mouseY/height-1/2)+QUARTER_PI;
-  acc += (1-angleX)/1000;
+  acc += (0.8-angleX)/100;
   acc = constrain(acc,-0.03,0.7);
   rotateY(QUARTER_PI*angleZ);
   rotateX(PI/3*angleX);
