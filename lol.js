@@ -1,5 +1,5 @@
 
-var nazi = 100;
+var nazi = -550;
 
 function setup(){
   createCanvas(windowWidth,windowHeight,WEBGL);
