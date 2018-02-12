@@ -3,18 +3,23 @@ var yOff,xOff;
 var terrain;
 var yVel, xVel;
 var angleX, angleY, angleZ;
-var v, a;
+var v, a, s;
 var lowest, highest;
 var frac;
 
+var chopper;
+
+function preload() {
+  chopper = loadModel('assets/chopper.obj',true);
+}
+
 function setup() {
   angleX = PI/3;
-  angleY = angleZ = yOff = yVel = xVel = a = v = 0;
-  highest = 100;
+  angleY = angleZ = yOff = yVel = xVel = 0;
+  highest = 200;
   lowest = -200;
-  frac = 2;
   scl = 40;
-  v = 0.5;
+  v = 1/4;
   a = 0.03;
   createCanvas(windowWidth, windowHeight,WEBGL);
 
@@ -34,18 +39,18 @@ function draw() {
   background(0);
   noStroke();
 
-  angleX = atan(mouseY/height-2/3);
-  angleZ = atan(1/2-mouseX/width)/(abs(a*1.3)+1);
-  angleY = angleY + angleZ*v/10;
+  angleX = atan(mouseY/height-3/5);
+  angleY = atan(1/2-mouseX/width)/(abs(a*1.3)+1);
+  angleZ = angleZ + angleY*v/10;
 
-  rotateY(PI/4*angleZ);
+  rotateY(PI/4*angleY);
   rotateX(PI/4*angleX+PI/3);
-  rotateZ(angleY);
+  rotateZ(angleZ);
 
   a = constrain(a-(angleX+v/3)*v/100, -v/15, v);
 
-  yVel -= cos(angleY)*a;
-  xVel -= sin(angleY)*a;
+  yVel -= cos(angleZ)*a;
+  xVel -= sin(angleZ)*a;
 
   buildMesh(rows,cols,genTerrain(xVel,yVel,rows,cols),scl);
 }
@@ -62,6 +67,7 @@ function genTerrain(posX,posY,rows,cols) {
   }
   return terrain;
 }
+
 
 function buildMesh(rows,cols,terr,scl){
   push();
