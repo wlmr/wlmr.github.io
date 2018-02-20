@@ -7,11 +7,6 @@ var v, a, s;
 var lowest, highest;
 var frac;
 
-var chopper;
-
-function preload() {
-  chopper = loadModel('assets/chopper.obj',true);
-}
 
 function setup() {
   angleX = PI/3;
@@ -23,8 +18,8 @@ function setup() {
   a = 0.03;
   createCanvas(windowWidth, windowHeight,WEBGL);
 
-  cols = floor(windowWidth * 3 / scl);
-  rows = floor(windowHeight * 3 / scl);
+  cols = floor(windowWidth * 2 / scl);
+  rows = floor(windowWidth * 2 / scl);
 
   terrain = [];
   for(var i = 0; i < cols; i++){
@@ -43,11 +38,13 @@ function draw() {
   angleY = atan(1/2-mouseX/width)/(abs(a*1.3)+1);
   angleZ = angleZ + angleY*v/10;
 
-  rotateY(PI/4*angleY);
   rotateX(PI/4*angleX+PI/3);
+  rotateY(PI/4*angleY);
   rotateZ(angleZ);
 
-  a = constrain(a-(angleX+v/3)*v/100, -v/15, v);
+  translate(0,0,-angleX*100);
+
+  a = constrain(a-(angleX+v/3)*v/50, -v/10, v);
 
   yVel -= cos(angleZ)*a;
   xVel -= sin(angleZ)*a;
@@ -71,13 +68,13 @@ function genTerrain(posX,posY,rows,cols) {
 
 function buildMesh(rows,cols,terr,scl){
   push();
-  translate(-windowWidth*1.5,-windowHeight*1.5);
+  translate(-windowWidth,-windowWidth);
   for (var j = 0; j < rows - 1; j++){
     beginShape(TRIANGLE_STRIP);
     for (var i = 0; i < cols; i++){
       fill(map(terr[i][j],lowest,highest,0,10)
-        ,map(terr[i][j],lowest,highest,0,10)
-          ,map(terr[i][j],lowest,highest,0,200));
+            ,map(terr[i][j],lowest,highest,0,10)
+            ,map(terr[i][j],lowest,highest,0,200));
       vertex(i*scl, j*scl, terr[i][j]);
       vertex(i*scl, (j+1)*scl, terr[i][j+1]);
     }
