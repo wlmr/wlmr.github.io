@@ -73,9 +73,7 @@ function buildMesh(rows,cols,terr,scl){
     for (var j = 0; j < rows - 1; j++){
         beginShape(TRIANGLE_STRIP);
         for (var i = 0; i < cols; i++){
-            fill(map(terr[i][j],lowest,highest,0,10)
-                ,map(terr[i][j],lowest,highest,0,10)
-                ,map(terr[i][j],lowest,highest,0,200));
+            fill(map(terr[i][j],lowest,highest,0,10),map(terr[i][j],lowest,highest,0,10),map(terr[i][j],lowest,highest,0,200));
             vertex(i*scl, j*scl, terr[i][j]);
             vertex(i*scl, (j+1)*scl, terr[i][j+1]);
         }
