@@ -11,3 +11,5 @@
 * Laffer curve
 * Queueing theory
 * Signal processing
+* Israel
+* Maxwell
