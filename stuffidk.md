@@ -11,3 +11,4 @@
 * Laffer curve
 * Queueing theory
 * Signal processing
+* Shorthand
