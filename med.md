@@ -1,6 +1,6 @@
 ### Medborgerlig samling
 
-Att kvinnor obehindrat hänger ut män för våldtäkter som den svenska rättsapparaten decenier tidigare motbevisat tyder på att något inte står rätt till på en samhällsnivå. När andra dessutom, för att belysa hur fruktansvärt det är att vara kvinna i Sverige, tar upp incidenter involverande tafsande män blir det rakt ut patetiskt. I resten av världen svarar kvinnan med en käftsmäll -- i Sverige med ett facebookinlägg om hur hon hatar alla män. Denna Svenska kvinna har gjort sig till en martyr utan dess like och den svenska mannen har hjälpt till. 
+Att kvinnor obehindrat hänger ut män för våldtäkter som den svenska rättsapparaten decenier tidigare motbevisat tyder på att något inte står rätt till på en samhällsnivå. När andra dessutom, för att belysa hur fruktansvärt det är att vara kvinna i Sverige, tar upp incidenter involverande tafsande män blir det rakt ut patetiskt. 
 
 Vi svenskar vill ta emot alla flyktingar som kommer hit för att alternativet skulle vara hjärtlöst. -- Men staten ska lösa det åt oss. 
 

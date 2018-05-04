@@ -12,3 +12,5 @@
 * Queueing theory
 * Signal processing
 * Shorthand
+* Israel
+* Maxwell
