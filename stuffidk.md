@@ -1,10 +1,11 @@
 * Synteism
-* Marx(ism)
+* Marx
+* Marxism
 * Slavoj Zizek
 * Trickster
 * Software Transactional Memory
 * Hegel
-* Gender diff
+* Gender difference
 * Nietzche
 * Gang of four
 * Quantum computing
