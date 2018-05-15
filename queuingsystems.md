@@ -50,10 +50,15 @@ A och B antar ofta ett av tre värden:
 ### Icke-markovska köer
 
 #### M/G/1
-
+* E(X) går att beräkna eftersom man vet fördelningen
+* E(T) är trixigare då den beror på hur många som redan är i systemet
+* E(T|N = k) = kE(X) + E(R)
 
 
 ## Lexikon
+
+#### Bayes' sats
+$P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 
 #### Erbjuden trafik
 
