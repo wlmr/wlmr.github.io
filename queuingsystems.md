@@ -1,4 +1,4 @@
-# Köteorins centrala begrepp
+% Köteorins centrala begrepp
 
 Köteori används för att analysera system där kunder och betjänare interagerar. Hur många kunder kommer det i snitt att finnas i systemet? Är systemet stabilt eller kommer antalet kunder att öka obehindrat?
 
@@ -14,7 +14,7 @@ A och B antar ofta ett av tre värden:
 
 ## Olika kötyper
 ### Markovska köer
-* Beskrivs av *markovkedjor
+* Beskrivs av *markovkedjor*
 * Alla tider mellan ankomster samt betjäningstider är exponentialfördelade.
 * $A(t) = 1 - e^{- \lambda t}$
 * $B(x) = 1 - e^{- \rho x}$
@@ -26,6 +26,7 @@ A och B antar ofta ett av tre värden:
   * E(N)
   * E(T)
   * P(Spärr)
+  * $\lambda_e_f_f$
 
 
 #### M/M/1
@@ -69,7 +70,8 @@ $P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 
 ##### E(N) 
 * Kan härledas genom definition av medelvärdet eller z-transformera och låta $z -> 1$.
-* $\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}$
+* $\sum_{0}^{\infty} k p_k$
+* För M/M/1: $\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}$
 
 ##### P(spärr) - spärrsannolikhet
 * Är noll om det finns oändligt med buffertplatser
@@ -84,7 +86,7 @@ $P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 #### E(T)
 * Medeltiden i som spenderas i systemet. 
 * $T = W + \bar{x}$ (väntetid + betjäningstid)
-* använd Littles sats
+* Använd Littles sats
 
 ##### Littles sats
 * $E(T) = \frac{E(N)}{\lambda}$
