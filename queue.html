@@ -1,0 +1,102 @@
+<h1 id="köteorins-centrala-begrepp">Köteorins centrala begrepp</h1>
+<p>Köteori används för att analysera system där kunder och betjänare interagerar. Hur många kunder kommer det i snitt att finnas i systemet? Är systemet stabilt eller kommer antalet kunder att öka obehindrat?</p>
+<p>Hur man får fram svaren på dessa och liknande frågor tas upp nedan.</p>
+<p>För att kategorisera kösystem används ofta en modell “A/B/x”. A är fördelningen mellan ankomster, B motsvarar betjäningstidernas fördelning och x antalet betjänare. Denna konvention saknar dock information om antalet buffertplatser i systemet. Så länge inget annat anges gäller hursomhelst att antalet sådana platser är oändligt.</p>
+<p>A och B antar ofta ett av tre värden:</p>
+<ul>
+<li>M - exponentialfördelad</li>
+<li>D - deterministisk (konstant)</li>
+<li>G - godtycklig fördelning (men känd)</li>
+</ul>
+<h2 id="olika-kötyper">Olika kötyper</h2>
+<h3 id="markovska-köer">Markovska köer</h3>
+<ul>
+<li>Beskrivs av *markovkedjor</li>
+<li>Alla tider mellan ankomster samt betjäningstider är exponentialfördelade.</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?A%28t%29%20%3D%201%20-%20e%5E%7B-%20%5Clambda%20t%7D" alt="A(t) = 1 - e^{- \lambda t}" title="A(t) = 1 - e^{- \lambda t}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?B%28x%29%20%3D%201%20-%20e%5E%7B-%20%5Crho%20x%7D" alt="B(x) = 1 - e^{- \rho x}" title="B(x) = 1 - e^{- \rho x}" /></li>
+</ul>
+<h5 id="standardmall-för-beräkning">Standardmall för beräkning</h5>
+<ol type="1">
+<li>Rita markovkedjan</li>
+<li>Hitta tillståndsfördelningen med snittmtoden</li>
+<li>Beräkna intressanta performanceparametrar</li>
+</ol>
+<ul>
+<li>E(N)</li>
+<li>E(T)</li>
+<li>P(Spärr)</li>
+</ul>
+<h4 id="mm1">M/M/1</h4>
+<h4 id="mmm">M/M/m</h4>
+<h4 id="mm1k---begränsade-köplatser">M/M/1/K - begränsade köplatser</h4>
+<h4 id="begränsat-antal-kunder">begränsat antal kunder</h4>
+<h4 id="begränsat-antal-kunder-och-begränsat-antal-köplatser">begränsat antal kunder och begränsat antal köplatser</h4>
+<h4 id="mmm-upptagetsystem-erlangsystemet">M/M/m * upptagetsystem (Erlangsystemet)</h4>
+<ol type="1">
+<li>m betjänter</li>
+<li>inga köplatser</li>
+<li>ankomsterna är poissonprocess</li>
+<li>ankomstintensitet är alltid <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /></li>
+</ol>
+<ul>
+<li>Bra apporximation om man har många kunder i förhållande till betjänter.</li>
+<li>P(spärr) kallas i Erlangsystem för <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E_m%28%5Crho%29" alt="E_m(\rho)" title="E_m(\rho)" />
+<ul>
+<li>räknas ut m.h.a. rekursion eller tabeller</li>
+</ul></li>
+</ul>
+<h3 id="icke-markovska-köer">Icke-markovska köer</h3>
+<h4 id="mg1">M/G/1</h4>
+<h2 id="lexikon">Lexikon</h2>
+<h4 id="erbjuden-trafik">Erbjuden trafik</h4>
+<h4 id="markovkedjan-och-markovprocessen">Markovkedjan och Markovprocessen</h4>
+<ul>
+<li>Stokastisk process där allt som spelar roll för nästa tillstånd är nuvarande tillstånd.</li>
+<li>Tidsdiskret -&gt; Markovkedja</li>
+<li>Tidskontinuerlig -&gt; Markovprocess</li>
+</ul>
+<h5 id="en">E(N)</h5>
+<ul>
+<li>Kan härledas genom definition av medelvärdet eller z-transformera och låta <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?z%20-%3E%201" alt="z -&gt; 1" title="z -&gt; 1" />.</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%20kp_k%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D" alt="\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}" title="\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}" /></li>
+</ul>
+<h5 id="pspärr---spärrsannolikhet">P(spärr) - spärrsannolikhet</h5>
+<ul>
+<li>Är noll om det finns oändligt med buffertplatser</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Clambda_Lp_L%7D%7B%5Csum_%7Bk%3D0%7D%5E%7BL%7D%20%5Clambda_kp_k%7D" alt="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" title="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" /></li>
+<li>Om <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda_i%20%3D%20%5Clambda" alt="\lambda_i = \lambda" title="\lambda_i = \lambda" /> så är är <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28sp%C3%A4rr%29%20%3D%20p_L" alt="P(spärr) = p_L" title="P(spärr) = p_L" /></li>
+</ul>
+<h4 id="lambda_e_f_f">lambda_e_f_f</h4>
+<ul>
+<li>Är ekvivalent med <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /> när buffert är obegränsad</li>
+<li>Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade)</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7BL-1%7D%20%5Clambda_kp_k" alt="\sum_{k=0}^{L-1} \lambda_kp_k" title="\sum_{k=0}^{L-1} \lambda_kp_k" /></li>
+</ul>
+<h4 id="et">E(T)</h4>
+<ul>
+<li>Medeltiden i som spenderas i systemet.</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?T%20%3D%20W%20%2B%20%5Cbar%7Bx%7D" alt="T = W + \bar{x}" title="T = W + \bar{x}" /> (väntetid + betjäningstid)</li>
+<li>använd Littles sats</li>
+</ul>
+<h5 id="littles-sats">Littles sats</h5>
+<ul>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T%29%20%3D%20%5Cfrac%7BE%28N%29%7D%7B%5Clambda%7D" alt="E(T) = \frac{E(N)}{\lambda}" title="E(T) = \frac{E(N)}{\lambda}" /></li>
+</ul>
+<h5 id="ankomstintensitet">Ankomstintensitet</h5>
+<ul>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /> betecknar hur många kunder som kommer per sekund</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B%5Clambda%7D" alt="\frac{1}{\lambda}" title="\frac{1}{\lambda}" /> betecknar därför tiden mellan ankomster</li>
+</ul>
+<h5 id="ködisciplin">Ködisciplin</h5>
+<h5 id="buffertplatser">Buffertplatser</h5>
+<h5 id="medelbetjäningstid">Medelbetjäningstid</h5>
+<h5 id="poissonprocesser">Poissonprocesser</h5>
+<ul>
+<li>Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.</li>
+<li>Minneslös precis som markovkedjan och markovprocessen</li>
+<li>sannolikheten för N ankomster är då poissonfördelad och ges av <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28N%20%3D%20k%29%20%3D%20%5Cfrac%7B%28%5Clambda%20t%29%5E%7Bk%7D%7D%7Bk%21%7De%5E%7B-%20%5Clambda%20t%7D" alt="P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}" title="P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}" /></li>
+</ul>
+<h5 id="markovprocesser">Markovprocesser</h5>
+<h5 id="markovkedja">Markovkedja</h5>
+<h5 id="tillståndsdiagram">Tillståndsdiagram</h5>

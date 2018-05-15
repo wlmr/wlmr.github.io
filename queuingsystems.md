@@ -16,45 +16,88 @@ A och B antar ofta ett av tre värden:
 ### Markovska köer
 * Beskrivs av *markovkedjor
 * Alla tider mellan ankomster samt betjäningstider är exponentialfördelade.
+* $A(t) = 1 - e^{- \lambda t}$
+* $B(x) = 1 - e^{- \rho x}$
 
 ##### Standardmall för beräkning
 1. Rita markovkedjan
 2. Hitta tillståndsfördelningen med snittmtoden
 3. Beräkna intressanta performanceparametrar
   * E(N)
+  * E(T)
   * P(Spärr)
 
 
 #### M/M/1
 
-### Markovkedjan och Markovprocessen
+#### M/M/m
+
+#### M/M/1/K - begränsade köplatser
+
+#### begränsat antal kunder
+
+#### begränsat antal kunder och begränsat antal köplatser
+
+#### M/M/m * upptagetsystem (Erlangsystemet)
+1. m betjänter
+2. inga köplatser
+3. ankomsterna är poissonprocess
+4. ankomstintensitet är alltid $\lambda$
+* Bra apporximation om man har många kunder i förhållande till betjänter.
+* P(spärr) kallas i Erlangsystem för $E_m(\rho)$
+    + räknas ut m.h.a. rekursion eller tabeller
+
+### Icke-markovska köer
+
+#### M/G/1
+
+
+
+## Lexikon
+
+#### Erbjuden trafik
+
+#### Markovkedjan och Markovprocessen
 * Stokastisk process där allt som spelar roll för nästa tillstånd är nuvarande tillstånd. 
 * Tidsdiskret       -> Markovkedja
 * Tidskontinuerlig  -> Markovprocess
 
-
 ##### E(N) 
-Kan härledas genom definition av medelvärdet eller z-transformera och låta z -> 1.
+* Kan härledas genom definition av medelvärdet eller z-transformera och låta $z -> 1$.
+* $\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}$
 
-##### P(spärr)
-OBS! behöver matteformatering:
-antalet $x^2 = y$
+##### P(spärr) - spärrsannolikhet
+* Är noll om det finns oändligt med buffertplatser
+* $\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}$
+* Om $\lambda_i = \lambda$ så är är $P(spärr) = p_L$
 
+#### lambda_e_f_f
+* Är ekvivalent med $\lambda$ när buffert är obegränsad
+* Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade)
+* $\sum_{k=0}^{L-1} \lambda_kp_k$
 
+#### E(T)
+* Medeltiden i som spenderas i systemet. 
+* $T = W + \bar{x}$ (väntetid + betjäningstid)
+* använd Littles sats
 
 ##### Littles sats
+* $E(T) = \frac{E(N)}{\lambda}$
 
 ##### Ankomstintensitet
+* $\lambda$ betecknar hur många kunder som kommer per sekund
+* $\frac{1}{\lambda}$ betecknar därför tiden mellan ankomster
 
 ##### Ködisciplin
 
 ##### Buffertplatser
 
-##### Spärrsannolikhet
-
 ##### Medelbetjäningstid
 
 ##### Poissonprocesser
+* Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.
+* Minneslös precis som markovkedjan och markovprocessen
+* sannolikheten för N ankomster är då poissonfördelad och ges av $P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}$
 
 ##### Markovprocesser
 
