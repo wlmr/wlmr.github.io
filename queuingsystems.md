@@ -58,6 +58,9 @@ A och B antar ofta ett av tre värden:
 
 ## Lexikon
 
+#### Snittmetoden
+Dra vertikala streck mellan tillstånden. De bågar påväg på ena hållet som strecket korsar måste vara lika med de korsande bågarna på andra hållet.
+
 #### Bayes' sats
 $P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 
@@ -72,6 +75,8 @@ $P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 * Kan härledas genom definition av medelvärdet eller z-transformera och låta $z -> 1$.
 * $\sum_{0}^{\infty} k p_k$
 * För M/M/1: $\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}$
+* $\bar{N} = \bar{N_q} + \bar{N_s}$
+* $E(N_s)$ fås genom att summera alla tillstånd då betjäning pågår.
 
 ##### P(spärr) - spärrsannolikhet
 * Är noll om det finns oändligt med buffertplatser
