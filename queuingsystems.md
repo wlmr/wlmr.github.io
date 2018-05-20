@@ -56,6 +56,15 @@ $\bar{N} = \frac{\rho}{1-\rho}$
 * E(T) är trixigare då den beror på hur många som redan är i systemet
 * se formelsamling.
 
+### Könät
+Ankomsterna till nod 2 är lika med output från nod 1
+
+###### HOWTO
+1. Ställ upp ankomstintensiteterna som ekvationssystem
+2. Räkna ut $E(N_i) = \frac{\rho _i}{1-\rho _i}$
+3. $E(T_i) = \frac{E(N_i)}{\lambda _i}$
+3. $E(N_q_i) = E(N_i) - E(N_si) = E(N_i) - \rho _i$ Dela med lambda för att få medeltid.
+
 ## Lexikon
 ##### Transformer
 Z-transformen kan användas för att härleda E(X).
@@ -93,6 +102,7 @@ avverkad trafik = erbjuden trafik - spärrad trafik
 * Är noll om det finns oändligt med buffertplatser
 * $\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}$
 * Om $\lambda_i = \lambda$ så är är $P(spärr) = p_L$
+* Medelvärdet av antalet kunder som spärras = $\lambda _L p_L$
 
 ##### lambda_e_f_f
 * Är ekvivalent med $\lambda$ när buffert är obegränsad
@@ -103,6 +113,9 @@ avverkad trafik = erbjuden trafik - spärrad trafik
 * Medeltiden i som spenderas i systemet. 
 * $T = W + \bar{x}$ (väntetid + betjäningstid)
 * Använd Littles sats
+
+##### E(W)
+* $\frac{\rho}{\mu (1-\rho)}$
 
 ##### Littles sats
 * $E(T) = \frac{E(N)}{\lambda _{eff}}$
@@ -119,7 +132,7 @@ avverkad trafik = erbjuden trafik - spärrad trafik
 ##### Buffertplatser
 
 ##### Medelbetjäningstid
-$E(x) = \frac{E(N_s)}{\lambda _{eff}}$
+$E(x) = \frac{E(N_s)}{\lambda _e_{ff}}$
 
 ##### Poissonprocesser
 * Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.

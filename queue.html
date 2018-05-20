@@ -1,3 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Köteorins centrala begrepp</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<header>
+<h1 class="title">Köteorins centrala begrepp</h1>
+</header>
 <p>Köteori används för att analysera system där kunder och betjänare interagerar. Hur många kunder kommer det i snitt att finnas i systemet? Är systemet stabilt eller kommer antalet kunder att öka obehindrat?</p>
 <p>Hur man får fram svaren på dessa och liknande frågor tas upp nedan.</p>
 <p>För att kategorisera kösystem används ofta en modell “A/B/x”. A är fördelningen mellan ankomster, B motsvarar betjäningstidernas fördelning och x antalet betjänare. Denna konvention saknar dock information om antalet buffertplatser i systemet. Så länge inget annat anges gäller hursomhelst att antalet sådana platser är oändligt.</p>
@@ -54,6 +75,15 @@
 <li>E(T) är trixigare då den beror på hur många som redan är i systemet</li>
 <li>se formelsamling.</li>
 </ul>
+<h3 id="könät">Könät</h3>
+<p>Ankomsterna till nod 2 är lika med output från nod 1</p>
+<h6 id="howto">HOWTO</h6>
+<ol type="1">
+<li>Ställ upp ankomstintensiteterna som ekvationssystem</li>
+<li>Räkna ut <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_i%29%20%3D%20%5Cfrac%7B%5Crho%20_i%7D%7B1-%5Crho%20_i%7D" alt="E(N_i) = \frac{\rho _i}{1-\rho _i}" title="E(N_i) = \frac{\rho _i}{1-\rho _i}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T_i%29%20%3D%20%5Cfrac%7BE%28N_i%29%7D%7B%5Clambda%20_i%7D" alt="E(T_i) = \frac{E(N_i)}{\lambda _i}" title="E(T_i) = \frac{E(N_i)}{\lambda _i}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_q_i%29%20%3D%20E%28N_i%29%20-%20E%28N_si%29%20%3D%20E%28N_i%29%20-%20%5Crho%20_i" alt="E(N_q_i) = E(N_i) - E(N_si) = E(N_i) - \rho _i" title="E(N_q_i) = E(N_i) - E(N_si) = E(N_i) - \rho _i" /> Dela med lambda för att få medeltid.</li>
+</ol>
 <h2 id="lexikon">Lexikon</h2>
 <h5 id="transformer">Transformer</h5>
 <p>Z-transformen kan användas för att härleda E(X). I denna kurs har man barnsligt nog valt att definera z-transformen som<br />
@@ -89,6 +119,7 @@ Alltså med positivt n i exponenten.</p>
 <li>Är noll om det finns oändligt med buffertplatser</li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Clambda_Lp_L%7D%7B%5Csum_%7Bk%3D0%7D%5E%7BL%7D%20%5Clambda_kp_k%7D" alt="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" title="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" /></li>
 <li>Om <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda_i%20%3D%20%5Clambda" alt="\lambda_i = \lambda" title="\lambda_i = \lambda" /> så är är <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28sp%C3%A4rr%29%20%3D%20p_L" alt="P(spärr) = p_L" title="P(spärr) = p_L" /></li>
+<li>Medelvärdet av antalet kunder som spärras = <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda%20_L%20p_L" alt="\lambda _L p_L" title="\lambda _L p_L" /></li>
 </ul>
 <h5 id="lambda_e_f_f">lambda_e_f_f</h5>
 <ul>
@@ -101,6 +132,10 @@ Alltså med positivt n i exponenten.</p>
 <li>Medeltiden i som spenderas i systemet.</li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?T%20%3D%20W%20%2B%20%5Cbar%7Bx%7D" alt="T = W + \bar{x}" title="T = W + \bar{x}" /> (väntetid + betjäningstid)</li>
 <li>Använd Littles sats</li>
+</ul>
+<h5 id="ew">E(W)</h5>
+<ul>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Crho%7D%7B%5Cmu%20%281-%5Crho%29%7D" alt="\frac{\rho}{\mu (1-\rho)}" title="\frac{\rho}{\mu (1-\rho)}" /></li>
 </ul>
 <h5 id="littles-sats">Littles sats</h5>
 <ul>
@@ -117,7 +152,7 @@ Alltså med positivt n i exponenten.</p>
 <h5 id="ködisciplin">Ködisciplin</h5>
 <h5 id="buffertplatser">Buffertplatser</h5>
 <h5 id="medelbetjäningstid">Medelbetjäningstid</h5>
-<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28x%29%20%3D%20%5Cfrac%7BE%28N_s%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(x) = \frac{E(N_s)}{\lambda _{eff}}" title="E(x) = \frac{E(N_s)}{\lambda _{eff}}" /></p>
+<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28x%29%20%3D%20%5Cfrac%7BE%28N_s%29%7D%7B%5Clambda%20_e_%7Bff%7D%7D" alt="E(x) = \frac{E(N_s)}{\lambda _e_{ff}}" title="E(x) = \frac{E(N_s)}{\lambda _e_{ff}}" /></p>
 <h5 id="poissonprocesser">Poissonprocesser</h5>
 <ul>
 <li>Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.</li>
@@ -126,3 +161,5 @@ Alltså med positivt n i exponenten.</p>
 </ul>
 <h5 id="tillståndsdiagram">Tillståndsdiagram</h5>
 <p>Används för att visualisera kösystemets olika tillstånd. Liknar finite state machines.</p>
+</body>
+</html>
