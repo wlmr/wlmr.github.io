@@ -8,3 +8,4 @@
 [Läsplatta](https://www.adlibris.com/se/produkt/lasplatta-letto-frontlight-2-black-32953759?article=P32953759&campaignId=f8b72715-462c-4c9a-89bc-cdf46d863a0a)
 [Germania - Tacitus](https://www.adlibris.com/se/bok/germania-9789187593628)
 [Education Unchained](https://www.adlibris.com/se/bok/education-unchained-9781475822441)
+[Mellan klan och stat](https://www.adlibris.com/se/bok/mellan-klan-och-stat-somalier-i-sverige-9789187709500)

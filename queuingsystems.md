@@ -30,6 +30,7 @@ A och B antar ofta ett av tre värden:
 
 
 #### M/M/1
+$\bar{N} = \frac{\rho}{1-\rho}$
 
 #### M/M/m
 
@@ -53,20 +54,30 @@ A och B antar ofta ett av tre värden:
 #### M/G/1
 * E(X) går att beräkna eftersom man vet fördelningen
 * E(T) är trixigare då den beror på hur många som redan är i systemet
-* E(T|N = k) = kE(X) + E(R)
-
+* se formelsamling.
 
 ## Lexikon
+##### Transformer
+Z-transformen kan användas för att härleda E(X).
+I denna kurs har man barnsligt nog valt att definera z-transformen som \
+$F(z) = \sum_{n=0}^{\infty} f_n z^n$ \
+Alltså med positivt n i exponenten.
 
-#### Snittmetoden
+* Genom att transformera tillståndssannolikheterna får vi \
+$P(z) = \sum_{0}^{\infty} z^k p_k$
+* Genom att derivera med avseende på z och låta z -> 1 så finner man E(X)
+
+##### Snittmetoden
 Dra vertikala streck mellan tillstånden. De bågar påväg på ena hållet som strecket korsar måste vara lika med de korsande bågarna på andra hållet.
 
-#### Bayes' sats
+##### Bayes' sats
 $P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 
-#### Erbjuden trafik
+##### Erbjuden trafik, avverkad trafik och spärrad trafik
+avverkad trafik = erbjuden trafik - spärrad trafik
+1. Erbjuden trafik är ett annat ord för $\rho = \frac{\lambda}{\mu}$
 
-#### Markovkedjan och Markovprocessen
+##### Markovkedjan och Markovprocessen
 * Stokastisk process där allt som spelar roll för nästa tillstånd är nuvarande tillstånd. 
 * Tidsdiskret       -> Markovkedja
 * Tidskontinuerlig  -> Markovprocess
@@ -83,18 +94,21 @@ $P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 * $\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}$
 * Om $\lambda_i = \lambda$ så är är $P(spärr) = p_L$
 
-#### lambda_e_f_f
+##### lambda_e_f_f
 * Är ekvivalent med $\lambda$ när buffert är obegränsad
 * Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade)
 * $\sum_{k=0}^{L-1} \lambda_kp_k$
 
-#### E(T)
+##### E(T)
 * Medeltiden i som spenderas i systemet. 
 * $T = W + \bar{x}$ (väntetid + betjäningstid)
 * Använd Littles sats
 
 ##### Littles sats
-* $E(T) = \frac{E(N)}{\lambda}$
+* $E(T) = \frac{E(N)}{\lambda _{eff}}$
+* $E(N) = E(T)  \lambda _{eff}$
+* $E(N_s) = \bar{x}  \lambda _{eff}$
+* $E(N_q) = W  \lambda _{eff}_$
 
 ##### Ankomstintensitet
 * $\lambda$ betecknar hur många kunder som kommer per sekund
@@ -105,14 +119,12 @@ $P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}$
 ##### Buffertplatser
 
 ##### Medelbetjäningstid
+$E(x) = \frac{E(N_s)}{\lambda _{eff}}$
 
 ##### Poissonprocesser
 * Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.
 * Minneslös precis som markovkedjan och markovprocessen
 * sannolikheten för N ankomster är då poissonfördelad och ges av $P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}$
 
-##### Markovprocesser
-
-##### Markovkedja
-
 ##### Tillståndsdiagram
+Används för att visualisera kösystemets olika tillstånd. Liknar finite state machines.

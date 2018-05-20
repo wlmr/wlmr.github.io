@@ -28,6 +28,7 @@
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda_e_f_f" alt="\lambda_e_f_f" title="\lambda_e_f_f" /></li>
 </ul>
 <h4 id="mm1">M/M/1</h4>
+<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7BN%7D%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D" alt="\bar{N} = \frac{\rho}{1-\rho}" title="\bar{N} = \frac{\rho}{1-\rho}" /></p>
 <h4 id="mmm">M/M/m</h4>
 <h4 id="mm1k---begränsade-köplatser">M/M/1/K - begränsade köplatser</h4>
 <h4 id="begränsat-antal-kunder">begränsat antal kunder</h4>
@@ -51,13 +52,25 @@
 <ul>
 <li>E(X) går att beräkna eftersom man vet fördelningen</li>
 <li>E(T) är trixigare då den beror på hur många som redan är i systemet</li>
-<li>E(T|N = k) = kE(X) + E(R)</li>
+<li>se formelsamling.</li>
 </ul>
 <h2 id="lexikon">Lexikon</h2>
-<h4 id="bayes-sats">Bayes’ sats</h4>
+<h5 id="transformer">Transformer</h5>
+<p>Z-transformen kan användas för att härleda E(X). I denna kurs har man barnsligt nog valt att definera z-transformen som<br />
+<img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?F%28z%29%20%3D%20%5Csum_%7Bn%3D0%7D%5E%7B%5Cinfty%7D%20f_n%20z%5En" alt="F(z) = \sum_{n=0}^{\infty} f_n z^n" title="F(z) = \sum_{n=0}^{\infty} f_n z^n" /><br />
+Alltså med positivt n i exponenten.</p>
+<ul>
+<li>Genom att transformera tillståndssannolikheterna får vi<br />
+<img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28z%29%20%3D%20%5Csum_%7B0%7D%5E%7B%5Cinfty%7D%20z%5Ek%20p_k" alt="P(z) = \sum_{0}^{\infty} z^k p_k" title="P(z) = \sum_{0}^{\infty} z^k p_k" /></li>
+<li>Genom att derivera med avseende på z och låta z -&gt; 1 så finner man E(X)</li>
+</ul>
+<h5 id="snittmetoden">Snittmetoden</h5>
+<p>Dra vertikala streck mellan tillstånden. De bågar påväg på ena hållet som strecket korsar måste vara lika med de korsande bågarna på andra hållet.</p>
+<h5 id="bayes-sats">Bayes’ sats</h5>
 <p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28B_i%20%7C%20A%29%20%3D%20%5Cfrac%7BP%28A%20%7C%20B_i%29P%28B_i%29%7D%7B%5Csum_%7Bj%7D%20P%28A%20%7C%20B_j%29P%28B_j%29%7D" alt="P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}" title="P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}" /></p>
-<h4 id="erbjuden-trafik">Erbjuden trafik</h4>
-<h4 id="markovkedjan-och-markovprocessen">Markovkedjan och Markovprocessen</h4>
+<h5 id="erbjuden-trafik-avverkad-trafik-och-spärrad-trafik">Erbjuden trafik, avverkad trafik och spärrad trafik</h5>
+<p>avverkad trafik = erbjuden trafik - spärrad trafik 1. Erbjuden trafik är ett annat ord för <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Crho%20%3D%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu%7D" alt="\rho = \frac{\lambda}{\mu}" title="\rho = \frac{\lambda}{\mu}" /></p>
+<h5 id="markovkedjan-och-markovprocessen">Markovkedjan och Markovprocessen</h5>
 <ul>
 <li>Stokastisk process där allt som spelar roll för nästa tillstånd är nuvarande tillstånd.</li>
 <li>Tidsdiskret -&gt; Markovkedja</li>
@@ -69,6 +82,7 @@
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Csum_%7B0%7D%5E%7B%5Cinfty%7D%20k%20p_k" alt="\sum_{0}^{\infty} k p_k" title="\sum_{0}^{\infty} k p_k" /></li>
 <li>För M/M/1: <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%20kp_k%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D" alt="\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}" title="\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}" /></li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7BN%7D%20%3D%20%5Cbar%7BN_q%7D%20%2B%20%5Cbar%7BN_s%7D" alt="\bar{N} = \bar{N_q} + \bar{N_s}" title="\bar{N} = \bar{N_q} + \bar{N_s}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_s%29" alt="E(N_s)" title="E(N_s)" /> fås genom att summera alla tillstånd då betjäning pågår.</li>
 </ul>
 <h5 id="pspärr---spärrsannolikhet">P(spärr) - spärrsannolikhet</h5>
 <ul>
@@ -76,13 +90,13 @@
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Clambda_Lp_L%7D%7B%5Csum_%7Bk%3D0%7D%5E%7BL%7D%20%5Clambda_kp_k%7D" alt="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" title="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" /></li>
 <li>Om <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda_i%20%3D%20%5Clambda" alt="\lambda_i = \lambda" title="\lambda_i = \lambda" /> så är är <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28sp%C3%A4rr%29%20%3D%20p_L" alt="P(spärr) = p_L" title="P(spärr) = p_L" /></li>
 </ul>
-<h4 id="lambda_e_f_f">lambda_e_f_f</h4>
+<h5 id="lambda_e_f_f">lambda_e_f_f</h5>
 <ul>
 <li>Är ekvivalent med <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /> när buffert är obegränsad</li>
 <li>Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade)</li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7BL-1%7D%20%5Clambda_kp_k" alt="\sum_{k=0}^{L-1} \lambda_kp_k" title="\sum_{k=0}^{L-1} \lambda_kp_k" /></li>
 </ul>
-<h4 id="et">E(T)</h4>
+<h5 id="et">E(T)</h5>
 <ul>
 <li>Medeltiden i som spenderas i systemet.</li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?T%20%3D%20W%20%2B%20%5Cbar%7Bx%7D" alt="T = W + \bar{x}" title="T = W + \bar{x}" /> (väntetid + betjäningstid)</li>
@@ -90,7 +104,10 @@
 </ul>
 <h5 id="littles-sats">Littles sats</h5>
 <ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T%29%20%3D%20%5Cfrac%7BE%28N%29%7D%7B%5Clambda%7D" alt="E(T) = \frac{E(N)}{\lambda}" title="E(T) = \frac{E(N)}{\lambda}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T%29%20%3D%20%5Cfrac%7BE%28N%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(T) = \frac{E(N)}{\lambda _{eff}}" title="E(T) = \frac{E(N)}{\lambda _{eff}}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20E%28T%29%20%5Clambda%20_%7Beff%7D" alt="E(N) = E(T) \lambda _{eff}" title="E(N) = E(T) \lambda _{eff}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_s%29%20%3D%20%5Cbar%7Bx%7D%20%5Clambda%20_%7Beff%7D" alt="E(N_s) = \bar{x} \lambda _{eff}" title="E(N_s) = \bar{x} \lambda _{eff}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_q%29%20%3D%20W%20%5Clambda%20_%7Beff%7D_" alt="E(N_q) = W \lambda _{eff}_" title="E(N_q) = W \lambda _{eff}_" /></li>
 </ul>
 <h5 id="ankomstintensitet">Ankomstintensitet</h5>
 <ul>
@@ -100,12 +117,12 @@
 <h5 id="ködisciplin">Ködisciplin</h5>
 <h5 id="buffertplatser">Buffertplatser</h5>
 <h5 id="medelbetjäningstid">Medelbetjäningstid</h5>
+<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28x%29%20%3D%20%5Cfrac%7BE%28N_s%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(x) = \frac{E(N_s)}{\lambda _{eff}}" title="E(x) = \frac{E(N_s)}{\lambda _{eff}}" /></p>
 <h5 id="poissonprocesser">Poissonprocesser</h5>
 <ul>
 <li>Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.</li>
 <li>Minneslös precis som markovkedjan och markovprocessen</li>
 <li>sannolikheten för N ankomster är då poissonfördelad och ges av <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28N%20%3D%20k%29%20%3D%20%5Cfrac%7B%28%5Clambda%20t%29%5E%7Bk%7D%7D%7Bk%21%7De%5E%7B-%20%5Clambda%20t%7D" alt="P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}" title="P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}" /></li>
 </ul>
-<h5 id="markovprocesser">Markovprocesser</h5>
-<h5 id="markovkedja">Markovkedja</h5>
 <h5 id="tillståndsdiagram">Tillståndsdiagram</h5>
+<p>Används för att visualisera kösystemets olika tillstånd. Liknar finite state machines.</p>
