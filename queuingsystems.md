@@ -26,11 +26,11 @@ A och B antar ofta ett av tre värden:
   * E(N)
   * E(T)
   * P(Spärr)
-  * $\lambda_e_f_f$
+  * $\lambda _{eff}$
 
 
 #### M/M/1
-$\bar{N} = \frac{\rho}{1-\rho}$
+$\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}$
 
 #### M/M/m
 
@@ -48,6 +48,8 @@ $\bar{N} = \frac{\rho}{1-\rho}$
 * Bra apporximation om man har många kunder i förhållande till betjänter.
 * P(spärr) kallas i Erlangsystem för $E_m(\rho)$
     + räknas ut m.h.a. rekursion eller tabeller
+* avverkad trafik = $E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))$
+* $\bar{x} = \frac{1}{\rho}$
 
 ### Icke-markovska köer
 
@@ -60,10 +62,24 @@ $\bar{N} = \frac{\rho}{1-\rho}$
 Ankomsterna till nod 2 är lika med output från nod 1
 
 ###### HOWTO
+
 1. Ställ upp ankomstintensiteterna som ekvationssystem
 2. Räkna ut $E(N_i) = \frac{\rho _i}{1-\rho _i}$
 3. $E(T_i) = \frac{E(N_i)}{\lambda _i}$
-3. $E(N_q_i) = E(N_i) - E(N_si) = E(N_i) - \rho _i$ Dela med lambda för att få medeltid.
+4. $E(N_{qi}) = E(N_i) - E(N_si) = E(N_i) - \rho _i$ Dela med lambda för att få medeltid.
+
+###### Att tänka på
+Om man vill veta hur lång tid det tar för ett paket genom ett nät som passerar en viss nod så summeras de gemensamma noderna samt sannolikheten för det ena alternativet * tiden för den och samma sak för det andra alternativet
+
+tiden i ett system beror bara på lambda in i systemet och E(N) (summan av alla delsystem
+
+#### Återkoppling
+
+###### Exempeluppgifter
+* Vad är sannolikheten att en kund aldrig betjänas av nod x?
+  + geometrisk summa
+* Hur många gånger kommer en kund att ha betjänats i nod x?
+  + ankomstintensitet för x / ankomstintensitet för hela nätet
 
 ## Lexikon
 ##### Transformer
@@ -100,14 +116,14 @@ avverkad trafik = erbjuden trafik - spärrad trafik
 
 ##### P(spärr) - spärrsannolikhet
 * Är noll om det finns oändligt med buffertplatser
-* $\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}$
-* Om $\lambda_i = \lambda$ så är är $P(spärr) = p_L$
+* $\frac{\lambda _Lp_L}{\sum_{k=0}^{L} \lambda _kp_k}$
+* Om $\lambda _i = \lambda$ så är är $P(spärr) = p_L$
 * Medelvärdet av antalet kunder som spärras = $\lambda _L p_L$
 
-##### lambda_e_f_f
+##### Effektiva lambda
 * Är ekvivalent med $\lambda$ när buffert är obegränsad
 * Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade)
-* $\sum_{k=0}^{L-1} \lambda_kp_k$
+* $\sum_{k=0}^{L-1} \lambda _kp_k$
 
 ##### E(T)
 * Medeltiden i som spenderas i systemet. 
@@ -118,10 +134,11 @@ avverkad trafik = erbjuden trafik - spärrad trafik
 * $\frac{\rho}{\mu (1-\rho)}$
 
 ##### Littles sats
+Antalet genomsnittliga kunder N = produkten av det genomsnittliga antalet icke-blockerade ankomster per tidsenhet och genomsnittliga tiden en kund spenderar i systemet.
 * $E(T) = \frac{E(N)}{\lambda _{eff}}$
 * $E(N) = E(T)  \lambda _{eff}$
 * $E(N_s) = \bar{x}  \lambda _{eff}$
-* $E(N_q) = W  \lambda _{eff}_$
+* $E(N_q) = W  \lambda _{eff}$
 
 ##### Ankomstintensitet
 * $\lambda$ betecknar hur många kunder som kommer per sekund
@@ -132,7 +149,7 @@ avverkad trafik = erbjuden trafik - spärrad trafik
 ##### Buffertplatser
 
 ##### Medelbetjäningstid
-$E(x) = \frac{E(N_s)}{\lambda _e_{ff}}$
+$E(x) = \frac{E(N_s)}{\lambda _{eff}}$
 
 ##### Poissonprocesser
 * Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.

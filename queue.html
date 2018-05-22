@@ -46,10 +46,10 @@
 <li>E(N)</li>
 <li>E(T)</li>
 <li>P(Spärr)</li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda_e_f_f" alt="\lambda_e_f_f" title="\lambda_e_f_f" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda%20_%7Beff%7D" alt="\lambda _{eff}" title="\lambda _{eff}" /></li>
 </ul>
 <h4 id="mm1">M/M/1</h4>
-<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7BN%7D%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D" alt="\bar{N} = \frac{\rho}{1-\rho}" title="\bar{N} = \frac{\rho}{1-\rho}" /></p>
+<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7BN%7D%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D%20%3D%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu-%5Clambda%7D" alt="\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}" title="\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}" /></p>
 <h4 id="mmm">M/M/m</h4>
 <h4 id="mm1k---begränsade-köplatser">M/M/1/K - begränsade köplatser</h4>
 <h4 id="begränsat-antal-kunder">begränsat antal kunder</h4>
@@ -67,6 +67,8 @@
 <ul>
 <li>räknas ut m.h.a. rekursion eller tabeller</li>
 </ul></li>
+<li>avverkad trafik = <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20%5Clambda_%7Beff%7D%20%5Cbar%7Bx%7D%20%3D%20%5Crho%281-E_m%28%5Crho%29%29" alt="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" title="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7Bx%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Crho%7D" alt="\bar{x} = \frac{1}{\rho}" title="\bar{x} = \frac{1}{\rho}" /></li>
 </ul>
 <h3 id="icke-markovska-köer">Icke-markovska köer</h3>
 <h4 id="mg1">M/G/1</h4>
@@ -82,8 +84,12 @@
 <li>Ställ upp ankomstintensiteterna som ekvationssystem</li>
 <li>Räkna ut <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_i%29%20%3D%20%5Cfrac%7B%5Crho%20_i%7D%7B1-%5Crho%20_i%7D" alt="E(N_i) = \frac{\rho _i}{1-\rho _i}" title="E(N_i) = \frac{\rho _i}{1-\rho _i}" /></li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T_i%29%20%3D%20%5Cfrac%7BE%28N_i%29%7D%7B%5Clambda%20_i%7D" alt="E(T_i) = \frac{E(N_i)}{\lambda _i}" title="E(T_i) = \frac{E(N_i)}{\lambda _i}" /></li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_q_i%29%20%3D%20E%28N_i%29%20-%20E%28N_si%29%20%3D%20E%28N_i%29%20-%20%5Crho%20_i" alt="E(N_q_i) = E(N_i) - E(N_si) = E(N_i) - \rho _i" title="E(N_q_i) = E(N_i) - E(N_si) = E(N_i) - \rho _i" /> Dela med lambda för att få medeltid.</li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_%7Bqi%7D%29%20%3D%20E%28N_i%29%20-%20E%28N_si%29%20%3D%20E%28N_i%29%20-%20%5Crho%20_i" alt="E(N_{qi}) = E(N_i) - E(N_si) = E(N_i) - \rho _i" title="E(N_{qi}) = E(N_i) - E(N_si) = E(N_i) - \rho _i" /> Dela med lambda för att få medeltid.</li>
 </ol>
+<h6 id="att-tänka-på">Att tänka på</h6>
+<p>Om man vill veta hur lång tid det tar för ett paket genom ett nät som passerar en viss nod så summeras de gemensamma noderna samt sannolikheten för det ena alternativet * tiden för den och samma sak för det andra alternativet</p>
+<p>tiden i ett system beror bara på lambda in i systemet och E(N) (summan av alla delsystem</p>
+<h4 id="återkoppling">Återkoppling</h4>
 <h2 id="lexikon">Lexikon</h2>
 <h5 id="transformer">Transformer</h5>
 <p>Z-transformen kan användas för att härleda E(X). I denna kurs har man barnsligt nog valt att definera z-transformen som<br />
@@ -117,15 +123,15 @@ Alltså med positivt n i exponenten.</p>
 <h5 id="pspärr---spärrsannolikhet">P(spärr) - spärrsannolikhet</h5>
 <ul>
 <li>Är noll om det finns oändligt med buffertplatser</li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Clambda_Lp_L%7D%7B%5Csum_%7Bk%3D0%7D%5E%7BL%7D%20%5Clambda_kp_k%7D" alt="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" title="\frac{\lambda_Lp_L}{\sum_{k=0}^{L} \lambda_kp_k}" /></li>
-<li>Om <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda_i%20%3D%20%5Clambda" alt="\lambda_i = \lambda" title="\lambda_i = \lambda" /> så är är <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28sp%C3%A4rr%29%20%3D%20p_L" alt="P(spärr) = p_L" title="P(spärr) = p_L" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Clambda%20_Lp_L%7D%7B%5Csum_%7Bk%3D0%7D%5E%7BL%7D%20%5Clambda%20_kp_k%7D" alt="\frac{\lambda _Lp_L}{\sum_{k=0}^{L} \lambda _kp_k}" title="\frac{\lambda _Lp_L}{\sum_{k=0}^{L} \lambda _kp_k}" /></li>
+<li>Om <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda%20_i%20%3D%20%5Clambda" alt="\lambda _i = \lambda" title="\lambda _i = \lambda" /> så är är <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28sp%C3%A4rr%29%20%3D%20p_L" alt="P(spärr) = p_L" title="P(spärr) = p_L" /></li>
 <li>Medelvärdet av antalet kunder som spärras = <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda%20_L%20p_L" alt="\lambda _L p_L" title="\lambda _L p_L" /></li>
 </ul>
-<h5 id="lambda_e_f_f">lambda_e_f_f</h5>
+<h5 id="effektiva-lambda">Effektiva lambda</h5>
 <ul>
 <li>Är ekvivalent med <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /> när buffert är obegränsad</li>
 <li>Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade)</li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7BL-1%7D%20%5Clambda_kp_k" alt="\sum_{k=0}^{L-1} \lambda_kp_k" title="\sum_{k=0}^{L-1} \lambda_kp_k" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7BL-1%7D%20%5Clambda%20_kp_k" alt="\sum_{k=0}^{L-1} \lambda _kp_k" title="\sum_{k=0}^{L-1} \lambda _kp_k" /></li>
 </ul>
 <h5 id="et">E(T)</h5>
 <ul>
@@ -142,7 +148,7 @@ Alltså med positivt n i exponenten.</p>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T%29%20%3D%20%5Cfrac%7BE%28N%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(T) = \frac{E(N)}{\lambda _{eff}}" title="E(T) = \frac{E(N)}{\lambda _{eff}}" /></li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20E%28T%29%20%5Clambda%20_%7Beff%7D" alt="E(N) = E(T) \lambda _{eff}" title="E(N) = E(T) \lambda _{eff}" /></li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_s%29%20%3D%20%5Cbar%7Bx%7D%20%5Clambda%20_%7Beff%7D" alt="E(N_s) = \bar{x} \lambda _{eff}" title="E(N_s) = \bar{x} \lambda _{eff}" /></li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_q%29%20%3D%20W%20%5Clambda%20_%7Beff%7D_" alt="E(N_q) = W \lambda _{eff}_" title="E(N_q) = W \lambda _{eff}_" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_q%29%20%3D%20W%20%5Clambda%20_%7Beff%7D" alt="E(N_q) = W \lambda _{eff}" title="E(N_q) = W \lambda _{eff}" /></li>
 </ul>
 <h5 id="ankomstintensitet">Ankomstintensitet</h5>
 <ul>
@@ -152,7 +158,7 @@ Alltså med positivt n i exponenten.</p>
 <h5 id="ködisciplin">Ködisciplin</h5>
 <h5 id="buffertplatser">Buffertplatser</h5>
 <h5 id="medelbetjäningstid">Medelbetjäningstid</h5>
-<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28x%29%20%3D%20%5Cfrac%7BE%28N_s%29%7D%7B%5Clambda%20_e_%7Bff%7D%7D" alt="E(x) = \frac{E(N_s)}{\lambda _e_{ff}}" title="E(x) = \frac{E(N_s)}{\lambda _e_{ff}}" /></p>
+<p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28x%29%20%3D%20%5Cfrac%7BE%28N_s%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(x) = \frac{E(N_s)}{\lambda _{eff}}" title="E(x) = \frac{E(N_s)}{\lambda _{eff}}" /></p>
 <h5 id="poissonprocesser">Poissonprocesser</h5>
 <ul>
 <li>Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.</li>
