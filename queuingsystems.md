@@ -50,6 +50,7 @@ $\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}$
     + räknas ut m.h.a. rekursion eller tabeller
 * avverkad trafik = $E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))$
 * $\bar{x} = \frac{1}{\rho}$
+* $p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}$
 
 ### Icke-markovska köer
 
@@ -158,3 +159,8 @@ $E(x) = \frac{E(N_s)}{\lambda _{eff}}$
 
 ##### Tillståndsdiagram
 Används för att visualisera kösystemets olika tillstånd. Liknar finite state machines.
+
+### Lösningar
+#### Hur stor andel av tiden arbetar en betjänare?
+1. def. av medelvärde baserat på states där betjänare arbetar
+2. E(Ns)/m

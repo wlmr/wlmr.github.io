@@ -69,6 +69,7 @@
 </ul></li>
 <li>avverkad trafik = <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20%5Clambda_%7Beff%7D%20%5Cbar%7Bx%7D%20%3D%20%5Crho%281-E_m%28%5Crho%29%29" alt="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" title="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" /></li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7Bx%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Crho%7D" alt="\bar{x} = \frac{1}{\rho}" title="\bar{x} = \frac{1}{\rho}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?p_k%20%3D%20%5Crho%2Fk%20%5Cfrac%7B%5Crho%5E%7Bk-1%7D%2F%28k-1%29%21%7D%7B%5Csum_%7Bi%3D0%7D%5E%7Bm%7D%20%5Cfrac%7B%5Crho%5Ei%7D%7Bi%21%7D%7D%3D%5Cfrac%7B%5Crho%7D%7Bk%7D%20p_%7Bk-1%7D" alt="p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}" title="p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}" /></li>
 </ul>
 <h3 id="icke-markovska-köer">Icke-markovska köer</h3>
 <h4 id="mg1">M/G/1</h4>
@@ -90,6 +91,17 @@
 <p>Om man vill veta hur lång tid det tar för ett paket genom ett nät som passerar en viss nod så summeras de gemensamma noderna samt sannolikheten för det ena alternativet * tiden för den och samma sak för det andra alternativet</p>
 <p>tiden i ett system beror bara på lambda in i systemet och E(N) (summan av alla delsystem</p>
 <h4 id="återkoppling">Återkoppling</h4>
+<h6 id="exempeluppgifter">Exempeluppgifter</h6>
+<ul>
+<li>Vad är sannolikheten att en kund aldrig betjänas av nod x?
+<ul>
+<li>geometrisk summa</li>
+</ul></li>
+<li>Hur många gånger kommer en kund att ha betjänats i nod x?
+<ul>
+<li>ankomstintensitet för x / ankomstintensitet för hela nätet</li>
+</ul></li>
+</ul>
 <h2 id="lexikon">Lexikon</h2>
 <h5 id="transformer">Transformer</h5>
 <p>Z-transformen kan användas för att härleda E(X). I denna kurs har man barnsligt nog valt att definera z-transformen som<br />
@@ -144,12 +156,7 @@ Alltså med positivt n i exponenten.</p>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Crho%7D%7B%5Cmu%20%281-%5Crho%29%7D" alt="\frac{\rho}{\mu (1-\rho)}" title="\frac{\rho}{\mu (1-\rho)}" /></li>
 </ul>
 <h5 id="littles-sats">Littles sats</h5>
-<ul>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T%29%20%3D%20%5Cfrac%7BE%28N%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(T) = \frac{E(N)}{\lambda _{eff}}" title="E(T) = \frac{E(N)}{\lambda _{eff}}" /></li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20E%28T%29%20%5Clambda%20_%7Beff%7D" alt="E(N) = E(T) \lambda _{eff}" title="E(N) = E(T) \lambda _{eff}" /></li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_s%29%20%3D%20%5Cbar%7Bx%7D%20%5Clambda%20_%7Beff%7D" alt="E(N_s) = \bar{x} \lambda _{eff}" title="E(N_s) = \bar{x} \lambda _{eff}" /></li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_q%29%20%3D%20W%20%5Clambda%20_%7Beff%7D" alt="E(N_q) = W \lambda _{eff}" title="E(N_q) = W \lambda _{eff}" /></li>
-</ul>
+<p>Antalet genomsnittliga kunder N = produkten av det genomsnittliga antalet icke-blockerade ankomster per tidsenhet och genomsnittliga tiden en kund spenderar i systemet. * <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28T%29%20%3D%20%5Cfrac%7BE%28N%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(T) = \frac{E(N)}{\lambda _{eff}}" title="E(T) = \frac{E(N)}{\lambda _{eff}}" /> * <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20E%28T%29%20%5Clambda%20_%7Beff%7D" alt="E(N) = E(T) \lambda _{eff}" title="E(N) = E(T) \lambda _{eff}" /> * <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_s%29%20%3D%20%5Cbar%7Bx%7D%20%5Clambda%20_%7Beff%7D" alt="E(N_s) = \bar{x} \lambda _{eff}" title="E(N_s) = \bar{x} \lambda _{eff}" /> * <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_q%29%20%3D%20W%20%5Clambda%20_%7Beff%7D" alt="E(N_q) = W \lambda _{eff}" title="E(N_q) = W \lambda _{eff}" /></p>
 <h5 id="ankomstintensitet">Ankomstintensitet</h5>
 <ul>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /> betecknar hur många kunder som kommer per sekund</li>
