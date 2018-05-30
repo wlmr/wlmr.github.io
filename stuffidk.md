@@ -15,5 +15,7 @@
 * Shorthand
 * Israel
 * Maxwell
-* Regular Expression
 * Child Psychology
+* Regular Expressions
+* awk
+* sed
