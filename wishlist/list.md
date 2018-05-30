@@ -11,3 +11,4 @@
 [Mellan klan och stat](https://www.adlibris.com/se/bok/mellan-klan-och-stat-somalier-i-sverige-9789187709500)
 [Maps of meaning](https://www.adlibris.com/se/bok/maps-of-meaning-9780415922227)
 [A troublesome inheritance](https://www.adlibris.com/fi/kirja/a-troublesome-inheritance-9780143127161)
+[The Listening Society](https://www.amazon.com/dp/8799973901/ref=cm_sw_su_dp)
