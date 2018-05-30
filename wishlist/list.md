@@ -9,3 +9,5 @@
 [Germania - Tacitus](https://www.adlibris.com/se/bok/germania-9789187593628)
 [Education Unchained](https://www.adlibris.com/se/bok/education-unchained-9781475822441)
 [Mellan klan och stat](https://www.adlibris.com/se/bok/mellan-klan-och-stat-somalier-i-sverige-9789187709500)
+[Maps of meaning](https://www.adlibris.com/se/bok/maps-of-meaning-9780415922227)
+[A troublesome inheritance](https://www.adlibris.com/fi/kirja/a-troublesome-inheritance-9780143127161)
