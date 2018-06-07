@@ -3,8 +3,7 @@ layout: post
 title:  "Önskelista (för mor och mormor)"
 date:   2018-06-07 11:00:00 +0200
 ---
-Välkomna till min hämnd! Med detta ess i min rockärm
-Welcome to my revenge! With this list up my sleeve I'll never tell you that I dont want anything for my birthday, ever again.
+Välkomna till min hämndaktion! Med denna lista i rockärmen kommer jag aldrig kunna säga att jag inte önskar mig något, någonsin igen.
 
 1. [Structure And Interpretation Of Computer Programs](https://www.adlibris.com/se/bok/structure-and-interpretation-of-computer-programs-9780262510875)
 2. [History of Western Philosophy](https://www.adlibris.com/se/bok/history-of-western-philosophy-9780415325059)
