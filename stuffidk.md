@@ -19,3 +19,6 @@
 * Regular Expressions
 * awk
 * sed
+* Foucault
+* Richard Rorty
+* Derrida

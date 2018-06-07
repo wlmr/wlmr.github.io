@@ -12,3 +12,5 @@
 [Maps of meaning](https://www.adlibris.com/se/bok/maps-of-meaning-9780415922227)
 [A troublesome inheritance](https://www.adlibris.com/fi/kirja/a-troublesome-inheritance-9780143127161)
 [The Listening Society](https://www.amazon.com/dp/8799973901/ref=cm_sw_su_dp)
+[Så talade Zarathustra](https://www.adlibris.com/se/bok/sa-talade-zarathustra-en-bok-for-alla-och-ingen-9789173272025)
+[History of Western Philosophy](https://www.adlibris.com/se/bok/history-of-western-philosophy-9780415325059)
