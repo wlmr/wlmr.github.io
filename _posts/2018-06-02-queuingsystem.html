@@ -1,14 +1,10 @@
----
-layout: post
-title:  "Köteorins centrala begrepp"
----
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>Köteorins centrala begrepp</title>
+  <title>Köteori</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -21,10 +17,9 @@ title:  "Köteorins centrala begrepp"
 </head>
 <body>
 <header>
-<h1 class="title">Köteorins centrala begrepp</h1>
+<h1 class="title">Köteori</h1>
 </header>
-<p>Köteori används för att analysera system där kunder och betjänare interagerar. Hur många kunder kommer det i snitt att finnas i systemet? Är systemet stabilt eller kommer antalet kunder att öka obehindrat?</p>
-<p>Hur man får fram svaren på dessa och liknande frågor tas upp nedan.</p>
+<p>Köteorin används för att analysera system där kunder och betjänare interagerar. Hur många kunder kommer det i snitt att finnas i systemet? Hur lång tid kommer de ta att betjäna? Är systemet stabilt eller kommer antalet kunder att öka obehindrat?</p>
 <p>För att kategorisera kösystem används ofta en modell “A/B/x”. A är fördelningen mellan ankomster, B motsvarar betjäningstidernas fördelning och x antalet betjänare. Denna konvention saknar dock information om antalet buffertplatser i systemet. Så länge inget annat anges gäller hursomhelst att antalet sådana platser är oändligt.</p>
 <p>A och B antar ofta ett av tre värden:</p>
 <ul>
@@ -50,31 +45,20 @@ title:  "Köteorins centrala begrepp"
 <li>E(N)</li>
 <li>E(T)</li>
 <li>P(Spärr)</li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda%20_%7Beff%7D" alt="\lambda _{eff}" title="\lambda _{eff}" /></li>
+<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda_%20%7Beff%7D" alt="\lambda_ {eff}" title="\lambda_ {eff}" /></li>
 </ul>
 <h4 id="mm1">M/M/1</h4>
 <p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7BN%7D%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D%20%3D%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu-%5Clambda%7D" alt="\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}" title="\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}" /></p>
 <h4 id="mmm">M/M/m</h4>
+<p>Skilnaden här är att vi får multiplar av µ eftersom betjäningstiden beror av antalet betjänare. När det finns <em>en</em> kund i kösystemet kommer betjäningsintensiteten att vara µ. På samma vis blir betjäningsintensiteten 2µ när det finns <em>två</em> kunder i systemet, o.s.v. upp till m. Detta förändrar vid uträkning av tillständsfördelningen.</p>
 <h4 id="mm1k---begränsade-köplatser">M/M/1/K - begränsade köplatser</h4>
+<p>Denna typen av kösystem gör det möjligt att räkna på <em>P(spärr)</em>. Dessutom är dessa lättare att räkna på eftersom det blir ett finit antal tillständ.</p>
 <h4 id="begränsat-antal-kunder">begränsat antal kunder</h4>
+<p>Här förändras λ istället. Det blir i dessa fall smidigt att räkna med λ som en kunds ankomstintensitet. Har man då fem kunder blir alltså intensiteten till första tillståndet 5λ. I detta tillstånd finns endast fyra kunder utanför systemet och därav följer att ankomstintensiteten till nästa tillstånd blir 4λ.</p>
 <h4 id="begränsat-antal-kunder-och-begränsat-antal-köplatser">begränsat antal kunder och begränsat antal köplatser</h4>
+<p>I sådan system kombineras helt enkelt kunskaperna om system med begränsade köplatser och system med begränsat antal kunder.</p>
 <h4 id="mmm-upptagetsystem-erlangsystemet">M/M/m * upptagetsystem (Erlangsystemet)</h4>
-<ol type="1">
-<li>m betjänter</li>
-<li>inga köplatser</li>
-<li>ankomsterna är poissonprocess</li>
-<li>ankomstintensitet är alltid <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /></li>
-</ol>
-<ul>
-<li>Bra apporximation om man har många kunder i förhållande till betjänter.</li>
-<li>P(spärr) kallas i Erlangsystem för <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E_m%28%5Crho%29" alt="E_m(\rho)" title="E_m(\rho)" />
-<ul>
-<li>räknas ut m.h.a. rekursion eller tabeller</li>
-</ul></li>
-<li>avverkad trafik = <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20%5Clambda_%7Beff%7D%20%5Cbar%7Bx%7D%20%3D%20%5Crho%281-E_m%28%5Crho%29%29" alt="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" title="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" /></li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7Bx%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Crho%7D" alt="\bar{x} = \frac{1}{\rho}" title="\bar{x} = \frac{1}{\rho}" /></li>
-<li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?p_k%20%3D%20%5Crho%2Fk%20%5Cfrac%7B%5Crho%5E%7Bk-1%7D%2F%28k-1%29%21%7D%7B%5Csum_%7Bi%3D0%7D%5E%7Bm%7D%20%5Cfrac%7B%5Crho%5Ei%7D%7Bi%21%7D%7D%3D%5Cfrac%7B%5Crho%7D%7Bk%7D%20p_%7Bk-1%7D" alt="p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}" title="p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}" /></li>
-</ul>
+<p>I dessa system gäller följande: 1. m betjänter 2. inga köplatser 3. ankomsterna är poissonprocess 4. ankomstintensitet är alltid <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /> * Bra apporximation om man har många kunder i förhållande till betjänter. * P(spärr) kallas i Erlangsystem för <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E_m%28%5Crho%29" alt="E_m(\rho)" title="E_m(\rho)" /> + räknas ut m.h.a. rekursion eller tabeller * avverkad trafik = <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20%5Clambda_%7Beff%7D%20%5Cbar%7Bx%7D%20%3D%20%5Crho%281-E_m%28%5Crho%29%29" alt="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" title="E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))" /> * <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbar%7Bx%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Crho%7D" alt="\bar{x} = \frac{1}{\rho}" title="\bar{x} = \frac{1}{\rho}" /> * <img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?p_k%20%3D%20%5Crho%2Fk%20%5Cfrac%7B%5Crho%5E%7Bk-1%7D%2F%28k-1%29%21%7D%7B%5Csum_%7Bi%3D0%7D%5E%7Bm%7D%20%5Cfrac%7B%5Crho%5Ei%7D%7Bi%21%7D%7D%3D%5Cfrac%7B%5Crho%7D%7Bk%7D%20p_%7Bk-1%7D" alt="p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}" title="p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}" /></p>
 <h3 id="icke-markovska-köer">Icke-markovska köer</h3>
 <h4 id="mg1">M/G/1</h4>
 <ul>
@@ -92,8 +76,7 @@ title:  "Köteorins centrala begrepp"
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28N_%7Bqi%7D%29%20%3D%20E%28N_i%29%20-%20E%28N_si%29%20%3D%20E%28N_i%29%20-%20%5Crho%20_i" alt="E(N_{qi}) = E(N_i) - E(N_si) = E(N_i) - \rho _i" title="E(N_{qi}) = E(N_i) - E(N_si) = E(N_i) - \rho _i" /> Dela med lambda för att få medeltid.</li>
 </ol>
 <h6 id="att-tänka-på">Att tänka på</h6>
-<p>Om man vill veta hur lång tid det tar för ett paket genom ett nät som passerar en viss nod så summeras de gemensamma noderna samt sannolikheten för det ena alternativet * tiden för den och samma sak för det andra alternativet</p>
-<p>tiden i ett system beror bara på lambda in i systemet och E(N) (summan av alla delsystem</p>
+<p>Om man vill veta hur lång tid det tar för ett paket genom ett nät som passerar en viss nod så summeras de gemensamma noderna samt sannolikheten för det ena alternativet multiplicerat med tiden för den och samma sak för det andra alternativet. Tiden i ett system beror bara på λ in i systemet och E(N) (summan av alla delsystem).</p>
 <h4 id="återkoppling">Återkoppling</h4>
 <h6 id="exempeluppgifter">Exempeluppgifter</h6>
 <ul>
@@ -166,8 +149,6 @@ Alltså med positivt n i exponenten.</p>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Clambda" alt="\lambda" title="\lambda" /> betecknar hur många kunder som kommer per sekund</li>
 <li><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B%5Clambda%7D" alt="\frac{1}{\lambda}" title="\frac{1}{\lambda}" /> betecknar därför tiden mellan ankomster</li>
 </ul>
-<h5 id="ködisciplin">Ködisciplin</h5>
-<h5 id="buffertplatser">Buffertplatser</h5>
 <h5 id="medelbetjäningstid">Medelbetjäningstid</h5>
 <p><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?E%28x%29%20%3D%20%5Cfrac%7BE%28N_s%29%7D%7B%5Clambda%20_%7Beff%7D%7D" alt="E(x) = \frac{E(N_s)}{\lambda _{eff}}" title="E(x) = \frac{E(N_s)}{\lambda _{eff}}" /></p>
 <h5 id="poissonprocesser">Poissonprocesser</h5>
