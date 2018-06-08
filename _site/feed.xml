@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-06-08T15:17:04+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Regular expressions - a concise guide</title><link href="http://localhost:4000/2018/06/07/RegExp.html" rel="alternate" type="text/html" title="Regular expressions - a concise guide" /><published>2018-06-07T00:00:00+02:00</published><updated>2018-06-07T00:00:00+02:00</updated><id>http://localhost:4000/2018/06/07/RegExp</id><content type="html" xml:base="http://localhost:4000/2018/06/07/RegExp.html">&lt;h4 id=&quot;anchors&quot;&gt;Anchors&lt;/h4&gt;
+&lt;p&gt;^ and $
+Anchors are used to define locations within the line. “^A” will match all lines beginning with an “A” while “A$” will match all lines ending with an A. Note that “^” must be the first symbol of the regex, just as “$” has to be last.&lt;/p&gt;
+
+&lt;h4 id=&quot;character-sets&quot;&gt;Character Sets&lt;/h4&gt;
+&lt;p&gt;These define whole sets of characters to match. for instance “[abcdefg]” will look out for any of the chars “a-g”.&lt;/p&gt;
+
+&lt;p&gt;As a matter of fact it is possible to use ranges just like this [a-z].&lt;/p&gt;
+
+&lt;p&gt;Negation is done by adding a “^” inside the square brackets. [^a-z] would search for anything but a-z.&lt;/p&gt;
+
+&lt;h4 id=&quot;modifiers&quot;&gt;Modifiers&lt;/h4&gt;
+&lt;p&gt;When you want to search for multiples of your character set you use modifiers.&lt;/p&gt;
+
+&lt;p&gt;The most common one is “&lt;em&gt;”. This matches with zero or more multiples of the given character set. [0-9]&lt;/em&gt; will find a match anywhere there is zero or more numbers.&lt;/p&gt;
+
+&lt;h5 id=&quot;-and-&quot;&gt;”{” and “}”&lt;/h5&gt;
+&lt;p&gt;Next up is “{” and “}”. The reason for their asymmetry can be found in a strive for backwars compability. “{“ &amp;amp; “}” were already in use and so we were left with “{” and “}”. Since this knowledge doesn’t improve our ability to catch regular expressions lets move on to what the symbols mean.&lt;/p&gt;
+
+&lt;p&gt;When a character set needs to be multiplied a specific number of times or a number of times somewhere in a range of numbers.&lt;/p&gt;
+
+&lt;h5 id=&quot;-and--1&quot;&gt;”&amp;lt;” and “&amp;gt;”&lt;/h5&gt;
+&lt;p&gt;Say you want to find all matches of “ilsner”. The regex “ilsner” would however also match “pilsner”. searching for “ ilsner “ would fix it but then an instance of ilsner in the beginning or end of a line or sentence would not return a match. “&amp;lt;[iI]lsner&amp;gt;” is the final solution!&lt;/p&gt;
+
+&lt;h5 id=&quot;-and--2&quot;&gt;”(” and “)”&lt;/h5&gt;
+&lt;p&gt;Wanting to find occurrences of two identical character sets requires some way of remembering the previous found instance. The regex “([a-z] {4,9})\1” will find&lt;/p&gt;
+
+&lt;h4 id=&quot;extended-regular-expressions&quot;&gt;Extended Regular Expressions&lt;/h4&gt;
+&lt;p&gt;Seemingly most programs today suport extended regular expressions.&lt;/p&gt;
+
+&lt;h5&gt;?&lt;/h5&gt;
+&lt;p&gt;Matches 0 or 1 instances of the character set.&lt;/p&gt;
+
+&lt;h5 id=&quot;-1&quot;&gt;+&lt;/h5&gt;
+&lt;p&gt;Matches one or more copies of the character set.&lt;/p&gt;
+
+&lt;h5 id=&quot;ab&quot;&gt;(a|b)&lt;/h5&gt;
+&lt;p&gt;Searches for either a or b.&lt;/p&gt;
+
+&lt;h4 id=&quot;examples&quot;&gt;Examples&lt;/h4&gt;
+&lt;p&gt;[a-z]{4,9} will match 4-9 consecutive lower case letters.
+[a-z]{4,} will match 4 or more consecutive lower case letters.
+[a-z]{4} will match 4 consecutive lower case letters.&lt;/p&gt;</content><author><name></name></author><summary type="html">Anchors ^ and $ Anchors are used to define locations within the line. “^A” will match all lines beginning with an “A” while “A$” will match all lines ending with an A. Note that “^” must be the first symbol of the regex, just as “$” has to be last.</summary></entry><entry><title type="html">Köteori</title><link href="http://localhost:4000/2018/06/02/queuingsystem.html" rel="alternate" type="text/html" title="Köteori" /><published>2018-06-02T00:00:00+02:00</published><updated>2018-06-02T00:00:00+02:00</updated><id>http://localhost:4000/2018/06/02/queuingsystem</id><content type="html" xml:base="http://localhost:4000/2018/06/02/queuingsystem.html">&lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;&quot; xml:lang=&quot;&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot; /&gt;
+  &lt;title&gt;Köteori&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;header&gt;
+&lt;h1 class=&quot;title&quot;&gt;Köteori&lt;/h1&gt;
+&lt;/header&gt;
+&lt;p&gt;Köteorin används för att analysera system där kunder och betjänare interagerar. Hur många kunder kommer det i snitt att finnas i systemet? Hur lång tid kommer de ta att betjäna? Är systemet stabilt eller kommer antalet kunder att öka obehindrat?&lt;/p&gt;
+&lt;p&gt;För att kategorisera kösystem används ofta en modell “A/B/x”. A är fördelningen mellan ankomster, B motsvarar betjäningstidernas fördelning och x antalet betjänare. Denna konvention saknar dock information om antalet buffertplatser i systemet. Så länge inget annat anges gäller hursomhelst att antalet sådana platser är oändligt.&lt;/p&gt;
+&lt;p&gt;A och B antar ofta ett av tre värden:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;M - exponentialfördelad&lt;/li&gt;
+&lt;li&gt;D - deterministisk (konstant)&lt;/li&gt;
+&lt;li&gt;G - godtycklig fördelning (men känd)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;olika-kötyper&quot;&gt;Olika kötyper&lt;/h2&gt;
+&lt;h3 id=&quot;markovska-köer&quot;&gt;Markovska köer&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Beskrivs av &lt;em&gt;markovkedjor&lt;/em&gt;&lt;/li&gt;
+&lt;li&gt;Alla tider mellan ankomster samt betjäningstider är exponentialfördelade.&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?A%28t%29%20%3D%201%20-%20e%5E%7B-%20%5Clambda%20t%7D&quot; alt=&quot;A(t) = 1 - e^{- \lambda t}&quot; title=&quot;A(t) = 1 - e^{- \lambda t}&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?B%28x%29%20%3D%201%20-%20e%5E%7B-%20%5Crho%20x%7D&quot; alt=&quot;B(x) = 1 - e^{- \rho x}&quot; title=&quot;B(x) = 1 - e^{- \rho x}&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;standardmall-för-beräkning&quot;&gt;Standardmall för beräkning&lt;/h5&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;Rita markovkedjan&lt;/li&gt;
+&lt;li&gt;Hitta tillståndsfördelningen med snittmtoden&lt;/li&gt;
+&lt;li&gt;Beräkna intressanta performanceparametrar&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;E(N)&lt;/li&gt;
+&lt;li&gt;E(T)&lt;/li&gt;
+&lt;li&gt;P(Spärr)&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Clambda_%20%7Beff%7D&quot; alt=&quot;\lambda_ {eff}&quot; title=&quot;\lambda_ {eff}&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&quot;mm1&quot;&gt;M/M/1&lt;/h4&gt;
+&lt;p&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Cbar%7BN%7D%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D%20%3D%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu-%5Clambda%7D&quot; alt=&quot;\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}&quot; title=&quot;\bar{N} = \frac{\rho}{1-\rho} = \frac{\lambda}{\mu-\lambda}&quot; /&gt;&lt;/p&gt;
+&lt;h4 id=&quot;mmm&quot;&gt;M/M/m&lt;/h4&gt;
+&lt;p&gt;Skilnaden här är att vi får multiplar av µ eftersom betjäningstiden beror av antalet betjänare. När det finns &lt;em&gt;en&lt;/em&gt; kund i kösystemet kommer betjäningsintensiteten att vara µ. På samma vis blir betjäningsintensiteten 2µ när det finns &lt;em&gt;två&lt;/em&gt; kunder i systemet, o.s.v. upp till m. Detta förändrar vid uträkning av tillständsfördelningen.&lt;/p&gt;
+&lt;h4 id=&quot;mm1k---begränsade-köplatser&quot;&gt;M/M/1/K - begränsade köplatser&lt;/h4&gt;
+&lt;p&gt;Denna typen av kösystem gör det möjligt att räkna på &lt;em&gt;P(spärr)&lt;/em&gt;. Dessutom är dessa lättare att räkna på eftersom det blir ett finit antal tillständ.&lt;/p&gt;
+&lt;h4 id=&quot;begränsat-antal-kunder&quot;&gt;begränsat antal kunder&lt;/h4&gt;
+&lt;p&gt;Här förändras λ istället. Det blir i dessa fall smidigt att räkna med λ som en kunds ankomstintensitet. Har man då fem kunder blir alltså intensiteten till första tillståndet 5λ. I detta tillstånd finns endast fyra kunder utanför systemet och därav följer att ankomstintensiteten till nästa tillstånd blir 4λ.&lt;/p&gt;
+&lt;h4 id=&quot;begränsat-antal-kunder-och-begränsat-antal-köplatser&quot;&gt;begränsat antal kunder och begränsat antal köplatser&lt;/h4&gt;
+&lt;p&gt;I sådan system kombineras helt enkelt kunskaperna om system med begränsade köplatser och system med begränsat antal kunder.&lt;/p&gt;
+&lt;h4 id=&quot;mmm-upptagetsystem-erlangsystemet&quot;&gt;M/M/m * upptagetsystem (Erlangsystemet)&lt;/h4&gt;
+&lt;p&gt;I dessa system gäller följande: 1. m betjänter 2. inga köplatser 3. ankomsterna är poissonprocess 4. ankomstintensitet är alltid &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Clambda&quot; alt=&quot;\lambda&quot; title=&quot;\lambda&quot; /&gt; * Bra apporximation om man har många kunder i förhållande till betjänter. * P(spärr) kallas i Erlangsystem för &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E_m%28%5Crho%29&quot; alt=&quot;E_m(\rho)&quot; title=&quot;E_m(\rho)&quot; /&gt; + räknas ut m.h.a. rekursion eller tabeller * avverkad trafik = &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20%5Clambda_%7Beff%7D%20%5Cbar%7Bx%7D%20%3D%20%5Crho%281-E_m%28%5Crho%29%29&quot; alt=&quot;E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))&quot; title=&quot;E(N) = \lambda_{eff} \bar{x} = \rho(1-E_m(\rho))&quot; /&gt; * &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Cbar%7Bx%7D%20%3D%20%5Cfrac%7B1%7D%7B%5Crho%7D&quot; alt=&quot;\bar{x} = \frac{1}{\rho}&quot; title=&quot;\bar{x} = \frac{1}{\rho}&quot; /&gt; * &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?p_k%20%3D%20%5Crho%2Fk%20%5Cfrac%7B%5Crho%5E%7Bk-1%7D%2F%28k-1%29%21%7D%7B%5Csum_%7Bi%3D0%7D%5E%7Bm%7D%20%5Cfrac%7B%5Crho%5Ei%7D%7Bi%21%7D%7D%3D%5Cfrac%7B%5Crho%7D%7Bk%7D%20p_%7Bk-1%7D&quot; alt=&quot;p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}&quot; title=&quot;p_k = \rho/k \frac{\rho^{k-1}/(k-1)!}{\sum_{i=0}^{m} \frac{\rho^i}{i!}}=\frac{\rho}{k} p_{k-1}&quot; /&gt;&lt;/p&gt;
+&lt;h3 id=&quot;icke-markovska-köer&quot;&gt;Icke-markovska köer&lt;/h3&gt;
+&lt;h4 id=&quot;mg1&quot;&gt;M/G/1&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;E(X) går att beräkna eftersom man vet fördelningen&lt;/li&gt;
+&lt;li&gt;E(T) är trixigare då den beror på hur många som redan är i systemet&lt;/li&gt;
+&lt;li&gt;se formelsamling.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&quot;könät&quot;&gt;Könät&lt;/h3&gt;
+&lt;p&gt;Ankomsterna till nod 2 är lika med output från nod 1&lt;/p&gt;
+&lt;h6 id=&quot;howto&quot;&gt;HOWTO&lt;/h6&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;Ställ upp ankomstintensiteterna som ekvationssystem&lt;/li&gt;
+&lt;li&gt;Räkna ut &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28N_i%29%20%3D%20%5Cfrac%7B%5Crho%20_i%7D%7B1-%5Crho%20_i%7D&quot; alt=&quot;E(N_i) = \frac{\rho _i}{1-\rho _i}&quot; title=&quot;E(N_i) = \frac{\rho _i}{1-\rho _i}&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28T_i%29%20%3D%20%5Cfrac%7BE%28N_i%29%7D%7B%5Clambda%20_i%7D&quot; alt=&quot;E(T_i) = \frac{E(N_i)}{\lambda _i}&quot; title=&quot;E(T_i) = \frac{E(N_i)}{\lambda _i}&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28N_%7Bqi%7D%29%20%3D%20E%28N_i%29%20-%20E%28N_si%29%20%3D%20E%28N_i%29%20-%20%5Crho%20_i&quot; alt=&quot;E(N_{qi}) = E(N_i) - E(N_si) = E(N_i) - \rho _i&quot; title=&quot;E(N_{qi}) = E(N_i) - E(N_si) = E(N_i) - \rho _i&quot; /&gt; Dela med lambda för att få medeltid.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h6 id=&quot;att-tänka-på&quot;&gt;Att tänka på&lt;/h6&gt;
+&lt;p&gt;Om man vill veta hur lång tid det tar för ett paket genom ett nät som passerar en viss nod så summeras de gemensamma noderna samt sannolikheten för det ena alternativet multiplicerat med tiden för den och samma sak för det andra alternativet. Tiden i ett system beror bara på λ in i systemet och E(N) (summan av alla delsystem).&lt;/p&gt;
+&lt;h4 id=&quot;återkoppling&quot;&gt;Återkoppling&lt;/h4&gt;
+&lt;h6 id=&quot;exempeluppgifter&quot;&gt;Exempeluppgifter&lt;/h6&gt;
+&lt;ul&gt;
+&lt;li&gt;Vad är sannolikheten att en kund aldrig betjänas av nod x?
+&lt;ul&gt;
+&lt;li&gt;geometrisk summa&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Hur många gånger kommer en kund att ha betjänats i nod x?
+&lt;ul&gt;
+&lt;li&gt;ankomstintensitet för x / ankomstintensitet för hela nätet&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&quot;lexikon&quot;&gt;Lexikon&lt;/h2&gt;
+&lt;h5 id=&quot;transformer&quot;&gt;Transformer&lt;/h5&gt;
+&lt;p&gt;Z-transformen kan användas för att härleda E(X). I denna kurs har man barnsligt nog valt att definera z-transformen som&lt;br /&gt;
+&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?F%28z%29%20%3D%20%5Csum_%7Bn%3D0%7D%5E%7B%5Cinfty%7D%20f_n%20z%5En&quot; alt=&quot;F(z) = \sum_{n=0}^{\infty} f_n z^n&quot; title=&quot;F(z) = \sum_{n=0}^{\infty} f_n z^n&quot; /&gt;&lt;br /&gt;
+Alltså med positivt n i exponenten.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Genom att transformera tillståndssannolikheterna får vi&lt;br /&gt;
+&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?P%28z%29%20%3D%20%5Csum_%7B0%7D%5E%7B%5Cinfty%7D%20z%5Ek%20p_k&quot; alt=&quot;P(z) = \sum_{0}^{\infty} z^k p_k&quot; title=&quot;P(z) = \sum_{0}^{\infty} z^k p_k&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;Genom att derivera med avseende på z och låta z -&amp;gt; 1 så finner man E(X)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;snittmetoden&quot;&gt;Snittmetoden&lt;/h5&gt;
+&lt;p&gt;Dra vertikala streck mellan tillstånden. De bågar påväg på ena hållet som strecket korsar måste vara lika med de korsande bågarna på andra hållet.&lt;/p&gt;
+&lt;h5 id=&quot;bayes-sats&quot;&gt;Bayes’ sats&lt;/h5&gt;
+&lt;p&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?P%28B_i%20%7C%20A%29%20%3D%20%5Cfrac%7BP%28A%20%7C%20B_i%29P%28B_i%29%7D%7B%5Csum_%7Bj%7D%20P%28A%20%7C%20B_j%29P%28B_j%29%7D&quot; alt=&quot;P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}&quot; title=&quot;P(B_i | A) = \frac{P(A | B_i)P(B_i)}{\sum_{j} P(A | B_j)P(B_j)}&quot; /&gt;&lt;/p&gt;
+&lt;h5 id=&quot;erbjuden-trafik-avverkad-trafik-och-spärrad-trafik&quot;&gt;Erbjuden trafik, avverkad trafik och spärrad trafik&lt;/h5&gt;
+&lt;p&gt;avverkad trafik = erbjuden trafik - spärrad trafik 1. Erbjuden trafik är ett annat ord för &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Crho%20%3D%20%5Cfrac%7B%5Clambda%7D%7B%5Cmu%7D&quot; alt=&quot;\rho = \frac{\lambda}{\mu}&quot; title=&quot;\rho = \frac{\lambda}{\mu}&quot; /&gt;&lt;/p&gt;
+&lt;h5 id=&quot;markovkedjan-och-markovprocessen&quot;&gt;Markovkedjan och Markovprocessen&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Stokastisk process där allt som spelar roll för nästa tillstånd är nuvarande tillstånd.&lt;/li&gt;
+&lt;li&gt;Tidsdiskret -&amp;gt; Markovkedja&lt;/li&gt;
+&lt;li&gt;Tidskontinuerlig -&amp;gt; Markovprocess&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;en&quot;&gt;E(N)&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Kan härledas genom definition av medelvärdet eller z-transformera och låta &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?z%20-%3E%201&quot; alt=&quot;z -&amp;gt; 1&quot; title=&quot;z -&amp;gt; 1&quot; /&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Csum_%7B0%7D%5E%7B%5Cinfty%7D%20k%20p_k&quot; alt=&quot;\sum_{0}^{\infty} k p_k&quot; title=&quot;\sum_{0}^{\infty} k p_k&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;För M/M/1: &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7B%5Cinfty%7D%20kp_k%20%3D%20%5Cfrac%7B%5Crho%7D%7B1-%5Crho%7D&quot; alt=&quot;\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}&quot; title=&quot;\sum_{k=0}^{\infty} kp_k = \frac{\rho}{1-\rho}&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Cbar%7BN%7D%20%3D%20%5Cbar%7BN_q%7D%20%2B%20%5Cbar%7BN_s%7D&quot; alt=&quot;\bar{N} = \bar{N_q} + \bar{N_s}&quot; title=&quot;\bar{N} = \bar{N_q} + \bar{N_s}&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28N_s%29&quot; alt=&quot;E(N_s)&quot; title=&quot;E(N_s)&quot; /&gt; fås genom att summera alla tillstånd då betjäning pågår.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;pspärr---spärrsannolikhet&quot;&gt;P(spärr) - spärrsannolikhet&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Är noll om det finns oändligt med buffertplatser&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Clambda%20_Lp_L%7D%7B%5Csum_%7Bk%3D0%7D%5E%7BL%7D%20%5Clambda%20_kp_k%7D&quot; alt=&quot;\frac{\lambda _Lp_L}{\sum_{k=0}^{L} \lambda _kp_k}&quot; title=&quot;\frac{\lambda _Lp_L}{\sum_{k=0}^{L} \lambda _kp_k}&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;Om &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Clambda%20_i%20%3D%20%5Clambda&quot; alt=&quot;\lambda _i = \lambda&quot; title=&quot;\lambda _i = \lambda&quot; /&gt; så är är &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?P%28sp%C3%A4rr%29%20%3D%20p_L&quot; alt=&quot;P(spärr) = p_L&quot; title=&quot;P(spärr) = p_L&quot; /&gt;&lt;/li&gt;
+&lt;li&gt;Medelvärdet av antalet kunder som spärras = &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Clambda%20_L%20p_L&quot; alt=&quot;\lambda _L p_L&quot; title=&quot;\lambda _L p_L&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;effektiva-lambda&quot;&gt;Effektiva lambda&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Är ekvivalent med &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Clambda&quot; alt=&quot;\lambda&quot; title=&quot;\lambda&quot; /&gt; när buffert är obegränsad&lt;/li&gt;
+&lt;li&gt;Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade)&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Csum_%7Bk%3D0%7D%5E%7BL-1%7D%20%5Clambda%20_kp_k&quot; alt=&quot;\sum_{k=0}^{L-1} \lambda _kp_k&quot; title=&quot;\sum_{k=0}^{L-1} \lambda _kp_k&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;et&quot;&gt;E(T)&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Medeltiden i som spenderas i systemet.&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?T%20%3D%20W%20%2B%20%5Cbar%7Bx%7D&quot; alt=&quot;T = W + \bar{x}&quot; title=&quot;T = W + \bar{x}&quot; /&gt; (väntetid + betjäningstid)&lt;/li&gt;
+&lt;li&gt;Använd Littles sats&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;ew&quot;&gt;E(W)&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Cfrac%7B%5Crho%7D%7B%5Cmu%20%281-%5Crho%29%7D&quot; alt=&quot;\frac{\rho}{\mu (1-\rho)}&quot; title=&quot;\frac{\rho}{\mu (1-\rho)}&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;littles-sats&quot;&gt;Littles sats&lt;/h5&gt;
+&lt;p&gt;Antalet genomsnittliga kunder N = produkten av det genomsnittliga antalet icke-blockerade ankomster per tidsenhet och genomsnittliga tiden en kund spenderar i systemet. * &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28T%29%20%3D%20%5Cfrac%7BE%28N%29%7D%7B%5Clambda%20_%7Beff%7D%7D&quot; alt=&quot;E(T) = \frac{E(N)}{\lambda _{eff}}&quot; title=&quot;E(T) = \frac{E(N)}{\lambda _{eff}}&quot; /&gt; * &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28N%29%20%3D%20E%28T%29%20%5Clambda%20_%7Beff%7D&quot; alt=&quot;E(N) = E(T) \lambda _{eff}&quot; title=&quot;E(N) = E(T) \lambda _{eff}&quot; /&gt; * &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28N_s%29%20%3D%20%5Cbar%7Bx%7D%20%5Clambda%20_%7Beff%7D&quot; alt=&quot;E(N_s) = \bar{x} \lambda _{eff}&quot; title=&quot;E(N_s) = \bar{x} \lambda _{eff}&quot; /&gt; * &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28N_q%29%20%3D%20W%20%5Clambda%20_%7Beff%7D&quot; alt=&quot;E(N_q) = W \lambda _{eff}&quot; title=&quot;E(N_q) = W \lambda _{eff}&quot; /&gt;&lt;/p&gt;
+&lt;h5 id=&quot;ankomstintensitet&quot;&gt;Ankomstintensitet&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Clambda&quot; alt=&quot;\lambda&quot; title=&quot;\lambda&quot; /&gt; betecknar hur många kunder som kommer per sekund&lt;/li&gt;
+&lt;li&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?%5Cfrac%7B1%7D%7B%5Clambda%7D&quot; alt=&quot;\frac{1}{\lambda}&quot; title=&quot;\frac{1}{\lambda}&quot; /&gt; betecknar därför tiden mellan ankomster&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;medelbetjäningstid&quot;&gt;Medelbetjäningstid&lt;/h5&gt;
+&lt;p&gt;&lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?E%28x%29%20%3D%20%5Cfrac%7BE%28N_s%29%7D%7B%5Clambda%20_%7Beff%7D%7D&quot; alt=&quot;E(x) = \frac{E(N_s)}{\lambda _{eff}}&quot; title=&quot;E(x) = \frac{E(N_s)}{\lambda _{eff}}&quot; /&gt;&lt;/p&gt;
+&lt;h5 id=&quot;poissonprocesser&quot;&gt;Poissonprocesser&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess.&lt;/li&gt;
+&lt;li&gt;Minneslös precis som markovkedjan och markovprocessen&lt;/li&gt;
+&lt;li&gt;sannolikheten för N ankomster är då poissonfördelad och ges av &lt;img style=&quot;vertical-align:middle&quot; src=&quot;https://latex.codecogs.com/png.latex?P%28N%20%3D%20k%29%20%3D%20%5Cfrac%7B%28%5Clambda%20t%29%5E%7Bk%7D%7D%7Bk%21%7De%5E%7B-%20%5Clambda%20t%7D&quot; alt=&quot;P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}&quot; title=&quot;P(N = k) = \frac{(\lambda t)^{k}}{k!}e^{- \lambda t}&quot; /&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&quot;tillståndsdiagram&quot;&gt;Tillståndsdiagram&lt;/h5&gt;
+&lt;p&gt;Används för att visualisera kösystemets olika tillstånd. Liknar finite state machines.&lt;/p&gt;
+&lt;h3 id=&quot;lösningar&quot;&gt;Lösningar&lt;/h3&gt;
+&lt;h4 id=&quot;hur-stor-andel-av-tiden-arbetar-en-betjänare&quot;&gt;Hur stor andel av tiden arbetar en betjänare?&lt;/h4&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;def. av medelvärde baserat på states där betjänare arbetar&lt;/li&gt;
+&lt;li&gt;E(Ns)/m&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content><author><name></name></author><summary type="html">Köteori Köteori Köteorin används för att analysera system där kunder och betjänare interagerar. Hur många kunder kommer det i snitt att finnas i systemet? Hur lång tid kommer de ta att betjäna? Är systemet stabilt eller kommer antalet kunder att öka obehindrat? För att kategorisera kösystem används ofta en modell “A/B/x”. A är fördelningen mellan ankomster, B motsvarar betjäningstidernas fördelning och x antalet betjänare. Denna konvention saknar dock information om antalet buffertplatser i systemet. Så länge inget annat anges gäller hursomhelst att antalet sådana platser är oändligt. A och B antar ofta ett av tre värden: M - exponentialfördelad D - deterministisk (konstant) G - godtycklig fördelning (men känd) Olika kötyper Markovska köer Beskrivs av markovkedjor Alla tider mellan ankomster samt betjäningstider är exponentialfördelade. Standardmall för beräkning Rita markovkedjan Hitta tillståndsfördelningen med snittmtoden Beräkna intressanta performanceparametrar E(N) E(T) P(Spärr) M/M/1 M/M/m Skilnaden här är att vi får multiplar av µ eftersom betjäningstiden beror av antalet betjänare. När det finns en kund i kösystemet kommer betjäningsintensiteten att vara µ. På samma vis blir betjäningsintensiteten 2µ när det finns två kunder i systemet, o.s.v. upp till m. Detta förändrar vid uträkning av tillständsfördelningen. M/M/1/K - begränsade köplatser Denna typen av kösystem gör det möjligt att räkna på P(spärr). Dessutom är dessa lättare att räkna på eftersom det blir ett finit antal tillständ. begränsat antal kunder Här förändras λ istället. Det blir i dessa fall smidigt att räkna med λ som en kunds ankomstintensitet. Har man då fem kunder blir alltså intensiteten till första tillståndet 5λ. I detta tillstånd finns endast fyra kunder utanför systemet och därav följer att ankomstintensiteten till nästa tillstånd blir 4λ. begränsat antal kunder och begränsat antal köplatser I sådan system kombineras helt enkelt kunskaperna om system med begränsade köplatser och system med begränsat antal kunder. M/M/m * upptagetsystem (Erlangsystemet) I dessa system gäller följande: 1. m betjänter 2. inga köplatser 3. ankomsterna är poissonprocess 4. ankomstintensitet är alltid * Bra apporximation om man har många kunder i förhållande till betjänter. * P(spärr) kallas i Erlangsystem för + räknas ut m.h.a. rekursion eller tabeller * avverkad trafik = * * Icke-markovska köer M/G/1 E(X) går att beräkna eftersom man vet fördelningen E(T) är trixigare då den beror på hur många som redan är i systemet se formelsamling. Könät Ankomsterna till nod 2 är lika med output från nod 1 HOWTO Ställ upp ankomstintensiteterna som ekvationssystem Räkna ut Dela med lambda för att få medeltid. Att tänka på Om man vill veta hur lång tid det tar för ett paket genom ett nät som passerar en viss nod så summeras de gemensamma noderna samt sannolikheten för det ena alternativet multiplicerat med tiden för den och samma sak för det andra alternativet. Tiden i ett system beror bara på λ in i systemet och E(N) (summan av alla delsystem). Återkoppling Exempeluppgifter Vad är sannolikheten att en kund aldrig betjänas av nod x? geometrisk summa Hur många gånger kommer en kund att ha betjänats i nod x? ankomstintensitet för x / ankomstintensitet för hela nätet Lexikon Transformer Z-transformen kan användas för att härleda E(X). I denna kurs har man barnsligt nog valt att definera z-transformen som Alltså med positivt n i exponenten. Genom att transformera tillståndssannolikheterna får vi Genom att derivera med avseende på z och låta z -&amp;gt; 1 så finner man E(X) Snittmetoden Dra vertikala streck mellan tillstånden. De bågar påväg på ena hållet som strecket korsar måste vara lika med de korsande bågarna på andra hållet. Bayes’ sats Erbjuden trafik, avverkad trafik och spärrad trafik avverkad trafik = erbjuden trafik - spärrad trafik 1. Erbjuden trafik är ett annat ord för Markovkedjan och Markovprocessen Stokastisk process där allt som spelar roll för nästa tillstånd är nuvarande tillstånd. Tidsdiskret -&amp;gt; Markovkedja Tidskontinuerlig -&amp;gt; Markovprocess E(N) Kan härledas genom definition av medelvärdet eller z-transformera och låta . För M/M/1: fås genom att summera alla tillstånd då betjäning pågår. P(spärr) - spärrsannolikhet Är noll om det finns oändligt med buffertplatser Om så är är Medelvärdet av antalet kunder som spärras = Effektiva lambda Är ekvivalent med när buffert är obegränsad Medelantalet som får komma in i systemet (alltså alla som inte blir spärrade) E(T) Medeltiden i som spenderas i systemet. (väntetid + betjäningstid) Använd Littles sats E(W) Littles sats Antalet genomsnittliga kunder N = produkten av det genomsnittliga antalet icke-blockerade ankomster per tidsenhet och genomsnittliga tiden en kund spenderar i systemet. * * * * Ankomstintensitet betecknar hur många kunder som kommer per sekund betecknar därför tiden mellan ankomster Medelbetjäningstid Poissonprocesser Om ankomsterna är exponentialfördelade och med samma medelvärde bildar ankomsterna en Poissonprocess. Minneslös precis som markovkedjan och markovprocessen sannolikheten för N ankomster är då poissonfördelad och ges av Tillståndsdiagram Används för att visualisera kösystemets olika tillstånd. Liknar finite state machines. Lösningar Hur stor andel av tiden arbetar en betjänare? def. av medelvärde baserat på states där betjänare arbetar E(Ns)/m</summary></entry></feed>
