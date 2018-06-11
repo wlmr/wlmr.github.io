@@ -1,3 +1,7 @@
+Vänsterfolk är konsensussökande vilket leder till att högerfolk mycket oftare testar sina teser
+
+Identitetspolitiken har alienerat arbetarna
+
 Offermentalitet
   samtyckeslagstiftningar
   att jag har ett ansvar som man för våldtäkter
