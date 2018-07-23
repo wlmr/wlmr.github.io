@@ -1,5 +1,11 @@
 Vänsterfolk är mer konsensussökande än de på högern vilket leder till att högerfolk mycket oftare testar sina teser
 
+sd blir större då opinionsbildare tror för lite om vanliga människor. När de undanhåller info som kan gynna mörkare krafter blir det just dessa krafter som gynnas. Vanligt folk ser vad som händer.
+
+symbolpolitik -- nej tack
+
+Vänsterfolk är konsensussökande vilket leder till att högerfolk mycket oftare testar sina teser
+
 Identitetspolitiken har alienerat arbetarna
 
 Offermentalitet
