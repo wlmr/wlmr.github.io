@@ -1,22 +1,24 @@
-Vänsterfolk är konsensussökande vilket leder till att högerfolk mycket oftare testar sina teser
+Vänsterfolk är mer konsensussökande än de på högern vilket leder till att högerfolk mycket oftare testar sina teser
 
 Identitetspolitiken har alienerat arbetarna
 
 Offermentalitet
   samtyckeslagstiftningar
-  att jag har ett ansvar som man för våldtäkter
+  att jag som man har ett ansvar för våldtäkter
 
-Bland det högsta skattetrycket i världen trots det funkar varken vård eller polis
+Bland det högsta skattetrycken i världen trots det funkar varken vård eller polis
 
-Ingen tar smällen när korkade politiker gör förödande misstag
+Karriärspolitiker: Lågbegåvade politiker styr sverige
+TJÄNSTEMANNAANSVAR: Ingen tar smällen när korkade politiker gör förödande misstag
 
-Hets mot folkgrupp att dela bilder på fiktiva böcker som driver med islam
+FRIA ORDET: Hets mot folkgrupp att dela bilder på fiktiva böcker som driver med islam
 
-Mångkulturen som skapar parallellsamhällen pga daltandet
+Låga förväntningarnas rasism: 
+  Mångkulturen som skapar parallellsamhällen pga 
+    för många lågutbildade invandrare 
+    för höga bidrag
 
-islamism
-
-kulturrelativism
+Kulturrelativism
 
 Flyktingpolitik
   bidragsflyktingar
