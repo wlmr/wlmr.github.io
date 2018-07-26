@@ -271,30 +271,116 @@ Om oberoende
 $$ X \in Bin(n_1,p) \quad \& Y \in Bin(n_2,p) $$
 $$ X + Y \in Bin(n_1+n_2,p) $$
 
+*Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (> != >=)*
 Kan approximeras som 
 1. _poissonfördelning_ om p är litet
 2. _normalfördelning_ om n är stort
+N(np,sqrt(npq))
 
 #### Hypergeometriske (utan återläggning)
 E(X) = np
 V(X) = ((N-n)/(N-1))np(1-p)
 
+Kan aproximeras som
+1. _binomialapproximation_ om n/N är liten
+2. _normalapproximation_ om n är stort
+
 #### Poisson-fördelningen
 E(X) = µ
 V(X) = µ
 
+$$ X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) $$
+
+Kan approximeras som
+1. _normalfördelning_  om µ är stort
+
+#### Multinomial
+
 
 ### 6. Slumptal
 
+### Markovkedjor
+Stokastiska processer vars nästa värde endast beror på nuvarande värde. 
+
+övergångsmatris används för att skriva upp "hoppsannolikheterna".
+
+övergångssannolikheter av 2a ordningen härleds genom att matrismultiplicera övergångsmatrisen med sig själv. alltså sannolikheten att mellanlanda i ett tillstånd.
+
+För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor $$ p^{(0)}=(p_1^{(0)},p_2^{(0)},...) $$
+
+$$ 
+\begin{pmatrix}
+1 & 2
+\end{pmatrix}
+*
+\begin{pmatrix}
+1to1 & 1to2  \\
+2to1 & 2to2
+\end{pmatrix} 
+$$
+
+##### terminologi
+_beständigt_ tillstånd om P(i->i)=1
+_obeständigt_ tillstånd om P(i->i) less than 1
+
+_Om två tillstånd kommunicerar tvåsidigt är de båda antingen beständinga eller inte._
+
+_irreducibel_ om alla tillstånd kommunicerar tvåsidigt med varandra, indirekta anslutningar räknas också.
+
+_stationär fördelning_  sannolikheterna att systemet befinner sig i de olika tillstånden.
+
+1. skapa sannolikhetsvektorn π = (π1,π2,..)
+2. lös ekv. π = πP (P är övergångsmatrisen)
+
+_asymptotisk fördelning_
+när $$ p^{(n)}=(p_1^{(n)},p_2^{(n)},...) -> \pi $$
+när $$ n -> \infty $$
+1. om man i en ändlig kedja kan finna ett r>0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning.
+2. se stationär fördelning
+
+_periodiska tillstånd_ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
+_aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstånd direkt
 
 -----
 
 
 ### DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
+#### terminologi
+_parameterrummet_ - de värden den sökta parametern kan tänkas anta.
+_stickprov_ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
+_stickprovsvariansen_ 
+$$ s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 $$
+_kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)_
+$$ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) $$
+_korrelationskoefficienten_
+$$ r = \frac{c_{xy}}{s_xs_y} $$ 
+
 
 ### 7. Punktskattning
 
+punktskattning -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
+$$ \theta_{obs}^*(x_1,x_2,...,x_n) $$
+
+stickprovsvariabeln -- en s.v. som punktskattningen är ett utfall av
+$$ \theta^*(X_1,X_2,...,X_n) $$
+
+_väntevärdesriktig_ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
+$$ E(\theta^*) = \theta $$
+
+_MSE_ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
+$$ MSE = E((\theta^* - \theta)^2) $$
+
+#### skattning av μ & σ
+
+##### µ
+stickprovsmedelvärdet $$ \bar{x} $$ är en väntevärdesriktig och konsistent skattning av µ
+
+##### σ^2
+stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2
+
+#### Maximum-likelihood-metoden -- ML-metoden
+ -- ML-metoden
 
 ### 8. Intevallskattning
 

@@ -216,12 +216,60 @@
 <p>Om <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20N%28%5Cmu%2C%5Csigma%29%20" alt=" X \in N(\mu,\sigma) " title=" X \in N(\mu,\sigma) " /><br /> så gäller att <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20Y%3DaX%2Bb%20%5Cin%20N%28a%5Cmu%20%2B%20b%2C%20%7Ca%7C%5Csigma%29%20" alt=" Y=aX+b \in N(a\mu + b, |a|\sigma) " title=" Y=aX+b \in N(a\mu + b, |a|\sigma) " /><br /></p>
 <p>Om <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X_1%2CX_2%2C..%2CX_n%20" alt=" X_1,X_2,..,X_n " title=" X_1,X_2,..,X_n " /><br /> är oberoende N(µ,σ) och <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cbar%7BX%7D%20" alt=" \bar{X} " title=" \bar{X} " /><br /> är medelvärdet så gäller att <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cbar%7BX%7D%20%5Cin%20N%28%5Cmu%2C%5Csigma%2F%5Csqrt%7Bn%7D%29%20" alt=" \bar{X} \in N(\mu,\sigma/\sqrt{n}) " title=" \bar{X} \in N(\mu,\sigma/\sqrt{n}) " /><br /></p>
 <h3 id="de-tre-vännerna-och-binomialfördelning">5. De tre vännerna och Binomialfördelning</h3>
-<h4 id="binomialaren">binomialaren</h4>
+<h4 id="binomialaren-med-återläggning">binomialaren (med återläggning)</h4>
 <p>E(X) = np V(X) = npq</p>
-<p>Om oberoende <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20Bin%28n_1%2Cp%29%20%5Cquad%20%5C%26%20Y%20%5Cin%20Bin%28n_2%2Cp%29%20" alt=" X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) " title=" X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%2B%20Y%20%5Cin%20Bin%28n_1%2Bn_2%2Cp%29%20" alt=" X + Y \in Bin(n_1+n_2,p) " title=" X + Y \in Bin(n_1+n_2,p) " /><br /> ### 6. Slumptal</p>
+<p>Om oberoende <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20Bin%28n_1%2Cp%29%20%5Cquad%20%5C%26%20Y%20%5Cin%20Bin%28n_2%2Cp%29%20" alt=" X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) " title=" X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%2B%20Y%20%5Cin%20Bin%28n_1%2Bn_2%2Cp%29%20" alt=" X + Y \in Bin(n_1+n_2,p) " title=" X + Y \in Bin(n_1+n_2,p) " /><br /></p>
+<p><em>Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (&gt; != &gt;=)</em> Kan approximeras som 1. <em>poissonfördelning</em> om p är litet 2. <em>normalfördelning</em> om n är stort N(np,sqrt(npq))</p>
+<h4 id="hypergeometriske-utan-återläggning">Hypergeometriske (utan återläggning)</h4>
+<p>E(X) = np V(X) = ((N-n)/(N-1))np(1-p)</p>
+<p>Kan aproximeras som 1. <em>binomialapproximation</em> om n/N är liten 2. <em>normalapproximation</em> om n är stort</p>
+<h4 id="poisson-fördelningen">Poisson-fördelningen</h4>
+<p>E(X) = µ V(X) = µ</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X_1%20%5Cin%20Po%28%5Ctheta_1%29%20%5Cquad%20and%20%5Cquad%20X_2%20%5Cin%20Po%28%5Ctheta_2%29%20%5Cquad%20then%20%5Cquad%20X_1%2BX_2%20%5Cin%20Po%28%5Ctheta_1%2B%5Ctheta_2%29%20" alt=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " title=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " /><br /> Kan approximeras som 1. <em>normalfördelning</em> om µ är stort</p>
+<h4 id="multinomial">Multinomial</h4>
+<h3 id="slumptal">6. Slumptal</h3>
+<h3 id="markovkedjor">Markovkedjor</h3>
+<p>Stokastiska processer vars nästa värde endast beror på nuvarande värde.</p>
+<p>övergångsmatris används för att skriva upp “hoppsannolikheterna”.</p>
+<p>övergångssannolikheter av 2a ordningen härleds genom att matrismultiplicera övergångsmatrisen med sig själv. alltså sannolikheten att mellanlanda i ett tillstånd.</p>
+<p>För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p%5E%7B%280%29%7D%3D%28p_1%5E%7B%280%29%7D%2Cp_2%5E%7B%280%29%7D%2C...%29%20" alt=" p^{(0)}=(p_1^{(0)},p_2^{(0)},...) " title=" p^{(0)}=(p_1^{(0)},p_2^{(0)},...) " /><br /></p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%0A%5Cbegin%7Bpmatrix%7D%0A1%20%26%202%0A%5Cend%7Bpmatrix%7D%0A%2A%0A%5Cbegin%7Bpmatrix%7D%0A1to1%20%26%201to2%20%20%5C%5C%0A2to1%20%26%202to2%0A%5Cend%7Bpmatrix%7D%20%0A" alt=" 
+\begin{pmatrix}
+1 &amp; 2
+\end{pmatrix}
+*
+\begin{pmatrix}
+1to1 &amp; 1to2  \\
+2to1 &amp; 2to2
+\end{pmatrix} 
+" title=" 
+\begin{pmatrix}
+1 &amp; 2
+\end{pmatrix}
+*
+\begin{pmatrix}
+1to1 &amp; 1to2  \\
+2to1 &amp; 2to2
+\end{pmatrix} 
+" /><br /></p>
+<h5 id="terminologi">terminologi</h5>
+<p><em>beständigt</em> tillstånd om P(i-&gt;i)=1 <em>obeständigt</em> tillstånd om P(i-&gt;i) less than 1</p>
+<p><em>Om två tillstånd kommunicerar tvåsidigt är de båda antingen beständinga eller inte.</em></p>
+<p><em>irreducibel</em> om alla tillstånd kommunicerar tvåsidigt med varandra, indirekta anslutningar räknas också.</p>
+<p><em>stationär fördelning</em> sannolikheterna att systemet befinner sig i de olika tillstånden.</p>
+<ol type="1">
+<li>skapa sannolikhetsvektorn π = (π1,π2,..)</li>
+<li>lös ekv. π = πP (P är övergångsmatrisen)</li>
+</ol>
+<p><em>asymptotisk fördelning</em> när <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p%5E%7B%28n%29%7D%3D%28p_1%5E%7B%28n%29%7D%2Cp_2%5E%7B%28n%29%7D%2C...%29%20-%3E%20%5Cpi%20" alt=" p^{(n)}=(p_1^{(n)},p_2^{(n)},...) -&gt; \pi " title=" p^{(n)}=(p_1^{(n)},p_2^{(n)},...) -&gt; \pi " /><br /> när <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20n%20-%3E%20%5Cinfty%20" alt=" n -&gt; \infty " title=" n -&gt; \infty " /><br /> 1. om man i en ändlig kedja kan finna ett r&gt;0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning. 2. se stationär fördelning</p>
+<p><em>periodiska tillstånd</em> om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3. <em>aperiodiska tillstånd</em> om det alltid går att komma tillbaka till ett tillstånd direkt</p>
 <hr />
 <h3 id="del-2-statistik-eller-vilka-slutsatser-man-kan-dra-av-ett-datamaterial">DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial</h3>
+<h4 id="terminologi-1">terminologi</h4>
+<p><em>parameterrummet</em> - de värden den sökta parametern kan tänkas anta. <em>stickprov</em> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v. <em>stickprovsvariansen</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20s%5E2%3D%5Cfrac%7B1%7D%7Bn-1%7D%5Csum_%7Bj%3D1%7D%5En%20%28x_j%20-%20%5Cbar%7Bx%7D%29%5E2%20" alt=" s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 " title=" s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 " /><br /> <em>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20c_%7Bxy%7D%20%3D%20%5Cfrac%7B1%7D%7Bn-1%7D%5Csum_%7Bi%3D1%7D%5En%28x_i-%5Cbar%7Bx%7D%29%28y_i-%5Cbar%7By%7D%29%20" alt=" c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) " title=" c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) " /><br /> <em>korrelationskoefficienten</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20r%20%3D%20%5Cfrac%7Bc_%7Bxy%7D%7D%7Bs_xs_y%7D%20" alt=" r = \frac{c_{xy}}{s_xs_y} " title=" r = \frac{c_{xy}}{s_xs_y} " /><br /></p>
 <h3 id="punktskattning">7. Punktskattning</h3>
+<p>punktskattning – den observerade sannolikheten – ett utfall av stickprovsvariabeln <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta_%7Bobs%7D%5E%2A%28x_1%2Cx_2%2C...%2Cx_n%29%20" alt=" \theta_{obs}^*(x_1,x_2,...,x_n) " title=" \theta_{obs}^*(x_1,x_2,...,x_n) " /><br /></p>
+<p>stickprovsvariabeln – en s.v. som punktskattningen är ett utfall av <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta%5E%2A%28X_1%2CX_2%2C...%2CX_n%29%20" alt=" \theta^*(X_1,X_2,...,X_n) " title=" \theta^*(X_1,X_2,...,X_n) " /><br /></p>
 <h3 id="intevallskattning">8. Intevallskattning</h3>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
 <h3 id="regressionsanalys">10. Regressionsanalys</h3>
