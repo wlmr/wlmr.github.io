@@ -225,7 +225,8 @@
 <p>Kan aproximeras som 1. <em>binomialapproximation</em> om n/N är liten 2. <em>normalapproximation</em> om n är stort</p>
 <h4 id="poisson-fördelningen">Poisson-fördelningen</h4>
 <p>E(X) = µ V(X) = µ</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X_1%20%5Cin%20Po%28%5Ctheta_1%29%20%5Cquad%20and%20%5Cquad%20X_2%20%5Cin%20Po%28%5Ctheta_2%29%20%5Cquad%20then%20%5Cquad%20X_1%2BX_2%20%5Cin%20Po%28%5Ctheta_1%2B%5Ctheta_2%29%20" alt=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " title=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " /><br /> Kan approximeras som 1. <em>normalfördelning</em> om µ är stort</p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X_1%20%5Cin%20Po%28%5Ctheta_1%29%20%5Cquad%20and%20%5Cquad%20X_2%20%5Cin%20Po%28%5Ctheta_2%29%20%5Cquad%20then%20%5Cquad%20X_1%2BX_2%20%5Cin%20Po%28%5Ctheta_1%2B%5Ctheta_2%29%20" alt=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " title=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " /><br /></p>
+<p>Kan approximeras som 1. <em>normalfördelning</em> om µ är stort</p>
 <h4 id="multinomial">Multinomial</h4>
 <h3 id="slumptal">6. Slumptal</h3>
 <h3 id="markovkedjor">Markovkedjor</h3>
@@ -270,6 +271,21 @@
 <h3 id="punktskattning">7. Punktskattning</h3>
 <p>punktskattning – den observerade sannolikheten – ett utfall av stickprovsvariabeln <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta_%7Bobs%7D%5E%2A%28x_1%2Cx_2%2C...%2Cx_n%29%20" alt=" \theta_{obs}^*(x_1,x_2,...,x_n) " title=" \theta_{obs}^*(x_1,x_2,...,x_n) " /><br /></p>
 <p>stickprovsvariabeln – en s.v. som punktskattningen är ett utfall av <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta%5E%2A%28X_1%2CX_2%2C...%2CX_n%29%20" alt=" \theta^*(X_1,X_2,...,X_n) " title=" \theta^*(X_1,X_2,...,X_n) " /><br /></p>
+<p><em>väntevärdesriktig</em> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28%5Ctheta%5E%2A%29%20%3D%20%5Ctheta%20" alt=" E(\theta^*) = \theta " title=" E(\theta^*) = \theta " /><br /></p>
+<p><em>MSE</em> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20MSE%20%3D%20E%28%28%5Ctheta%5E%2A%20-%20%5Ctheta%29%5E2%29%20" alt=" MSE = E((\theta^* - \theta)^2) " title=" MSE = E((\theta^* - \theta)^2) " /><br /></p>
+<h4 id="skattning-av-μ-σ">skattning av μ &amp; σ</h4>
+<h5 id="µ">µ</h5>
+<p>stickprovsmedelvärdet <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cbar%7Bx%7D%20" alt=" \bar{x} " title=" \bar{x} " /><br /> är en väntevärdesriktig och konsistent skattning av µ</p>
+<h5 id="σ2">σ^2</h5>
+<p>stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2</p>
+<h4 id="maximum-likelihood-metoden-ml-metoden">Maximum-likelihood-metoden – ML-metoden</h4>
+<ol type="1">
+<li>Skapa <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20L%28%5Ctheta%29%20%3D%20P%28X_1%20%3D%20x_1%2C%20X_2%20%3D%20x_2%2C...%2CX_n%20%3D%20x_n%3B%5Ctheta%29%20" alt=" L(\theta) = P(X_1 = x_1, X_2 = x_2,...,X_n = x_n;\theta) " title=" L(\theta) = P(X_1 = x_1, X_2 = x_2,...,X_n = x_n;\theta) " /><br /> alt. <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20L%28%5Ctheta%29%20%3D%20f_%7BX_1%2CX_2%2C...%2CX_n%7D%28x_1%2Cx_2%2C...%2Cx_n%3B%5Ctheta%29%20" alt=" L(\theta) = f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n;\theta) " title=" L(\theta) = f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n;\theta) " /><br /> (A.k.a. likelihood-funktionen)</li>
+<li>Finn funktionens maxpunkt genom ex. derivering över theta.</li>
+<li>Funktionens största värde är det mest sannolika scenariot.</li>
+</ol>
+<h4 id="minsta-kvadrat-metoden-mk-metoden">Minsta-kvadrat-metoden – MK-metoden</h4>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20Q%28%5Ctheta%29%20%3D%20%5Csum_%7Bi%3D1%7D%5En%5Bx_i-%5Cmu_i%28%5Ctheta%29%5D%5E2%20" alt=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " title=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " /><br /></p>
 <h3 id="intevallskattning">8. Intevallskattning</h3>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
 <h3 id="regressionsanalys">10. Regressionsanalys</h3>

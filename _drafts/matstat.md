@@ -359,10 +359,11 @@ $$ r = \frac{c_{xy}}{s_xs_y} $$
 
 ### 7. Punktskattning
 
-punktskattning -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
+
+_punktskattning_ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
 $$ \theta_{obs}^*(x_1,x_2,...,x_n) $$
 
-stickprovsvariabeln -- en s.v. som punktskattningen är ett utfall av
+_stickprovsvariabeln_ -- en s.v. som punktskattningen är ett utfall av
 $$ \theta^*(X_1,X_2,...,X_n) $$
 
 _väntevärdesriktig_ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
@@ -380,7 +381,21 @@ stickprovsmedelvärdet $$ \bar{x} $$ är en väntevärdesriktig och konsistent s
 stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2
 
 #### Maximum-likelihood-metoden -- ML-metoden
- -- ML-metoden
+1. Skapa 
+$$ L(\theta) = P(X_1 = x_1, X_2 = x_2,...,X_n = x_n;\theta) $$
+alt.
+$$ L(\theta) = f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n;\theta) $$
+(A.k.a. likelihood-funktionen)
+2. Finn funktionens maxpunkt genom ex. derivering över theta.
+3. Funktionens största värde är det mest sannolika scenariot.
+
+#### Minsta-kvadrat-metoden -- MK-metoden
+$$ Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 $$
+Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.
+
+#### Tillämpning på normalfördelningen
+##### Ett stickprov
+###### µ okänt
 
 ### 8. Intevallskattning
 

@@ -1,3 +1,5 @@
+killmiddagar för att stävja de många självmorden bland pojkar aka problemet med pojkar är att de är för lite som tjejer.......(...)
+
 Vänsterfolk är mer konsensussökande än de på högern vilket leder till att högerfolk mycket oftare testar sina teser
 
 sd blir större då opinionsbildare tror för lite om vanliga människor. När de undanhåller info som kan gynna mörkare krafter blir det just dessa krafter som gynnas. Vanligt folk ser vad som händer.
