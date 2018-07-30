@@ -395,10 +395,19 @@ Går ut på att anta att det finns små försöksfel vid varje mätdatum och bar
 
 #### Tillämpning på normalfördelningen
 ##### Ett stickprov
-###### µ okänt
+
+###### µ okänt σ känt
+$$\mu* = \bar{x} $$
+
+###### μ känt σ okänt
+$$ (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 $$
+
+
 
 ### 8. Intevallskattning
+När man vill veta hur stor sannolikhet det är att en s.v. ligger inom ett visst interval.
 
+#### Tillämpning på normalfördelningen
 
 ### 9. Hypotesprövning
 

@@ -269,8 +269,8 @@
 <h4 id="terminologi-1">terminologi</h4>
 <p><em>parameterrummet</em> - de värden den sökta parametern kan tänkas anta. <em>stickprov</em> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v. <em>stickprovsvariansen</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20s%5E2%3D%5Cfrac%7B1%7D%7Bn-1%7D%5Csum_%7Bj%3D1%7D%5En%20%28x_j%20-%20%5Cbar%7Bx%7D%29%5E2%20" alt=" s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 " title=" s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 " /><br /> <em>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20c_%7Bxy%7D%20%3D%20%5Cfrac%7B1%7D%7Bn-1%7D%5Csum_%7Bi%3D1%7D%5En%28x_i-%5Cbar%7Bx%7D%29%28y_i-%5Cbar%7By%7D%29%20" alt=" c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) " title=" c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) " /><br /> <em>korrelationskoefficienten</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20r%20%3D%20%5Cfrac%7Bc_%7Bxy%7D%7D%7Bs_xs_y%7D%20" alt=" r = \frac{c_{xy}}{s_xs_y} " title=" r = \frac{c_{xy}}{s_xs_y} " /><br /></p>
 <h3 id="punktskattning">7. Punktskattning</h3>
-<p>punktskattning – den observerade sannolikheten – ett utfall av stickprovsvariabeln <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta_%7Bobs%7D%5E%2A%28x_1%2Cx_2%2C...%2Cx_n%29%20" alt=" \theta_{obs}^*(x_1,x_2,...,x_n) " title=" \theta_{obs}^*(x_1,x_2,...,x_n) " /><br /></p>
-<p>stickprovsvariabeln – en s.v. som punktskattningen är ett utfall av <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta%5E%2A%28X_1%2CX_2%2C...%2CX_n%29%20" alt=" \theta^*(X_1,X_2,...,X_n) " title=" \theta^*(X_1,X_2,...,X_n) " /><br /></p>
+<p><em>punktskattning</em> – den observerade sannolikheten – ett utfall av stickprovsvariabeln <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta_%7Bobs%7D%5E%2A%28x_1%2Cx_2%2C...%2Cx_n%29%20" alt=" \theta_{obs}^*(x_1,x_2,...,x_n) " title=" \theta_{obs}^*(x_1,x_2,...,x_n) " /><br /></p>
+<p><em>stickprovsvariabeln</em> – en s.v. som punktskattningen är ett utfall av <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta%5E%2A%28X_1%2CX_2%2C...%2CX_n%29%20" alt=" \theta^*(X_1,X_2,...,X_n) " title=" \theta^*(X_1,X_2,...,X_n) " /><br /></p>
 <p><em>väntevärdesriktig</em> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28%5Ctheta%5E%2A%29%20%3D%20%5Ctheta%20" alt=" E(\theta^*) = \theta " title=" E(\theta^*) = \theta " /><br /></p>
 <p><em>MSE</em> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20MSE%20%3D%20E%28%28%5Ctheta%5E%2A%20-%20%5Ctheta%29%5E2%29%20" alt=" MSE = E((\theta^* - \theta)^2) " title=" MSE = E((\theta^* - \theta)^2) " /><br /></p>
 <h4 id="skattning-av-μ-σ">skattning av μ &amp; σ</h4>
@@ -285,8 +285,16 @@
 <li>Funktionens största värde är det mest sannolika scenariot.</li>
 </ol>
 <h4 id="minsta-kvadrat-metoden-mk-metoden">Minsta-kvadrat-metoden – MK-metoden</h4>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20Q%28%5Ctheta%29%20%3D%20%5Csum_%7Bi%3D1%7D%5En%5Bx_i-%5Cmu_i%28%5Ctheta%29%5D%5E2%20" alt=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " title=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " /><br /></p>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20Q%28%5Ctheta%29%20%3D%20%5Csum_%7Bi%3D1%7D%5En%5Bx_i-%5Cmu_i%28%5Ctheta%29%5D%5E2%20" alt=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " title=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " /><br /> Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.</p>
+<h4 id="tillämpning-på-normalfördelningen">Tillämpning på normalfördelningen</h4>
+<h5 id="ett-stickprov">Ett stickprov</h5>
+<h6 id="µ-okänt-σ-känt">µ okänt σ känt</h6>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmu%2A%20%3D%20%5Cbar%7Bx%7D%20" alt="\mu* = \bar{x} " title="\mu* = \bar{x} " /><br /></p>
+<h6 id="μ-känt-σ-okänt">μ känt σ okänt</h6>
+<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%28%5Csigma%5E2%29%2A_%7Bobs%7D%20%3D%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5En%20%28x_i-%5Cmu%29%5E2%20" alt=" (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 " title=" (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 " /><br /></p>
 <h3 id="intevallskattning">8. Intevallskattning</h3>
+<p>När man vill veta hur stor sannolikhet det är att en s.v. ligger inom ett visst interval.</p>
+<h4 id="tillämpning-på-normalfördelningen-1">Tillämpning på normalfördelningen</h4>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
 <h3 id="regressionsanalys">10. Regressionsanalys</h3>
 <h3 id="fallgropar">11. Fallgropar</h3>
