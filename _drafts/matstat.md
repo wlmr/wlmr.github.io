@@ -405,9 +405,32 @@ $$ (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 $$
 
 
 ### 8. Intevallskattning
-När man vill veta hur stor sannolikhet det är att en s.v. ligger inom ett visst interval.
+När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.
 
 #### Tillämpning på normalfördelningen
+##### Konfidensintervall för väntevärdet
+###### Känd standardavvikelse
+En lämplig skattning av µ är aritmetiska medelvärdet av X. 
+$$ \bar{X} \in N(\mu,D) $$
+$$ D = \sigma/\sqrt{n} $$
+$$ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) $$
+
+Allt detta följer av att:
+$$ \frac{\bar{X}-\mu}{D} \in N(0,1) $$
+Följaktligen gäller med sannolikheten 1-alfa att:
+$$ -\lambda_{\alpha/2} < \frac{\bar{X}-\mu}{D} < \lambda_{\alpha/2} >$$ 
+
+Om vi har ett intervall:
+$$ I_\mu = (16 \pm 2.58 * 0.155) $$ 
+där
+$$ D = 1.2/\sqrt{60} = 0.155 $$
+och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sätta upp följande ekvation:
+$$ 2 * 2.58 * 1.2/\sqrt{n} = 0.5 $$
+
+###### Okänd standardavvikelse
+I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ 
+$$ I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) $$
+
 
 ### 9. Hypotesprövning
 
