@@ -1,26 +1,25 @@
 %matematisk statistik
 ### DEL 1: Sannolikhet eller hur man beskriver slumpen
-__utfall__ -- resultatet av ett slumpmässigt försök
+_utfall_ -- resultatet av ett slumpmässigt försök
+_utfallsrummet_ -- mängden möjliga utfall
+_händelse_ -- samling utfall
+_relativ frekvens_ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
 
-__utfallsrummet__ -- mängden möjliga utfall
+_disjunkta händelser_ -- kan inte inträffa samtidigt
 
-__händelse__ -- samling utfall
-
-__relativ frekvens__ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
-
-__disjunkta händelser__ -- kan inte inträffa samtidigt
-
-__Kolmogorovs axiomsystem__:
-
+_Kolmogorovs axiomsystem_:
 1. Händelsen P(A) måste ligga mellan 0 & 1.
 2. P(utfallsrummet) = 1
 3. om A & B är parvis oförenliga gäller $$ P(A) + P(B) = P(A \cup B) $$
 
-__komplementsatsen__ -- P(A*) = 1 - P(A)
+_komplementsatsen_
+P(A*) = 1 - P(A)
 
-__Additionssatsen__ -- P(A or B) = P(A) + P(B) - P(A and B)
+_Additionssatsen_
+P(A or B) = P(A) + P(B) - P(A and B)
 
-__Booles olikhet__ $$P(A \cup B) \leq P(A) + P(B)$$
+_Booles olikhet_
+$$P(A \cup B) \leq P(A) + P(B)$$
 
 ##### Kombinatorik
 Förutsättningar:
@@ -28,45 +27,45 @@ Förutsättningar:
 * n element
 * k av dessa plockas
 
-__Klassiska sannolikhetsdefinitionen__
+_Klassiska sannolikhetsdefinitionen_
 Vid likformigt sannolikhetmått är sannolikheten för en händelse lika med kvoten mellan antalet för händelsen gynsamma fall och antalet möjliga fall.
 
-__Dragning med återläggning och hänsyn till ordning__ -- $$n^k$$
+_Dragning med återläggning och hänsyn till ordning_ -- $$n^k$$
 
-__Dragning utan återläggning med hänsyn till ordning__
+_Dragning utan återläggning med hänsyn till ordning_
 $$n*(n-1)(n-2) \cdots (n-k)$$
 
-__Dragning utan återläggning utan hänsyn till ordning__
+_Dragning utan återläggning utan hänsyn till ordning_
 $$\binom{n}{k}$$
 
-__Dragning utan återläggning__
+_Dragning utan återläggning_
 Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. _Klas. sann._ ges svaret av g/m.
 $$ m = \binom{v+s}{n}$$
 $$ g = \binom{v}{k} \binom{s}{n-k} $$ Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.
 
-__Dragning med återläggning__
+_Dragning med återläggning_
 Samma som ovan men med återläggning. 
 $$ m = (v+s)^n $$
 $$ g = \binom{n}{k} v^k s^{n-k}$$
 
 Alltså antalet olika kombinationer det finns av k stora samlingar bland n multiplicerat med sannolikheten för k vita multiplicerat med n-k svarta. Allt detta dividerat med m.
 
-__Betingade sannolikheten__ -- sannolikheten att något inträffar givet en annan händelse.
+_Betingade sannolikheten_ -- sannolikheten att något inträffar givet en annan händelse.
 
 $$P(B|A) = \frac{P(A \cap B)}{P(A)}$$
 
 Ger alltså ett samband mellan betingning och snitt.
 
-__Lagen om total sannolikhet__
+_Lagen om total sannolikhet_
 $$P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)$$
 
-__Bayes sats__
+_Bayes sats_
 $$P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}$$
 
-__Oberoende händelser__ -- P(B|A) = P(B)
+_Oberoende händelser_ -- P(B|A) = P(B)
 
 
-__sannolikheten att minst en inträffar__
+_sannolikheten att minst en inträffar_
 $$A_1 , A_2 , ... , A_n är oberoende och P(A_i)=p_i$$
 $$1-(1-p_1)(1-p_2)...(1-p_n) = 1-(1-p)^n$$ 
 
@@ -78,22 +77,23 @@ Den stokastiska variabeln är bron mellan matematiken och slumpen men är inget 
 En s.v. är _diskret_ om den kan anta ett ändligt eller uppräkneligt oändligt antal olika värden.
 funktionen över värdemängden kallas sannolikhetsfunktionen.
 
-1. __Enpunktsfördelning__ -- all massa i ett värde $$p_X(a) = 1$$
+1. _Enpunktsfördelning_ -- all massa i ett värde $$p_X(a) = 1$$
 
-2. __Tvåpunktsfördelning__ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
+2. _Tvåpunktsfördelning_ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
   + ex: krona/klave
   + då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
 
-3. __Likformig fördelning__ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
+3. _Likformig fördelning_ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
   + $$p_X(k)=1/m, k = 1,2,...,m.$$
 
-4. __För-första-gången-fördelning__ 
+4. _För-första-gången-fördelning_ 
   + $$ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,$$
   + När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
   + $$ X \in ffg(p) $$
 
-5. __Geometrisk fördelning__ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
+5. _Geometrisk fördelning_ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
   + $$p_X(k) = (1 - p)^kp,    k = 0,1,2,...,$$
+
 
 6. __Binomialfördelning__ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
   + $$ p_X(k) = \binom{n}{k}p^k(1-p)^{n-k} $$
@@ -333,14 +333,13 @@ __stationär fördelning__  sannolikheterna att systemet befinner sig i de olika
 1. skapa sannolikhetsvektorn π = (π1,π2,..)
 2. lös ekv. π = πP (P är övergångsmatrisen)
 
-__asymptotisk fördelning__
 när $$ p^{(n)}=(p_1^{(n)},p_2^{(n)},...) -> \pi $$
 när $$ n -> \infty $$
 1. om man i en ändlig kedja kan finna ett r>0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning.
 2. se stationär fördelning
 
-__periodiska tillstånd__ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
-__aperiodiska tillstånd__ om det alltid går att komma tillbaka till ett tillstånd direkt
+_periodiska tillstånd_ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
+_aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstånd direkt
 
 -----
 
@@ -348,29 +347,29 @@ __aperiodiska tillstånd__ om det alltid går att komma tillbaka till ett tillst
 ### DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
 #### terminologi
-__parameterrummet__ - de värden den sökta parametern kan tänkas anta.
-__stickprov__ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
-__stickprovsvariansen__ 
+_parameterrummet_ - de värden den sökta parametern kan tänkas anta.
+_stickprov_ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
+_stickprovsvariansen_ 
 $$ s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 $$
-__kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)__
+_kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)_
 $$ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) $$
-__korrelationskoefficienten__
+_korrelationskoefficienten_
 $$ r = \frac{c_{xy}}{s_xs_y} $$ 
 
 
 ### 7. Punktskattning
 
 
-__punktskattning__ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
+_punktskattning_ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
 $$ \theta_{obs}^*(x_1,x_2,...,x_n) $$
 
-__stickprovsvariabeln__ -- en s.v. som punktskattningen är ett utfall av
+_stickprovsvariabeln_ -- en s.v. som punktskattningen är ett utfall av
 $$ \theta^*(X_1,X_2,...,X_n) $$
 
-__väntevärdesriktig__ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
+_väntevärdesriktig_ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
 $$ E(\theta^*) = \theta $$
 
-__MSE__ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
+_MSE_ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
 $$ MSE = E((\theta^* - \theta)^2) $$
 
 #### skattning av μ & σ
@@ -409,54 +408,31 @@ $$ (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 $$
 När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.
 
 #### Tillämpning på normalfördelningen
-#### Ett stickprov
-##### Konfidensintervall för väntevärdet
-###### Känd standardavvikelse
-En lämplig skattning av µ är aritmetiska medelvärdet av X. 
-$$ \bar{X} \in N(\mu,D) $$
-$$ D = \sigma/\sqrt{n} $$
-$$ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) $$
+##### Känd standardavvikelse
 
-Allt detta följer av att:
-$$ \frac{\bar{X}-\mu}{D} \in N(0,1) $$
-Följaktligen gäller med sannolikheten 1-alfa att:
-$$ -\lambda_{\alpha/2} < \frac{\bar{X}-\mu}{D} < \lambda_{\alpha/2} >$$ 
-
-Om vi har ett intervall:
-$$ I_\mu = (16 \pm 2.58 * 0.155) $$ 
-där
-$$ D = 1.2/\sqrt{60} = 0.155 $$
-och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sätta upp följande ekvation:
-$$ 2 * 2.58 * 1.2/\sqrt{n} = 0.5 $$
-
-###### Okänd standardavvikelse
-
-I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ 
-$$ I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) $$
-$$ d = s/\sqrt{n}, \quad f = n-1 $$
-
-##### Konfidensintervall för standardavvikelsen
-###### μ känt 
-Aint gonna happen gurl
-
-####### µ okänt
-$$ I_\sigma = (k_1s,k_2s) $$
-$$ k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} $$
-$$ k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} $$
-$$ f = n-1 $$
-
-##### Två stickprov
-Om σ1 och σ2 är kända:
-$$ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) $$
-$$ D = \sqrt{\sigma^2_1/n_1+\sigma^2_2/n_2} $$
-
-Om σ1 = σ2 = σ:
-$$ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) $$
-
-##### Stickprov i par
-Skapa $$ z = y - x $$
 ### 9. Hypotesprövning
+__nollhypotes__ -- hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas:
+$$ H_0 $$
 
+__mothypotes__ -- hypotes som kan vara sann om inte nollhypotesen är det. Betecknas:
+$$ H_i $$
+
+__signifikansnivå/felrisk__ -- sannolikheten att nollhypotesen förkastas trots att den är sann. (Ju lägre desto bättre).
+  + signifikant* -- 0.05
+  + signifikant** -- 0.01
+  + signifikant*** -- 0.001
+
+__testvariabel/teststorhet__ -- observation av stickprovsvariabel
+
+__signifikanstest__
+
+__styrkefunktionen__
+$$ h(\theta) = P(H_0 förkastas) om \theta är det rätta värdet $$
+  + bör vara stort för alla θ som tillhör mothypotesen
+  + bör vara litet för alla θ som tillhör nollhypotesen
+  + h(θ) kallas testets styrka för θ
+
+__konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför
 
 ### 10. Regressionsanalys
 
