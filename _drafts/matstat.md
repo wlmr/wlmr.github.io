@@ -273,7 +273,9 @@ $$ X \in Bin(n_1,p) \quad \& Y \in Bin(n_2,p) $$
 $$ X + Y \in Bin(n_1+n_2,p) $$
 
 **Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (> != >=)**
+
 Kan approximeras som 
+
 1. _poissonfördelning_ om p är litet
 2. _normalfördelning_ om n är stort
 N(np,sqrt(npq))
@@ -283,6 +285,7 @@ E(X) = np
 V(X) = ((N-n)/(N-1))np(1-p)
 
 Kan aproximeras som
+
 1. _binomialapproximation_ om n/N är liten
 2. _normalapproximation_ om n är stort
 
@@ -293,6 +296,7 @@ V(X) = µ
 $$ X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) $$
 
 Kan approximeras som
+
 1. _normalfördelning_  om µ är stort
 
 #### Multinomial
@@ -394,13 +398,77 @@ $$ Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 $$
 Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.
 
 #### Tillämpning på normalfördelningen
-##### Ett stickprov
+
+#### Ett stickprov
 
 ###### µ okänt σ känt
+
 $$\mu* = \bar{x} $$
 
 ###### μ känt σ okänt
 $$ (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 $$
+
+##### Konfidensintervall för väntevärdet
+###### Känd standardavvikelse
+En lämplig skattning av µ är aritmetiska medelvärdet av X. 
+$$ \bar{X} \in N(\mu,D) $$
+$$ D = \sigma/\sqrt{n} $$
+$$ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) $$
+
+Allt detta följer av att:
+
+$$ \frac{\bar{X}-\mu}{D} \in N(0,1) $$
+
+Följaktligen gäller med sannolikheten 1-alfa att:
+
+$$ -\lambda_{\alpha/2} < \frac{\bar{X}-\mu}{D} < \lambda_{\alpha/2} >$$ 
+
+Om vi har ett intervall:
+
+$$ I_\mu = (16 \pm 2.58 * 0.155) $$ 
+
+där
+
+$$ D = 1.2/\sqrt{60} = 0.155 $$
+
+och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sätta upp följande ekvation:
+
+$$ 2 * 2.58 * 1.2/\sqrt{n} = 0.5 $$
+
+###### Okänd standardavvikelse
+
+I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ 
+
+$$ I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) $$
+$$ d = s/\sqrt{n}, \quad f = n-1 $$
+
+##### Konfidensintervall för standardavvikelsen
+
+###### μ känt 
+
+Aint gonna happen gurl
+
+###### µ okänt
+
+$$ I_\sigma = (k_1s,k_2s) $$
+$$ k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} $$
+$$ k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} $$
+$$ f = n-1 $$
+
+##### Två stickprov
+
+Om σ1 och σ2 är kända:
+
+$$ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) $$
+$$ D = \sqrt{\sigma^2_1/n_1+\sigma^2_2/n_2} $$
+
+Om σ1 = σ2 = σ:
+
+$$ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) $$
+
+##### Stickprov i par
+
+Skapa $$ z = y - x $$
 
 
 
@@ -418,6 +486,7 @@ __mothypotes__ -- hypotes som kan vara sann om inte nollhypotesen är det. Betec
 $$ H_i $$
 
 __signifikansnivå/felrisk__ -- sannolikheten att nollhypotesen förkastas trots att den är sann. (Ju lägre desto bättre).
+
   + signifikant* -- 0.05
   + signifikant** -- 0.01
   + signifikant*** -- 0.001
@@ -427,7 +496,9 @@ __testvariabel/teststorhet__ -- observation av stickprovsvariabel
 __signifikanstest__
 
 __styrkefunktionen__
-$$ h(\theta) = P(H_0 förkastas) om \theta är det rätta värdet $$
+$$ h(\theta) = P(H_0 forkastas) $$
+om θ är det rätta värdet 
+
   + bör vara stort för alla θ som tillhör mothypotesen
   + bör vara litet för alla θ som tillhör nollhypotesen
   + h(θ) kallas testets styrka för θ
