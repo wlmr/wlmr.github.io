@@ -520,10 +520,27 @@ __konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och 
 
 När man vill se samband mellan två eller flera storheter.
 
+#### Terminologi
+
+__teoretiska regressionslinjen__
+\\[ y = \\alpha + \\beta x \\]
+
+
 #### Punktskattningar
 
 Remember MK-metoden? Bestäm minimum för
+
 \\[ Q( \\alpha , \\beta ) = \\sum_{i}^n (y_i - \\mu_i)^2 \\]
+\\[ \\mu_i = \\alpha + \\beta x_i \\]
+
+Genom att sätta partialderivatorna till noll fås
+
+\\[ \\beta^* = \\frac{S_{xy}}{S_{xx}} \\quad \\alpha^* = \\bar{y} - \\beta^* \\bar{x} \\]
+
+#### Intervallskattningar
+
+
+
 
 ### 11. Fallgropar
 
