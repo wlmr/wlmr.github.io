@@ -23,7 +23,7 @@ P(A*) = 1 - P(A)
 _Additionssatsen_
 P(A or B) = P(A) + P(B) - P(A and B)
 
-_Booles olikhet_ -- \\[ P(A \\cup B) \\leq P(A) + P(B) \\]
+_Booles olikhet_ -- $$ P(A \cup B) \leq P(A) + P(B) $$
 
 ##### Kombinatorik
 Förutsättningar:
@@ -182,7 +182,7 @@ konstanter inuti väntevärdesfunktioner är korkat.
 
 * Variansen är en typ av spridningsmått.
 * DEF: \\[ V(X) = E[(X-\\mu)^2] \\] -- alltså ett väntevärde LOL
-* \\[ V(X) = E(X^2)-[E(X)]^2 \\]
+* $$ V(X) = E(X^2)-[E(X)]^2 $$
 * \\[ V(aX+b) = a^2V(X) \\]
 * V(X + Y) = V(X) + V(Y) + 2C(X,Y)
 * Om oberoende: V(X + Y) = V(X) + V(Y)
@@ -208,10 +208,10 @@ uttrycks i procent
 
 ##### Kovarians
 * Kovariansen C(X,Y) mellan X & Y bör bli positiv om det finns ett beroende sådant att det finns en tendens hos variablerna att samtidigt avvika åt samma håll från sina väntevärden.
-* \\[ C(X,Y) = E[(X-\\mu_X)(Y-\\mu_Y)] \\]
-* \\[ C(X,Y) = E(XY)-E(X)E(Y) \\]
+* \\( C(X,Y) = E[(X-\\mu_X)(Y-\\mu_Y)] \\)
+* \\( C(X,Y) = E(XY)-E(X)E(Y) \\)
 * Om C(X,Y) = 0 är X och Y okorrelerade.
-* \\[ X & Y oberoende \\to okorrelerade \\]
+* \\( X \\text{ & } Y \\text{ oberoende} \\to \\text{okorrelerade} \\)
 
 ##### Korrelationskoefficienten
 * DEF: \\[ \\rho(X,Y) = \\frac{C(X,Y)}{D(X)D(Y)} \\]
@@ -242,7 +242,7 @@ Har du någonsin känt dig inkapabel? Då är taylorutveckling något för dig! 
 * normalfördelningar bevaras alltid under linjära transformationer
 
 
-\\[ f_X(x) = \\frac{1}{\\sigma \\sqrt{2\\pi}}e^{-\\frac{(x-\\mu)^2}{2\\sigma^2}} \\]
+$$ f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} $$
 
 #### Standardiserad fördelning
  Täthetsfunktion: φ
@@ -318,7 +318,7 @@ Stokastiska processer vars nästa värde endast beror på nuvarande värde.
 
 övergångssannolikheter av 2a ordningen härleds genom att matrismultiplicera övergångsmatrisen med sig själv. alltså sannolikheten att mellanlanda i ett tillstånd.
 
-För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor \\[ p^{(0)}=(p_1^{(0)},p_2^{(0)},...) \\]
+För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor $$ p^{(0)}=(p_1^{(0)},p_2^{(0)},...) $$
 
 \\[ 
 \\begin{pmatrix}
@@ -344,12 +344,13 @@ __stationär fördelning__  sannolikheterna att systemet befinner sig i de olika
 1. skapa sannolikhetsvektorn π = (π1,π2,..)
 2. lös ekv. π = πP (P är övergångsmatrisen)
 
-när \\[ p^{(n)}=(p_1^{(n)},p_2^{(n)},...) -> \\pi \\]
-när \\[ n -> \\infty \\]
+när $$ p^{(n)}=(p_1^{(n)},p_2^{(n)},...) \to \pi $$
+när \\[ n \\to \\infty \\]
 1. om man i en ändlig kedja kan finna ett r>0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning.
 2. se stationär fördelning
 
 _periodiska tillstånd_ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
+
 _aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstånd direkt
 
 -----
@@ -359,9 +360,11 @@ _aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstå
 
 #### terminologi
 _parameterrummet_ - de värden den sökta parametern kan tänkas anta.
+
 _stickprov_ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
-_stickprovsvariansen_ 
-\\[ s^2=\\frac{1}{n-1}\\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
+
+_stickprovsvariansen_ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
+
 _kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)_
 \\[ c_{xy} = \\frac{1}{n-1}\\sum_{i=1}^n(x_i-\\bar{x})(y_i-\\bar{y}) \\]
 _korrelationskoefficienten_
@@ -381,7 +384,7 @@ _väntevärdesriktig_ -- punktskattning vars tillhörande stickprovsvariabel har
 \\[ E(\\theta^*) = \\theta \\]
 
 _MSE_ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
-\\[ MSE = E((\\theta^* - \\theta)^2) \\]
+\\[ MSE = E(( \\theta^* - \\theta)^2) \\]
 
 #### skattning av μ & σ
 
@@ -401,7 +404,7 @@ alt.
 3. Funktionens största värde är det mest sannolika scenariot.
 
 #### Minsta-kvadrat-metoden -- MK-metoden
-\\[ Q(\\theta) = \\sum_{i=1}^n[x_i-\\mu_i(\\theta)]^2 \\]
+\\[ Q(\\theta) = \\sum_{i=1}^n [x_i - \\mu_i (\\theta)]^2 \\]
 Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.
 
 #### Tillämpning på normalfördelningen
@@ -413,7 +416,7 @@ Går ut på att anta att det finns små försöksfel vid varje mätdatum och bar
 \\[\\mu* = \\bar{x} \\]
 
 ###### μ känt σ okänt
-\\[ (\\sigma^2)*_{obs} = \\frac{1}{n}\\sum_{i=1}^n (x_i-\\mu)^2 \\]
+$$ (\sigma^2)_{obs}^* = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2 $$
 
 ##### Konfidensintervall för väntevärdet
 ###### Känd standardavvikelse
@@ -467,11 +470,12 @@ Aint gonna happen gurl
 Om σ1 och σ2 är kända:
 
 \\[ I_{\\mu_1-\\mu_2} = (\\bar{x}-\\bar{y}-\\lambda_{\\alpha/2}D,\\bar{x}-\\bar{y}+\\lambda_{\\alpha/2}D) \\]
-\\[ D = \\sqrt{\\sigma^2_1/n_1+\\sigma^2_2/n_2} \\]
+\\[ D = \\sqrt{ \\sigma_{1}^{2} / n_1 + \\sigma_{2}^{2} / n_2} \\]
 
 Om σ1 = σ2 = σ:
 
 \\[ I_{\\mu_1-\\mu_2} = (\\bar{x}-\\bar{y}-t_{\\alpha/2}(f)d,\\bar{x}-\\bar{y}+t_{\\alpha/2}(f)d) \\]
+\\[ d = \\sigma \\sqrt{ \\frac{1}{n_1} + \\frac{1}{n_2}} \\]
 
 ##### Stickprov i par
 
@@ -487,10 +491,10 @@ När man vill veta hur stor sannolikhet det är att en okänd parameter ligger i
 
 ### 9. Hypotesprövning
 __nollhypotes__ -- hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas:
-\\[ H_0 \\]
+\\( H_0 \\)
 
 __mothypotes__ -- hypotes som kan vara sann om inte nollhypotesen är det. Betecknas:
-\\[ H_i \\]
+\\( H_i \\)
 
 __signifikansnivå/felrisk__ -- sannolikheten att nollhypotesen förkastas trots att den är sann. (Ju lägre desto bättre).
 
@@ -503,7 +507,7 @@ __testvariabel/teststorhet__ -- observation av stickprovsvariabel
 __signifikanstest__
 
 __styrkefunktionen__
-\\[ h(\\theta) = P(H_0 forkastas) \\]
+\\[ h(\\theta) = P(H_0 \\text{ förkastas}) \\]
 om θ är det rätta värdet 
 
   + bör vara stort för alla θ som tillhör mothypotesen
@@ -519,7 +523,7 @@ När man vill se samband mellan två eller flera storheter.
 #### Punktskattningar
 
 Remember MK-metoden? Bestäm minimum för
-\\[ Q(\\alpha,\\beta) = \\sum_{i}^n(y_i-\\mu_i)^2 \\]
+\\[ Q( \\alpha , \\beta ) = \\sum_{i}^n (y_i - \\mu_i)^2 \\]
 
 ### 11. Fallgropar
 

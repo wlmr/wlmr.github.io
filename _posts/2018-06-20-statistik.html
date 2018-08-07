@@ -11,6 +11,7 @@
       span.underline{text-decoration: underline;}
       div.column{display: inline-block; vertical-align: top; width: 50%;}
   </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -33,7 +34,7 @@
 </ol>
 <p><em>komplementsatsen</em> P(A*) = 1 - P(A)</p>
 <p><em>Additionssatsen</em> P(A or B) = P(A) + P(B) - P(A and B)</p>
-<p><em>Booles olikhet</em> – \[ P(A \cup B) \leq P(A) + P(B) \]</p>
+<p><em>Booles olikhet</em> – <span class="math display">\[ P(A \cup B) \leq P(A) + P(B) \]</span></p>
 <h5 id="kombinatorik">Kombinatorik</h5>
 <p>Förutsättningar:</p>
 <ul>
@@ -156,7 +157,7 @@
 <ul>
 <li>Variansen är en typ av spridningsmått.</li>
 <li>DEF: \[ V(X) = E[(X-\mu)^2] \] – alltså ett väntevärde LOL</li>
-<li>\[ V(X) = E(X<sup>2)-[E(X)]</sup>2 \]</li>
+<li><span class="math display">\[ V(X) = E(X^2)-[E(X)]^2 \]</span></li>
 <li>\[ V(aX+b) = a^2V(X) \]</li>
 <li>V(X + Y) = V(X) + V(Y) + 2C(X,Y)</li>
 <li>Om oberoende: V(X + Y) = V(X) + V(Y)</li>
@@ -181,10 +182,10 @@
 <h5 id="kovarians">Kovarians</h5>
 <ul>
 <li>Kovariansen C(X,Y) mellan X &amp; Y bör bli positiv om det finns ett beroende sådant att det finns en tendens hos variablerna att samtidigt avvika åt samma håll från sina väntevärden.</li>
-<li>\[ C(X,Y) = E[(X-\mu_X)(Y-\mu_Y)] \]</li>
-<li>\[ C(X,Y) = E(XY)-E(X)E(Y) \]</li>
+<li>\( C(X,Y) = E[(X-\mu_X)(Y-\mu_Y)] \)</li>
+<li>\( C(X,Y) = E(XY)-E(X)E(Y) \)</li>
 <li>Om C(X,Y) = 0 är X och Y okorrelerade.</li>
-<li>\[ X &amp; Y oberoende \to okorrelerade \]</li>
+<li>\( X \text{ &amp; } Y \text{ oberoende} \to \text{okorrelerade} \)</li>
 </ul>
 <h5 id="korrelationskoefficienten">Korrelationskoefficienten</h5>
 <ul>
@@ -214,7 +215,7 @@
 <li>ca en tredjedel av massan hamnar utanför en standardavvikelse.</li>
 <li>normalfördelningar bevaras alltid under linjära transformationer</li>
 </ul>
-<p>\[ f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}e<sup>{-\frac{(x-\mu)</sup>2}{2\sigma^2}} \]</p>
+<p><span class="math display">\[ f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \]</span></p>
 <h4 id="standardiserad-fördelning">Standardiserad fördelning</h4>
 <p>Täthetsfunktion: φ Fördelningsfunktion: Φ</p>
 <p>\[ \Phi(-x) = 1 - \Phi(x) \]</p>
@@ -253,7 +254,7 @@
 <p>Stokastiska processer vars nästa värde endast beror på nuvarande värde.</p>
 <p>övergångsmatris används för att skriva upp “hoppsannolikheterna”.</p>
 <p>övergångssannolikheter av 2a ordningen härleds genom att matrismultiplicera övergångsmatrisen med sig själv. alltså sannolikheten att mellanlanda i ett tillstånd.</p>
-<p>För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor \[ p<sup>{(0)}=(p_1</sup>{(0)},p_2^{(0)},…) \]</p>
+<p>För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor <span class="math display">\[ p^{(0)}=(p_1^{(0)},p_2^{(0)},...) \]</span></p>
 <p>\[ \begin{pmatrix} 1 &amp; 2 \end{pmatrix} * \begin{pmatrix} 1to1 &amp; 1to2 \ 2to1 &amp; 2to2 \end{pmatrix} \]</p>
 <h5 id="terminologi">terminologi</h5>
 <p><strong>beständigt</strong> tillstånd om P(i-&gt;i)=1 <strong>obeständigt</strong> tillstånd om P(i-&gt;i) less than 1</p>
@@ -264,17 +265,21 @@
 <li>skapa sannolikhetsvektorn π = (π1,π2,..)</li>
 <li>lös ekv. π = πP (P är övergångsmatrisen)</li>
 </ol>
-<p>när \[ p<sup>{(n)}=(p_1</sup>{(n)},p_2^{(n)},…) -&gt; \pi \] när \[ n -&gt; \infty \] 1. om man i en ändlig kedja kan finna ett r&gt;0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning. 2. se stationär fördelning</p>
-<p><em>periodiska tillstånd</em> om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3. <em>aperiodiska tillstånd</em> om det alltid går att komma tillbaka till ett tillstånd direkt</p>
+<p>när <span class="math display">\[ p^{(n)}=(p_1^{(n)},p_2^{(n)},...) \to \pi \]</span> när \[ n \to \infty \] 1. om man i en ändlig kedja kan finna ett r&gt;0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning. 2. se stationär fördelning</p>
+<p><em>periodiska tillstånd</em> om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3.</p>
+<p><em>aperiodiska tillstånd</em> om det alltid går att komma tillbaka till ett tillstånd direkt</p>
 <hr />
 <h3 id="del-2-statistik-eller-vilka-slutsatser-man-kan-dra-av-ett-datamaterial">DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial</h3>
 <h4 id="terminologi-1">terminologi</h4>
-<p><em>parameterrummet</em> - de värden den sökta parametern kan tänkas anta. <em>stickprov</em> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v. <em>stickprovsvariansen</em> \[ s<sup>2=\frac{1}{n-1}\sum_{j=1}</sup>n (x_j - \bar{x})^2 \] <em>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</em> \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \] <em>korrelationskoefficienten</em> \[ r = \frac{c_{xy}}{s_xs_y} \]</p>
+<p><em>parameterrummet</em> - de värden den sökta parametern kan tänkas anta.</p>
+<p><em>stickprov</em> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v.</p>
+<p><em>stickprovsvariansen</em> \[ s^2 = \frac{1}{n-1} \sum_{j=1}^n (x_j - \bar{x})^2 \]</p>
+<p><em>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</em> \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \] <em>korrelationskoefficienten</em> \[ r = \frac{c_{xy}}{s_xs_y} \]</p>
 <h3 id="punktskattning">7. Punktskattning</h3>
 <p><em>punktskattning</em> – den observerade sannolikheten – ett utfall av stickprovsvariabeln \[ \theta_{obs}^*(x_1,x_2,…,x_n) \]</p>
 <p><em>stickprovsvariabeln</em> – en s.v. som punktskattningen är ett utfall av \[ \theta^*(X_1,X_2,…,X_n) \]</p>
 <p><em>väntevärdesriktig</em> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om \[ E(\theta^*) = \theta \]</p>
-<p><em>MSE</em> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel \[ MSE = E((\theta^* - \theta)^2) \]</p>
+<p><em>MSE</em> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel \[ MSE = E(( \theta^* - \theta)^2) \]</p>
 <h4 id="skattning-av-μ-σ">skattning av μ &amp; σ</h4>
 <h5 id="µ">µ</h5>
 <p>stickprovsmedelvärdet \[ \bar{x} \] är en väntevärdesriktig och konsistent skattning av µ</p>
@@ -287,13 +292,13 @@
 <li>Funktionens största värde är det mest sannolika scenariot.</li>
 </ol>
 <h4 id="minsta-kvadrat-metoden-mk-metoden">Minsta-kvadrat-metoden – MK-metoden</h4>
-<p>\[ Q(\theta) = \sum_{i=1}<sup>n[x_i-\mu_i(\theta)]</sup>2 \] Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.</p>
+<p>\[ Q(\theta) = \sum_{i=1}^n [x_i - \mu_i (\theta)]^2 \] Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.</p>
 <h4 id="tillämpning-på-normalfördelningen">Tillämpning på normalfördelningen</h4>
 <h4 id="ett-stickprov">Ett stickprov</h4>
 <h6 id="µ-okänt-σ-känt">µ okänt σ känt</h6>
 <p>\[\mu* = \bar{x} \]</p>
 <h6 id="μ-känt-σ-okänt">μ känt σ okänt</h6>
-<p>\[ (\sigma^2)*<em>{obs} = \frac{1}{n}\sum</em>{i=1}^n (x_i-\mu)^2 \]</p>
+<p><span class="math display">\[ (\sigma^2)_{obs}^* = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2 \]</span></p>
 <h5 id="konfidensintervall-för-väntevärdet">Konfidensintervall för väntevärdet</h5>
 <h6 id="känd-standardavvikelse">Känd standardavvikelse</h6>
 <p>En lämplig skattning av µ är aritmetiska medelvärdet av X. \[ \bar{X} \in N(\mu,D) \] \[ D = \sigma/\sqrt{n} \] \[ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) \]</p>
@@ -317,9 +322,9 @@
 <p>\[ I_\sigma = (k_1s,k_2s) \] \[ k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} \] \[ k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} \] \[ f = n-1 \]</p>
 <h5 id="två-stickprov">Två stickprov</h5>
 <p>Om σ1 och σ2 är kända:</p>
-<p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) \] \[ D = \sqrt{\sigma<sup>2_1/n_1+\sigma</sup>2_2/n_2} \]</p>
+<p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) \] \[ D = \sqrt{ \sigma_{1}^{2} / n_1 + \sigma_{2}^{2} / n_2} \]</p>
 <p>Om σ1 = σ2 = σ:</p>
-<p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) \]</p>
+<p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) \] \[ d = \sigma \sqrt{ \frac{1}{n_1} + \frac{1}{n_2}} \]</p>
 <h5 id="stickprov-i-par">Stickprov i par</h5>
 <p>Skapa \[ z = y - x \]</p>
 <h3 id="intevallskattning">8. Intevallskattning</h3>
@@ -327,8 +332,8 @@
 <h4 id="tillämpning-på-normalfördelningen-1">Tillämpning på normalfördelningen</h4>
 <h5 id="känd-standardavvikelse-1">Känd standardavvikelse</h5>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
-<p><strong>nollhypotes</strong> – hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas: \[ H_0 \]</p>
-<p><strong>mothypotes</strong> – hypotes som kan vara sann om inte nollhypotesen är det. Betecknas: \[ H_i \]</p>
+<p><strong>nollhypotes</strong> – hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas: \( H_0 \)</p>
+<p><strong>mothypotes</strong> – hypotes som kan vara sann om inte nollhypotesen är det. Betecknas: \( H_i \)</p>
 <p><strong>signifikansnivå/felrisk</strong> – sannolikheten att nollhypotesen förkastas trots att den är sann. (Ju lägre desto bättre).</p>
 <ul>
 <li>signifikant* – 0.05</li>
@@ -337,7 +342,7 @@
 </ul>
 <p><strong>testvariabel/teststorhet</strong> – observation av stickprovsvariabel</p>
 <p><strong>signifikanstest</strong></p>
-<p><strong>styrkefunktionen</strong> \[ h(\theta) = P(H_0 forkastas) \] om θ är det rätta värdet</p>
+<p><strong>styrkefunktionen</strong> \[ h(\theta) = P(H_0 \text{ förkastas}) \] om θ är det rätta värdet</p>
 <ul>
 <li>bör vara stort för alla θ som tillhör mothypotesen</li>
 <li>bör vara litet för alla θ som tillhör nollhypotesen</li>
@@ -347,7 +352,7 @@
 <h3 id="regressionsanalys">10. Regressionsanalys</h3>
 <p>När man vill se samband mellan två eller flera storheter.</p>
 <h4 id="punktskattningar">Punktskattningar</h4>
-<p>Remember MK-metoden? Bestäm minimum för \[ Q(\alpha,\beta) = \sum_{i}<sup>n(y_i-\mu_i)</sup>2 \]</p>
+<p>Remember MK-metoden? Bestäm minimum för \[ Q( \alpha , \beta ) = \sum_{i}^n (y_i - \mu_i)^2 \]</p>
 <h3 id="fallgropar">11. Fallgropar</h3>
 </body>
 </html>
