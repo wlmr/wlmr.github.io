@@ -20,12 +20,20 @@
 <h1 class="title">matematisk statistik</h1>
 </header>
 <h3 id="del-1-sannolikhet-eller-hur-man-beskriver-slumpen">DEL 1: Sannolikhet eller hur man beskriver slumpen</h3>
-<p><em>utfall</em> – resultatet av ett slumpmässigt försök <em>utfallsrummet</em> – mängden möjliga utfall <em>händelse</em> – samling utfall <em>relativ frekvens</em> – kvoten mellan antalet erhållet utfall och hela antalet utförda kast</p>
+<p><em>utfall</em> – resultatet av ett slumpmässigt försök</p>
+<p><em>utfallsrummet</em> – mängden möjliga utfall</p>
+<p><em>händelse</em> – samling utfall</p>
+<p><em>relativ frekvens</em> – kvoten mellan antalet erhållet utfall och hela antalet utförda kast</p>
 <p><em>disjunkta händelser</em> – kan inte inträffa samtidigt</p>
-<p><em>Kolmogorovs axiomsystem</em>: 1. Händelsen P(A) måste ligga mellan 0 &amp; 1. 2. P(utfallsrummet) = 1 3. om A &amp; B är parvis oförenliga gäller <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20P%28A%29%20%2B%20P%28B%29%20%3D%20P%28A%20%5Ccup%20B%29%20" alt=" P(A) + P(B) = P(A \cup B) " title=" P(A) + P(B) = P(A \cup B) " /><br /></p>
+<p><em>Kolmogorovs axiomsystem</em>:</p>
+<ol type="1">
+<li>Händelsen P(A) måste ligga mellan 0 &amp; 1</li>
+<li>P(utfallsrummet) = 1</li>
+<li>om A &amp; B är parvis oförenliga gäller \( P(A) + P(B) = P(A \cup B) \)</li>
+</ol>
 <p><em>komplementsatsen</em> P(A*) = 1 - P(A)</p>
 <p><em>Additionssatsen</em> P(A or B) = P(A) + P(B) - P(A and B)</p>
-<p><em>Booles olikhet</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28A%20%5Ccup%20B%29%20%5Cleq%20P%28A%29%20%2B%20P%28B%29" alt="P(A \cup B) \leq P(A) + P(B)" title="P(A \cup B) \leq P(A) + P(B)" /><br /></p>
+<p><em>Booles olikhet</em> – \[ P(A \cup B) \leq P(A) + P(B) \]</p>
 <h5 id="kombinatorik">Kombinatorik</h5>
 <p>Förutsättningar:</p>
 <ul>
@@ -33,25 +41,25 @@
 <li>k av dessa plockas</li>
 </ul>
 <p><em>Klassiska sannolikhetsdefinitionen</em> Vid likformigt sannolikhetmått är sannolikheten för en händelse lika med kvoten mellan antalet för händelsen gynsamma fall och antalet möjliga fall.</p>
-<p><em>Dragning med återläggning och hänsyn till ordning</em> – <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%5Ek" alt="n^k" title="n^k" /><br /></p>
-<p><em>Dragning utan återläggning med hänsyn till ordning</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?n%2A%28n-1%29%28n-2%29%20%5Ccdots%20%28n-k%29" alt="n*(n-1)(n-2) \cdots (n-k)" title="n*(n-1)(n-2) \cdots (n-k)" /><br /></p>
-<p><em>Dragning utan återläggning utan hänsyn till ordning</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cbinom%7Bn%7D%7Bk%7D" alt="\binom{n}{k}" title="\binom{n}{k}" /><br /></p>
-<p><em>Dragning utan återläggning</em> Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. <em>Klas. sann.</em> ges svaret av g/m. <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20m%20%3D%20%5Cbinom%7Bv%2Bs%7D%7Bn%7D" alt=" m = \binom{v+s}{n}" title=" m = \binom{v+s}{n}" /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20g%20%3D%20%5Cbinom%7Bv%7D%7Bk%7D%20%5Cbinom%7Bs%7D%7Bn-k%7D%20" alt=" g = \binom{v}{k} \binom{s}{n-k} " title=" g = \binom{v}{k} \binom{s}{n-k} " /><br /> Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.</p>
-<p><em>Dragning med återläggning</em> Samma som ovan men med återläggning. <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20m%20%3D%20%28v%2Bs%29%5En%20" alt=" m = (v+s)^n " title=" m = (v+s)^n " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20g%20%3D%20%5Cbinom%7Bn%7D%7Bk%7D%20v%5Ek%20s%5E%7Bn-k%7D" alt=" g = \binom{n}{k} v^k s^{n-k}" title=" g = \binom{n}{k} v^k s^{n-k}" /><br /></p>
+<p><em>Dragning med återläggning och hänsyn till ordning</em> \[n^k\]</p>
+<p><em>Dragning utan återläggning med hänsyn till ordning</em> \[n*(n-1)(n-2) \cdots (n-k)\]</p>
+<p><em>Dragning utan återläggning utan hänsyn till ordning</em> \[\binom{n}{k}\]</p>
+<p><em>Dragning utan återläggning</em> Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. <em>Klas. sann.</em> ges svaret av \[ g/m \] \[ m = \binom{v+s}{n} \] \[ g = \binom{v}{k} \binom{s}{n-k} \] Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.</p>
+<p><em>Dragning med återläggning</em> Samma som ovan men med återläggning. \[ m = (v+s)^n \] \[ g = \binom{n}{k} v^k s^{n-k}\]</p>
 <p>Alltså antalet olika kombinationer det finns av k stora samlingar bland n multiplicerat med sannolikheten för k vita multiplicerat med n-k svarta. Allt detta dividerat med m.</p>
 <p><em>Betingade sannolikheten</em> – sannolikheten att något inträffar givet en annan händelse.</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28B%7CA%29%20%3D%20%5Cfrac%7BP%28A%20%5Ccap%20B%29%7D%7BP%28A%29%7D" alt="P(B|A) = \frac{P(A \cap B)}{P(A)}" title="P(B|A) = \frac{P(A \cap B)}{P(A)}" /><br /></p>
+<p>\[P(B|A) = \frac{P(A \cap B)}{P(A)}\]</p>
 <p>Ger alltså ett samband mellan betingning och snitt.</p>
-<p><em>Lagen om total sannolikhet</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28A%29%20%3D%20%5Csum_%7Bi%3D1%7D%5E%7Bn%7D%20P%28H_i%29P%28A%7CH_i%29" alt="P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)" title="P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)" /><br /></p>
-<p><em>Bayes sats</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?P%28H_i%7CA%29%20%3D%20%5Cfrac%7BP%28H_i%29P%28A%7CH_i%29%7D%7B%5Csum_%7Bj%3D1%7D%5E%7Bn%7D%20P%28H_j%29P%28A%7CH_j%29%7D" alt="P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}" title="P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}" /><br /></p>
+<p><em>Lagen om total sannolikhet</em> \[P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)\]</p>
+<p><em>Bayes sats</em> \[P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}\]</p>
 <p><em>Oberoende händelser</em> – P(B|A) = P(B)</p>
-<p><em>sannolikheten att minst en inträffar</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?A_1%20%2C%20A_2%20%2C%20...%20%2C%20A_n%20%C3%A4r%20oberoende%20och%20P%28A_i%29%3Dp_i" alt="A_1 , A_2 , ... , A_n är oberoende och P(A_i)=p_i" title="A_1 , A_2 , ... , A_n är oberoende och P(A_i)=p_i" /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?1-%281-p_1%29%281-p_2%29...%281-p_n%29%20%3D%201-%281-p%29%5En" alt="1-(1-p_1)(1-p_2)...(1-p_n) = 1-(1-p)^n" title="1-(1-p_1)(1-p_2)...(1-p_n) = 1-(1-p)^n" /><br /></p>
+<p><em>sannolikheten att minst en inträffar</em> \[A_1 , A_2 , … , A_n är oberoende och P(A_i)=p_i\] \[1-(1-p_1)(1-p_2)…(1-p_n) = 1-(1-p)^n\]</p>
 <h3 id="endimensionella-stokastiska-variabler">1. Endimensionella stokastiska variabler</h3>
 <p>Den stokastiska variabeln är bron mellan matematiken och slumpen men är inget mer än en reellvärd funktion definierad på ett utfallsrum. Betecknas i texten som versaler från slutet av alfabetet som X, Y, eller Z.</p>
 <h4 id="diskret-stokastisk-variabel">diskret stokastisk variabel</h4>
 <p>En s.v. är <em>diskret</em> om den kan anta ett ändligt eller uppräkneligt oändligt antal olika värden. funktionen över värdemängden kallas sannolikhetsfunktionen.</p>
 <ol type="1">
-<li><p><em>Enpunktsfördelning</em> – all massa i ett värde <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?p_X%28a%29%20%3D%201" alt="p_X(a) = 1" title="p_X(a) = 1" /><br /></p></li>
+<li><p><em>Enpunktsfördelning</em> – all massa i ett värde \[p_X(a) = 1\]</p></li>
 <li><em>Tvåpunktsfördelning</em> – om X endast antar två värden a &amp; b med sannolikheterna p respektive 1-p.</li>
 </ol>
 <ul>
@@ -62,48 +70,48 @@
 <li><em>Likformig fördelning</em> – X antar värden 1,2,..,m och alla dessa med samma sannolikhet.</li>
 </ol>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?p_X%28k%29%3D1%2Fm%2C%20k%20%3D%201%2C2%2C...%2Cm." alt="p_X(k)=1/m, k = 1,2,...,m." title="p_X(k)=1/m, k = 1,2,...,m." /><br /></li>
+<li>\[p_X(k)=1/m, k = 1,2,…,m.\]</li>
 </ul>
 <ol start="4" type="1">
 <li><em>För-första-gången-fördelning</em></li>
 </ol>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p_X%28k%29%3D%281-p%29%5E%7Bk-1%7Dp%2C%20%20%20%20k%3D1%2C2%2C...%2C" alt=" p_X(k)=(1-p)^{k-1}p,    k=1,2,...," title=" p_X(k)=(1-p)^{k-1}p,    k=1,2,...," /><br /></li>
+<li>\[ p_X(k)=(1-p)^{k-1}p, k=1,2,…,\]</li>
 <li>När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.</li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20ffg%28p%29%20" alt=" X \in ffg(p) " title=" X \in ffg(p) " /><br /></li>
+<li>\[ X \in ffg(p) \]</li>
 </ul>
 <ol start="5" type="1">
 <li><em>Geometrisk fördelning</em> – genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)</li>
 </ol>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?p_X%28k%29%20%3D%20%281%20-%20p%29%5Ekp%2C%20%20%20%20k%20%3D%200%2C1%2C2%2C...%2C" alt="p_X(k) = (1 - p)^kp,    k = 0,1,2,...," title="p_X(k) = (1 - p)^kp,    k = 0,1,2,...," /><br /></li>
+<li>\[p_X(k) = (1 - p)^kp, k = 0,1,2,…,\]</li>
 </ul>
 <ol start="6" type="1">
 <li><strong>Binomialfördelning</strong> – slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr.</li>
 </ol>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p_X%28k%29%20%3D%20%5Cbinom%7Bn%7D%7Bk%7Dp%5Ek%281-p%29%5E%7Bn-k%7D%20" alt=" p_X(k) = \binom{n}{k}p^k(1-p)^{n-k} " title=" p_X(k) = \binom{n}{k}p^k(1-p)^{n-k} " /><br /></li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20Bin%28n%2Cp%29%20" alt=" X \in Bin(n,p) " title=" X \in Bin(n,p) " /><br /></li>
+<li>\[ p_X(k) = \binom{n}{k}p<sup>k(1-p)</sup>{n-k} \]</li>
+<li>\[ X \in Bin(n,p) \]</li>
 </ul>
 <ol start="7" type="1">
 <li><strong>Hypergeometrisk fördelning</strong> – uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.</li>
 </ol>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p_X%28k%29%20%3D%20%5Cfrac%7B%5Cbinom%7Bv%7D%7Bk%7D%20%5Cbinom%7Bs%7D%7Bn-k%7D%7D%7B%5Cbinom%7Bv%2Bs%7D%7Bn%7D%7D" alt=" p_X(k) = \frac{\binom{v}{k} \binom{s}{n-k}}{\binom{v+s}{n}}" title=" p_X(k) = \frac{\binom{v}{k} \binom{s}{n-k}}{\binom{v+s}{n}}" /><br /></li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20Hyp%28N%2Cn%2Cp%29" alt=" X \in Hyp(N,n,p)" title=" X \in Hyp(N,n,p)" /><br /></li>
+<li>\[ p_X(k) = \frac{\binom{v}{k} \binom{s}{n-k}}{\binom{v+s}{n}}\]</li>
+<li>\[ X \in Hyp(N,n,p)\]</li>
 </ul>
 <ol start="8" type="1">
 <li><strong>Poisson-fördelning</strong></li>
 </ol>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p_X%28k%29%20%3D%20%5Cfrac%7B%5Cmu%5Ek%7D%7Bk%21%7De%5E%7B-e%7D" alt=" p_X(k) = \frac{\mu^k}{k!}e^{-e}" title=" p_X(k) = \frac{\mu^k}{k!}e^{-e}" /><br /></li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20Po%28%5Cmu%29" alt=" X \in Po(\mu)" title=" X \in Po(\mu)" /><br /></li>
+<li>\[ p_X(k) = \frac{\mu<sup>k}{k!}e</sup>{-e}\]</li>
+<li>\[ X \in Po(\mu)\]</li>
 </ul>
 <h4 id="kontinuerlig-stokastisk-variabel">kontinuerlig stokastisk variabel</h4>
 <p>Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.</p>
 <ol type="1">
-<li><strong>Likformig fördelning</strong> – <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f_X%28x%29%20%3D%201%2F%28b-a%29%20om%20a%20%3C%20x%20%3C%20b%20" alt=" f_X(x) = 1/(b-a) om a &lt; x &lt; b " title=" f_X(x) = 1/(b-a) om a &lt; x &lt; b " /><br />&gt;</li>
-<li><strong>Exponentialfördelning</strong> – <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f_X%28x%29%20%3D%20%5Clambda%20e%5E%7B-%5Clabda%20x%7D%20" alt=" f_X(x) = \lambda e^{-\labda x} " title=" f_X(x) = \lambda e^{-\labda x} " /><br /></li>
+<li><strong>Likformig fördelning</strong> – \[ f_X(x) = 1/(b-a) om a &lt; x &lt; b &gt;\]</li>
+<li><strong>Exponentialfördelning</strong> – \[ f_X(x) = \lambda e^{-\lambda x} \]</li>
 <li><strong>Normalfördelningen</strong></li>
 <li><strong>Weibull-fördelning</strong></li>
 <li><strong>Gammafördelning</strong></li>
@@ -113,57 +121,57 @@
 <h3 id="flerdimensionella-stokastiska-variabler">2. Flerdimensionella stokastiska variabler</h3>
 <h4 id="note-to-self">Note to self:</h4>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p_%7BX%2CY%7D%28i%2Cj%29%20%3D%20p_X%28i%29p_Y%28j%29%20%3D%20P%28j%7Ci%29P%28i%29%20" alt=" p_{X,Y}(i,j) = p_X(i)p_Y(j) = P(j|i)P(i) " title=" p_{X,Y}(i,j) = p_X(i)p_Y(j) = P(j|i)P(i) " /><br /> OBS! Dont forget the last P(i)</li>
+<li>\[ p_{X,Y}(i,j) = p_X(i)p_Y(j) = P(j|i)P(i) \] OBS! Dont forget the last P(i)</li>
 </ul>
 <h4 id="största-och-minsta-värdet">Största och minsta värdet</h4>
 <ul>
 <li>Z = max(X,Y)
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?F_Z%28z%29%20%3D%20F_X%28z%29F_Y%28z%29" alt="F_Z(z) = F_X(z)F_Y(z)" title="F_Z(z) = F_X(z)F_Y(z)" /><br /></li>
+<li>\[F_Z(z) = F_X(z)F_Y(z)\]</li>
 </ul></li>
 <li>Z = min(X,Y)
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?F_Z%28z%29%20%3D%201-%5B1-F_X%28z%29%5D%5B1-F_Y%28z%29%5D" alt="F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]" title="F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]" /><br /></li>
+<li>\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\]</li>
 </ul></li>
 </ul>
 <p>Gör först om till fördelningsfunktion om täthetsfunktion</p>
 <h4 id="summan-av-s.v.">Summan av s.v.</h4>
 <ul>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?f_Z%28z%29%20%3D%20%5Cint_%7B%5Cinfty%7D%5E%7B%5Cinfty%7D%20f_X%28x%29f_Y%28z-x%29dx" alt="f_Z(z) = \int_{\infty}^{\infty} f_X(x)f_Y(z-x)dx" title="f_Z(z) = \int_{\infty}^{\infty} f_X(x)f_Y(z-x)dx" /><br /></li>
+<li>\[f_Z(z) = \int_{\infty}^{\infty} f_X(x)f_Y(z-x)dx\]</li>
 </ul>
 <h3 id="väntevärden">3. Väntevärden</h3>
 <h4 id="note-to-self-1">Note to self:</h4>
 <p>konstanter inuti väntevärdesfunktioner är korkat.</p>
 <h4 id="väntevärdet-ex-eller-μ">Väntevärdet E(X) eller μ</h4>
 <p>Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade resultatet blir.</p>
-<p>DEF: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28X%29%20%3D%20%5Csum_kkp_X%28k%29%20" alt=" E(X) = \sum_kkp_X(k) " title=" E(X) = \sum_kkp_X(k) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28X%29%20%3D%20%5Cint%5Climits_%7B-%5Cinfty%7D%5E%7B%5Cinfty%7D%20x%20f_X%28x%29dx%20" alt=" E(X) = \int\limits_{-\infty}^{\infty} x f_X(x)dx " title=" E(X) = \int\limits_{-\infty}^{\infty} x f_X(x)dx " /><br /></p>
-<p>Y = g(X) <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28Y%29%20%3D%20%5Csum_kg%28k%29p_X%28k%29" alt=" E(Y) = \sum_kg(k)p_X(k)" title=" E(Y) = \sum_kg(k)p_X(k)" /><br /></p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28X%2BY%29%20%3D%20E%28X%29%2BE%28Y%29%20" alt=" E(X+Y) = E(X)+E(Y) " title=" E(X+Y) = E(X)+E(Y) " /><br /></p>
-<p>X &amp; Y oberoende <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28XY%29%20%3D%20E%28X%29E%28Y%29" alt=" E(XY) = E(X)E(Y)" title=" E(XY) = E(X)E(Y)" /><br /></p>
-<p>Samling X med samma väntevärde µ <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28%5Csum_%7Bi%3D1%7D%5EnX_i%29%3Dn%5Cmu%20" alt=" E(\sum_{i=1}^nX_i)=n\mu " title=" E(\sum_{i=1}^nX_i)=n\mu " /><br /></p>
+<p>DEF: \[ E(X) = \sum_kkp_X(k) \] \[ E(X) = \int\limits_{-\infty}^{\infty} x f_X(x)dx \]</p>
+<p>Y = g(X) \[ E(Y) = \sum_kg(k)p_X(k)\]</p>
+<p>\[ E(X+Y) = E(X)+E(Y) \]</p>
+<p>X &amp; Y oberoende \[ E(XY) = E(X)E(Y)\]</p>
+<p>Samling X med samma väntevärde µ \[ E(\sum_{i=1}^nX_i)=n\mu \]</p>
 <h5 id="betingade-väntevärden">Betingade väntevärden</h5>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28X%7CY%3Dk%29%20%3D%20%5Csum_%7Bj%3D0%7D%5E%5Cinfty%20jp_%7BX%7CY%3Dk%7D%28j%29" alt=" E(X|Y=k) = \sum_{j=0}^\infty jp_{X|Y=k}(j)" title=" E(X|Y=k) = \sum_{j=0}^\infty jp_{X|Y=k}(j)" /><br /></p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28X%7CY%3Dy%29%20%3D%20%5Cint_%7B-%5Cinfty%7D%5E%5Cinfty%20xf_%7BX%7CY%3Dy%7D%28x%29dx" alt=" E(X|Y=y) = \int_{-\infty}^\infty xf_{X|Y=y}(x)dx" title=" E(X|Y=y) = \int_{-\infty}^\infty xf_{X|Y=y}(x)dx" /><br /></p>
+<p>\[ E(X|Y=k) = \sum_{j=0}^\infty jp_{X|Y=k}(j)\]</p>
+<p>\[ E(X|Y=y) = \int_{-\infty}^\infty xf_{X|Y=y}(x)dx\]</p>
 <h4 id="variansen-vx-eller-σ">Variansen V(X) eller σ²</h4>
 <ul>
 <li>Variansen är en typ av spridningsmått.</li>
-<li>DEF: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20V%28X%29%20%3D%20E%5B%28X-%5Cmu%29%5E2%5D%20" alt=" V(X) = E[(X-\mu)^2] " title=" V(X) = E[(X-\mu)^2] " /><br /> – alltså ett väntevärde LOL</li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20V%28X%29%20%3D%20E%28X%5E2%29-%5BE%28X%29%5D%5E2%20" alt=" V(X) = E(X^2)-[E(X)]^2 " title=" V(X) = E(X^2)-[E(X)]^2 " /><br /></li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20V%28aX%2Bb%29%20%3D%20a%5E2V%28X%29%20" alt=" V(aX+b) = a^2V(X) " title=" V(aX+b) = a^2V(X) " /><br /></li>
+<li>DEF: \[ V(X) = E[(X-\mu)^2] \] – alltså ett väntevärde LOL</li>
+<li>\[ V(X) = E(X<sup>2)-[E(X)]</sup>2 \]</li>
+<li>\[ V(aX+b) = a^2V(X) \]</li>
 <li>V(X + Y) = V(X) + V(Y) + 2C(X,Y)</li>
 <li>Om oberoende: V(X + Y) = V(X) + V(Y)</li>
-<li>Om oberoende och med samma σ: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20V%28%5Csum_%7Bi%3D1%7D%5EnX_i%29%20%3D%20n%5Csigma%5E2%20" alt=" V(\sum_{i=1}^nX_i) = n\sigma^2 " title=" V(\sum_{i=1}^nX_i) = n\sigma^2 " /><br /></li>
-<li>Om oberoende och med samma σ samt µ: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20V%28%5Cbar%7BX%7D%29%3D%5Csigma%5E2%2Fn%20" alt=" V(\bar{X})=\sigma^2/n " title=" V(\bar{X})=\sigma^2/n " /><br /></li>
+<li>Om oberoende och med samma σ: \[ V(\sum_{i=1}^nX_i) = n\sigma^2 \]</li>
+<li>Om oberoende och med samma σ samt µ: \[ V(\bar{X})=\sigma^2/n \]</li>
 </ul>
 <h4 id="standardavvikelse-dx-eller-σ">Standardavvikelse D(X) eller σ</h4>
 <ul>
 <li>Schyst mått då man får samma dimension som väntevärdet</li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20D%28X%29%20%3D%20%5Csqrt%7BV%28X%29%7D%20" alt=" D(X) = \sqrt{V(X)} " title=" D(X) = \sqrt{V(X)} " /><br /></li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20D%28aX%20%2B%20b%29%20%3D%20%7Ca%7CD%28X%29%20" alt=" D(aX + b) = |a|D(X) " title=" D(aX + b) = |a|D(X) " /><br /></li>
-<li>Om oberoende: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20D%28X%20%2B%20Y%29%20%3D%20%5Csqrt%7BD%5E2%28X%29%20%2B%20D%5E2%28Y%29%7D%20" alt=" D(X + Y) = \sqrt{D^2(X) + D^2(Y)} " title=" D(X + Y) = \sqrt{D^2(X) + D^2(Y)} " /><br /></li>
+<li>\[ D(X) = \sqrt{V(X)} \]</li>
+<li>\[ D(aX + b) = |a|D(X) \]</li>
+<li>Om oberoende: \[ D(X + Y) = \sqrt{D^2(X) + D^2(Y)} \]</li>
 </ul>
 <h4 id="variationskoefficienten">Variationskoefficienten</h4>
-<p>uttrycks i procent <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20R%28X%29%20%3D%20D%28X%29%2FE%28X%29%20" alt=" R(X) = D(X)/E(X) " title=" R(X) = D(X)/E(X) " /><br /></p>
+<p>uttrycks i procent \[ R(X) = D(X)/E(X) \]</p>
 <h4 id="fel">fel</h4>
 <ul>
 <li><em>systematiskt fel/bias</em> är differansen mellan mätvärdets väntevärde och det korrekta värdet. (ett tal)</li>
@@ -173,14 +181,14 @@
 <h5 id="kovarians">Kovarians</h5>
 <ul>
 <li>Kovariansen C(X,Y) mellan X &amp; Y bör bli positiv om det finns ett beroende sådant att det finns en tendens hos variablerna att samtidigt avvika åt samma håll från sina väntevärden.</li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20C%28X%2CY%29%20%3D%20E%5B%28X-%5Cmu_X%29%28Y-%5Cmu_Y%29%5D%20" alt=" C(X,Y) = E[(X-\mu_X)(Y-\mu_Y)] " title=" C(X,Y) = E[(X-\mu_X)(Y-\mu_Y)] " /><br /></li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20C%28X%2CY%29%20%3D%20E%28XY%29-E%28X%29E%28Y%29%20" alt=" C(X,Y) = E(XY)-E(X)E(Y) " title=" C(X,Y) = E(XY)-E(X)E(Y) " /><br /></li>
+<li>\[ C(X,Y) = E[(X-\mu_X)(Y-\mu_Y)] \]</li>
+<li>\[ C(X,Y) = E(XY)-E(X)E(Y) \]</li>
 <li>Om C(X,Y) = 0 är X och Y okorrelerade.</li>
-<li><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%26%20Y%20oberoende%20%5Cto%20okorrelerade%20" alt=" X &amp; Y oberoende \to okorrelerade " title=" X &amp; Y oberoende \to okorrelerade " /><br /></li>
+<li>\[ X &amp; Y oberoende \to okorrelerade \]</li>
 </ul>
 <h5 id="korrelationskoefficienten">Korrelationskoefficienten</h5>
 <ul>
-<li>DEF: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Crho%28X%2CY%29%20%3D%20%5Cfrac%7BC%28X%2CY%29%7D%7BD%28X%29D%28Y%29%7D%20" alt=" \rho(X,Y) = \frac{C(X,Y)}{D(X)D(Y)} " title=" \rho(X,Y) = \frac{C(X,Y)}{D(X)D(Y)} " /><br /></li>
+<li>DEF: \[ \rho(X,Y) = \frac{C(X,Y)}{D(X)D(Y)} \]</li>
 <li>Kovarians fast dimensionslös</li>
 </ul>
 <h4 id="stora-talens-lag">Stora talens lag</h4>
@@ -192,13 +200,13 @@
 <p>Har du någonsin känt dig inkapabel? Då är taylorutveckling något för dig! Allt för ofta vill man ha en schyst funktion mitt i väntevärdet men hur räknar man ut E(Y) då!? Du behöver inte vara helt körd i skallen, det kan vara så att du råkat ut för någon av de många fallgropar som kantar väntevägen!</p>
 <h5 id="en-variabel">En variabel</h5>
 <ol type="1">
-<li>taylorutveckla: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20g%28X%29%20%5Capprox%20g%28%5Cmu%29%20%2B%20%28X%20-%20%5Cmu%29g%27%28%5Cmu%29%20" alt=" g(X) \approx g(\mu) + (X - \mu)g&#39;(\mu) " title=" g(X) \approx g(\mu) + (X - \mu)g&#39;(\mu) " /><br /></li>
+<li>taylorutveckla: \[ g(X) \approx g(\mu) + (X - \mu)g’(\mu) \]</li>
 <li>g(X) har nu approximativa väntevärdet g(µ) samt [g’(E(X))]²V(X) som varians. Med en rak linje blir det enkelt att räkna med µ och σ².</li>
 </ol>
 <h5 id="flera-variabler">Flera variabler</h5>
 <h6 id="abandon-all-hope-ye-who-enter-here">Abandon all hope, ye who enter here</h6>
 <ol type="1">
-<li>taylorutveckla: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20g%28X%2CY%29%20%5Capprox%20g%28%5Cmu_X%2C%5Cmu_Y%29%2B%28X-%5Cmu_X%29g%27_X%28%5Cmu_X%2C%5Cmu_Y%29%2B%28Y-%5Cmu_Y%29g%27_Y%28%5Cmu_X%2C%5Cmu_Y%29%20" alt=" g(X,Y) \approx g(\mu_X,\mu_Y)+(X-\mu_X)g&#39;_X(\mu_X,\mu_Y)+(Y-\mu_Y)g&#39;_Y(\mu_X,\mu_Y) " title=" g(X,Y) \approx g(\mu_X,\mu_Y)+(X-\mu_X)g&#39;_X(\mu_X,\mu_Y)+(Y-\mu_Y)g&#39;_Y(\mu_X,\mu_Y) " /><br /></li>
+<li>taylorutveckla: \[ g(X,Y) \approx g(\mu_X,\mu_Y)+(X-\mu_X)g’_X(\mu_X,\mu_Y)+(Y-\mu_Y)g’_Y(\mu_X,\mu_Y) \]</li>
 </ol>
 <h3 id="normalfördelningen">4. Normalfördelningen</h3>
 <h5 id="notes-to-self">Notes to self:</h5>
@@ -206,19 +214,19 @@
 <li>ca en tredjedel av massan hamnar utanför en standardavvikelse.</li>
 <li>normalfördelningar bevaras alltid under linjära transformationer</li>
 </ul>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f_X%28x%29%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%20%5Csqrt%7B2%5Cpi%7D%7De%5E%7B-%5Cfrac%7B%28x-%5Cmu%29%5E2%7D%7B2%5Csigma%5E2%7D%7D%20" alt=" f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} " title=" f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} " /><br /></p>
+<p>\[ f_X(x) = \frac{1}{\sigma \sqrt{2\pi}}e<sup>{-\frac{(x-\mu)</sup>2}{2\sigma^2}} \]</p>
 <h4 id="standardiserad-fördelning">Standardiserad fördelning</h4>
 <p>Täthetsfunktion: φ Fördelningsfunktion: Φ</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5CPhi%28-x%29%20%3D%201%20-%20%5CPhi%28x%29%20" alt=" \Phi(-x) = 1 - \Phi(x) " title=" \Phi(-x) = 1 - \Phi(x) " /><br /></p>
+<p>\[ \Phi(-x) = 1 - \Phi(x) \]</p>
 <h4 id="allmän-fördelning">Allmän fördelning</h4>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20N%28%5Cmu%2C%5Csigma%29%20%5Cquad%20iff%20%5Cquad%20Y%20%3D%20%28X-%5Cmu%29%2F%5Csigma%20%5Cin%20N%280%2C1%29%20" alt=" X \in N(\mu,\sigma) \quad iff \quad Y = (X-\mu)/\sigma \in N(0,1) " title=" X \in N(\mu,\sigma) \quad iff \quad Y = (X-\mu)/\sigma \in N(0,1) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f_X%28x%29%20%3D%20%5Cfrac%7B1%7D%7B%5Csigma%7D%5Cvarphi%28%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D%29%20" alt=" f_X(x) = \frac{1}{\sigma}\varphi(\frac{x-\mu}{\sigma}) " title=" f_X(x) = \frac{1}{\sigma}\varphi(\frac{x-\mu}{\sigma}) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20F_X%28x%29%20%3D%20%5CPhi%28%5Cfrac%7Bx-%5Cmu%7D%7B%5Csigma%7D%29%20" alt=" F_X(x) = \Phi(\frac{x-\mu}{\sigma}) " title=" F_X(x) = \Phi(\frac{x-\mu}{\sigma}) " /><br /></p>
+<p>\[ X \in N(\mu,\sigma) \quad iff \quad Y = (X-\mu)/\sigma \in N(0,1) \] \[ f_X(x) = \frac{1}{\sigma}\varphi(\frac{x-\mu}{\sigma}) \] \[ F_X(x) = \Phi(\frac{x-\mu}{\sigma}) \]</p>
 <h4 id="linjärkombinationer">Linjärkombinationer</h4>
-<p>Om <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20N%28%5Cmu%2C%5Csigma%29%20" alt=" X \in N(\mu,\sigma) " title=" X \in N(\mu,\sigma) " /><br /> så gäller att <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20Y%3DaX%2Bb%20%5Cin%20N%28a%5Cmu%20%2B%20b%2C%20%7Ca%7C%5Csigma%29%20" alt=" Y=aX+b \in N(a\mu + b, |a|\sigma) " title=" Y=aX+b \in N(a\mu + b, |a|\sigma) " /><br /></p>
-<p>Om <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X_1%2CX_2%2C..%2CX_n%20" alt=" X_1,X_2,..,X_n " title=" X_1,X_2,..,X_n " /><br /> är oberoende N(µ,σ) och <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cbar%7BX%7D%20" alt=" \bar{X} " title=" \bar{X} " /><br /> är medelvärdet så gäller att <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cbar%7BX%7D%20%5Cin%20N%28%5Cmu%2C%5Csigma%2F%5Csqrt%7Bn%7D%29%20" alt=" \bar{X} \in N(\mu,\sigma/\sqrt{n}) " title=" \bar{X} \in N(\mu,\sigma/\sqrt{n}) " /><br /></p>
+<p>Om \[ X \in N(\mu,\sigma) \] så gäller att \[ Y=aX+b \in N(a\mu + b, |a|\sigma) \]</p>
+<p>Om \[ X_1,X_2,..,X_n \] är oberoende N(µ,σ) och \[ \bar{X} \] är medelvärdet så gäller att \[ \bar{X} \in N(\mu,\sigma/\sqrt{n}) \]</p>
 <h3 id="de-tre-vännerna-och-binomialfördelning">5. De tre vännerna och Binomialfördelning</h3>
 <h4 id="binomialaren-med-återläggning">binomialaren (med återläggning)</h4>
 <p>E(X) = np V(X) = npq</p>
-<p>Om oberoende <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%5Cin%20Bin%28n_1%2Cp%29%20%5Cquad%20%5C%26%20Y%20%5Cin%20Bin%28n_2%2Cp%29%20" alt=" X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) " title=" X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X%20%2B%20Y%20%5Cin%20Bin%28n_1%2Bn_2%2Cp%29%20" alt=" X + Y \in Bin(n_1+n_2,p) " title=" X + Y \in Bin(n_1+n_2,p) " /><br /></p>
+<p>Om oberoende \[ X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) \] \[ X + Y \in Bin(n_1+n_2,p) \]</p>
 <p><strong>Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (&gt; != &gt;=)</strong></p>
 <p>Kan approximeras som</p>
 <ol type="1">
@@ -234,7 +242,7 @@
 </ol>
 <h4 id="poisson-fördelningen">Poisson-fördelningen</h4>
 <p>E(X) = µ V(X) = µ</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20X_1%20%5Cin%20Po%28%5Ctheta_1%29%20%5Cquad%20and%20%5Cquad%20X_2%20%5Cin%20Po%28%5Ctheta_2%29%20%5Cquad%20then%20%5Cquad%20X_1%2BX_2%20%5Cin%20Po%28%5Ctheta_1%2B%5Ctheta_2%29%20" alt=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " title=" X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) " /><br /></p>
+<p>\[ X_1 \in Po(\theta_1) \quad and \quad X_2 \in Po(\theta_2) \quad then \quad X_1+X_2 \in Po(\theta_1+\theta_2) \]</p>
 <p>Kan approximeras som</p>
 <ol type="1">
 <li><em>normalfördelning</em> om µ är stort</li>
@@ -245,26 +253,8 @@
 <p>Stokastiska processer vars nästa värde endast beror på nuvarande värde.</p>
 <p>övergångsmatris används för att skriva upp “hoppsannolikheterna”.</p>
 <p>övergångssannolikheter av 2a ordningen härleds genom att matrismultiplicera övergångsmatrisen med sig själv. alltså sannolikheten att mellanlanda i ett tillstånd.</p>
-<p>För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p%5E%7B%280%29%7D%3D%28p_1%5E%7B%280%29%7D%2Cp_2%5E%7B%280%29%7D%2C...%29%20" alt=" p^{(0)}=(p_1^{(0)},p_2^{(0)},...) " title=" p^{(0)}=(p_1^{(0)},p_2^{(0)},...) " /><br /></p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%0A%5Cbegin%7Bpmatrix%7D%0A1%20%26%202%0A%5Cend%7Bpmatrix%7D%0A%2A%0A%5Cbegin%7Bpmatrix%7D%0A1to1%20%26%201to2%20%20%5C%5C%0A2to1%20%26%202to2%0A%5Cend%7Bpmatrix%7D%20%0A" alt=" 
-\begin{pmatrix}
-1 &amp; 2
-\end{pmatrix}
-*
-\begin{pmatrix}
-1to1 &amp; 1to2  \\
-2to1 &amp; 2to2
-\end{pmatrix} 
-" title=" 
-\begin{pmatrix}
-1 &amp; 2
-\end{pmatrix}
-*
-\begin{pmatrix}
-1to1 &amp; 1to2  \\
-2to1 &amp; 2to2
-\end{pmatrix} 
-" /><br /></p>
+<p>För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor \[ p<sup>{(0)}=(p_1</sup>{(0)},p_2^{(0)},…) \]</p>
+<p>\[ \begin{pmatrix} 1 &amp; 2 \end{pmatrix} * \begin{pmatrix} 1to1 &amp; 1to2 \ 2to1 &amp; 2to2 \end{pmatrix} \]</p>
 <h5 id="terminologi">terminologi</h5>
 <p><strong>beständigt</strong> tillstånd om P(i-&gt;i)=1 <strong>obeständigt</strong> tillstånd om P(i-&gt;i) less than 1</p>
 <p><strong>Om två tillstånd kommunicerar tvåsidigt är de båda antingen beständinga eller inte.</strong></p>
@@ -274,71 +264,71 @@
 <li>skapa sannolikhetsvektorn π = (π1,π2,..)</li>
 <li>lös ekv. π = πP (P är övergångsmatrisen)</li>
 </ol>
-<p>när <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20p%5E%7B%28n%29%7D%3D%28p_1%5E%7B%28n%29%7D%2Cp_2%5E%7B%28n%29%7D%2C...%29%20-%3E%20%5Cpi%20" alt=" p^{(n)}=(p_1^{(n)},p_2^{(n)},...) -&gt; \pi " title=" p^{(n)}=(p_1^{(n)},p_2^{(n)},...) -&gt; \pi " /><br /> när <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20n%20-%3E%20%5Cinfty%20" alt=" n -&gt; \infty " title=" n -&gt; \infty " /><br /> 1. om man i en ändlig kedja kan finna ett r&gt;0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning. 2. se stationär fördelning</p>
+<p>när \[ p<sup>{(n)}=(p_1</sup>{(n)},p_2^{(n)},…) -&gt; \pi \] när \[ n -&gt; \infty \] 1. om man i en ändlig kedja kan finna ett r&gt;0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning. 2. se stationär fördelning</p>
 <p><em>periodiska tillstånd</em> om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3. <em>aperiodiska tillstånd</em> om det alltid går att komma tillbaka till ett tillstånd direkt</p>
 <hr />
 <h3 id="del-2-statistik-eller-vilka-slutsatser-man-kan-dra-av-ett-datamaterial">DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial</h3>
 <h4 id="terminologi-1">terminologi</h4>
-<p><em>parameterrummet</em> - de värden den sökta parametern kan tänkas anta. <em>stickprov</em> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v. <em>stickprovsvariansen</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20s%5E2%3D%5Cfrac%7B1%7D%7Bn-1%7D%5Csum_%7Bj%3D1%7D%5En%20%28x_j%20-%20%5Cbar%7Bx%7D%29%5E2%20" alt=" s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 " title=" s^2=\frac{1}{n-1}\sum_{j=1}^n (x_j - \bar{x})^2 " /><br /> <em>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20c_%7Bxy%7D%20%3D%20%5Cfrac%7B1%7D%7Bn-1%7D%5Csum_%7Bi%3D1%7D%5En%28x_i-%5Cbar%7Bx%7D%29%28y_i-%5Cbar%7By%7D%29%20" alt=" c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) " title=" c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) " /><br /> <em>korrelationskoefficienten</em> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20r%20%3D%20%5Cfrac%7Bc_%7Bxy%7D%7D%7Bs_xs_y%7D%20" alt=" r = \frac{c_{xy}}{s_xs_y} " title=" r = \frac{c_{xy}}{s_xs_y} " /><br /></p>
+<p><em>parameterrummet</em> - de värden den sökta parametern kan tänkas anta. <em>stickprov</em> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v. <em>stickprovsvariansen</em> \[ s<sup>2=\frac{1}{n-1}\sum_{j=1}</sup>n (x_j - \bar{x})^2 \] <em>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</em> \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \] <em>korrelationskoefficienten</em> \[ r = \frac{c_{xy}}{s_xs_y} \]</p>
 <h3 id="punktskattning">7. Punktskattning</h3>
-<p><em>punktskattning</em> – den observerade sannolikheten – ett utfall av stickprovsvariabeln <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta_%7Bobs%7D%5E%2A%28x_1%2Cx_2%2C...%2Cx_n%29%20" alt=" \theta_{obs}^*(x_1,x_2,...,x_n) " title=" \theta_{obs}^*(x_1,x_2,...,x_n) " /><br /></p>
-<p><em>stickprovsvariabeln</em> – en s.v. som punktskattningen är ett utfall av <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Ctheta%5E%2A%28X_1%2CX_2%2C...%2CX_n%29%20" alt=" \theta^*(X_1,X_2,...,X_n) " title=" \theta^*(X_1,X_2,...,X_n) " /><br /></p>
-<p><em>väntevärdesriktig</em> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20E%28%5Ctheta%5E%2A%29%20%3D%20%5Ctheta%20" alt=" E(\theta^*) = \theta " title=" E(\theta^*) = \theta " /><br /></p>
-<p><em>MSE</em> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20MSE%20%3D%20E%28%28%5Ctheta%5E%2A%20-%20%5Ctheta%29%5E2%29%20" alt=" MSE = E((\theta^* - \theta)^2) " title=" MSE = E((\theta^* - \theta)^2) " /><br /></p>
+<p><em>punktskattning</em> – den observerade sannolikheten – ett utfall av stickprovsvariabeln \[ \theta_{obs}^*(x_1,x_2,…,x_n) \]</p>
+<p><em>stickprovsvariabeln</em> – en s.v. som punktskattningen är ett utfall av \[ \theta^*(X_1,X_2,…,X_n) \]</p>
+<p><em>väntevärdesriktig</em> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om \[ E(\theta^*) = \theta \]</p>
+<p><em>MSE</em> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel \[ MSE = E((\theta^* - \theta)^2) \]</p>
 <h4 id="skattning-av-μ-σ">skattning av μ &amp; σ</h4>
 <h5 id="µ">µ</h5>
-<p>stickprovsmedelvärdet <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cbar%7Bx%7D%20" alt=" \bar{x} " title=" \bar{x} " /><br /> är en väntevärdesriktig och konsistent skattning av µ</p>
+<p>stickprovsmedelvärdet \[ \bar{x} \] är en väntevärdesriktig och konsistent skattning av µ</p>
 <h5 id="σ2">σ^2</h5>
 <p>stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2</p>
 <h4 id="maximum-likelihood-metoden-ml-metoden">Maximum-likelihood-metoden – ML-metoden</h4>
 <ol type="1">
-<li>Skapa <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20L%28%5Ctheta%29%20%3D%20P%28X_1%20%3D%20x_1%2C%20X_2%20%3D%20x_2%2C...%2CX_n%20%3D%20x_n%3B%5Ctheta%29%20" alt=" L(\theta) = P(X_1 = x_1, X_2 = x_2,...,X_n = x_n;\theta) " title=" L(\theta) = P(X_1 = x_1, X_2 = x_2,...,X_n = x_n;\theta) " /><br /> alt. <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20L%28%5Ctheta%29%20%3D%20f_%7BX_1%2CX_2%2C...%2CX_n%7D%28x_1%2Cx_2%2C...%2Cx_n%3B%5Ctheta%29%20" alt=" L(\theta) = f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n;\theta) " title=" L(\theta) = f_{X_1,X_2,...,X_n}(x_1,x_2,...,x_n;\theta) " /><br /> (A.k.a. likelihood-funktionen)</li>
+<li>Skapa \[ L(\theta) = P(X_1 = x_1, X_2 = x_2,…,X_n = x_n;\theta) \] alt. \[ L(\theta) = f_{X_1,X_2,…,X_n}(x_1,x_2,…,x_n;\theta) \] (A.k.a. likelihood-funktionen)</li>
 <li>Finn funktionens maxpunkt genom ex. derivering över theta.</li>
 <li>Funktionens största värde är det mest sannolika scenariot.</li>
 </ol>
 <h4 id="minsta-kvadrat-metoden-mk-metoden">Minsta-kvadrat-metoden – MK-metoden</h4>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20Q%28%5Ctheta%29%20%3D%20%5Csum_%7Bi%3D1%7D%5En%5Bx_i-%5Cmu_i%28%5Ctheta%29%5D%5E2%20" alt=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " title=" Q(\theta) = \sum_{i=1}^n[x_i-\mu_i(\theta)]^2 " /><br /> Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.</p>
+<p>\[ Q(\theta) = \sum_{i=1}<sup>n[x_i-\mu_i(\theta)]</sup>2 \] Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.</p>
 <h4 id="tillämpning-på-normalfördelningen">Tillämpning på normalfördelningen</h4>
 <h4 id="ett-stickprov">Ett stickprov</h4>
 <h6 id="µ-okänt-σ-känt">µ okänt σ känt</h6>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%5Cmu%2A%20%3D%20%5Cbar%7Bx%7D%20" alt="\mu* = \bar{x} " title="\mu* = \bar{x} " /><br /></p>
+<p>\[\mu* = \bar{x} \]</p>
 <h6 id="μ-känt-σ-okänt">μ känt σ okänt</h6>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%28%5Csigma%5E2%29%2A_%7Bobs%7D%20%3D%20%5Cfrac%7B1%7D%7Bn%7D%5Csum_%7Bi%3D1%7D%5En%20%28x_i-%5Cmu%29%5E2%20" alt=" (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 " title=" (\sigma^2)*_{obs} = \frac{1}{n}\sum_{i=1}^n (x_i-\mu)^2 " /><br /></p>
+<p>\[ (\sigma^2)*<em>{obs} = \frac{1}{n}\sum</em>{i=1}^n (x_i-\mu)^2 \]</p>
 <h5 id="konfidensintervall-för-väntevärdet">Konfidensintervall för väntevärdet</h5>
 <h6 id="känd-standardavvikelse">Känd standardavvikelse</h6>
-<p>En lämplig skattning av µ är aritmetiska medelvärdet av X. <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cbar%7BX%7D%20%5Cin%20N%28%5Cmu%2CD%29%20" alt=" \bar{X} \in N(\mu,D) " title=" \bar{X} \in N(\mu,D) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20D%20%3D%20%5Csigma%2F%5Csqrt%7Bn%7D%20" alt=" D = \sigma/\sqrt{n} " title=" D = \sigma/\sqrt{n} " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20I_%5Cmu%20%3D%20%28%5Cbar%7Bx%7D-%5Clambda_%7B%5Calpha%2F2%7DD%2C%5Cbar%7Bx%7D%2B%5Clambda_%7B%5Calpha%2F2%7DD%29%20" alt=" I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) " title=" I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) " /><br /></p>
+<p>En lämplig skattning av µ är aritmetiska medelvärdet av X. \[ \bar{X} \in N(\mu,D) \] \[ D = \sigma/\sqrt{n} \] \[ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) \]</p>
 <p>Allt detta följer av att:</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20%5Cfrac%7B%5Cbar%7BX%7D-%5Cmu%7D%7BD%7D%20%5Cin%20N%280%2C1%29%20" alt=" \frac{\bar{X}-\mu}{D} \in N(0,1) " title=" \frac{\bar{X}-\mu}{D} \in N(0,1) " /><br /></p>
+<p>\[ \frac{\bar{X}-\mu}{D} \in N(0,1) \]</p>
 <p>Följaktligen gäller med sannolikheten 1-alfa att:</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20-%5Clambda_%7B%5Calpha%2F2%7D%20%3C%20%5Cfrac%7B%5Cbar%7BX%7D-%5Cmu%7D%7BD%7D%20%3C%20%5Clambda_%7B%5Calpha%2F2%7D%20%3E" alt=" -\lambda_{\alpha/2} &lt; \frac{\bar{X}-\mu}{D} &lt; \lambda_{\alpha/2} &gt;" title=" -\lambda_{\alpha/2} &lt; \frac{\bar{X}-\mu}{D} &lt; \lambda_{\alpha/2} &gt;" /><br /></p>
+<p>\[ -\lambda_{\alpha/2} &lt; \frac{\bar{X}-\mu}{D} &lt; \lambda_{\alpha/2} &gt;\]</p>
 <p>Om vi har ett intervall:</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20I_%5Cmu%20%3D%20%2816%20%5Cpm%202.58%20%2A%200.155%29%20" alt=" I_\mu = (16 \pm 2.58 * 0.155) " title=" I_\mu = (16 \pm 2.58 * 0.155) " /><br /></p>
+<p>\[ I_\mu = (16 \pm 2.58 * 0.155) \]</p>
 <p>där</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20D%20%3D%201.2%2F%5Csqrt%7B60%7D%20%3D%200.155%20" alt=" D = 1.2/\sqrt{60} = 0.155 " title=" D = 1.2/\sqrt{60} = 0.155 " /><br /></p>
+<p>\[ D = 1.2/\sqrt{60} = 0.155 \]</p>
 <p>och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sätta upp följande ekvation:</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%202%20%2A%202.58%20%2A%201.2%2F%5Csqrt%7Bn%7D%20%3D%200.5%20" alt=" 2 * 2.58 * 1.2/\sqrt{n} = 0.5 " title=" 2 * 2.58 * 1.2/\sqrt{n} = 0.5 " /><br /></p>
+<p>\[ 2 * 2.58 * 1.2/\sqrt{n} = 0.5 \]</p>
 <h6 id="okänd-standardavvikelse">Okänd standardavvikelse</h6>
 <p>I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20I_%5Cmu%20%3D%20%28%5Cbar%7Bx%7D-t_%7B%5Calpha%2F2%7D%28f%29d%2C%5Cbar%7Bx%7D%2Bt_%7B%5Calpha%2F2%7D%28f%29d%29%20" alt=" I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) " title=" I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20d%20%3D%20s%2F%5Csqrt%7Bn%7D%2C%20%5Cquad%20f%20%3D%20n-1%20" alt=" d = s/\sqrt{n}, \quad f = n-1 " title=" d = s/\sqrt{n}, \quad f = n-1 " /><br /></p>
+<p>\[ I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) \] \[ d = s/\sqrt{n}, \quad f = n-1 \]</p>
 <h5 id="konfidensintervall-för-standardavvikelsen">Konfidensintervall för standardavvikelsen</h5>
 <h6 id="μ-känt">μ känt</h6>
 <p>Aint gonna happen gurl</p>
 <h6 id="µ-okänt">µ okänt</h6>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20I_%5Csigma%20%3D%20%28k_1s%2Ck_2s%29%20" alt=" I_\sigma = (k_1s,k_2s) " title=" I_\sigma = (k_1s,k_2s) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20k_1%20%3D%20%5Csqrt%7B%28f%2F%5Cchi_%7B%5Calpha%2F2%7D%5E2%28f%29%7D%20" alt=" k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} " title=" k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20k_2%20%3D%20%5Csqrt%7B%28f%2F%5Cchi_%7B1-%5Calpha%2F2%7D%5E2%28f%29%7D%20" alt=" k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} " title=" k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20f%20%3D%20n-1%20" alt=" f = n-1 " title=" f = n-1 " /><br /></p>
+<p>\[ I_\sigma = (k_1s,k_2s) \] \[ k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} \] \[ k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} \] \[ f = n-1 \]</p>
 <h5 id="två-stickprov">Två stickprov</h5>
 <p>Om σ1 och σ2 är kända:</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20I_%7B%5Cmu_1-%5Cmu_2%7D%20%3D%20%28%5Cbar%7Bx%7D-%5Cbar%7By%7D-%5Clambda_%7B%5Calpha%2F2%7DD%2C%5Cbar%7Bx%7D-%5Cbar%7By%7D%2B%5Clambda_%7B%5Calpha%2F2%7DD%29%20" alt=" I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) " title=" I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) " /><br /> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20D%20%3D%20%5Csqrt%7B%5Csigma%5E2_1%2Fn_1%2B%5Csigma%5E2_2%2Fn_2%7D%20" alt=" D = \sqrt{\sigma^2_1/n_1+\sigma^2_2/n_2} " title=" D = \sqrt{\sigma^2_1/n_1+\sigma^2_2/n_2} " /><br /></p>
+<p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) \] \[ D = \sqrt{\sigma<sup>2_1/n_1+\sigma</sup>2_2/n_2} \]</p>
 <p>Om σ1 = σ2 = σ:</p>
-<p><br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20I_%7B%5Cmu_1-%5Cmu_2%7D%20%3D%20%28%5Cbar%7Bx%7D-%5Cbar%7By%7D-t_%7B%5Calpha%2F2%7D%28f%29d%2C%5Cbar%7Bx%7D-%5Cbar%7By%7D%2Bt_%7B%5Calpha%2F2%7D%28f%29d%29%20" alt=" I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) " title=" I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) " /><br /></p>
+<p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) \]</p>
 <h5 id="stickprov-i-par">Stickprov i par</h5>
-<p>Skapa <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20z%20%3D%20y%20-%20x%20" alt=" z = y - x " title=" z = y - x " /><br /></p>
+<p>Skapa \[ z = y - x \]</p>
 <h3 id="intevallskattning">8. Intevallskattning</h3>
 <p>När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.</p>
 <h4 id="tillämpning-på-normalfördelningen-1">Tillämpning på normalfördelningen</h4>
 <h5 id="känd-standardavvikelse-1">Känd standardavvikelse</h5>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
-<p><strong>nollhypotes</strong> – hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20H_0%20" alt=" H_0 " title=" H_0 " /><br /></p>
-<p><strong>mothypotes</strong> – hypotes som kan vara sann om inte nollhypotesen är det. Betecknas: <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20H_i%20" alt=" H_i " title=" H_i " /><br /></p>
+<p><strong>nollhypotes</strong> – hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas: \[ H_0 \]</p>
+<p><strong>mothypotes</strong> – hypotes som kan vara sann om inte nollhypotesen är det. Betecknas: \[ H_i \]</p>
 <p><strong>signifikansnivå/felrisk</strong> – sannolikheten att nollhypotesen förkastas trots att den är sann. (Ju lägre desto bättre).</p>
 <ul>
 <li>signifikant* – 0.05</li>
@@ -347,7 +337,7 @@
 </ul>
 <p><strong>testvariabel/teststorhet</strong> – observation av stickprovsvariabel</p>
 <p><strong>signifikanstest</strong></p>
-<p><strong>styrkefunktionen</strong> <br /><img style="vertical-align:middle" src="https://latex.codecogs.com/png.latex?%20h%28%5Ctheta%29%20%3D%20P%28H_0%20forkastas%29%20" alt=" h(\theta) = P(H_0 forkastas) " title=" h(\theta) = P(H_0 forkastas) " /><br /> om θ är det rätta värdet</p>
+<p><strong>styrkefunktionen</strong> \[ h(\theta) = P(H_0 forkastas) \] om θ är det rätta värdet</p>
 <ul>
 <li>bör vara stort för alla θ som tillhör mothypotesen</li>
 <li>bör vara litet för alla θ som tillhör nollhypotesen</li>
@@ -355,6 +345,9 @@
 </ul>
 <p><strong>konfidensmetoden</strong> – genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför</p>
 <h3 id="regressionsanalys">10. Regressionsanalys</h3>
+<p>När man vill se samband mellan två eller flera storheter.</p>
+<h4 id="punktskattningar">Punktskattningar</h4>
+<p>Remember MK-metoden? Bestäm minimum för \[ Q(\alpha,\beta) = \sum_{i}<sup>n(y_i-\mu_i)</sup>2 \]</p>
 <h3 id="fallgropar">11. Fallgropar</h3>
 </body>
 </html>

@@ -111,7 +111,7 @@ funktionen över värdemängden kallas sannolikhetsfunktionen.
 Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.
 
 1. __Likformig fördelning__ -- $$ f_X(x) = 1/(b-a) om a < x < b $$>
-2. __Exponentialfördelning__ -- $$ f_X(x) = \lambda e^{-\labda x} $$
+2. __Exponentialfördelning__ -- $$ f_X(x) = \lambda e^{-\lambda x} $$
 3. __Normalfördelningen__ 
 4. __Weibull-fördelning__
 5. __Gammafördelning__
@@ -507,6 +507,12 @@ __konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och 
 
 ### 10. Regressionsanalys
 
+När man vill se samband mellan två eller flera storheter.
 
+#### Punktskattningar
+
+Remember MK-metoden? Bestäm minimum för
+$$ Q(\alpha,\beta) = \sum_{i}^n(y_i-\mu_i)^2 $$
 ### 11. Fallgropar
+
 
