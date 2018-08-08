@@ -516,6 +516,13 @@ om θ är det rätta värdet
 
 __konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför
 
+#### How to styrkefunktion
+1. create \\( u = \\frac{x - \\mu}{\\sigma} \\)
+2. make sure \\( u > \\lambda_\\alpha \\) as this means that it is less likely it happens than α
+3. solve for x
+4. create \\( h(\\theta) = P(x > \\lambda_\\alpha \\sigma + \\mu) \\)
+5. normalize h(θ) by adding -μ and dividing it all by σ
+
 ### 10. Regressionsanalys
 
 När man vill se samband mellan två eller flera storheter.
@@ -525,6 +532,13 @@ När man vill se samband mellan två eller flera storheter.
 __teoretiska regressionslinjen__
 \\[ y = \\alpha + \\beta x \\]
 
+__parameterskattningar__
+
+\\[ \\sum x_i , \\quad \\sum x_i^2 , \\quad S_{xx} = \\sum_{i=1}^n (x_i - \\bar{x})^2 = \\sum_{i=1}^n x_i^2 - n \\bar{x}^2 \\]
+
+\\[ \\sum y_i , \\quad \\sum y_i^2 , \\quad S_{yy} = \\sum_{i=1}^n (y_i - \\bar{y})^2 = \\sum_{i=1}^n y_i^2 - n \\bar{y}^2 \\]
+
+\\[ \\sum x_i y_i , \\quad  S_{xy} = \\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y}) = \\sum_{i=1}^n x_i y_i - n \\bar{x} \\bar{y} \\]
 
 #### Punktskattningar
 
@@ -536,6 +550,14 @@ Remember MK-metoden? Bestäm minimum för
 Genom att sätta partialderivatorna till noll fås
 
 \\[ \\beta^* = \\frac{S_{xy}}{S_{xx}} \\quad \\alpha^* = \\bar{y} - \\beta^* \\bar{x} \\]
+
+##### Skattning av σ
+
+\\[ ( \\sigma^2 )^* = s^2 = \\frac{Q_0}{n-2}, \\quad Q_0 = S_{yy} - S_{xy}^2 / S_{xx} \\]
+
+Observera att
+
+\\[ \\mu_0^* = \\alpha^* + \\beta^* x_0 \\in N( \\alpha + \\beta x_0 , \\sigma \\sqrt{ \\frac{1}{n} + \\frac{(x_0 - \\bar{x})^2}{S_{xx}}}) \\]
 
 #### Intervallskattningar
 

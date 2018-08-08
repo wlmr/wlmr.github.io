@@ -1,7 +1,3 @@
----
-layout: post
-title: "Sannolikhetsteori och statistikteori"
----
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
@@ -353,15 +349,31 @@ title: "Sannolikhetsteori och statistikteori"
 <li>h(θ) kallas testets styrka för θ</li>
 </ul>
 <p><strong>konfidensmetoden</strong> – genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför</p>
+<h4 id="how-to-styrkefunktion">How to styrkefunktion</h4>
+<ol type="1">
+<li>create \( u = \frac{x - \mu}{\sigma} \)</li>
+<li>make sure \( u &gt; \lambda_\alpha \) as this means that it is less likely it happens than α</li>
+<li>solve for x</li>
+<li>create \( h(\theta) = P(x &gt; \lambda_\alpha \sigma + \mu) \)</li>
+<li>normalize h(θ) by adding -μ and dividing it all by σ</li>
+</ol>
 <h3 id="regressionsanalys">10. Regressionsanalys</h3>
 <p>När man vill se samband mellan två eller flera storheter.</p>
 <h4 id="terminologi-2">Terminologi</h4>
 <p><strong>teoretiska regressionslinjen</strong> \[ y = \alpha + \beta x \]</p>
+<p><strong>parameterskattningar</strong></p>
+<p>\[ \sum x_i , \quad \sum x_i^2 , \quad S_{xx} = \sum_{i=1}^n (x_i - \bar{x})^2 = \sum_{i=1}^n x_i^2 - n \bar{x}^2 \]</p>
+<p>\[ \sum y_i , \quad \sum y_i^2 , \quad S_{yy} = \sum_{i=1}^n (y_i - \bar{y})^2 = \sum_{i=1}^n y_i^2 - n \bar{y}^2 \]</p>
+<p>\[ \sum x_i y_i , \quad S_{xy} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}) = \sum_{i=1}^n x_i y_i - n \bar{x} \bar{y} \]</p>
 <h4 id="punktskattningar">Punktskattningar</h4>
 <p>Remember MK-metoden? Bestäm minimum för</p>
 <p>\[ Q( \alpha , \beta ) = \sum_{i}^n (y_i - \mu_i)^2 \] \[ \mu_i = \alpha + \beta x_i \]</p>
 <p>Genom att sätta partialderivatorna till noll fås</p>
 <p>\[ \beta^* = \frac{S_{xy}}{S_{xx}} \quad \alpha^* = \bar{y} - \beta^* \bar{x} \]</p>
+<h5 id="skattning-av-σ">Skattning av σ</h5>
+<p>\[ ( \sigma^2 )^* = s^2 = \frac{Q_0}{n-2}, \quad Q_0 = S_{yy} - S_{xy}^2 / S_{xx} \]</p>
+<p>Observera att</p>
+<p>\[ \mu_0^* = \alpha^* + \beta^* x_0 \in N( \alpha + \beta x_0 , \sigma \sqrt{ \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{S_{xx}}}) \]</p>
 <h4 id="intervallskattningar">Intervallskattningar</h4>
 <h3 id="fallgropar">11. Fallgropar</h3>
 </body>
