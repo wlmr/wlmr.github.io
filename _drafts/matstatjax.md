@@ -160,12 +160,14 @@ konstanter inuti väntevärdesfunktioner är korkat.
 #### Väntevärdet E(X) eller μ
  Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade resultatet blir.
 
- DEF: 
+ __DEF:__
  \\[ E(X) = \\sum_kkp_X(k) \\] 
  \\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} x f_X(x)dx \\]
 
- Y = g(X) 
+ __Y = g(X)__
+ Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så gäller
  \\[ E(Y) = \\sum_kg(k)p_X(k)\\]
+ \\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} g(x) f_X(x)dx \\]
 
  \\[ E(X+Y) = E(X)+E(Y) \\]
 
