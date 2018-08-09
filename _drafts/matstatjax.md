@@ -1,29 +1,27 @@
 %matematisk statistik
 ### DEL 1: Sannolikhet eller hur man beskriver slumpen
 
-_utfall_ -- resultatet av ett slumpmässigt försök
+__utfall__ -- resultatet av ett slumpmässigt försök
 
-_utfallsrummet_ -- mängden möjliga utfall
+__utfallsrummet__ -- mängden möjliga utfall
 
-_händelse_ -- samling utfall
+__händelse__ -- samling utfall
 
-_relativ frekvens_ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
+__relativ frekvens__ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
 
-_disjunkta händelser_ -- kan inte inträffa samtidigt
+__disjunkta händelser__ -- kan inte inträffa samtidigt
 
-_Kolmogorovs axiomsystem_:
+__Kolmogorovs axiomsystem__:
 
 1. Händelsen P(A) måste ligga mellan 0 & 1
 2. P(utfallsrummet) = 1
 3. om A & B är parvis oförenliga gäller \\( P(A) + P(B) = P(A \\cup B) \\)
 
-_komplementsatsen_
-P(A*) = 1 - P(A)
+__komplementsatsen__ -- \\( P(A^*) = 1 - P(A) \\)
 
-_Additionssatsen_
-P(A or B) = P(A) + P(B) - P(A and B)
+__Additionssatsen__ -- \\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\)
 
-_Booles olikhet_ -- $$ P(A \cup B) \leq P(A) + P(B) $$
+__Booles olikhet__ -- \\( P(A \\cup B) \\leq P(A) + P(B) \\)
 
 ##### Kombinatorik
 Förutsättningar:
@@ -31,49 +29,49 @@ Förutsättningar:
 * n element
 * k av dessa plockas
 
-_Klassiska sannolikhetsdefinitionen_
+__Klassiska sannolikhetsdefinitionen__
 Vid likformigt sannolikhetmått är sannolikheten för en händelse lika med kvoten mellan antalet för händelsen gynsamma fall och antalet möjliga fall.
 
-_Dragning med återläggning och hänsyn till ordning_
+__Dragning med återläggning och hänsyn till ordning__
 \\[n^k\\]
 
-_Dragning utan återläggning med hänsyn till ordning_
+__Dragning utan återläggning med hänsyn till ordning__
 \\[n*(n-1)(n-2) \\cdots (n-k)\\]
 
-_Dragning utan återläggning utan hänsyn till ordning_
+__Dragning utan återläggning utan hänsyn till ordning__
 \\[\\binom{n}{k}\\]
 
-_Dragning utan återläggning_
+__Dragning utan återläggning__
 Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. _Klas. sann._ ges svaret av 
 \\[ g/m \\]
 \\[ m = \\binom{v+s}{n} \\]
 \\[ g = \\binom{v}{k} \\binom{s}{n-k} \\] 
 Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.
 
-_Dragning med återläggning_
+__Dragning med återläggning__
 Samma som ovan men med återläggning. 
 \\[ m = (v+s)^n \\]
 \\[ g = \\binom{n}{k} v^k s^{n-k}\\]
 
 Alltså antalet olika kombinationer det finns av k stora samlingar bland n multiplicerat med sannolikheten för k vita multiplicerat med n-k svarta. Allt detta dividerat med m.
 
-_Betingade sannolikheten_ -- sannolikheten att något inträffar givet en annan händelse.
+__Betingade sannolikheten__ -- sannolikheten att något inträffar givet en annan händelse.
 
 \\[P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\]
 
 Ger alltså ett samband mellan betingning och snitt.
 
-_Lagen om total sannolikhet_
+__Lagen om total sannolikhet__
 \\[P(A) = \\sum_{i=1}^{n} P(H_i)P(A|H_i)\\]
 
-_Bayes sats_
+__Bayes sats__
 \\[P(H_i|A) = \\frac{P(H_i)P(A|H_i)}{\\sum_{j=1}^{n} P(H_j)P(A|H_j)}\\]
 
-_Oberoende händelser_ -- P(B|A) = P(B)
+__Oberoende händelser__ -- P(B|A) = P(B)
 
 
-_sannolikheten att minst en inträffar_
-\\[A_1 , A_2 , ... , A_n är oberoende och P(A_i)=p_i\\]
+__sannolikheten att minst en inträffar__
+\\[A_1 , A_2 , ... , A_n \\text{ är oberoende och } P(A_i)=p_i\\]
 \\[1-(1-p_1)(1-p_2)...(1-p_n) = 1-(1-p)^n\\]
 
 
@@ -87,41 +85,45 @@ funktionen över värdemängden kallas sannolikhetsfunktionen.
 1. _Enpunktsfördelning_ -- all massa i ett värde \\[p_X(a) = 1\\]
 
 2. _Tvåpunktsfördelning_ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
-  + ex: krona/klave
-  + då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
+ex: krona/klave
+då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
 
 3. _Likformig fördelning_ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
-  + \\[p_X(k)=1/m, k = 1,2,...,m.\\]
+\\[p_X(k)=1/m, k = 1,2,...,m.\\]
 
 4. _För-första-gången-fördelning_ 
-  + \\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
-  + När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
-  + \\[ X \\in ffg(p) \\]
+\\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
+När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
+\\[ X \\in ffg(p) \\]
 
 5. _Geometrisk fördelning_ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
-  + \\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
+\\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
 
 
-6. __Binomialfördelning__ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
-  + \\[ p_X(k) = \\binom{n}{k}p^k(1-p)^{n-k} \\]
-  + \\[ X \\in Bin(n,p) \\]
+6. _Binomialfördelning_ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
+\\[ p_X (k) = \\binom{n}{k} p^k (1 - p)^{n - k} \\]
+\\[ X \\in Bin(n,p) \\]
 
-7. __Hypergeometrisk fördelning__ -- uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.
-  + \\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
-  + \\[ X \\in Hyp(N,n,p)\\]
+7. _Hypergeometrisk fördelning_ -- uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.
+\\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
+\\[ X \\in Hyp(N,n,p)\\]
 
-8. __Poisson-fördelning__ 
-  + \\[ p_X(k) = \\frac{\\mu^k}{k!}e^{-e}\\]
-  + \\[ X \\in Po(\\mu)\\]
+8. _Poisson-fördelning_ 
+\\[ p_X(k) = \\frac{ \\mu^k }{ k! } e^{- \\mu}\\]
+\\[ X \\in Po(\\mu)\\]
 
 #### kontinuerlig stokastisk variabel
 Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.
 
-1. __Likformig fördelning__ -- \\[ f_X(x) = 1/(b-a) om a < x < b >\\]
-2. __Exponentialfördelning__ -- \\[ f_X(x) = \\lambda e^{-\\lambda x} \\]
-3. __Normalfördelningen__ 
-4. __Weibull-fördelning__
-5. __Gammafördelning__
+1. _Likformig fördelning_ 
+\\[ f_X(x) = 1/(b-a) \\quad a<x<b \\]
+
+2. _Exponentialfördelning_
+\\[ f_X(x) = \\lambda e^{-\\lambda x} \\]
+
+3. _Normalfördelningen_ 
+4. _Weibull-fördelning_
+5. _Gammafördelning_
 
 __fördelningsfunktion__
 
@@ -138,9 +140,9 @@ __intensitet__
 
 #### Största och minsta värdet
 * Z = max(X,Y)
-  * \\[F_Z(z) = F_X(z)F_Y(z)\\]
+\\[F_Z(z) = F_X(z)F_Y(z)\\]
 * Z = min(X,Y)
-  * \\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\\]
+\\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\\]
 
 Gör först om till fördelningsfunktion om täthetsfunktion
 
@@ -349,9 +351,9 @@ när \\[ n \\to \\infty \\]
 1. om man i en ändlig kedja kan finna ett r>0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning.
 2. se stationär fördelning
 
-_periodiska tillstånd_ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
+__periodiska tillstånd__ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
 
-_aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstånd direkt
+__aperiodiska tillstånd__ om det alltid går att komma tillbaka till ett tillstånd direkt
 
 -----
 
@@ -359,31 +361,31 @@ _aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstå
 ### DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
 #### terminologi
-_parameterrummet_ - de värden den sökta parametern kan tänkas anta.
+__parameterrummet__ - de värden den sökta parametern kan tänkas anta.
 
-_stickprov_ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
+__stickprov__ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
 
-_stickprovsvariansen_ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
+__stickprovsvariansen__ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
 
-_kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)_
+__kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)__
 \\[ c_{xy} = \\frac{1}{n-1}\\sum_{i=1}^n(x_i-\\bar{x})(y_i-\\bar{y}) \\]
-_korrelationskoefficienten_
+__korrelationskoefficienten__
 \\[ r = \\frac{c_{xy}}{s_xs_y} \\]
 
 
 ### 7. Punktskattning
 
 
-_punktskattning_ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
+__punktskattning__ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
 \\[ \\theta_{obs}^*(x_1,x_2,...,x_n) \\]
 
-_stickprovsvariabeln_ -- en s.v. som punktskattningen är ett utfall av
+__stickprovsvariabeln__ -- en s.v. som punktskattningen är ett utfall av
 \\[ \\theta^*(X_1,X_2,...,X_n) \\]
 
-_väntevärdesriktig_ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
+__väntevärdesriktig__ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
 \\[ E(\\theta^*) = \\theta \\]
 
-_MSE_ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
+__MSE__ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
 \\[ MSE = E(( \\theta^* - \\theta)^2) \\]
 
 #### skattning av μ & σ
@@ -431,7 +433,8 @@ Allt detta följer av att:
 
 Följaktligen gäller med sannolikheten 1-alfa att:
 
-\\[ -\\lambda_{\\alpha/2} < \\frac{\\bar{X}-\\mu}{D} < \\lambda_{\\alpha/2} >\\]
+\\[ -\\lambda_{\\alpha/2} < \\frac{ \\bar{X}-\\mu}{D} < \\lambda_{\\alpha/2} \\]
+> standardized
 
 Om vi har ett intervall:
 
@@ -514,7 +517,7 @@ om θ är det rätta värdet
   + bör vara litet för alla θ som tillhör nollhypotesen
   + h(θ) kallas testets styrka för θ
 
-__konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför
+__konfidensmetoden__ -- genom att beräkna konfidensintervall för det faktiska värdet och sedan förkasta nollhypotesen om nollhypotesens hypotetiska värde hamnar utanför
 
 #### How to styrkefunktion
 1. create \\( u = \\frac{x - \\mu}{\\sigma} \\)
