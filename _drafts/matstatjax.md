@@ -88,44 +88,48 @@ Den stokastiska variabeln är bron mellan matematiken och slumpen men är inget 
 En s.v. är _diskret_ om den kan anta ett ändligt eller uppräkneligt oändligt antal olika värden.
 funktionen över värdemängden kallas sannolikhetsfunktionen.
 
-1. _Enpunktsfördelning_ -- all massa i ett värde \\[p_X(a) = 1\\]
+1. __Enpunktsfördelning__ -- all massa i ett värde \\[p_X(a) = 1\\]
 
-2. _Tvåpunktsfördelning_ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
-  + ex: krona/klave
-  + då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
+2. __Tvåpunktsfördelning__ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
+ex: krona/klave
+då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
 
-3. _Likformig fördelning_ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
-  + \\[p_X(k)=1/m, k = 1,2,...,m.\\]
+3. __Likformig fördelning__ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
+\\[p_X(k)=1/m, k = 1,2,...,m.\\]
 
-4. _För-första-gången-fördelning_ 
-  + \\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
-  + När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
-  + \\[ X \\in ffg(p) \\]
+4. __För-första-gången-fördelning__  -- När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
+\\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
+\\[ X \\in ffg(p) \\]
 
-5. _Geometrisk fördelning_ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
-  + \\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
+5. __Geometrisk fördelning__ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p).
+\\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
 
 
 6. __Binomialfördelning__ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
-  + \\[ p_X(k) = \\binom{n}{k}p^k(1-p)^{n-k} \\]
-  + \\[ X \\in Bin(n,p) \\]
+\\[ p_X(k) = \\binom{ n }{ k } p^k ( 1 - p )^{ n - k } \\]
+\\[ X \\in Bin(n,p) \\]
 
 7. __Hypergeometrisk fördelning__ -- uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.
-  + \\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
-  + \\[ X \\in Hyp(N,n,p)\\]
+\\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
+\\[ X \\in Hyp(N,n,p)\\]
 
-8. __Poisson-fördelning__ 
-  + \\[ p_X(k) = \\frac{\\mu^k}{k!}e^{-e}\\]
-  + \\[ X \\in Po(\\mu)\\]
+8. __Poisson-fördelning__ -- beskriver antalet företelser som inträffar oberoende av varandra.
+\\[ p_X(k) = \\frac{ \\mu^k }{ k! }e^{ -e } \\]
+\\[ X \\in Po(\\mu)\\]
 
 #### kontinuerlig stokastisk variabel
 Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.
 
-1. __Likformig fördelning__ -- \\[ f_X(x) = 1/(b-a) om a < x < b >\\]
+1. __Likformig fördelning__ -- samma samma sannolikhet från a till b.
+\\[ f_X(x) = 1/(b-a) ,\\quad a < x < b \\]
+
 2. __Exponentialfördelning__ -- beskriver tiderna mellan händelserna i en poissonprocess. 
 \\[ f_X(x) = \\lambda e^{-\\lambda x} \\quad E(X) = 1 / \\lambda, \\quad D(X) = 1 / \\lambda \\]
+
 3. __Normalfördelningen__ 
+
 4. __Weibull-fördelning__
+
 5. __Gammafördelning__
 
 __fördelningsfunktion__
