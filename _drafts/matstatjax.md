@@ -1,27 +1,33 @@
-%matematisk statistik
+---
+layout: post
+title: "Sannolikhetsteori och statistikteori"
+---
+
 ### DEL 1: Sannolikhet eller hur man beskriver slumpen
 
-__utfall__ -- resultatet av ett slumpmässigt försök
+_utfall_ -- resultatet av ett slumpmässigt försök
 
-__utfallsrummet__ -- mängden möjliga utfall
+_utfallsrummet_ -- mängden möjliga utfall
 
-__händelse__ -- samling utfall
+_händelse_ -- samling utfall
 
-__relativ frekvens__ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
+_relativ frekvens_ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
 
-__disjunkta händelser__ -- kan inte inträffa samtidigt
+_disjunkta händelser_ -- kan inte inträffa samtidigt
 
-__Kolmogorovs axiomsystem__:
+_Kolmogorovs axiomsystem_:
 
 1. Händelsen P(A) måste ligga mellan 0 & 1
 2. P(utfallsrummet) = 1
 3. om A & B är parvis oförenliga gäller \\( P(A) + P(B) = P(A \\cup B) \\)
 
-__komplementsatsen__ -- \\( P(A^*) = 1 - P(A) \\)
+_komplementsatsen_
+P(A*) = 1 - P(A)
 
-__Additionssatsen__ -- \\( P(A \\cup B) = P(A) + P(B) - P(A \\cap B) \\)
+_Additionssatsen_
+P(A or B) = P(A) + P(B) - P(A and B)
 
-__Booles olikhet__ -- \\( P(A \\cup B) \\leq P(A) + P(B) \\)
+_Booles olikhet_ -- $$ P(A \cup B) \leq P(A) + P(B) $$
 
 ##### Kombinatorik
 Förutsättningar:
@@ -29,49 +35,49 @@ Förutsättningar:
 * n element
 * k av dessa plockas
 
-__Klassiska sannolikhetsdefinitionen__
+_Klassiska sannolikhetsdefinitionen_
 Vid likformigt sannolikhetmått är sannolikheten för en händelse lika med kvoten mellan antalet för händelsen gynsamma fall och antalet möjliga fall.
 
-__Dragning med återläggning och hänsyn till ordning__
+_Dragning med återläggning och hänsyn till ordning_
 \\[n^k\\]
 
-__Dragning utan återläggning med hänsyn till ordning__
+_Dragning utan återläggning med hänsyn till ordning_
 \\[n*(n-1)(n-2) \\cdots (n-k)\\]
 
-__Dragning utan återläggning utan hänsyn till ordning__
+_Dragning utan återläggning utan hänsyn till ordning_
 \\[\\binom{n}{k}\\]
 
-__Dragning utan återläggning__
+_Dragning utan återläggning_
 Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. _Klas. sann._ ges svaret av 
 \\[ g/m \\]
 \\[ m = \\binom{v+s}{n} \\]
 \\[ g = \\binom{v}{k} \\binom{s}{n-k} \\] 
 Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.
 
-__Dragning med återläggning__
+_Dragning med återläggning_
 Samma som ovan men med återläggning. 
 \\[ m = (v+s)^n \\]
 \\[ g = \\binom{n}{k} v^k s^{n-k}\\]
 
 Alltså antalet olika kombinationer det finns av k stora samlingar bland n multiplicerat med sannolikheten för k vita multiplicerat med n-k svarta. Allt detta dividerat med m.
 
-__Betingade sannolikheten__ -- sannolikheten att något inträffar givet en annan händelse.
+_Betingade sannolikheten_ -- sannolikheten att något inträffar givet en annan händelse.
 
 \\[P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\]
 
 Ger alltså ett samband mellan betingning och snitt.
 
-__Lagen om total sannolikhet__
+_Lagen om total sannolikhet_
 \\[P(A) = \\sum_{i=1}^{n} P(H_i)P(A|H_i)\\]
 
-__Bayes sats__
+_Bayes sats_
 \\[P(H_i|A) = \\frac{P(H_i)P(A|H_i)}{\\sum_{j=1}^{n} P(H_j)P(A|H_j)}\\]
 
-__Oberoende händelser__ -- P(B|A) = P(B)
+_Oberoende händelser_ -- P(B|A) = P(B)
 
 
-__sannolikheten att minst en inträffar__
-\\[A_1 , A_2 , ... , A_n \\text{ är oberoende och } P(A_i)=p_i\\]
+_sannolikheten att minst en inträffar_
+\\[A_1 , A_2 , ... , A_n är oberoende och P(A_i)=p_i\\]
 \\[1-(1-p_1)(1-p_2)...(1-p_n) = 1-(1-p)^n\\]
 
 
@@ -85,45 +91,42 @@ funktionen över värdemängden kallas sannolikhetsfunktionen.
 1. _Enpunktsfördelning_ -- all massa i ett värde \\[p_X(a) = 1\\]
 
 2. _Tvåpunktsfördelning_ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
-ex: krona/klave
-då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
+  + ex: krona/klave
+  + då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
 
 3. _Likformig fördelning_ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
-\\[p_X(k)=1/m, k = 1,2,...,m.\\]
+  + \\[p_X(k)=1/m, k = 1,2,...,m.\\]
 
 4. _För-första-gången-fördelning_ 
-\\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
-När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
-\\[ X \\in ffg(p) \\]
+  + \\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
+  + När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
+  + \\[ X \\in ffg(p) \\]
 
 5. _Geometrisk fördelning_ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
-\\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
+  + \\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
 
 
-6. _Binomialfördelning_ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
-\\[ p_X (k) = \\binom{n}{k} p^k (1 - p)^{n - k} \\]
-\\[ X \\in Bin(n,p) \\]
+6. __Binomialfördelning__ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
+  + \\[ p_X(k) = \\binom{n}{k}p^k(1-p)^{n-k} \\]
+  + \\[ X \\in Bin(n,p) \\]
 
-7. _Hypergeometrisk fördelning_ -- uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.
-\\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
-\\[ X \\in Hyp(N,n,p)\\]
+7. __Hypergeometrisk fördelning__ -- uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.
+  + \\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
+  + \\[ X \\in Hyp(N,n,p)\\]
 
-8. _Poisson-fördelning_ 
-\\[ p_X(k) = \\frac{ \\mu^k }{ k! } e^{- \\mu}\\]
-\\[ X \\in Po(\\mu)\\]
+8. __Poisson-fördelning__ 
+  + \\[ p_X(k) = \\frac{\\mu^k}{k!}e^{-e}\\]
+  + \\[ X \\in Po(\\mu)\\]
 
 #### kontinuerlig stokastisk variabel
 Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.
 
-1. _Likformig fördelning_ 
-\\[ f_X(x) = 1/(b-a) \\quad a<x<b \\]
-
-2. _Exponentialfördelning_
-\\[ f_X(x) = \\lambda e^{-\\lambda x} \\]
-
-3. _Normalfördelningen_ 
-4. _Weibull-fördelning_
-5. _Gammafördelning_
+1. __Likformig fördelning__ -- \\[ f_X(x) = 1/(b-a) om a < x < b >\\]
+2. __Exponentialfördelning__ -- beskriver tiderna mellan händelserna i en poissonprocess. 
+\\[ f_X(x) = \\lambda e^{-\\lambda x} \\quad E(X) = 1 / \\lambda, \\quad D(X) = 1 / \\lambda \\]
+3. __Normalfördelningen__ 
+4. __Weibull-fördelning__
+5. __Gammafördelning__
 
 __fördelningsfunktion__
 
@@ -140,9 +143,9 @@ __intensitet__
 
 #### Största och minsta värdet
 * Z = max(X,Y)
-\\[F_Z(z) = F_X(z)F_Y(z)\\]
+  * \\[F_Z(z) = F_X(z)F_Y(z)\\]
 * Z = min(X,Y)
-\\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\\]
+  * \\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\\]
 
 Gör först om till fördelningsfunktion om täthetsfunktion
 
@@ -164,10 +167,9 @@ konstanter inuti väntevärdesfunktioner är korkat.
  \\[ E(X) = \\sum_kkp_X(k) \\] 
  \\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} x f_X(x)dx \\]
 
- __Y = g(X)__
- Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så gäller
- \\[ E(Y) = \\sum_kg(k)p_X(k)\\]
- \\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} g(x) f_X(x)dx \\]
+ __Y = g(X)__ -- Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så kan man trixa enl. följande
+\\[ E(Y) = \\sum_kg(k)p_X(k)\\]
+\\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} g(x) f_X(x)dx \\]
 
  \\[ E(X+Y) = E(X)+E(Y) \\]
 
@@ -184,21 +186,28 @@ konstanter inuti väntevärdesfunktioner är korkat.
 
 #### Variansen V(X) eller σ²
 
-* Variansen är en typ av spridningsmått.
-* DEF: \\[ V(X) = E[(X-\\mu)^2] \\] -- alltså ett väntevärde LOL
-* $$ V(X) = E(X^2)-[E(X)]^2 $$
-* \\[ V(aX+b) = a^2V(X) \\]
-* V(X + Y) = V(X) + V(Y) + 2C(X,Y)
-* Om oberoende: V(X + Y) = V(X) + V(Y)
-* Om oberoende och med samma σ: \\[ V(\\sum_{i=1}^nX_i) = n\\sigma^2 \\] 
-* Om oberoende och med samma σ samt µ: \\[ V(\\bar{X})=\\sigma^2/n \\]
+Variansen är en typ av spridningsmått.
+
+__DEF:__
+\\[ V(X) = E[(X-\\mu)^2] \\] 
+
+__Schysta satser:__
+$$ V(X) = E(X^2)-[E(X)]^2 $$
+\\[ V(aX+b) = a^2V(X) \\]
+\\[ V(X + Y) = V(X) + V(Y) + 2C(X,Y) \\]
+
+* Om oberoende: \\( V(X + Y) = V(X) + V(Y) \\)
+* Om oberoende och med samma σ: \\( V(\\sum_{i=1}^nX_i) = n\\sigma^2 \\)
+* Om oberoende och med samma σ samt µ: \\( V(\\bar{X})=\\sigma^2/n \\)
+
+Tänk på att använda formelsamlingen för att snabbt fastställa varians
 
 
 #### Standardavvikelse D(X) eller σ
-* Schyst mått då man får samma dimension som väntevärdet
-* \\[ D(X) = \\sqrt{V(X)} \\]
-* \\[ D(aX + b) = |a|D(X) \\]
-* Om oberoende: \\[ D(X + Y) = \\sqrt{D^2(X) + D^2(Y)} \\]
+Schyst mått då man får samma dimension som väntevärdet
+\\[ D(X) = \\sqrt{V(X)} \\]
+\\[ D(aX + b) = |a|D(X) \\]
+Om oberoende: \\[ D(X + Y) = \\sqrt{D^2(X) + D^2(Y)} \\]
 
 #### Variationskoefficienten
 uttrycks i procent
@@ -353,9 +362,9 @@ när \\[ n \\to \\infty \\]
 1. om man i en ändlig kedja kan finna ett r>0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning.
 2. se stationär fördelning
 
-__periodiska tillstånd__ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
+_periodiska tillstånd_ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
 
-__aperiodiska tillstånd__ om det alltid går att komma tillbaka till ett tillstånd direkt
+_aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstånd direkt
 
 -----
 
@@ -363,31 +372,31 @@ __aperiodiska tillstånd__ om det alltid går att komma tillbaka till ett tillst
 ### DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
 #### terminologi
-__parameterrummet__ - de värden den sökta parametern kan tänkas anta.
+_parameterrummet_ - de värden den sökta parametern kan tänkas anta.
 
-__stickprov__ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
+_stickprov_ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
 
-__stickprovsvariansen__ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
+_stickprovsvariansen_ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
 
-__kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)__
+_kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)_
 \\[ c_{xy} = \\frac{1}{n-1}\\sum_{i=1}^n(x_i-\\bar{x})(y_i-\\bar{y}) \\]
-__korrelationskoefficienten__
+_korrelationskoefficienten_
 \\[ r = \\frac{c_{xy}}{s_xs_y} \\]
 
 
 ### 7. Punktskattning
 
 
-__punktskattning__ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
+_punktskattning_ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
 \\[ \\theta_{obs}^*(x_1,x_2,...,x_n) \\]
 
-__stickprovsvariabeln__ -- en s.v. som punktskattningen är ett utfall av
+_stickprovsvariabeln_ -- en s.v. som punktskattningen är ett utfall av
 \\[ \\theta^*(X_1,X_2,...,X_n) \\]
 
-__väntevärdesriktig__ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
+_väntevärdesriktig_ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
 \\[ E(\\theta^*) = \\theta \\]
 
-__MSE__ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
+_MSE_ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
 \\[ MSE = E(( \\theta^* - \\theta)^2) \\]
 
 #### skattning av μ & σ
@@ -409,21 +418,28 @@ alt.
 
 #### Minsta-kvadrat-metoden -- MK-metoden
 \\[ Q(\\theta) = \\sum_{i=1}^n [x_i - \\mu_i (\\theta)]^2 \\]
-Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.
+Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta. Så hur går man då tillväga? Jo genom att skapa funktionen \\( Q( \\theta )) \\) och sedan derivera denna och finna minimum för
+\\[ \\frac{dQ}{d \\theta} Q( \\theta ) \\]
+
+Flera parametrar? Lös partialderivatorna och sedan ekvationssystemet.
+
+
+### 8. Intevallskattning
+När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.
 
 #### Tillämpning på normalfördelningen
 
 #### Ett stickprov
 
-###### µ okänt σ känt
+##### µ okänt σ känt
 
 \\[\\mu* = \\bar{x} \\]
 
-###### μ känt σ okänt
+##### μ känt σ okänt
 $$ (\sigma^2)_{obs}^* = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2 $$
 
 ##### Konfidensintervall för väntevärdet
-###### Känd standardavvikelse
+##### Känd standardavvikelse
 En lämplig skattning av µ är aritmetiska medelvärdet av X. 
 \\[ \\bar{X} \\in N(\\mu,D) \\]
 \\[ D = \\sigma/\\sqrt{n} \\]
@@ -435,8 +451,7 @@ Allt detta följer av att:
 
 Följaktligen gäller med sannolikheten 1-alfa att:
 
-\\[ -\\lambda_{\\alpha/2} < \\frac{ \\bar{X}-\\mu}{D} < \\lambda_{\\alpha/2} \\]
-> standardized
+\\[ -\\lambda_{\\alpha/2} < \\frac{\\bar{X}-\\mu}{D} < \\lambda_{\\alpha/2} >\\]
 
 Om vi har ett intervall:
 
@@ -450,7 +465,7 @@ och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sä
 
 \\[ 2 * 2.58 * 1.2/\\sqrt{n} = 0.5 \\]
 
-###### Okänd standardavvikelse
+##### Okänd standardavvikelse
 
 I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ 
 
@@ -459,18 +474,18 @@ I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ
 
 ##### Konfidensintervall för standardavvikelsen
 
-###### μ känt 
+##### Känt väntevärde 
 
 Aint gonna happen gurl
 
-###### µ okänt
+###### Okänt väntevärde
 
 \\[ I_\\sigma = (k_1s,k_2s) \\]
 \\[ k_1 = \\sqrt{(f/\\chi_{\\alpha/2}^2(f)} \\]
 \\[ k_2 = \\sqrt{(f/\\chi_{1-\\alpha/2}^2(f)} \\]
 \\[ f = n-1 \\]
 
-##### Två stickprov
+#### Två stickprov
 
 Om σ1 och σ2 är kända:
 
@@ -482,17 +497,13 @@ Om σ1 = σ2 = σ:
 \\[ I_{\\mu_1-\\mu_2} = (\\bar{x}-\\bar{y}-t_{\\alpha/2}(f)d,\\bar{x}-\\bar{y}+t_{\\alpha/2}(f)d) \\]
 \\[ d = \\sigma \\sqrt{ \\frac{1}{n_1} + \\frac{1}{n_2}} \\]
 
-##### Stickprov i par
+#### Stickprov i par
 
 Skapa \\[ z = y - x \\]
 
 
 
-### 8. Intevallskattning
-När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.
 
-#### Tillämpning på normalfördelningen
-##### Känd standardavvikelse
 
 ### 9. Hypotesprövning
 __nollhypotes__ -- hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas:
@@ -509,7 +520,11 @@ __signifikansnivå/felrisk__ -- sannolikheten att nollhypotesen förkastas trots
 
 __testvariabel/teststorhet__ -- observation av stickprovsvariabel
 
-__signifikanstest__
+__signifikanstest__ 
+1. Om \\(t_{obs} \\in \\text{jätteosannolikt område} \\) förkasta \\( H_0 \\)
+2. Om \\( t_{obs} \\) å andra sidan är ett sannolikt utfall, även i vanliga fall så bör \\( H_0 \\) inte förkastas.
+
+__konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför
 
 __styrkefunktionen__
 \\[ h(\\theta) = P(H_0 \\text{ förkastas}) \\]
@@ -519,7 +534,6 @@ om θ är det rätta värdet
   + bör vara litet för alla θ som tillhör nollhypotesen
   + h(θ) kallas testets styrka för θ
 
-__konfidensmetoden__ -- genom att beräkna konfidensintervall för det faktiska värdet och sedan förkasta nollhypotesen om nollhypotesens hypotetiska värde hamnar utanför
 
 #### How to styrkefunktion
 1. create \\( u = \\frac{x - \\mu}{\\sigma} \\)
@@ -539,11 +553,11 @@ __teoretiska regressionslinjen__
 
 __parameterskattningar__
 
-\\[ \\sum x_i , \\quad \\sum x_i^2 , \\quad S_{xx} = \\sum_{i=1}^n (x_i - \\bar{x})^2 = \\sum_{i=1}^n x_i^2 - n \\bar{x}^2 \\]
+\\[ \\sum x_i , \\quad \\sum x_i^2 , \\quad S_{xx} = \\sum_{i=1}^n (x_i - \\bar{x})^2 = \\sum_{i=1}^n x_i^2 - \\frac{1}{n} (\\sum_{i=1}^n x_i)^2 \\]
 
-\\[ \\sum y_i , \\quad \\sum y_i^2 , \\quad S_{yy} = \\sum_{i=1}^n (y_i - \\bar{y})^2 = \\sum_{i=1}^n y_i^2 - n \\bar{y}^2 \\]
+\\[ \\sum y_i , \\quad \\sum y_i^2 , \\quad S_{yy} = \\sum_{i=1}^n (y_i - \\bar{y})^2 = \\sum_{i=1}^n y_i^2 - \\frac{1}{n} (\\sum_{i=1}^n y_i)^2 \\]
 
-\\[ \\sum x_i y_i , \\quad  S_{xy} = \\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y}) = \\sum_{i=1}^n x_i y_i - n \\bar{x} \\bar{y} \\]
+\\[ \\sum x_i y_i , \\quad  S_{xy} = \\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y}) = \\sum_{i=1}^n x_i y_i - \\bar{x} \\bar{y} \\]
 
 #### Punktskattningar
 
@@ -566,6 +580,19 @@ Observera att
 
 #### Intervallskattningar
 
+
+__Prediktionsintervall för observationer__ -- När man vill göra ett konfidensintervall för framtida observationer av \\( Y \\) för \\( x = x_0 \\)
+
+__Kalibreringsintervall__ -- Då man erhållit värde \\( y_0 \\text{ på } y \\), vad blir då \\( x_0 \\)
+
+
+#### Stokastiska vektorer
+__stokastisk vektor__
+
+__väntevärdesvektorn__ 
+
+
+#### Multipel regression
 
 
 

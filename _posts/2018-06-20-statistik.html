@@ -1,15 +1,10 @@
----
-layout: post
-title: "Sannolikhetsteori och statistikteori"
----
-
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <title>matematisk statistik</title>
+  <title>Sannolikhetsteori och statistikteori</title>
   <style type="text/css">
       code{white-space: pre-wrap;}
       span.smallcaps{font-variant: small-caps;}
@@ -23,65 +18,104 @@ title: "Sannolikhetsteori och statistikteori"
 </head>
 <body>
 <header>
-<h1 class="title">matematisk statistik</h1>
+<h1 class="title">Sannolikhetsteori och statistikteori</h1>
 </header>
 <h3 id="del-1-sannolikhet-eller-hur-man-beskriver-slumpen">DEL 1: Sannolikhet eller hur man beskriver slumpen</h3>
-<p><strong>utfall</strong> – resultatet av ett slumpmässigt försök</p>
-<p><strong>utfallsrummet</strong> – mängden möjliga utfall</p>
-<p><strong>händelse</strong> – samling utfall</p>
-<p><strong>relativ frekvens</strong> – kvoten mellan antalet erhållet utfall och hela antalet utförda kast</p>
-<p><strong>disjunkta händelser</strong> – kan inte inträffa samtidigt</p>
-<p><strong>Kolmogorovs axiomsystem</strong>:</p>
+<p><em>utfall</em> – resultatet av ett slumpmässigt försök</p>
+<p><em>utfallsrummet</em> – mängden möjliga utfall</p>
+<p><em>händelse</em> – samling utfall</p>
+<p><em>relativ frekvens</em> – kvoten mellan antalet erhållet utfall och hela antalet utförda kast</p>
+<p><em>disjunkta händelser</em> – kan inte inträffa samtidigt</p>
+<p><em>Kolmogorovs axiomsystem</em>:</p>
 <ol type="1">
 <li>Händelsen P(A) måste ligga mellan 0 &amp; 1</li>
 <li>P(utfallsrummet) = 1</li>
 <li>om A &amp; B är parvis oförenliga gäller \( P(A) + P(B) = P(A \cup B) \)</li>
 </ol>
-<p><strong>komplementsatsen</strong> – \( P(A^*) = 1 - P(A) \)</p>
-<p><strong>Additionssatsen</strong> – \( P(A \cup B) = P(A) + P(B) - P(A \cap B) \)</p>
-<p><strong>Booles olikhet</strong> – \( P(A \cup B) \leq P(A) + P(B) \)</p>
+<p><em>komplementsatsen</em> P(A*) = 1 - P(A)</p>
+<p><em>Additionssatsen</em> P(A or B) = P(A) + P(B) - P(A and B)</p>
+<p><em>Booles olikhet</em> – <span class="math display">\[ P(A \cup B) \leq P(A) + P(B) \]</span></p>
 <h5 id="kombinatorik">Kombinatorik</h5>
 <p>Förutsättningar:</p>
 <ul>
 <li>n element</li>
 <li>k av dessa plockas</li>
 </ul>
-<p><strong>Klassiska sannolikhetsdefinitionen</strong> Vid likformigt sannolikhetmått är sannolikheten för en händelse lika med kvoten mellan antalet för händelsen gynsamma fall och antalet möjliga fall.</p>
-<p><strong>Dragning med återläggning och hänsyn till ordning</strong> \[n^k\]</p>
-<p><strong>Dragning utan återläggning med hänsyn till ordning</strong> \[n*(n-1)(n-2) \cdots (n-k)\]</p>
-<p><strong>Dragning utan återläggning utan hänsyn till ordning</strong> \[\binom{n}{k}\]</p>
-<p><strong>Dragning utan återläggning</strong> Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. <em>Klas. sann.</em> ges svaret av \[ g/m \] \[ m = \binom{v+s}{n} \] \[ g = \binom{v}{k} \binom{s}{n-k} \] Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.</p>
-<p><strong>Dragning med återläggning</strong> Samma som ovan men med återläggning. \[ m = (v+s)^n \] \[ g = \binom{n}{k} v^k s^{n-k}\]</p>
+<p><em>Klassiska sannolikhetsdefinitionen</em> Vid likformigt sannolikhetmått är sannolikheten för en händelse lika med kvoten mellan antalet för händelsen gynsamma fall och antalet möjliga fall.</p>
+<p><em>Dragning med återläggning och hänsyn till ordning</em> \[n^k\]</p>
+<p><em>Dragning utan återläggning med hänsyn till ordning</em> \[n*(n-1)(n-2) \cdots (n-k)\]</p>
+<p><em>Dragning utan återläggning utan hänsyn till ordning</em> \[\binom{n}{k}\]</p>
+<p><em>Dragning utan återläggning</em> Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. <em>Klas. sann.</em> ges svaret av \[ g/m \] \[ m = \binom{v+s}{n} \] \[ g = \binom{v}{k} \binom{s}{n-k} \] Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.</p>
+<p><em>Dragning med återläggning</em> Samma som ovan men med återläggning. \[ m = (v+s)^n \] \[ g = \binom{n}{k} v^k s^{n-k}\]</p>
 <p>Alltså antalet olika kombinationer det finns av k stora samlingar bland n multiplicerat med sannolikheten för k vita multiplicerat med n-k svarta. Allt detta dividerat med m.</p>
-<p><strong>Betingade sannolikheten</strong> – sannolikheten att något inträffar givet en annan händelse.</p>
+<p><em>Betingade sannolikheten</em> – sannolikheten att något inträffar givet en annan händelse.</p>
 <p>\[P(B|A) = \frac{P(A \cap B)}{P(A)}\]</p>
 <p>Ger alltså ett samband mellan betingning och snitt.</p>
-<p><strong>Lagen om total sannolikhet</strong> \[P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)\]</p>
-<p><strong>Bayes sats</strong> \[P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}\]</p>
-<p><strong>Oberoende händelser</strong> – P(B|A) = P(B)</p>
-<p><strong>sannolikheten att minst en inträffar</strong> \[A_1 , A_2 , … , A_n \text{ är oberoende och } P(A_i)=p_i\] \[1-(1-p_1)(1-p_2)…(1-p_n) = 1-(1-p)^n\]</p>
+<p><em>Lagen om total sannolikhet</em> \[P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)\]</p>
+<p><em>Bayes sats</em> \[P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}\]</p>
+<p><em>Oberoende händelser</em> – P(B|A) = P(B)</p>
+<p><em>sannolikheten att minst en inträffar</em> \[A_1 , A_2 , … , A_n är oberoende och P(A_i)=p_i\] \[1-(1-p_1)(1-p_2)…(1-p_n) = 1-(1-p)^n\]</p>
 <h3 id="endimensionella-stokastiska-variabler">1. Endimensionella stokastiska variabler</h3>
 <p>Den stokastiska variabeln är bron mellan matematiken och slumpen men är inget mer än en reellvärd funktion definierad på ett utfallsrum. Betecknas i texten som versaler från slutet av alfabetet som X, Y, eller Z.</p>
 <h4 id="diskret-stokastisk-variabel">diskret stokastisk variabel</h4>
 <p>En s.v. är <em>diskret</em> om den kan anta ett ändligt eller uppräkneligt oändligt antal olika värden. funktionen över värdemängden kallas sannolikhetsfunktionen.</p>
 <ol type="1">
 <li><p><em>Enpunktsfördelning</em> – all massa i ett värde \[p_X(a) = 1\]</p></li>
-<li><p><em>Tvåpunktsfördelning</em> – om X endast antar två värden a &amp; b med sannolikheterna p respektive 1- p. ex: krona/klave då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.</p></li>
-<li><p><em>Likformig fördelning</em> – X antar värden 1,2,..,m och alla dessa med samma sannolikhet. \[p_X(k)=1/m, k = 1,2,…,m.\]</p></li>
-<li><p><em>För-första-gången-fördelning</em> \[ p_X(k)=(1-p)^{k-1}p, k=1,2,…,\] När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning. \[ X \in ffg(p) \]</p></li>
-<li><p><em>Geometrisk fördelning</em> – genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p) \[p_X(k) = (1 - p)^kp, k = 0,1,2,…,\]</p></li>
-<li><p><em>Binomialfördelning</em> – slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. \[ p_X (k) = \binom{n}{k} p^k (1 - p)^{n - k} \] \[ X \in Bin(n,p) \]</p></li>
-<li><p><em>Hypergeometrisk fördelning</em> – uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor. \[ p_X(k) = \frac{\binom{v}{k} \binom{s}{n-k}}{\binom{v+s}{n}}\] \[ X \in Hyp(N,n,p)\]</p></li>
-<li><p><em>Poisson-fördelning</em> \[ p_X(k) = \frac{ \mu^k }{ k! } e^{- \mu}\] \[ X \in Po(\mu)\]</p></li>
+<li><em>Tvåpunktsfördelning</em> – om X endast antar två värden a &amp; b med sannolikheterna p respektive 1-p.</li>
 </ol>
+<ul>
+<li>ex: krona/klave</li>
+<li>då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.</li>
+</ul>
+<ol start="3" type="1">
+<li><em>Likformig fördelning</em> – X antar värden 1,2,..,m och alla dessa med samma sannolikhet.</li>
+</ol>
+<ul>
+<li>\[p_X(k)=1/m, k = 1,2,…,m.\]</li>
+</ul>
+<ol start="4" type="1">
+<li><em>För-första-gången-fördelning</em></li>
+</ol>
+<ul>
+<li>\[ p_X(k)=(1-p)^{k-1}p, k=1,2,…,\]</li>
+<li>När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.</li>
+<li>\[ X \in ffg(p) \]</li>
+</ul>
+<ol start="5" type="1">
+<li><em>Geometrisk fördelning</em> – genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)</li>
+</ol>
+<ul>
+<li>\[p_X(k) = (1 - p)^kp, k = 0,1,2,…,\]</li>
+</ul>
+<ol start="6" type="1">
+<li><strong>Binomialfördelning</strong> – slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr.</li>
+</ol>
+<ul>
+<li>\[ p_X(k) = \binom{n}{k}p<sup>k(1-p)</sup>{n-k} \]</li>
+<li>\[ X \in Bin(n,p) \]</li>
+</ul>
+<ol start="7" type="1">
+<li><strong>Hypergeometrisk fördelning</strong> – uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.</li>
+</ol>
+<ul>
+<li>\[ p_X(k) = \frac{\binom{v}{k} \binom{s}{n-k}}{\binom{v+s}{n}}\]</li>
+<li>\[ X \in Hyp(N,n,p)\]</li>
+</ul>
+<ol start="8" type="1">
+<li><strong>Poisson-fördelning</strong></li>
+</ol>
+<ul>
+<li>\[ p_X(k) = \frac{\mu<sup>k}{k!}e</sup>{-e}\]</li>
+<li>\[ X \in Po(\mu)\]</li>
+</ul>
 <h4 id="kontinuerlig-stokastisk-variabel">kontinuerlig stokastisk variabel</h4>
 <p>Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.</p>
 <ol type="1">
-<li><p><em>Likformig fördelning</em> \[ f_X(x) = 1/(b-a) \quad a&lt;x&lt;b \]</p></li>
-<li><p><em>Exponentialfördelning</em> \[ f_X(x) = \lambda e^{-\lambda x} \]</p></li>
-<li><em>Normalfördelningen</em></li>
-<li><em>Weibull-fördelning</em></li>
-<li><p><em>Gammafördelning</em></p></li>
+<li><strong>Likformig fördelning</strong> – \[ f_X(x) = 1/(b-a) om a &lt; x &lt; b &gt;\]</li>
+<li><strong>Exponentialfördelning</strong> – beskriver tiderna mellan händelserna i en poissonprocess. \[ f_X(x) = \lambda e^{-\lambda x} \quad E(X) = 1 / \lambda, \quad D(X) = 1 / \lambda \]</li>
+<li><strong>Normalfördelningen</strong></li>
+<li><strong>Weibull-fördelning</strong></li>
+<li><strong>Gammafördelning</strong></li>
 </ol>
 <p><strong>fördelningsfunktion</strong></p>
 <p><strong>intensitet</strong></p>
@@ -92,8 +126,14 @@ title: "Sannolikhetsteori och statistikteori"
 </ul>
 <h4 id="största-och-minsta-värdet">Största och minsta värdet</h4>
 <ul>
-<li>Z = max(X,Y) \[F_Z(z) = F_X(z)F_Y(z)\]</li>
-<li>Z = min(X,Y) \[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\]</li>
+<li>Z = max(X,Y)
+<ul>
+<li>\[F_Z(z) = F_X(z)F_Y(z)\]</li>
+</ul></li>
+<li>Z = min(X,Y)
+<ul>
+<li>\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\]</li>
+</ul></li>
 </ul>
 <p>Gör först om till fördelningsfunktion om täthetsfunktion</p>
 <h4 id="summan-av-s.v.">Summan av s.v.</h4>
@@ -105,8 +145,8 @@ title: "Sannolikhetsteori och statistikteori"
 <p>konstanter inuti väntevärdesfunktioner är korkat.</p>
 <h4 id="väntevärdet-ex-eller-μ">Väntevärdet E(X) eller μ</h4>
 <p>Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade resultatet blir.</p>
-<p>DEF: \[ E(X) = \sum_kkp_X(k) \] \[ E(X) = \int\limits_{-\infty}^{\infty} x f_X(x)dx \]</p>
-<p>Y = g(X) \[ E(Y) = \sum_kg(k)p_X(k)\]</p>
+<p><strong>DEF:</strong> \[ E(X) = \sum_kkp_X(k) \] \[ E(X) = \int\limits_{-\infty}^{\infty} x f_X(x)dx \]</p>
+<p><strong>Y = g(X)</strong> – Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så kan man trixa enl. följande \[ E(Y) = \sum_kg(k)p_X(k)\] \[ E(X) = \int\limits_{-\infty}^{\infty} g(x) f_X(x)dx \]</p>
 <p>\[ E(X+Y) = E(X)+E(Y) \]</p>
 <p>X &amp; Y oberoende \[ E(XY) = E(X)E(Y)\]</p>
 <p>Samling X med samma väntevärde µ \[ E(\sum_{i=1}^nX_i)=n\mu \]</p>
@@ -114,23 +154,17 @@ title: "Sannolikhetsteori och statistikteori"
 <p>\[ E(X|Y=k) = \sum_{j=0}^\infty jp_{X|Y=k}(j)\]</p>
 <p>\[ E(X|Y=y) = \int_{-\infty}^\infty xf_{X|Y=y}(x)dx\]</p>
 <h4 id="variansen-vx-eller-σ">Variansen V(X) eller σ²</h4>
+<p>Variansen är en typ av spridningsmått.</p>
+<p><strong>DEF:</strong> \[ V(X) = E[(X-\mu)^2] \]</p>
+<p><strong>Schysta satser:</strong> <span class="math display">\[ V(X) = E(X^2)-[E(X)]^2 \]</span> \[ V(aX+b) = a^2V(X) \] \[ V(X + Y) = V(X) + V(Y) + 2C(X,Y) \]</p>
 <ul>
-<li>Variansen är en typ av spridningsmått.</li>
-<li>DEF: \[ V(X) = E[(X-\mu)^2] \] – alltså ett väntevärde LOL</li>
-<li><span class="math display">\[ V(X) = E(X^2)-[E(X)]^2 \]</span></li>
-<li>\[ V(aX+b) = a^2V(X) \]</li>
-<li>V(X + Y) = V(X) + V(Y) + 2C(X,Y)</li>
-<li>Om oberoende: V(X + Y) = V(X) + V(Y)</li>
-<li>Om oberoende och med samma σ: \[ V(\sum_{i=1}^nX_i) = n\sigma^2 \]</li>
-<li>Om oberoende och med samma σ samt µ: \[ V(\bar{X})=\sigma^2/n \]</li>
+<li>Om oberoende: \( V(X + Y) = V(X) + V(Y) \)</li>
+<li>Om oberoende och med samma σ: \( V(\sum_{i=1}^nX_i) = n\sigma^2 \)</li>
+<li>Om oberoende och med samma σ samt µ: \( V(\bar{X})=\sigma^2/n \)</li>
 </ul>
+<p>Tänk på att använda formelsamlingen för att snabbt fastställa varians</p>
 <h4 id="standardavvikelse-dx-eller-σ">Standardavvikelse D(X) eller σ</h4>
-<ul>
-<li>Schyst mått då man får samma dimension som väntevärdet</li>
-<li>\[ D(X) = \sqrt{V(X)} \]</li>
-<li>\[ D(aX + b) = |a|D(X) \]</li>
-<li>Om oberoende: \[ D(X + Y) = \sqrt{D^2(X) + D^2(Y)} \]</li>
-</ul>
+<p>Schyst mått då man får samma dimension som väntevärdet \[ D(X) = \sqrt{V(X)} \] \[ D(aX + b) = |a|D(X) \] Om oberoende: \[ D(X + Y) = \sqrt{D^2(X) + D^2(Y)} \]</p>
 <h4 id="variationskoefficienten">Variationskoefficienten</h4>
 <p>uttrycks i procent \[ R(X) = D(X)/E(X) \]</p>
 <h4 id="fel">fel</h4>
@@ -226,20 +260,20 @@ title: "Sannolikhetsteori och statistikteori"
 <li>lös ekv. π = πP (P är övergångsmatrisen)</li>
 </ol>
 <p>när <span class="math display">\[ p^{(n)}=(p_1^{(n)},p_2^{(n)},...) \to \pi \]</span> när \[ n \to \infty \] 1. om man i en ändlig kedja kan finna ett r&gt;0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning. 2. se stationär fördelning</p>
-<p><strong>periodiska tillstånd</strong> om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3.</p>
-<p><strong>aperiodiska tillstånd</strong> om det alltid går att komma tillbaka till ett tillstånd direkt</p>
+<p><em>periodiska tillstånd</em> om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3.</p>
+<p><em>aperiodiska tillstånd</em> om det alltid går att komma tillbaka till ett tillstånd direkt</p>
 <hr />
 <h3 id="del-2-statistik-eller-vilka-slutsatser-man-kan-dra-av-ett-datamaterial">DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial</h3>
 <h4 id="terminologi-1">terminologi</h4>
-<p><strong>parameterrummet</strong> - de värden den sökta parametern kan tänkas anta.</p>
-<p><strong>stickprov</strong> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v.</p>
-<p><strong>stickprovsvariansen</strong> \[ s^2 = \frac{1}{n-1} \sum_{j=1}^n (x_j - \bar{x})^2 \]</p>
-<p><strong>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</strong> \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \] <strong>korrelationskoefficienten</strong> \[ r = \frac{c_{xy}}{s_xs_y} \]</p>
+<p><em>parameterrummet</em> - de värden den sökta parametern kan tänkas anta.</p>
+<p><em>stickprov</em> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v.</p>
+<p><em>stickprovsvariansen</em> \[ s^2 = \frac{1}{n-1} \sum_{j=1}^n (x_j - \bar{x})^2 \]</p>
+<p><em>kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),…,(xn,yn)</em> \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \] <em>korrelationskoefficienten</em> \[ r = \frac{c_{xy}}{s_xs_y} \]</p>
 <h3 id="punktskattning">7. Punktskattning</h3>
-<p><strong>punktskattning</strong> – den observerade sannolikheten – ett utfall av stickprovsvariabeln \[ \theta_{obs}^*(x_1,x_2,…,x_n) \]</p>
-<p><strong>stickprovsvariabeln</strong> – en s.v. som punktskattningen är ett utfall av \[ \theta^*(X_1,X_2,…,X_n) \]</p>
-<p><strong>väntevärdesriktig</strong> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om \[ E(\theta^*) = \theta \]</p>
-<p><strong>MSE</strong> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel \[ MSE = E(( \theta^* - \theta)^2) \]</p>
+<p><em>punktskattning</em> – den observerade sannolikheten – ett utfall av stickprovsvariabeln \[ \theta_{obs}^*(x_1,x_2,…,x_n) \]</p>
+<p><em>stickprovsvariabeln</em> – en s.v. som punktskattningen är ett utfall av \[ \theta^*(X_1,X_2,…,X_n) \]</p>
+<p><em>väntevärdesriktig</em> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om \[ E(\theta^*) = \theta \]</p>
+<p><em>MSE</em> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel \[ MSE = E(( \theta^* - \theta)^2) \]</p>
 <h4 id="skattning-av-μ-σ">skattning av μ &amp; σ</h4>
 <h5 id="µ">µ</h5>
 <p>stickprovsmedelvärdet \[ \bar{x} \] är en väntevärdesriktig och konsistent skattning av µ</p>
@@ -252,45 +286,44 @@ title: "Sannolikhetsteori och statistikteori"
 <li>Funktionens största värde är det mest sannolika scenariot.</li>
 </ol>
 <h4 id="minsta-kvadrat-metoden-mk-metoden">Minsta-kvadrat-metoden – MK-metoden</h4>
-<p>\[ Q(\theta) = \sum_{i=1}^n [x_i - \mu_i (\theta)]^2 \] Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta.</p>
+<p>\[ Q(\theta) = \sum_{i=1}^n [x_i - \mu_i (\theta)]^2 \] Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta. Så hur går man då tillväga? Jo genom att skapa funktionen \( Q( \theta )) \) och sedan derivera denna och finna minimum för \[ \frac{dQ}{d \theta} Q( \theta ) \]</p>
+<p>Flera parametrar? Lös partialderivatorna och sedan ekvationssystemet.</p>
+<h3 id="intevallskattning">8. Intevallskattning</h3>
+<p>När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.</p>
 <h4 id="tillämpning-på-normalfördelningen">Tillämpning på normalfördelningen</h4>
 <h4 id="ett-stickprov">Ett stickprov</h4>
-<h6 id="µ-okänt-σ-känt">µ okänt σ känt</h6>
+<h5 id="µ-okänt-σ-känt">µ okänt σ känt</h5>
 <p>\[\mu* = \bar{x} \]</p>
-<h6 id="μ-känt-σ-okänt">μ känt σ okänt</h6>
+<h5 id="μ-känt-σ-okänt">μ känt σ okänt</h5>
 <p><span class="math display">\[ (\sigma^2)_{obs}^* = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2 \]</span></p>
 <h5 id="konfidensintervall-för-väntevärdet">Konfidensintervall för väntevärdet</h5>
-<h6 id="känd-standardavvikelse">Känd standardavvikelse</h6>
+<h5 id="känd-standardavvikelse">Känd standardavvikelse</h5>
 <p>En lämplig skattning av µ är aritmetiska medelvärdet av X. \[ \bar{X} \in N(\mu,D) \] \[ D = \sigma/\sqrt{n} \] \[ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) \]</p>
 <p>Allt detta följer av att:</p>
 <p>\[ \frac{\bar{X}-\mu}{D} \in N(0,1) \]</p>
 <p>Följaktligen gäller med sannolikheten 1-alfa att:</p>
-<p>\[ -\lambda_{\alpha/2} &lt; \frac{ \bar{X}-\mu}{D} &lt; \lambda_{\alpha/2} \] &gt; standardized</p>
+<p>\[ -\lambda_{\alpha/2} &lt; \frac{\bar{X}-\mu}{D} &lt; \lambda_{\alpha/2} &gt;\]</p>
 <p>Om vi har ett intervall:</p>
 <p>\[ I_\mu = (16 \pm 2.58 * 0.155) \]</p>
 <p>där</p>
 <p>\[ D = 1.2/\sqrt{60} = 0.155 \]</p>
 <p>och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sätta upp följande ekvation:</p>
 <p>\[ 2 * 2.58 * 1.2/\sqrt{n} = 0.5 \]</p>
-<h6 id="okänd-standardavvikelse">Okänd standardavvikelse</h6>
+<h5 id="okänd-standardavvikelse">Okänd standardavvikelse</h5>
 <p>I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ</p>
 <p>\[ I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) \] \[ d = s/\sqrt{n}, \quad f = n-1 \]</p>
 <h5 id="konfidensintervall-för-standardavvikelsen">Konfidensintervall för standardavvikelsen</h5>
-<h6 id="μ-känt">μ känt</h6>
+<h5 id="känt-väntevärde">Känt väntevärde</h5>
 <p>Aint gonna happen gurl</p>
-<h6 id="µ-okänt">µ okänt</h6>
+<h6 id="okänt-väntevärde">Okänt väntevärde</h6>
 <p>\[ I_\sigma = (k_1s,k_2s) \] \[ k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} \] \[ k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} \] \[ f = n-1 \]</p>
-<h5 id="två-stickprov">Två stickprov</h5>
+<h4 id="två-stickprov">Två stickprov</h4>
 <p>Om σ1 och σ2 är kända:</p>
 <p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) \] \[ D = \sqrt{ \sigma_{1}^{2} / n_1 + \sigma_{2}^{2} / n_2} \]</p>
 <p>Om σ1 = σ2 = σ:</p>
 <p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) \] \[ d = \sigma \sqrt{ \frac{1}{n_1} + \frac{1}{n_2}} \]</p>
-<h5 id="stickprov-i-par">Stickprov i par</h5>
+<h4 id="stickprov-i-par">Stickprov i par</h4>
 <p>Skapa \[ z = y - x \]</p>
-<h3 id="intevallskattning">8. Intevallskattning</h3>
-<p>När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.</p>
-<h4 id="tillämpning-på-normalfördelningen-1">Tillämpning på normalfördelningen</h4>
-<h5 id="känd-standardavvikelse-1">Känd standardavvikelse</h5>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
 <p><strong>nollhypotes</strong> – hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas: \( H_0 \)</p>
 <p><strong>mothypotes</strong> – hypotes som kan vara sann om inte nollhypotesen är det. Betecknas: \( H_i \)</p>
@@ -301,14 +334,14 @@ title: "Sannolikhetsteori och statistikteori"
 <li>signifikant*** – 0.001</li>
 </ul>
 <p><strong>testvariabel/teststorhet</strong> – observation av stickprovsvariabel</p>
-<p><strong>signifikanstest</strong></p>
+<p><strong>signifikanstest</strong> 1. Om \(t_{obs} \in \text{jätteosannolikt område} \) förkasta \( H_0 \) 2. Om \( t_{obs} \) å andra sidan är ett sannolikt utfall, även i vanliga fall så bör \( H_0 \) inte förkastas.</p>
+<p><strong>konfidensmetoden</strong> – genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför</p>
 <p><strong>styrkefunktionen</strong> \[ h(\theta) = P(H_0 \text{ förkastas}) \] om θ är det rätta värdet</p>
 <ul>
 <li>bör vara stort för alla θ som tillhör mothypotesen</li>
 <li>bör vara litet för alla θ som tillhör nollhypotesen</li>
 <li>h(θ) kallas testets styrka för θ</li>
 </ul>
-<p><strong>konfidensmetoden</strong> – genom att beräkna konfidensintervall för det faktiska värdet och sedan förkasta nollhypotesen om nollhypotesens hypotetiska värde hamnar utanför</p>
 <h4 id="how-to-styrkefunktion">How to styrkefunktion</h4>
 <ol type="1">
 <li>create \( u = \frac{x - \mu}{\sigma} \)</li>
@@ -322,9 +355,9 @@ title: "Sannolikhetsteori och statistikteori"
 <h4 id="terminologi-2">Terminologi</h4>
 <p><strong>teoretiska regressionslinjen</strong> \[ y = \alpha + \beta x \]</p>
 <p><strong>parameterskattningar</strong></p>
-<p>\[ \sum x_i , \quad \sum x_i^2 , \quad S_{xx} = \sum_{i=1}^n (x_i - \bar{x})^2 = \sum_{i=1}^n x_i^2 - n \bar{x}^2 \]</p>
-<p>\[ \sum y_i , \quad \sum y_i^2 , \quad S_{yy} = \sum_{i=1}^n (y_i - \bar{y})^2 = \sum_{i=1}^n y_i^2 - n \bar{y}^2 \]</p>
-<p>\[ \sum x_i y_i , \quad S_{xy} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}) = \sum_{i=1}^n x_i y_i - n \bar{x} \bar{y} \]</p>
+<p>\[ \sum x_i , \quad \sum x_i^2 , \quad S_{xx} = \sum_{i=1}^n (x_i - \bar{x})^2 = \sum_{i=1}^n x_i^2 - \frac{1}{n} (\sum_{i=1}^n x_i)^2 \]</p>
+<p>\[ \sum y_i , \quad \sum y_i^2 , \quad S_{yy} = \sum_{i=1}^n (y_i - \bar{y})^2 = \sum_{i=1}^n y_i^2 - \frac{1}{n} (\sum_{i=1}^n y_i)^2 \]</p>
+<p>\[ \sum x_i y_i , \quad S_{xy} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}) = \sum_{i=1}^n x_i y_i - \bar{x} \bar{y} \]</p>
 <h4 id="punktskattningar">Punktskattningar</h4>
 <p>Remember MK-metoden? Bestäm minimum för</p>
 <p>\[ Q( \alpha , \beta ) = \sum_{i}^n (y_i - \mu_i)^2 \] \[ \mu_i = \alpha + \beta x_i \]</p>
