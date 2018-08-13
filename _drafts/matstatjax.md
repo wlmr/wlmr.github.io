@@ -5,29 +5,29 @@ title: "Sannolikhetsteori och statistikteori"
 
 ### DEL 1: Sannolikhet eller hur man beskriver slumpen
 
-_utfall_ -- resultatet av ett slumpmässigt försök
+__utfall__ -- resultatet av ett slumpmässigt försök
 
-_utfallsrummet_ -- mängden möjliga utfall
+__utfallsrummet__ -- mängden möjliga utfall
 
-_händelse_ -- samling utfall
+__händelse__ -- samling utfall
 
-_relativ frekvens_ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
+__relativ frekvens__ -- kvoten mellan antalet erhållet utfall och hela antalet utförda kast
 
-_disjunkta händelser_ -- kan inte inträffa samtidigt
+__disjunkta händelser__ -- kan inte inträffa samtidigt
 
-_Kolmogorovs axiomsystem_:
+__Kolmogorovs axiomsystem__:
 
 1. Händelsen P(A) måste ligga mellan 0 & 1
 2. P(utfallsrummet) = 1
 3. om A & B är parvis oförenliga gäller \\( P(A) + P(B) = P(A \\cup B) \\)
 
-_komplementsatsen_
+__komplementsatsen__
 P(A*) = 1 - P(A)
 
-_Additionssatsen_
+__Additionssatsen__
 P(A or B) = P(A) + P(B) - P(A and B)
 
-_Booles olikhet_ -- $$ P(A \cup B) \leq P(A) + P(B) $$
+__Booles olikhet__ -- \\( P(A \\cup B) \\leq P(A) + P(B) \\)
 
 ##### Kombinatorik
 Förutsättningar:
@@ -35,49 +35,49 @@ Förutsättningar:
 * n element
 * k av dessa plockas
 
-_Klassiska sannolikhetsdefinitionen_
+__Klassiska sannolikhetsdefinitionen__
 Vid likformigt sannolikhetmått är sannolikheten för en händelse lika med kvoten mellan antalet för händelsen gynsamma fall och antalet möjliga fall.
 
-_Dragning med återläggning och hänsyn till ordning_
+__Dragning med återläggning och hänsyn till ordning__
 \\[n^k\\]
 
-_Dragning utan återläggning med hänsyn till ordning_
+__Dragning utan återläggning med hänsyn till ordning__
 \\[n*(n-1)(n-2) \\cdots (n-k)\\]
 
-_Dragning utan återläggning utan hänsyn till ordning_
+__Dragning utan återläggning utan hänsyn till ordning__
 \\[\\binom{n}{k}\\]
 
-_Dragning utan återläggning_
-Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. _Klas. sann._ ges svaret av 
+__Dragning utan återläggning__
+Urna med kulor av två olika färger. Hur stor är chansen att erhålla k vita? Enl. __Klas. sann._ ges svaret av 
 \\[ g/m \\]
 \\[ m = \\binom{v+s}{n} \\]
 \\[ g = \\binom{v}{k} \\binom{s}{n-k} \\] 
 Alltså produkten av sätten att få k stycken vita och alla möjligheter att få resterande svarta.
 
-_Dragning med återläggning_
+__Dragning med återläggning__
 Samma som ovan men med återläggning. 
 \\[ m = (v+s)^n \\]
 \\[ g = \\binom{n}{k} v^k s^{n-k}\\]
 
 Alltså antalet olika kombinationer det finns av k stora samlingar bland n multiplicerat med sannolikheten för k vita multiplicerat med n-k svarta. Allt detta dividerat med m.
 
-_Betingade sannolikheten_ -- sannolikheten att något inträffar givet en annan händelse.
+__Betingade sannolikheten__ -- sannolikheten att något inträffar givet en annan händelse.
 
 \\[P(B|A) = \\frac{P(A \\cap B)}{P(A)}\\]
 
 Ger alltså ett samband mellan betingning och snitt.
 
-_Lagen om total sannolikhet_
+__Lagen om total sannolikhet__ -- genom att summera de olika produkter som ges av sannolikheten för varje möjligt utfall \\( H_i \\) multiplicerat med sannolikheten att A händer om vi faktiskt fått \\( H_i \\) får vi den totala sannolikheten att A händer.
+
 \\[P(A) = \\sum_{i=1}^{n} P(H_i)P(A|H_i)\\]
 
-_Bayes sats_
+__Bayes sats__ -- när man behöver vända på en betingad sannolikhet
 \\[P(H_i|A) = \\frac{P(H_i)P(A|H_i)}{\\sum_{j=1}^{n} P(H_j)P(A|H_j)}\\]
 
-_Oberoende händelser_ -- P(B|A) = P(B)
+__Oberoende händelser__ -- \\( P(B|A) = P(B) \\)
 
-
-_sannolikheten att minst en inträffar_
-\\[A_1 , A_2 , ... , A_n är oberoende och P(A_i)=p_i\\]
+__sannolikheten att minst en inträffar__
+\\[A_1 , A_2 , ... , A_n \\text{ är oberoende }, \\quad P(A_i)=p_i\\]
 \\[1-(1-p_1)(1-p_2)...(1-p_n) = 1-(1-p)^n\\]
 
 
@@ -85,48 +85,54 @@ _sannolikheten att minst en inträffar_
 Den stokastiska variabeln är bron mellan matematiken och slumpen men är inget mer än en reellvärd funktion definierad på ett utfallsrum. Betecknas i texten som versaler från slutet av alfabetet som X, Y, eller Z.
 
 #### diskret stokastisk variabel
-En s.v. är _diskret_ om den kan anta ett ändligt eller uppräkneligt oändligt antal olika värden.
+En s.v. är __diskret_ om den kan anta ett ändligt eller uppräkneligt oändligt antal olika värden.
 funktionen över värdemängden kallas sannolikhetsfunktionen.
 
-1. _Enpunktsfördelning_ -- all massa i ett värde \\[p_X(a) = 1\\]
+1. __Enpunktsfördelning__ -- all massa i ett värde \\[p_X(a) = 1\\]
 
-2. _Tvåpunktsfördelning_ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
-  + ex: krona/klave
-  + då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
+2. __Tvåpunktsfördelning__ -- om X endast antar två värden a & b med sannolikheterna p respektive 1-p.
+ex: krona/klave
+då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
 
-3. _Likformig fördelning_ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
-  + \\[p_X(k)=1/m, k = 1,2,...,m.\\]
+3. __Likformig fördelning__ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
+\\[p_X(k)=1/m, k = 1,2,...,m.\\]
 
-4. _För-första-gången-fördelning_ 
-  + \\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
-  + När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
-  + \\[ X \\in ffg(p) \\]
+4. __För-första-gången-fördelning__ 
+\\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
+När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
+\\[ X \\in ffg(p) \\]
 
-5. _Geometrisk fördelning_ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
-  + \\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
+5. __Geometrisk fördelning__ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
+\\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
 
 
 6. __Binomialfördelning__ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
-  + \\[ p_X(k) = \\binom{n}{k}p^k(1-p)^{n-k} \\]
-  + \\[ X \\in Bin(n,p) \\]
+\\[ p_X(k) = \\binom{n}{k} p^k ( 1 - p )^{n - k} \\]
+\\[ X \\in Bin(n,p) \\]
 
 7. __Hypergeometrisk fördelning__ -- uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.
-  + \\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
-  + \\[ X \\in Hyp(N,n,p)\\]
+\\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
+\\[ X \\in Hyp(N,n,p)\\]
 
 8. __Poisson-fördelning__ 
-  + \\[ p_X(k) = \\frac{\\mu^k}{k!}e^{-e}\\]
-  + \\[ X \\in Po(\\mu)\\]
+\\[ p_X (k) = \\frac{ \\mu^k }{ k! }e^{ -e } \\]
+\\[ X \\in Po(\\mu)\\]
 
 #### kontinuerlig stokastisk variabel
 Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.
 
-1. __Likformig fördelning__ -- \\[ f_X(x) = 1/(b-a) om a < x < b >\\]
+1. __Likformig fördelning__ -- X antar alla värden mellan a och b med samma sannolikhet
+\\[ f_X(x) = 1/(b-a) \\text{ om } a < x < b >\\]
+
 2. __Exponentialfördelning__ -- beskriver tiderna mellan händelserna i en poissonprocess. 
 \\[ f_X(x) = \\lambda e^{-\\lambda x} \\quad E(X) = 1 / \\lambda, \\quad D(X) = 1 / \\lambda \\]
+
 3. __Normalfördelningen__ 
+
 4. __Weibull-fördelning__
+
 5. __Gammafördelning__
+
 
 __fördelningsfunktion__
 
@@ -143,9 +149,10 @@ __intensitet__
 
 #### Största och minsta värdet
 * Z = max(X,Y)
-  * \\[F_Z(z) = F_X(z)F_Y(z)\\]
+\\[F_Z(z) = F_X(z)F_Y(z)\\]
+
 * Z = min(X,Y)
-  * \\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\\]
+\\[F_Z(z) = 1-[1-F_X(z)][1-F_Y(z)]\\]
 
 Gör först om till fördelningsfunktion om täthetsfunktion
 
@@ -214,8 +221,8 @@ uttrycks i procent
 \\[ R(X) = D(X)/E(X) \\]
 
 #### fel
-* _systematiskt fel/bias_  är differansen mellan mätvärdets väntevärde och det korrekta värdet. (ett tal)
-* _slumpmässigt fel_ menas differensen mellan mätvärdet och dess väntevärde. (s.v. med E(X) = 0)
+* __systematiskt fel/bias__  är differansen mellan mätvärdets väntevärde och det korrekta värdet. (ett tal)
+* __slumpmässigt fel__ menas differensen mellan mätvärdet och dess väntevärde. (s.v. med E(X) = 0)
 
 #### Beroendemått
 
@@ -296,8 +303,8 @@ Om oberoende
 
 Kan approximeras som 
 
-1. _poissonfördelning_ om p är litet
-2. _normalfördelning_ om n är stort
+1. __poissonfördelning__ om p är litet
+2. __normalfördelning__ om n är stort
 N(np,sqrt(npq))
 
 #### Hypergeometriske (utan återläggning)
@@ -306,30 +313,28 @@ V(X) = ((N-n)/(N-1))np(1-p)
 
 Kan aproximeras som
 
-1. _binomialapproximation_ om n/N är liten
-2. _normalapproximation_ om n är stort
+1. __binomialapproximation__ om n/N är liten
+2. __normalapproximation__ om n är stort
 
 #### Poisson-fördelningen
 E(X) = µ
 V(X) = µ
 
-\\[ X_1 \\in Po(\\theta_1) \\quad and \\quad X_2 \\in Po(\\theta_2) \\quad then \\quad X_1+X_2 \\in Po(\\theta_1+\\theta_2) \\]
+\\[ X_1 \\in Po( \\theta_1 ) \\quad and \\quad X_2 \\in Po( \\theta_2 ) \\quad then \\quad X_1+X_2 \\in Po(\\theta_1+\\theta_2) \\]
 
 Kan approximeras som
 
-1. _normalfördelning_  om µ är stort
+1. __normalfördelning__  om µ är stort
 
 #### Multinomial
 
 
-### 6. Slumptal
-
 ### Markovkedjor
-Stokastiska processer vars nästa värde endast beror på nuvarande värde. 
+* Stokastiska processer vars nästa värde endast beror på nuvarande värde. 
 
-övergångsmatris används för att skriva upp "hoppsannolikheterna".
+* övergångsmatris används för att skriva upp "hoppsannolikheterna".
 
-övergångssannolikheter av 2a ordningen härleds genom att matrismultiplicera övergångsmatrisen med sig själv. alltså sannolikheten att mellanlanda i ett tillstånd.
+* övergångssannolikheter av N:te ordningen härleds genom att matrismultiplicera övergångsmatrisen med sig själv n ggr. alltså sannolikheten att mellanlanda i ett tillstånd.
 
 För att simulera sannolikheterna att systemet börjar i de olika tillstånden används matrismultiplikation med en radvektor $$ p^{(0)}=(p_1^{(0)},p_2^{(0)},...) $$
 
@@ -339,32 +344,44 @@ För att simulera sannolikheterna att systemet börjar i de olika tillstånden a
 \\end{pmatrix}
 *
 \\begin{pmatrix}
-1to1 & 1to2  \\
-2to1 & 2to2
+  1to1 & 1to2 \\\\
+  2to1 & 2to2
 \\end{pmatrix} 
 \\]
 
 ##### terminologi
-__beständigt__ tillstånd om P(i->i)=1
-__obeständigt__ tillstånd om P(i->i) less than 1
+__tillstånd__ -- markovkedja är alltid i ett tillstånd. Den lämnar detta enl. övergångsmatrisen
+
+__ändlig__ -- ändligt antal tillstånd i kedjan
+
+__beständigt__ -- om tillstånd där \\( p_{ii} = 1 \\) (Gäller alla olika ordningars övergångsmatriser)
+
+1. kolla första ordningens sannolikhet att kedjan väljer att hoppa till tillståndet det redan var i, sedan andra ordningens och tredje ordningens. Fortsätt tills du hittat ett samband mellan sannolikheterna, ex. i form av en geometrisk serie. Blir summan 1 har du ett __beständigt tillstånd__.
+2. Använd sedan faktumet att om __två tillstånd kommunicerar tvåsidigt är de båda antinge beständiga eller båda inte__
+3. Använd sedan faktumet att om alla \\( p_{ij} = 0 \\) så är j inte beständigt (går ju inte att komma dit (om man inte börjar där men inte sedan kan man ändå inte komma dit igen)). 
+
+__obeständigt__ -- tillstånd om P(i->i) less than 1
 
 __Om två tillstånd kommunicerar tvåsidigt är de båda antingen beständinga eller inte.__
 
-__irreducibel__ om alla tillstånd kommunicerar tvåsidigt med varandra, indirekta anslutningar räknas också.
+__irreducibel__ -- om alla tillstånd kommunicerar tvåsidigt med varandra, indirekta anslutningar räknas också.
 
-__stationär fördelning__  sannolikheterna att systemet befinner sig i de olika tillstånden.
+1. rita upp markovkedjan och följ pilarna
 
-1. skapa sannolikhetsvektorn π = (π1,π2,..)
-2. lös ekv. π = πP (P är övergångsmatrisen)
 
-när $$ p^{(n)}=(p_1^{(n)},p_2^{(n)},...) \to \pi $$
-när \\[ n \\to \\infty \\]
-1. om man i en ändlig kedja kan finna ett r>0 så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en asymptotisk fördelning.
-2. se stationär fördelning
+__stationär fördelning__ -- sannolikheterna att systemet befinner sig i de olika tillstånden.
 
-_periodiska tillstånd_ om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
+1. skapa sannolikhetsvektorn \\( \\pi = ( \\pi_1, \\pi_2,..) \\)
+2. lös ekv. \\( \\pi = \\pi P \\) (P är övergångsmatrisen)
 
-_aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstånd direkt
+\\[ p^{(n)}=( p_1^{(n)}, p_2^{(n)} ,...) \\to \\pi, \\quad \\text{ när } n \\to \\infty \\]
+
+__asymptotisk fördelning__ -- om man i en ändlig kedja kan finna ett \\( r>0 \\) så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en __asymptotisk__ fördelning
+
+
+__periodiska tillstånd__ -- om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
+
+__aperiodiska tillstånd__ -- om det alltid går att komma tillbaka till ett tillstånd direkt..
 
 -----
 
@@ -372,31 +389,32 @@ _aperiodiska tillstånd_ om det alltid går att komma tillbaka till ett tillstå
 ### DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
 #### terminologi
-_parameterrummet_ - de värden den sökta parametern kan tänkas anta.
+__parameterrummet__ -- de värden den sökta parametern kan tänkas anta.
 
-_stickprov_ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
+__stickprov__ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
 
-_stickprovsvariansen_ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
+__stickprovsvariansen__ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
 
-_kovariansen mellan x- och y-värdena i en datamängd (x1,y1),(x2,y2),...,(xn,yn)_
+__kovariansen__ mellan x- och y-värdena i en datamängd \\( ( x_1 , y_1 ),( x_2 , y_2 ),...,( x_n , y_n ) \\)
 \\[ c_{xy} = \\frac{1}{n-1}\\sum_{i=1}^n(x_i-\\bar{x})(y_i-\\bar{y}) \\]
-_korrelationskoefficienten_
+
+__korrelationskoefficienten__
 \\[ r = \\frac{c_{xy}}{s_xs_y} \\]
 
 
 ### 7. Punktskattning
 
 
-_punktskattning_ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
+__punktskattning__ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
 \\[ \\theta_{obs}^*(x_1,x_2,...,x_n) \\]
 
-_stickprovsvariabeln_ -- en s.v. som punktskattningen är ett utfall av
+__stickprovsvariabeln__ -- en s.v. som punktskattningen är ett utfall av
 \\[ \\theta^*(X_1,X_2,...,X_n) \\]
 
-_väntevärdesriktig_ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
+__väntevärdesriktig__ -- punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om
 \\[ E(\\theta^*) = \\theta \\]
 
-_MSE_ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
+__MSE__ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
 \\[ MSE = E(( \\theta^* - \\theta)^2) \\]
 
 #### skattning av μ & σ
