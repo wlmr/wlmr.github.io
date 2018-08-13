@@ -1,8 +1,3 @@
----
-layout: post
-title: "Sannolikhetsteori och statistikteori"
----
-
 ### DEL 1: Sannolikhet eller hur man beskriver slumpen
 
 __utfall__ -- resultatet av ett slumpmässigt försök
