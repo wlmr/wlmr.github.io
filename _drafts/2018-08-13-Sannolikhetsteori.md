@@ -12,6 +12,7 @@ __disjunkta händelser__ -- kan inte inträffa samtidigt
 
 __Kolmogorovs axiomsystem__:
 
+
 1. Händelsen P(A) måste ligga mellan 0 & 1
 2. P(utfallsrummet) = 1
 3. om A & B är parvis oförenliga gäller \\( P(A) + P(B) = P(A \\cup B) \\)
@@ -22,9 +23,12 @@ P(A*) = 1 - P(A)
 __Additionssatsen__
 P(A or B) = P(A) + P(B) - P(A and B)
 
+__oberoende händelser__ -- \\( P(A \\cap B) = P(A)P(B) \\)
+
 __Booles olikhet__ -- \\( P(A \\cup B) \\leq P(A) + P(B) \\)
 
-##### Kombinatorik
+#### Kombinatorik
+
 Förutsättningar:
 
 * n element
@@ -498,6 +502,7 @@ Aint gonna happen gurl
 \\[ f = n-1 \\]
 
 #### Två stickprov
+När man vill mäta skillnaden mellan två stickprov. Om de två stickproven parvis korrelerar bör metoden tillhörande stickprov i par användas.
 
 Om σ1 och σ2 är kända:
 
@@ -510,6 +515,7 @@ Om σ1 = σ2 = σ:
 \\[ d = \\sigma \\sqrt{ \\frac{1}{n_1} + \\frac{1}{n_2}} \\]
 
 #### Stickprov i par
+När det utförs två mätningar på n olika objekt. 
 
 Skapa \\[ z = y - x \\]
 

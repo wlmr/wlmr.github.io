@@ -35,8 +35,9 @@ title: "Sannolikhetsteori"
 </ol>
 <p><strong>komplementsatsen</strong> P(A*) = 1 - P(A)</p>
 <p><strong>Additionssatsen</strong> P(A or B) = P(A) + P(B) - P(A and B)</p>
+<p><strong>oberoende händelser</strong> – \( P(A \cap B) = P(A)P(B) \)</p>
 <p><strong>Booles olikhet</strong> – \( P(A \cup B) \leq P(A) + P(B) \)</p>
-<h5 id="kombinatorik">Kombinatorik</h5>
+<h4 id="kombinatorik">Kombinatorik</h4>
 <p>Förutsättningar:</p>
 <ul>
 <li>n element</li>
@@ -289,11 +290,13 @@ title: "Sannolikhetsteori"
 <h6 id="okänt-väntevärde">Okänt väntevärde</h6>
 <p>\[ I_\sigma = (k_1s,k_2s) \] \[ k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} \] \[ k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} \] \[ f = n-1 \]</p>
 <h4 id="två-stickprov">Två stickprov</h4>
+<p>När man vill mäta skillnaden mellan två stickprov. Om de två stickproven parvis korrelerar bör metoden tillhörande stickprov i par användas.</p>
 <p>Om σ1 och σ2 är kända:</p>
 <p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-\lambda_{\alpha/2}D,\bar{x}-\bar{y}+\lambda_{\alpha/2}D) \] \[ D = \sqrt{ \sigma_{1}^{2} / n_1 + \sigma_{2}^{2} / n_2} \]</p>
 <p>Om σ1 = σ2 = σ:</p>
 <p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) \] \[ d = \sigma \sqrt{ \frac{1}{n_1} + \frac{1}{n_2}} \]</p>
 <h4 id="stickprov-i-par">Stickprov i par</h4>
+<p>När det utförs två mätningar på n olika objekt.</p>
 <p>Skapa \[ z = y - x \]</p>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
 <p><strong>nollhypotes</strong> – hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas: \( H_0 \)</p>
