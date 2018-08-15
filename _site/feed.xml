@@ -1,4 +1,111 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-13T18:18:38+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Sannolikhetsteori och statistikteori</title><link href="http://localhost:4000/2018/06/21/statistik.html" rel="alternate" type="text/html" title="Sannolikhetsteori och statistikteori" /><published>2018-06-21T00:00:00+02:00</published><updated>2018-06-21T00:00:00+02:00</updated><id>http://localhost:4000/2018/06/21/statistik</id><content type="html" xml:base="http://localhost:4000/2018/06/21/statistik.html">&lt;!DOCTYPE html&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-08-15T13:14:09+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">signalbehandling</title><link href="http://localhost:4000/2018/08/14/signalbehandling.html" rel="alternate" type="text/html" title="signalbehandling" /><published>2018-08-14T00:00:00+02:00</published><updated>2018-08-14T00:00:00+02:00</updated><id>http://localhost:4000/2018/08/14/signalbehandling</id><content type="html" xml:base="http://localhost:4000/2018/08/14/signalbehandling.html">&lt;!DOCTYPE html&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;&quot; xml:lang=&quot;&quot;&gt;
+&lt;head&gt;
+  &lt;meta charset=&quot;utf-8&quot; /&gt;
+  &lt;meta name=&quot;generator&quot; content=&quot;pandoc&quot; /&gt;
+  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0, user-scalable=yes&quot; /&gt;
+  &lt;title&gt;2018-08-14-signalbehandling&lt;/title&gt;
+  &lt;style type=&quot;text/css&quot;&gt;
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  &lt;/style&gt;
+  &lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full&quot; type=&quot;text/javascript&quot;&gt;&lt;/script&gt;
+  &lt;!--[if lt IE 9]&gt;
+    &lt;script src=&quot;//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js&quot;&gt;&lt;/script&gt;
+  &lt;![endif]--&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;h3 id=&quot;begrepp&quot;&gt;Begrepp&lt;/h3&gt;
+&lt;p&gt;&lt;strong&gt;linjär faltining&lt;/strong&gt; – Som att ta impulssvaret h(n) och dra detta igenom input x(n) med h(0) i bräschen. Vid y(0) har bara x(0) hunnit skickas in. Detta multipliceras med h(0)–beskrivningen av hur systemet svarar på input. I nästa tidssteg kommer även x(1) ha skickats in i systemet, detta värde multipliceras nu med h(0). x(0) är inte helt borta ty length(h(n))&amp;gt;1 och multipliceras nu med h(1). Varje inputvärde klingar ut enligt h(n). Först ljuder det enligt h(0). I nästa t kommer samma inputvärde att ha avtagit enl. h(1). Att det avtar förutsätter givetvis att systemet är stabilt–impulssvaret skulle lika gärna kunna förstärka varje indata och samtidigt skicka in utdata som indata.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math display&quot;&gt;\[ x(n) = 
+  \begin{Bmatrix}
+    2 &amp;amp; 4 &amp;amp; 6 &amp;amp; 4 &amp;amp; 2 
+  \end{Bmatrix} 
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;\[ h(n) = \begin{Bmatrix} 3 &amp;amp; 2 &amp;amp; 1 \end{Bmatrix} \]&lt;/p&gt;
+&lt;p&gt;\[y(n) = \sum_k h(n - k) x(k) \]&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Exempel:&lt;/em&gt; \[y(0) = h(0)x(0)+h(-1)x(1)+h(-2)x(2) \]&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;properties&lt;/em&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;commutativity – spelar ingen roll vilken som är till vänster eller höger om tecknet&lt;/li&gt;
+&lt;li&gt;associativity – givet en faltning av tre signaler spelar det ingen roll vilka två som faltas först&lt;/li&gt;
+&lt;li&gt;distributivity – faltningen mellan en signal och en summa av två signaler kan utvidgas genom att istället räkna på faltningen mellan signalen och den ena signalen i summan pluss faltningen mellan signalen och den andra signalen i summan&lt;/li&gt;
+&lt;li&gt;input-output – faltning mellan impulssvar och input ger utsignalen&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;em&gt;seriekoppling&lt;/em&gt; – utsignalen av två impulssvar efter varandra är faltningen av dessa samt x(n)&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;parallellkoppling&lt;/em&gt; – utsignalen av två parallellkopplade impulssvar är faltningen mellan insignalen och summan av de två impulssvaren&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;korrelation&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;linjär korrelation&lt;/strong&gt; \[ r{yx}(k)=y(k) * x(-k) \]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;linjär autokorrelationen&lt;/strong&gt; \[ r{xx}(k)=x(k) * x(-k) \]&lt;/p&gt;&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;\( x(-n) \) ?&lt;/strong&gt; &lt;span class=&quot;math display&quot;&gt;\[ x(n) = 
+\begin{Bmatrix}
+  2 &amp;amp; \underline{4} &amp;amp; 6 &amp;amp; 4 &amp;amp; 2 
+\end{Bmatrix} 
+\]&lt;/span&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Spegelvänd nu vektorn runt x(0) och fyll i alla n som finns&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;math display&quot;&gt;\[ x(-n) = 
+  \begin{Bmatrix}
+    2 &amp;amp; 4 &amp;amp; 6 &amp;amp; \underline{4} &amp;amp; 2 
+  \end{Bmatrix} 
+\]&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;cirkulär faltning mod n&lt;/strong&gt; – Som vanlig faltning fast loopad.&lt;/p&gt;
+&lt;ol type=&quot;1&quot;&gt;
+&lt;li&gt;Skifta de två signalerna så att n=0 är först i ledet.&lt;/li&gt;
+&lt;li&gt;Skär bort överskott eller lägg till nollor i “slutet” på signalerna (beroende av modulo m)&lt;/li&gt;
+&lt;li&gt;Ställ upp faltningstabell och fyll i. Skillnaden från vanlig faltning är att dessa signaler är periodiska och därför måste man lägga till så många kolumner till vänster om x(0) att alla \( h(n) \) har varit med och bidragit för varje \( n \).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;strong&gt;cirkulär korrelation modulo n&lt;/strong&gt; – ???&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sampling&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;sampeltakt&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;nedsampling/decimeras&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;uppsamplas/interpoleras&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;pol-/nollställe-diagram&lt;/strong&gt; – Analysverktyg som visar hur systemet kommer behandla olika z. För z i nollställen kommer \( H(z) = 0 \). På motsvarande sätt kommer \( H(z) = \infty \) när z är på en pol. Genom att faktorisera \( H(z) = \frac{B(z)}{A(z)} \) och sedan finna rötterna till de båda funktionerna finner vi också poler och nollställen för systemfunktionen. Rötterna till \( B(z) \) ger oss våra nollställen och \( A(z) \) våra poler. Tänk på att förlänga kvoten med z för att få nämnaren på kvadratisk form. När rötterna är funna är det alltid fördelaktigt att skriva om \( H(z) \) så att pol- och nollställen blir synliga.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;poler&lt;/strong&gt; – befinner sig polen inuti enhetscirkeln har man inget att frukta. Detta gör så att signalen dör så småningom och är därför stabilt. Om den ligger på enhetscirkeln är det värre ty då tonar aldrig signaler ut och det blir instabilt. Även poler utanför enhetscirkeln leder till instabila system men då växer även signalen! Har man två komplexkonjugerande poler kommer signalen att svaja. Innanför: minskande svaj, på: evigt svaj, utanför: växande svaj. Om polen ligger till vänster om origo kommer tecknet alternera.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;nollställen&lt;/strong&gt; – Dessa dödar den normaliserade frekvensen de befinner sig på men även frekvenser runt omkring nollställen blir försvagade. För att bara slå ut precis en viss frekvens kan man därför med fördel placera poler på samma frekvens men liiiite närmare origo.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;amplitudfunktioner eller \( |H(\omega)| \)&lt;/strong&gt; – För att se vilka frekvenser en signal består av.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;frekvensrespons eller \( H(\omega) \)&lt;/strong&gt; –&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;fasfunktioner eller \( arg(H(\omega)) \)&lt;/strong&gt; – För att se hur insignalen fasförskjuts för olika vinkelhastigheter.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;linjär fasförskjutning&lt;/strong&gt; – rak linje&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;linjär fasförskjutning&lt;/strong&gt; – När alla frekvenser förändras med en konstant förskjutning. Filtret \( H( \omega ) = A( \omega) e^{j \Phi( \omega )} \) kommer göra precis det. Förändringen bestäms av \( \Phi(\omega) \). Alla symmetriska och antisymmetriska (2 1 0 -1 -2) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;impulssvar eller \( h(n) \)&lt;/strong&gt; – Beskrivningen av hur systemet förstärker input och hur snabbt den tonar bort.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;härled differensekvation&lt;/strong&gt; – om \( h(n) = \begin{Bmatrix} 3 &amp;amp; 2 &amp;amp; 1 \end{Bmatrix} \) så kan man tänka på att h(0) är hur maskinen förstärker det senaste invärdet. Därför går h(n) att skriva om till \[ y(n) = h(0)x(n)+h(1)x(n-1)+h(2)x(n-2) \]&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;härled systemfunktionen&lt;/strong&gt; – systemfunktionen är z transformen av impulssvaret. Transformera!&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;härled Fouriertransformen&lt;/strong&gt; – Fouriertransformen är som z transformen. Man behöver bara byta ut \(z^{-n}\) mot \( e^{-j2πFt} \)&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;härled linjär autokorrektion&lt;/strong&gt; – Mq32984u932hrqweroiuhwqrl&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;härled utsignal vid viss insignal&lt;/strong&gt; – om det är två diskreta vektorer – falta! Annars kan det ofta vara smidigare att första z-transformera, multiplicera och sedan iverstransformera.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;systemdiagram&lt;/strong&gt; – ritning över hur utdata förhåller sig till indata.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;härleda differensekvation&lt;/strong&gt; – Kom ihåg att \( Y(z) = H(z)X(z) \). Systemdiagram är alltid “z-transformerade”. Bilda hjälpfunktioner inne i diagrammet och härled hur de förhåller sig till varandra. När du har \( Y(z) = H(z)X(z) \) måste inverstransformera för att få differensekvationen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;härleda impulssvar&lt;/strong&gt; – När man har \( Y(z) = H(z)X(z) \) löser man ut \( H(z) \) och inverstransformerar.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;härleda amplitudfunktionen&lt;/strong&gt; – Finn pol-/nollställen för \( H(z) \) och skissa amplituden över olika frekvenser.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;LTI&lt;/strong&gt; – Linjära tidsinvarianta system&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;FIR-filter&lt;/strong&gt; – Finite impulse response-filter + impulssvaret är av finit längd + alltid stabilt + alla poler i origo + kan ha en fasförskjutning&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;IIR-filter&lt;/strong&gt; – Infinite impulse response-filter + oändligt impulssvar + stabilt iff alla poler ligger innanför enhetscirkeln + kan inte ha fasförskjutning&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;differensekvationen&lt;/strong&gt; Generella fallet: \[ y(n) + \sum_{k=1}^N a_k y(n-k) = \sum_{k=0}^N b_k x(n - k) \]&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Typisk uppgift: bestäm utsignal&lt;/em&gt; \[ y(n) = 0.5 y(n - 1) + x(n) \] \[ x(n) = ( \frac{1}{3})^n u(n) \] \[ y(-1) = 1 \]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;systemfunktionen H(z)&lt;/strong&gt; – z-transformen av impulssvaret. z-transformen går generellt mellan \( (-\infty , \infty) \) men för kausala system endast ner till 0. \[ H(z) = \sum_{-\infty}^{\infty} h(n)z^{-n} \]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Fouriertransformen H(ω)&lt;/strong&gt; – Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg – fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;DTFT&lt;/strong&gt; – Discrete-time Fourier transform. Typen av Fourieranalys som bör användas då input är diskret. Funktionen som produceras är dock kontinuerlig.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;DFT&lt;/strong&gt; – Discrete Fourier transform. DTFT fast diskret.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;FFT&lt;/strong&gt; – Fast Fourier transform. Algorithm for calculating a sequence of the DFT.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;\[ X( \omega ) = X(z | z = e^{j \omega} ) \]&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;bestämma utsignal baserat på insignal&lt;/strong&gt;&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;</content><author><name></name></author><summary type="html">2018-08-14-signalbehandling Begrepp linjär faltining – Som att ta impulssvaret h(n) och dra detta igenom input x(n) med h(0) i bräschen. Vid y(0) har bara x(0) hunnit skickas in. Detta multipliceras med h(0)–beskrivningen av hur systemet svarar på input. I nästa tidssteg kommer även x(1) ha skickats in i systemet, detta värde multipliceras nu med h(0). x(0) är inte helt borta ty length(h(n))&amp;gt;1 och multipliceras nu med h(1). Varje inputvärde klingar ut enligt h(n). Först ljuder det enligt h(0). I nästa t kommer samma inputvärde att ha avtagit enl. h(1). Att det avtar förutsätter givetvis att systemet är stabilt–impulssvaret skulle lika gärna kunna förstärka varje indata och samtidigt skicka in utdata som indata. \[ x(n) = \begin{Bmatrix} 2 &amp;amp; 4 &amp;amp; 6 &amp;amp; 4 &amp;amp; 2 \end{Bmatrix} \] \[ h(n) = \begin{Bmatrix} 3 &amp;amp; 2 &amp;amp; 1 \end{Bmatrix} \] \[y(n) = \sum_k h(n - k) x(k) \] Exempel: \[y(0) = h(0)x(0)+h(-1)x(1)+h(-2)x(2) \] properties commutativity – spelar ingen roll vilken som är till vänster eller höger om tecknet associativity – givet en faltning av tre signaler spelar det ingen roll vilka två som faltas först distributivity – faltningen mellan en signal och en summa av två signaler kan utvidgas genom att istället räkna på faltningen mellan signalen och den ena signalen i summan pluss faltningen mellan signalen och den andra signalen i summan input-output – faltning mellan impulssvar och input ger utsignalen seriekoppling – utsignalen av två impulssvar efter varandra är faltningen av dessa samt x(n) parallellkoppling – utsignalen av två parallellkopplade impulssvar är faltningen mellan insignalen och summan av de två impulssvaren korrelation linjär korrelation \[ r{yx}(k)=y(k) * x(-k) \] linjär autokorrelationen \[ r{xx}(k)=x(k) * x(-k) \] \( x(-n) \) ? \[ x(n) = \begin{Bmatrix} 2 &amp;amp; \underline{4} &amp;amp; 6 &amp;amp; 4 &amp;amp; 2 \end{Bmatrix} \] Spegelvänd nu vektorn runt x(0) och fyll i alla n som finns \[ x(-n) = \begin{Bmatrix} 2 &amp;amp; 4 &amp;amp; 6 &amp;amp; \underline{4} &amp;amp; 2 \end{Bmatrix} \] cirkulär faltning mod n – Som vanlig faltning fast loopad. Skifta de två signalerna så att n=0 är först i ledet. Skär bort överskott eller lägg till nollor i “slutet” på signalerna (beroende av modulo m) Ställ upp faltningstabell och fyll i. Skillnaden från vanlig faltning är att dessa signaler är periodiska och därför måste man lägga till så många kolumner till vänster om x(0) att alla \( h(n) \) har varit med och bidragit för varje \( n \). cirkulär korrelation modulo n – ??? sampling sampeltakt nedsampling/decimeras uppsamplas/interpoleras pol-/nollställe-diagram – Analysverktyg som visar hur systemet kommer behandla olika z. För z i nollställen kommer \( H(z) = 0 \). På motsvarande sätt kommer \( H(z) = \infty \) när z är på en pol. Genom att faktorisera \( H(z) = \frac{B(z)}{A(z)} \) och sedan finna rötterna till de båda funktionerna finner vi också poler och nollställen för systemfunktionen. Rötterna till \( B(z) \) ger oss våra nollställen och \( A(z) \) våra poler. Tänk på att förlänga kvoten med z för att få nämnaren på kvadratisk form. När rötterna är funna är det alltid fördelaktigt att skriva om \( H(z) \) så att pol- och nollställen blir synliga. poler – befinner sig polen inuti enhetscirkeln har man inget att frukta. Detta gör så att signalen dör så småningom och är därför stabilt. Om den ligger på enhetscirkeln är det värre ty då tonar aldrig signaler ut och det blir instabilt. Även poler utanför enhetscirkeln leder till instabila system men då växer även signalen! Har man två komplexkonjugerande poler kommer signalen att svaja. Innanför: minskande svaj, på: evigt svaj, utanför: växande svaj. Om polen ligger till vänster om origo kommer tecknet alternera. nollställen – Dessa dödar den normaliserade frekvensen de befinner sig på men även frekvenser runt omkring nollställen blir försvagade. För att bara slå ut precis en viss frekvens kan man därför med fördel placera poler på samma frekvens men liiiite närmare origo. amplitudfunktioner eller \( |H(\omega)| \) – För att se vilka frekvenser en signal består av. frekvensrespons eller \( H(\omega) \) – fasfunktioner eller \( arg(H(\omega)) \) – För att se hur insignalen fasförskjuts för olika vinkelhastigheter. linjär fasförskjutning – rak linje linjär fasförskjutning – När alla frekvenser förändras med en konstant förskjutning. Filtret \( H( \omega ) = A( \omega) e^{j \Phi( \omega )} \) kommer göra precis det. Förändringen bestäms av \( \Phi(\omega) \). Alla symmetriska och antisymmetriska (2 1 0 -1 -2) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar. impulssvar eller \( h(n) \) – Beskrivningen av hur systemet förstärker input och hur snabbt den tonar bort. härled differensekvation – om \( h(n) = \begin{Bmatrix} 3 &amp;amp; 2 &amp;amp; 1 \end{Bmatrix} \) så kan man tänka på att h(0) är hur maskinen förstärker det senaste invärdet. Därför går h(n) att skriva om till \[ y(n) = h(0)x(n)+h(1)x(n-1)+h(2)x(n-2) \] härled systemfunktionen – systemfunktionen är z transformen av impulssvaret. Transformera! härled Fouriertransformen – Fouriertransformen är som z transformen. Man behöver bara byta ut \(z^{-n}\) mot \( e^{-j2πFt} \) härled linjär autokorrektion – Mq32984u932hrqweroiuhwqrl härled utsignal vid viss insignal – om det är två diskreta vektorer – falta! Annars kan det ofta vara smidigare att första z-transformera, multiplicera och sedan iverstransformera. systemdiagram – ritning över hur utdata förhåller sig till indata. härleda differensekvation – Kom ihåg att \( Y(z) = H(z)X(z) \). Systemdiagram är alltid “z-transformerade”. Bilda hjälpfunktioner inne i diagrammet och härled hur de förhåller sig till varandra. När du har \( Y(z) = H(z)X(z) \) måste inverstransformera för att få differensekvationen. härleda impulssvar – När man har \( Y(z) = H(z)X(z) \) löser man ut \( H(z) \) och inverstransformerar. härleda amplitudfunktionen – Finn pol-/nollställen för \( H(z) \) och skissa amplituden över olika frekvenser. LTI – Linjära tidsinvarianta system FIR-filter – Finite impulse response-filter + impulssvaret är av finit längd + alltid stabilt + alla poler i origo + kan ha en fasförskjutning IIR-filter – Infinite impulse response-filter + oändligt impulssvar + stabilt iff alla poler ligger innanför enhetscirkeln + kan inte ha fasförskjutning differensekvationen Generella fallet: \[ y(n) + \sum_{k=1}^N a_k y(n-k) = \sum_{k=0}^N b_k x(n - k) \] Typisk uppgift: bestäm utsignal \[ y(n) = 0.5 y(n - 1) + x(n) \] \[ x(n) = ( \frac{1}{3})^n u(n) \] \[ y(-1) = 1 \] systemfunktionen H(z) – z-transformen av impulssvaret. z-transformen går generellt mellan \( (-\infty , \infty) \) men för kausala system endast ner till 0. \[ H(z) = \sum_{-\infty}^{\infty} h(n)z^{-n} \] Fouriertransformen H(ω) – Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg – fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln. DTFT – Discrete-time Fourier transform. Typen av Fourieranalys som bör användas då input är diskret. Funktionen som produceras är dock kontinuerlig. DFT – Discrete Fourier transform. DTFT fast diskret. FFT – Fast Fourier transform. Algorithm for calculating a sequence of the DFT. \[ X( \omega ) = X(z | z = e^{j \omega} ) \] bestämma utsignal baserat på insignal</summary></entry><entry><title type="html">Sannolikhetsteori och statistikteori</title><link href="http://localhost:4000/2018/06/21/statistik.html" rel="alternate" type="text/html" title="Sannolikhetsteori och statistikteori" /><published>2018-06-21T00:00:00+02:00</published><updated>2018-06-21T00:00:00+02:00</updated><id>http://localhost:4000/2018/06/21/statistik</id><content type="html" xml:base="http://localhost:4000/2018/06/21/statistik.html">&lt;!DOCTYPE html&gt;
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;&quot; xml:lang=&quot;&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot; /&gt;
