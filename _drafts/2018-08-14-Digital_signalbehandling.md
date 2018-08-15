@@ -64,9 +64,13 @@ __cirkulär faltning mod n__ -- Som vanlig faltning fast loopad.
 
 __cirkulär korrelation modulo n__ -- ???
 
-__sampling__
+__sampling__ -- Används för att diskretisera någon signal genom att läsa av värdet vid varje \\( t = n T_s = n \\frac{1}{F_s}. För att få med alla frekvenser från den analoga signalen krävs att man samplar med dubbelt så hög frekvens som den högsta i signalen.
 
-__sampeltakt__
+_terminologi_
+
++ \\( T_s \\) -- perioden mellan varje sampel (sec)
++ \\( F_s \\) -- sampeltakten (Hz)
+
 
 __nedsampling/decimeras__
 
@@ -77,14 +81,18 @@ __pol-/nollställe-diagram__ -- Analysverktyg som visar hur systemet kommer beha
 
 + __poler__ -- befinner sig polen inuti enhetscirkeln har man inget att frukta. Detta gör så att signalen dör så småningom och är därför stabilt. Om den ligger på enhetscirkeln är det värre ty då tonar aldrig signaler ut och det blir instabilt. Även poler utanför enhetscirkeln leder till instabila system men då växer även signalen! Har man två komplexkonjugerande poler kommer signalen att svaja. Innanför: minskande svaj, på: evigt svaj, utanför: växande svaj. Om polen ligger till vänster om origo kommer tecknet alternera.
 + __nollställen__ -- Dessa dödar den normaliserade frekvensen de befinner sig på men även frekvenser runt omkring nollställen blir försvagade. För att bara slå ut precis en viss frekvens kan man därför med fördel placera poler på samma frekvens men liiiite närmare origo.
++ __maximum phase system__ -- H(z) där alla nollställen ligger utanför enhetscirkeln.
++ __minimum phase system__ -- H(z) där alla nollställen ligger inuti enhetscirkeln.
++ __mixed phase system__ -- H(z) med nollställen både inuti och utanför enhetscirkeln.
++ __kausalt system__ -- om antalet poler är större än eller lika med antalet nollställen. 
 
-__amplitudfunktioner eller \\( |H(\\omega)| \\)__ -- För att se vilka frekvenser en signal består av.
+__amplitudfunktionen eller \\( |H(\\omega)| \\)__ -- För att se vilka frekvenser en signal består av.
 
-__frekvensrespons eller \\( H(\\omega) \\)__ -- 
+__frekvensrespons eller \\( H(\\omega) \\)__ -- Det samma som amplitudfunktionen?
 
-__fasfunktioner eller \\( arg(H(\\omega)) \\)__ -- För att se hur insignalen fasförskjuts för olika vinkelhastigheter.
+__fasfunktionen eller \\( arg(H(\\omega)) \\)__ -- För att se hur insignalen fasförskjuts för olika vinkelhastigheter.
 
-+ __linjär fasförskjutning__ -- rak linje
++ __rak linje__ -- linjär fasförskjutning
 + 
 
  __linjär fasförskjutning__ -- När alla frekvenser förändras med en konstant förskjutning. Filtret \\( H( \\omega ) = A( \\omega) e^{j \\Phi( \\omega )} \\) kommer göra precis det. Förändringen bestäms av \\( \\Phi(\\omega) \\). Alla symmetriska och antisymmetriska (2 1 0 -1 -2) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar.
@@ -108,19 +116,21 @@ __systemdiagram__ -- ritning över hur utdata förhåller sig till indata.
 
 __LTI__ -- Linjära tidsinvarianta system
 
+__FIR-system__ -- Finite impulse response-system
 
-__FIR-filter__ -- Finite impulse response-filter
 + impulssvaret är av finit längd
 + alltid stabilt
 + alla poler i origo
 + kan ha en fasförskjutning
 
-__IIR-filter__ -- Infinite impulse response-filter
+__IIR-system__ -- Infinite impulse response-system (feedbacksystem)
+
 + oändligt impulssvar
 + stabilt iff alla poler ligger innanför enhetscirkeln
 + kan inte ha fasförskjutning
 
 __differensekvationen__
+
 Generella fallet:
 \\[ y(n) + \\sum_{k=1}^N a_k y(n-k) = \\sum_{k=0}^N b_k x(n - k) \\]
 
@@ -129,18 +139,61 @@ _Typisk uppgift: bestäm utsignal_
 \\[ x(n)  = ( \\frac{1}{3})^n u(n) \\]
 \\[ y(-1) = 1 \\]
 
+
 __systemfunktionen H(z)__ -- z-transformen av impulssvaret. z-transformen går generellt mellan \\( (-\\infty , \\infty) \\) men för kausala system endast ner till 0.
 \\[ H(z) = \\sum_{-\\infty}^{\\infty} h(n)z^{-n} \\]
 
-__Fouriertransformen H(ω)__ -- Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg -- fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln.
 
-+ __DTFT__ -- Discrete-time Fourier transform. Typen av Fourieranalys som bör användas då input är diskret. Funktionen som produceras är dock kontinuerlig.
-+ __DFT__ -- Discrete Fourier transform. DTFT fast diskret.
-+ __FFT__ -- Fast Fourier transform. Algorithm for calculating a sequence of the DFT.
+__Fouriertransformen H(ω)__ -- Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg -- fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln. I utbyte mot att den existerar har den två krav: att impulssvaret är kausalt och stabilt.
+
+__DTFT__ -- Discrete-time Fourier transform. Typen av Fourieranalys som bör användas då input är diskret. Funktionen som produceras är dock kontinuerlig.
+
+__DFT__ -- Discrete Fourier transform. DTFT fast med diskret utdata. Eftersom funktionen är periodisk blir en tidsfördröjning med -1 i DFT detsamma som att skjuta fram varje värde ett steg till höger. Då DFT är cyklisk är x(-1) detsamma som x(N) och det sista värdet i den ursprungliga sekvensen tar plats på n=0.
+
+_HOWTO:_ 
+
+1. Låt 
+
+$$ x(n) = 
+  \begin{Bmatrix}
+    2 & 4 & 6 & 4 & 2 
+  \end{Bmatrix} 
+$$
+
+2. Välj längd N och beräkna DTFT vid frekvenserna
+
+$$ \omega = 2 \pi 
+  \begin{Bmatrix}
+    0 & \frac{1}{N} & \frac{2}{N} & \frac{3}{N} & ... & \frac{N-1}{N} 
+  \end{Bmatrix} 
+$$
+
+3. Med dessa värden genereras nu den "diskreta fouriertransformen" för k genom att summera över alla n mellan 0 och N-1
+
+\\[ X_{DFT} (k) = \\sum_{n=0}^{N-1} x(n) e^{-j 2 \\pi \\frac{k}{N} N} \\]
+
+__FFT__ -- Fast Fourier transform. Algorithm for calculating a sequence of the DFT.
 
 \\[ X( \\omega ) = X(z | z = e^{j \\omega} ) \\]
 
 
-__bestämma utsignal baserat på insignal__
+#### matematik
+
+__geometrisk summa__
+
+\\[ \\sum_{k=m}^n a^k = \\frac{a^{n+1} - a^m}{a-1} \\]
 
 
+__geometrisk serie__
+
+\\[ \\sum_{k=0}^{\\infty} a^k = \\frac{a^0}{1-a} \\quad |a| < 1 >\\]
+
+
+__partialbråksuppdelning__ -- Hur partialbråket kommer se ut beror på faktorer i nämnaren hos den ursprungliga kvoten. När de olika termerna är uppställda på andra sidan likhetstecknet multipliceras högersidan med vänstersidans nämnare. Sedan får man A, B osv.. genom gausselimination.
+
+\\[ \\frac{2x^2+x-3}{(x+1)^2(x+2)} = \\frac{A}{x+1}+\\frac{B}{(x+1)^2}+\\frac{C}{x+2} \\]
+
++ \\(  x+a \\to \\frac{A}{x+a} \\)
++ \\( (x+a)^n \\to \\frac{A_1}{x+a} + ... + \\frac{A_n}{(x+a)^n} \\)
++ \\(  x^2 + ax + b \\to \\frac{A_1 x + B_1}{x^2 +ax + b} \\)
++ \\(  x^2 + ax + b \\to \\frac{A_1 x + B_1}{x^2 +ax + b} + ... + \\frac{A_n x + B_n}{(x^2 +ax + b)^n}\\)

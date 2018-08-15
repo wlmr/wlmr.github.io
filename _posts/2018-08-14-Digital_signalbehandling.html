@@ -63,20 +63,28 @@ title: "Digital signalbehandling"
 <li>Ställ upp faltningstabell och fyll i. Skillnaden från vanlig faltning är att dessa signaler är periodiska och därför måste man lägga till så många kolumner till vänster om x(0) att alla \( h(n) \) har varit med och bidragit för varje \( n \).</li>
 </ol>
 <p><strong>cirkulär korrelation modulo n</strong> – ???</p>
-<p><strong>sampling</strong></p>
-<p><strong>sampeltakt</strong></p>
+<p><strong>sampling</strong> – Används för att diskretisera någon signal genom att läsa av värdet vid varje \( t = n T_s = n \frac{1}{F_s}. För att få med alla frekvenser från den analoga signalen krävs att man samplar med dubbelt så hög frekvens som den högsta i signalen.</p>
+<p><em>terminologi</em></p>
+<ul>
+<li>\( T_s \) – perioden mellan varje sampel (sec)</li>
+<li>\( F_s \) – sampeltakten (Hz)</li>
+</ul>
 <p><strong>nedsampling/decimeras</strong></p>
 <p><strong>uppsamplas/interpoleras</strong></p>
 <p><strong>pol-/nollställe-diagram</strong> – Analysverktyg som visar hur systemet kommer behandla olika z. För z i nollställen kommer \( H(z) = 0 \). På motsvarande sätt kommer \( H(z) = \infty \) när z är på en pol. Genom att faktorisera \( H(z) = \frac{B(z)}{A(z)} \) och sedan finna rötterna till de båda funktionerna finner vi också poler och nollställen för systemfunktionen. Rötterna till \( B(z) \) ger oss våra nollställen och \( A(z) \) våra poler. Tänk på att förlänga kvoten med z för att få nämnaren på kvadratisk form. När rötterna är funna är det alltid fördelaktigt att skriva om \( H(z) \) så att pol- och nollställen blir synliga.</p>
 <ul>
 <li><strong>poler</strong> – befinner sig polen inuti enhetscirkeln har man inget att frukta. Detta gör så att signalen dör så småningom och är därför stabilt. Om den ligger på enhetscirkeln är det värre ty då tonar aldrig signaler ut och det blir instabilt. Även poler utanför enhetscirkeln leder till instabila system men då växer även signalen! Har man två komplexkonjugerande poler kommer signalen att svaja. Innanför: minskande svaj, på: evigt svaj, utanför: växande svaj. Om polen ligger till vänster om origo kommer tecknet alternera.</li>
 <li><strong>nollställen</strong> – Dessa dödar den normaliserade frekvensen de befinner sig på men även frekvenser runt omkring nollställen blir försvagade. För att bara slå ut precis en viss frekvens kan man därför med fördel placera poler på samma frekvens men liiiite närmare origo.</li>
+<li><strong>maximum phase system</strong> – H(z) där alla nollställen ligger utanför enhetscirkeln.</li>
+<li><strong>minimum phase system</strong> – H(z) där alla nollställen ligger inuti enhetscirkeln.</li>
+<li><strong>mixed phase system</strong> – H(z) med nollställen både inuti och utanför enhetscirkeln.</li>
+<li><strong>kausalt system</strong> – om antalet poler är större än eller lika med antalet nollställen.</li>
 </ul>
-<p><strong>amplitudfunktioner eller \( |H(\omega)| \)</strong> – För att se vilka frekvenser en signal består av.</p>
-<p><strong>frekvensrespons eller \( H(\omega) \)</strong> –</p>
-<p><strong>fasfunktioner eller \( arg(H(\omega)) \)</strong> – För att se hur insignalen fasförskjuts för olika vinkelhastigheter.</p>
+<p><strong>amplitudfunktionen eller \( |H(\omega)| \)</strong> – För att se vilka frekvenser en signal består av.</p>
+<p><strong>frekvensrespons eller \( H(\omega) \)</strong> – Det samma som amplitudfunktionen?</p>
+<p><strong>fasfunktionen eller \( arg(H(\omega)) \)</strong> – För att se hur insignalen fasförskjuts för olika vinkelhastigheter.</p>
 <ul>
-<li><strong>linjär fasförskjutning</strong> – rak linje</li>
+<li><strong>rak linje</strong> – linjär fasförskjutning</li>
 <li></li>
 </ul>
 <p><strong>linjär fasförskjutning</strong> – När alla frekvenser förändras med en konstant förskjutning. Filtret \( H( \omega ) = A( \omega) e^{j \Phi( \omega )} \) kommer göra precis det. Förändringen bestäms av \( \Phi(\omega) \). Alla symmetriska och antisymmetriska (2 1 0 -1 -2) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar.</p>
@@ -95,18 +103,61 @@ title: "Digital signalbehandling"
 <li><strong>härleda amplitudfunktionen</strong> – Finn pol-/nollställen för \( H(z) \) och skissa amplituden över olika frekvenser.</li>
 </ul>
 <p><strong>LTI</strong> – Linjära tidsinvarianta system</p>
-<p><strong>FIR-filter</strong> – Finite impulse response-filter + impulssvaret är av finit längd + alltid stabilt + alla poler i origo + kan ha en fasförskjutning</p>
-<p><strong>IIR-filter</strong> – Infinite impulse response-filter + oändligt impulssvar + stabilt iff alla poler ligger innanför enhetscirkeln + kan inte ha fasförskjutning</p>
-<p><strong>differensekvationen</strong> Generella fallet: \[ y(n) + \sum_{k=1}^N a_k y(n-k) = \sum_{k=0}^N b_k x(n - k) \]</p>
+<p><strong>FIR-system</strong> – Finite impulse response-system</p>
+<ul>
+<li>impulssvaret är av finit längd</li>
+<li>alltid stabilt</li>
+<li>alla poler i origo</li>
+<li>kan ha en fasförskjutning</li>
+</ul>
+<p><strong>IIR-system</strong> – Infinite impulse response-system (feedbacksystem)</p>
+<ul>
+<li>oändligt impulssvar</li>
+<li>stabilt iff alla poler ligger innanför enhetscirkeln</li>
+<li>kan inte ha fasförskjutning</li>
+</ul>
+<p><strong>differensekvationen</strong></p>
+<p>Generella fallet: \[ y(n) + \sum_{k=1}^N a_k y(n-k) = \sum_{k=0}^N b_k x(n - k) \]</p>
 <p><em>Typisk uppgift: bestäm utsignal</em> \[ y(n) = 0.5 y(n - 1) + x(n) \] \[ x(n) = ( \frac{1}{3})^n u(n) \] \[ y(-1) = 1 \]</p>
 <p><strong>systemfunktionen H(z)</strong> – z-transformen av impulssvaret. z-transformen går generellt mellan \( (-\infty , \infty) \) men för kausala system endast ner till 0. \[ H(z) = \sum_{-\infty}^{\infty} h(n)z^{-n} \]</p>
-<p><strong>Fouriertransformen H(ω)</strong> – Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg – fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln.</p>
-<ul>
-<li><strong>DTFT</strong> – Discrete-time Fourier transform. Typen av Fourieranalys som bör användas då input är diskret. Funktionen som produceras är dock kontinuerlig.</li>
-<li><strong>DFT</strong> – Discrete Fourier transform. DTFT fast diskret.</li>
-<li><strong>FFT</strong> – Fast Fourier transform. Algorithm for calculating a sequence of the DFT.</li>
-</ul>
+<p><strong>Fouriertransformen H(ω)</strong> – Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg – fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln. I utbyte mot att den existerar har den två krav: att impulssvaret är kausalt och stabilt.</p>
+<p><strong>DTFT</strong> – Discrete-time Fourier transform. Typen av Fourieranalys som bör användas då input är diskret. Funktionen som produceras är dock kontinuerlig.</p>
+<p><strong>DFT</strong> – Discrete Fourier transform. DTFT fast med diskret utdata. Eftersom funktionen är periodisk blir en tidsfördröjning med -1 i DFT detsamma som att skjuta fram varje värde ett steg till höger. Då DFT är cyklisk är x(-1) detsamma som x(N) och det sista värdet i den ursprungliga sekvensen tar plats på n=0.</p>
+<p><em>HOWTO:</em></p>
+<ol type="1">
+<li>Låt</li>
+</ol>
+<p><span class="math display">\[ x(n) = 
+  \begin{Bmatrix}
+    2 &amp; 4 &amp; 6 &amp; 4 &amp; 2 
+  \end{Bmatrix} 
+\]</span></p>
+<ol start="2" type="1">
+<li>Välj längd N och beräkna DTFT vid frekvenserna</li>
+</ol>
+<p><span class="math display">\[ \omega = 2 \pi 
+  \begin{Bmatrix}
+    0 &amp; \frac{1}{N} &amp; \frac{2}{N} &amp; \frac{3}{N} &amp; ... &amp; \frac{N-1}{N} 
+  \end{Bmatrix} 
+\]</span></p>
+<ol start="3" type="1">
+<li>Med dessa värden genereras nu den “diskreta fouriertransformen” för k genom att summera över alla n mellan 0 och N-1</li>
+</ol>
+<p>\[ X_{DFT} (k) = \sum_{n=0}^{N-1} x(n) e^{-j 2 \pi \frac{k}{N} N} \]</p>
+<p><strong>FFT</strong> – Fast Fourier transform. Algorithm for calculating a sequence of the DFT.</p>
 <p>\[ X( \omega ) = X(z | z = e^{j \omega} ) \]</p>
-<p><strong>bestämma utsignal baserat på insignal</strong></p>
+<h4 id="matematik">matematik</h4>
+<p><strong>geometrisk summa</strong></p>
+<p>\[ \sum_{k=m}^n a^k = \frac{a^{n+1} - a^m}{a-1} \]</p>
+<p><strong>geometrisk serie</strong></p>
+<p>\[ \sum_{k=0}^{\infty} a^k = \frac{a^0}{1-a} \quad |a| &lt; 1 &gt;\]</p>
+<p><strong>partialbråksuppdelning</strong> – Hur partialbråket kommer se ut beror på faktorer i nämnaren hos den ursprungliga kvoten. När de olika termerna är uppställda på andra sidan likhetstecknet multipliceras högersidan med vänstersidans nämnare. Sedan får man A, B osv.. genom gausselimination.</p>
+<p>\[ \frac{2x<sup>2+x-3}{(x+1)</sup>2(x+2)} = \frac{A}{x+1}+\frac{B}{(x+1)^2}+\frac{C}{x+2} \]</p>
+<ul>
+<li>\( x+a \to \frac{A}{x+a} \)</li>
+<li>\( (x+a)^n \to \frac{A_1}{x+a} + … + \frac{A_n}{(x+a)^n} \)</li>
+<li>\( x^2 + ax + b \to \frac{A_1 x + B_1}{x^2 +ax + b} \)</li>
+<li>\( x^2 + ax + b \to \frac{A_1 x + B_1}{x^2 +ax + b} + … + \frac{A_n x + B_n}{(x^2 +ax + b)^n}\)</li>
+</ul>
 </body>
 </html>
