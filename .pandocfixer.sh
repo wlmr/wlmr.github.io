@@ -1,4 +1,6 @@
 #!/bin/bash
+# Run this together with the name of the _draft/-file that you want --mathjax to fix math for
+# $1 = filename without extention
 
 title=$(echo "$1" | sed "s/[^a-zA-Z]*//")
 

@@ -1,8 +1,3 @@
----
-layout: post
-title: "Sannolikhetsteori och statistikteori"
----
-
 ### DEL 1: Sannolikhet eller hur man beskriver slumpen
 
 __utfall__ -- resultatet av ett slumpmässigt försök
@@ -17,6 +12,7 @@ __disjunkta händelser__ -- kan inte inträffa samtidigt
 
 __Kolmogorovs axiomsystem__:
 
+
 1. Händelsen P(A) måste ligga mellan 0 & 1
 2. P(utfallsrummet) = 1
 3. om A & B är parvis oförenliga gäller \\( P(A) + P(B) = P(A \\cup B) \\)
@@ -27,9 +23,12 @@ P(A*) = 1 - P(A)
 __Additionssatsen__
 P(A or B) = P(A) + P(B) - P(A and B)
 
+__oberoende händelser__ -- \\( P(A \\cap B) = P(A)P(B) \\)
+
 __Booles olikhet__ -- \\( P(A \\cup B) \\leq P(A) + P(B) \\)
 
-##### Kombinatorik
+#### Kombinatorik
+
 Förutsättningar:
 
 * n element
@@ -97,25 +96,24 @@ då X tar värdena a = 1 och b = 0 sägs X vara Bernoulli-fördelad.
 3. __Likformig fördelning__ -- X antar värden 1,2,..,m och alla dessa med samma sannolikhet.
 \\[p_X(k)=1/m, k = 1,2,...,m.\\]
 
-4. __För-första-gången-fördelning__ 
+4. __För-första-gången-fördelning__  -- När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
 \\[ p_X(k)=(1-p)^{k-1}p,    k=1,2,...,\\]
-När samma oberoende försök görs om och om tills ett visst resultat erhålls. Antalet försök t.o.m. resultatet är då en s.v. med ffg-fördelning.
 \\[ X \\in ffg(p) \\]
 
-5. __Geometrisk fördelning__ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p)
+5. __Geometrisk fördelning__ -- genom att skippa resultatrundan som räknas in i ffg-fördelningen tillhör X Ge(p).
 \\[p_X(k) = (1 - p)^kp,    k = 0,1,2,...,\\]
 
 
 6. __Binomialfördelning__ -- slumpmässigt försök med en händelse A där P(A) = p upprepas n oberoende ggr. 
-\\[ p_X(k) = \\binom{n}{k} p^k ( 1 - p )^{n - k} \\]
+\\[ p_X(k) = \\binom{ n }{ k } p^k ( 1 - p )^{ n - k } \\]
 \\[ X \\in Bin(n,p) \\]
 
 7. __Hypergeometrisk fördelning__ -- uppträdde vid dragning utan återläggning ur urna med vita och svarta kulor.
 \\[ p_X(k) = \\frac{\\binom{v}{k} \\binom{s}{n-k}}{\\binom{v+s}{n}}\\]
 \\[ X \\in Hyp(N,n,p)\\]
 
-8. __Poisson-fördelning__ 
-\\[ p_X (k) = \\frac{ \\mu^k }{ k! }e^{ -e } \\]
+8. __Poisson-fördelning__ -- beskriver antalet företelser som inträffar oberoende av varandra.
+\\[ p_X(k) = \\frac{ \\mu^k }{ k! }e^{ -e } \\]
 \\[ X \\in Po(\\mu)\\]
 
 #### kontinuerlig stokastisk variabel
@@ -504,6 +502,7 @@ Aint gonna happen gurl
 \\[ f = n-1 \\]
 
 #### Två stickprov
+När man vill mäta skillnaden mellan två stickprov. Om de två stickproven parvis korrelerar bör metoden tillhörande stickprov i par användas.
 
 Om σ1 och σ2 är kända:
 
@@ -516,6 +515,7 @@ Om σ1 = σ2 = σ:
 \\[ d = \\sigma \\sqrt{ \\frac{1}{n_1} + \\frac{1}{n_2}} \\]
 
 #### Stickprov i par
+När det utförs två mätningar på n olika objekt. 
 
 Skapa \\[ z = y - x \\]
 
