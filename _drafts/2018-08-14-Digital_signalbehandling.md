@@ -6,13 +6,12 @@ Generella fallet:
 \\[ y(n) + \\sum_{k=1}^N a_k y(n-k) = \\sum_{k=0}^N b_k x(n - k) \\]
 
 
-
 __impulssvar eller \\( h(n) \\)__ -- Beskrivningen av hur systemet förstärker input och hur snabbt den tonar bort. 
 
 + __härled differensekvation__ -- om \\( h(n) = \\begin{Bmatrix} 3 & 2 & 1 \\end{Bmatrix} \\) så kan man tänka på att \\( h(0) \\) är hur maskinen förstärker det senaste invärdet. Därför går \\( h(n) \\) att skriva om till \\( y(n) = h(0)x(n)+h(1)x(n-1)+h(2)x(n-2) \\)
 + __härled systemfunktionen__ -- systemfunktionen är z transformen av impulssvaret. Transformera!
 + __härled Fouriertransformen__ -- Fouriertransformen är som z transformen. Man behöver bara byta ut \\(z^{-n}\\) mot \\( e^{-j2 \\pi Ft} \\)
-+ __härled linjär autokorrektion__ -- \\( r{xx}(k)=x(k) * x(-k) \\). Man får \\( x(-k) \\) genom att snurra \\( x(n) \\ runt y-axeln.
++ __härled linjär autokorrektion__ -- \\( r{xx}(k)=x(k) * x(-k) \\). Man får \\( x(-k) \\) genom att snurra \\( x(n) \\) runt y-axeln.
 + __härled utsignal vid viss insignal__ -- om det är två diskreta vektorer -- falta! Annars kan det ofta vara smidigare att första z-transformera, multiplicera och sedan iverstransformera.
 
 
@@ -36,7 +35,7 @@ _properties_
 + distributivity -- faltningen mellan en signal och en summa av två signaler kan utvidgas genom att istället räkna på faltningen mellan signalen och den ena signalen i summan pluss faltningen mellan signalen och den andra signalen i summan
 + input-output -- faltning mellan impulssvar och input ger utsignalen
 
-_seriekoppling_ -- utsignalen av två impulssvar efter varandra är faltningen av dessa samt x(n)
+_seriekoppling_ -- utsignalen av två impulssvar efter varandra är faltningen av dessa samt \\( x(n) \\)
 
 _parallellkoppling_ -- utsignalen av två parallellkopplade impulssvar är faltningen mellan insignalen och summan av de två impulssvaren
 
@@ -61,14 +60,16 @@ $$ x(-n) =
 $$ 
 
 
-__cirkulär faltning mod n__ -- Som vanlig faltning fast loopad.
+__cirkulär faltning mod m__ -- Som vanlig faltning fast med loopade signaler.
 
-1. Skifta de två signalerna så att n=0 är först i ledet.
-2. Skär bort överskott eller lägg till nollor i "slutet" på signalerna (beroende av modulo m)
-3. Ställ upp faltningstabell och fyll i. Skillnaden från vanlig faltning är att dessa signaler är periodiska och därför måste man lägga till så många kolumner till vänster om x(0) att alla \\( h(n) \\) har varit med och bidragit för varje \\( n \\).
+1. Skär bort överskott eller lägg till nollor i "slutet" på signalerna så att de är m långa (beroende av modulo m).
+2. Tidsförskjut de två signalerna så att \\( n=0 \\) är först i ledet. Dessa signaler är cykliska så värdet från det första elementet kommer igen efter det sista, osv..
+3. Ställ upp faltningstabell och fyll i. Skillnaden från vanlig faltning är att dessa signaler är periodiska och därför måste man lägga till så många kolumner till vänster om \\( x(0) \\) att alla \\( h(n) \\) har varit med och bidragit för varje \\( n \\).
 
 
-__cirkulär korrelation modulo n__ -- ???
+__cirkulär korrelation modulo n__ -- 
+
+1. Spegelvänd den ena signalen runt \\( n = 0 )\\ och fortsätt sedan enl. stegen för cirkulär faltning.
 
 
 ## Transformer
@@ -78,20 +79,27 @@ Transformer är funktioner som förvränger definitionsmängden på något sätt
 
 ### Z-transformen H(z)
 
-Transformen för diskreta signaler. Genom att transformera ett systems differensekvation öppnas många dörrar. 
+Transformen för diskreta signaler. Från z-transformen av differensekvationen leder broar i alla möjliga riktningar. Nedan följer några av fördelarna.
 
 + faltning blir multiplikation
-+ analys och förändring av poler och nollställen
++ analys och förändring av poler och nollställen nära till hands
 + systemdiagram kan ritas upp
 + Fouriertransformen ligger ett variabelbyte bort
 + differensekvationen ges genom inverstransformering
 
 
-_Typisk uppgift: bestäm y(n) med begynnelsevilkor_ -- Här använder man den s.k. ensidiga z-transformen. Denna variant börjar först sin summering vid n = 0.
+__bestäm y(n) med begynnelsevilkor__ -- Här använder man den s.k. ensidiga z-transformen. Denna variant börjar först sin summering vid \\( n = 0 \\). Så länge systemet i fråga inte är kausalt och genererar utdata redan när n är mindre än noll kommer dock tidsskifte att leda till ett annorlunda resultat
 
+\\[ Y(n-k) \\Leftrightarrow z^{-k} [ Y^+ (z) + \\sum_{n=1}^k x(-n) z^n ] \\]
+\\[ = [ y(-k)+y(-k+1)z^{-1} +...+ y(-1) z^{-k+1} + z^{-k} Y^+ (z) ] \\]
+
++ __exempeluppgift__
 \\[ y(n)  = 0.5 y(n - 1) + x(n) \\]
 \\[ x(n)  = ( \\frac{1}{3})^n u(n) \\]
 \\[ y(-1) = 1 \\]
+
+
+__bestäm y(n) då insignalen är en sinusvåg__ -- Som vanligt kommer z-transformen \\( Y(z) \\) vara en produkt av \\( H(z) X(z) = \\frac{N(z)}{D(z)} X(z) \\). Genom partialbråksuppdelning erhålls summan \\( \\frac{N_1 (z)}{D(z)} + \\frac{C_0 + C_1 z^{-1}}{1-2 \\cos ( \\omega_0) z^{-1} + z^{-2}} \\). Efter inv. trans. är svaret funnet. Den vänstra termen är en transient lösning medan den andra är stationär. Den stationära lösningen kommer vara av typen \\( A \\cos ( \\omega_0 n) + B \\sin ( \\omega_0 n) \\)
 
 
 
@@ -104,9 +112,14 @@ __systemdiagram__ -- ritning av hur utdata förhåller sig till indata i frekven
 + __härleda impulssvar__ -- När man har \\( Y(z) = H(z)X(z) \\) löser man ut \\( H(z) \\) och inverstransformerar.
 + __härleda amplitudfunktionen__ -- Finn pol-/nollställen för \\( H(z) \\) och skissa amplituden över olika frekvenser.
 
-__inverstransformering__ -- Kursens fetaste trixeri.
+__inverstransformering__ -- Tips och tricks samlade nedan.
 
-+ komplexkonjugerande poler leder till kombination av sinus resp. kosinus-termer och man bör därför dela upp täljaren \\( 1 + z^{-1} = 1 - 0.5z^{-1} + 1.5z^{-1} \\)
++ komplexkonjugerande poler leder till kombination av sinus resp. cosinus-termer och man bör därför i täljaren lägga till \\( 1 - z^{-1} = 1 - z^{-1} + \\alpha \\cos ( \\omega_0 ) z^{-1} - \\alpha \\cos ( \\omega_0 ) z^{-1} \\). Därefter delar man fördelaktigt upp täljaren i termer som behövs för att inverstransformera fram cosinus och resten. Typ så här
+\\[ 1 - \\alpha \\cos ( \\omega_0) z^{-1} \\text{ (cosinus) \\]
+Resten multiplicerar vi med \\( \\frac{ r \\sin ( \\omega_0 ) }{ r \\sin ( \\omega_0 ) } \\) och får då en term som kan inverstransformeras till en sinusterm med en lustig konstant framför.
++ då polerna är funna kan faktorerna skrivas \\( 1 - p_1 z^{-1} \\) Där \\( p_1 = pol \\)
+
+
 
 ### Fouriertransformen H(ω)
 
@@ -149,6 +162,7 @@ Används för att diskretisera analoga signaler genom att läsa av signalen vid 
 
 __HOWTO SAMPLE__
 Vi vill sampla \\( x(t) = \\cos (2 \\pi 400 t) \\) med sampeltakten 1000 Hz.
+
 1. Då 2π svarar mot ett varv, alt. en svängning, vet vi att signalens frekvens är 400 Hz.
 2. Vi substituerar nu \\( t = \\frac{1}{F_s} \\) som ger 
 \\[ x(n) = \\cos (2 \\pi 0.4 n) = \\cos (2 \\pi (0.4 + k)n) \\]
@@ -156,9 +170,10 @@ Vi vill sampla \\( x(t) = \\cos (2 \\pi 400 t) \\) med sampeltakten 1000 Hz.
 
 * Om vi både har cos och sin i signalen bör man använda Eulers formler för att göra om signalen till enbart cosinus.
 * Sinustermer ger upphov till fasskifte på π/2.
+* Om man efter sampling vill lista alla möjliga egentliga frekvenser som kunnat ge upphov till den man fick får man __INTE__ glömma att beräkna alla de negativa heltalsmultiplarna.
 
-__Filma hjul__
-Viktigt att tänka på är vilken period hjulet har. Har hjulet fyra ekrar kommer hjulet verka ha 1/4 periodtid, eftersom hjulet verkar vara tillbaka i ursprungsläget när alla ekrar snurrat 1/4ω. Detta leder till att frekvensområdet krymps och infinner sig halvvägs till de närmaste ekrarna och heltalet k multipliceras nu med 1/4.
+__Filma hjul__ -- Viktigt att tänka på är vilken period hjulet har. Har hjulet fyra ekrar kommer hjulet verka ha 1/4 periodtid, eftersom hjulet verkar vara tillbaka i ursprungsläget när alla ekrar snurrat 1/4ω. Detta leder till att frekvensområdet krymps och infinner sig halvvägs till de närmaste ekrarna och heltalet k multipliceras nu med 1/4.
+
 \\[ f_0 = \\frac{F}{F_s} \\pm \\frac{1}{4} k , \\quad -1/8 \\leq f \\leq 1/8 \\]
 
 __HOWTO RECONSTRUCT__
@@ -177,7 +192,7 @@ _terminologi_
 + \\( F_0 \\) -- analoga signalens frekvens (Hz)
 + \\( T_s \\) -- perioden mellan varje sampel (sec)
 + \\( F_s \\) -- sampeltakten (Hz)
-
++ \\( f'  \\) -- den uppfattade frekvensen efter sampling
 
 
 ## Analys
@@ -191,13 +206,18 @@ __pol-/nollställe-diagram__ -- Analysverktyg som visar hur systemet kommer beha
 + __mixed phase system__ -- H(z) med nollställen både inuti och utanför enhetscirkeln.
 + __kausalt system__ -- om antalet poler är större än eller lika med antalet nollställen. 
 
-__amplitudfunktionen eller \\( |H(\\omega)| \\)__ -- För att se vilka frekvenser en signal består av.
+__frekvensrespons eller \\( H(\\omega) \\)__ -- Funktion som innehåller info om både amplitud och fas. Dess absolutbelopp ger upphov till amplitudfunktionen och dess argument är fasfunktionen.
 
-# __frekvensrespons eller \\( H(\\omega) \\)__ -- Det samma som amplitudfunktionen? 
+__amplitudfunktionen eller \\( |H(\\omega)| \\)__ -- För att se vilka frekvenser en signal förstärker eller dödar. 
+\\[ |H( \\omega_0 ) = \\frac{ |V_1| }{ |U_1| |U_2| } \\]
 
-__fasfunktionen eller \\( arg(H(\\omega)) \\)__ -- För att se hur insignalen fasförskjuts för olika vinkelhastigheter.
+__fasfunktionen eller \\( arg(H(\\omega)) \\)__ -- För att se hur insignalen fasförskjuts för olika frekvenser. Går att skissa m.h.a. pol-/nollställe-diagram genom att summera \\( arg(V_i)  - arg(U_i) \\) där \\( V_i \\) är avståndet från den aktuella frekvensen till nollställe och \\( U_i \\) är motsvarande för poler. 
 
-+ __rak linje__ -- linjär fasförskjutning
++ __raka linjer__ -- linjär fasförskjutning innebär att om det existerar poler finns de i origo. Hack i grafen förekommer på nollställen.
++ __¬raka linjer__ -- resultatet av poler utanför origo.
+
+
+__linjär fasförskjutning__ -- När alla frekvenser förändras med en konstant förskjutning. Filtret \\( H( \\omega ) = A( \\omega) e^{j \\Phi( \\omega )} \\) kommer göra precis det. Förändringen bestäms av \\( \\Phi(\\omega) \\). Alla symmetriska och antisymmetriska, d.v.s. \\( \\begin{Bmatrix} 2 & 1 & 0 & -1 & -2 \\end{Bmatrix} \\) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar.
 
 
 __stabilitet__
@@ -208,22 +228,22 @@ __stabilitet__
 
 ## Systemtyper
 
-__LTI__ -- Linjära tidsinvarianta system. Dessa kommer i två varianter beskrivna nedan:
+__LTI__ -- Linjära tidsinvarianta system. Dessa kommer i två varianter beskrivna nedan.
 
-__FIR-system__ -- Finite impulse response-system
+__FIR-system__ -- Finite impulse response
 
 + impulssvaret är av finit längd
 + alltid stabilt
 + alla poler i origo
 + kan ha en fasförskjutning
 
-__IIR-system__ -- Infinite impulse response-system (feedbacksystem)
+__IIR-system__ -- Infinite impulse response (feedbacksystem)
 
 + oändligt impulssvar
 + stabilt iff alla poler ligger innanför enhetscirkeln
 + kan inte ha fasförskjutning
 
-__linjär fasförskjutning__ -- När alla frekvenser förändras med en konstant förskjutning. Filtret \\( H( \\omega ) = A( \\omega) e^{j \\Phi( \\omega )} \\) kommer göra precis det. Förändringen bestäms av \\( \\Phi(\\omega) \\). Alla symmetriska och antisymmetriska, d.v.s. \\( \\begin{Bmatrix} 2 & 1 & 0 & -1 & -2 \\end{Bmatrix} \\) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar.
+
 
 
 ## Matematik
@@ -244,7 +264,7 @@ __geometrisk serie__
 
 __partialbråksuppdelning__ -- Hur partialbråket kommer se ut beror på faktorer i nämnaren hos den ursprungliga kvoten. När de olika termerna är uppställda på andra sidan likhetstecknet multipliceras högersidan med vänstersidans nämnare. Sedan får man A, B osv.. genom gausselimination.
 
-\\[ \\frac{2x^2+x-3}{(x+1)^2(x+2)} = \\frac{A}{x+1} + \\frac{B}{(x+1)^2} + \\frac{C}{x+2} \\]
+\\[ \\frac{2x^2 +x -3}{(x+1)^2 (x+2)} = \\frac{A}{x+1} + \\frac{B}{(x+1)^2} + \\frac{C}{x+2} \\]
 
 __nämnarfaktorer -> partialbråkstermer__
 
