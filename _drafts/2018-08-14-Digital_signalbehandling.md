@@ -74,7 +74,7 @@ __cirkulär korrelation modulo n__ --
 
 ## Transformer
 
-Transformer är funktioner som förvränger definitionsmängden på något sätt. Mer specifikt kommer kursen endast berörar transformer som mappar tidsdomänen på den komplexa frekvensdomänen. Transformer är användbara eftersom vissa operationer som är tidsödande i tidsdomänen motsvaras av enkla operationer i den komplexa frekvensdomänen. De ger också upphov till flera analysverktyg men också möjlighet att förändra system till sin fördel. När man är färdig måste man alltid inverstransformera för att komma tillbaka till tidsdomänen.
+Transformer är inget konstigare än geniala funktioner. Mer specifikt kommer kursen endast berörar transformer som mappar tidsdomänen på den komplexa frekvensdomänen. Transformer är användbara eftersom vissa operationer som är tidsödande i tidsdomänen motsvaras av enkla operationer i den komplexa frekvensdomänen. De ger också upphov till flera analysverktyg men också möjlighet att förändra system till sin fördel. När man är färdig måste man alltid inverstransformera för att komma tillbaka till tidsdomänen.
 
 
 ### Z-transformen H(z)
