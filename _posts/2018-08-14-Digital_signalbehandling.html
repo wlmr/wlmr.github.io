@@ -59,20 +59,23 @@ title: "Digital signalbehandling"
     2 &amp; 4 &amp; 6 &amp; \underline{4} &amp; 2 
   \end{Bmatrix} 
 \]</span></p>
-<p><strong>cirkulär faltning mod n</strong> – Som vanlig faltning fast loopad.</p>
+<p><strong>cirkulär faltning mod m</strong> – Som vanlig faltning fast med loopade signaler.</p>
 <ol type="1">
-<li>Skifta de två signalerna så att \( n=0 \) är först i ledet.</li>
-<li>Skär bort överskott eller lägg till nollor i “slutet” på signalerna (beroende av modulo m)</li>
+<li>Skär bort överskott eller lägg till nollor i “slutet” på signalerna så att de är m långa (beroende av modulo m).</li>
+<li>Tidsförskjut de två signalerna så att \( n=0 \) är först i ledet. Dessa signaler är cykliska så värdet från det första elementet kommer igen efter det sista, osv..</li>
 <li>Ställ upp faltningstabell och fyll i. Skillnaden från vanlig faltning är att dessa signaler är periodiska och därför måste man lägga till så många kolumner till vänster om \( x(0) \) att alla \( h(n) \) har varit med och bidragit för varje \( n \).</li>
 </ol>
-<p><strong>cirkulär korrelation modulo n</strong> – ???</p>
+<p><strong>cirkulär korrelation modulo n</strong> –</p>
+<ol type="1">
+<li>Spegelvänd den ena signalen runt \( n = 0 )\ och fortsätt sedan enl. stegen för cirkulär faltning.</li>
+</ol>
 <h2 id="transformer">Transformer</h2>
 <p>Transformer är funktioner som förvränger definitionsmängden på något sätt. Mer specifikt kommer kursen endast berörar transformer som mappar tidsdomänen på den komplexa frekvensdomänen. Transformer är användbara eftersom vissa operationer som är tidsödande i tidsdomänen motsvaras av enkla operationer i den komplexa frekvensdomänen. De ger också upphov till flera analysverktyg men också möjlighet att förändra system till sin fördel. När man är färdig måste man alltid inverstransformera för att komma tillbaka till tidsdomänen.</p>
 <h3 id="z-transformen-hz">Z-transformen H(z)</h3>
-<p>Transformen för diskreta signaler. Genom att transformera ett systems differensekvation öppnas många dörrar.</p>
+<p>Transformen för diskreta signaler. Från z-transformen av differensekvationen leder broar i alla möjliga riktningar. Nedan följer några av fördelarna.</p>
 <ul>
 <li>faltning blir multiplikation</li>
-<li>analys och förändring av poler och nollställen</li>
+<li>analys och förändring av poler och nollställen nära till hands</li>
 <li>systemdiagram kan ritas upp</li>
 <li>Fouriertransformen ligger ett variabelbyte bort</li>
 <li>differensekvationen ges genom inverstransformering</li>
@@ -82,6 +85,7 @@ title: "Digital signalbehandling"
 <ul>
 <li><strong>exempeluppgift</strong> \[ y(n) = 0.5 y(n - 1) + x(n) \] \[ x(n) = ( \frac{1}{3})^n u(n) \] \[ y(-1) = 1 \]</li>
 </ul>
+<p><strong>bestäm y(n) då insignalen är en sinusvåg</strong> – Som vanligt kommer z-transformen \( Y(z) \) vara en produkt av \( H(z) X(z) = \frac{N(z)}{D(z)} X(z) \). Genom partialbråksuppdelning erhålls summan \( \frac{N_1 (z)}{D(z)} + \frac{C_0 + C_1 z^{-1}}{1-2 \cos ( \omega_0) z^{-1} + z^{-2}} \). Efter inv. trans. är svaret funnet. Den vänstra termen är en transient lösning medan den andra är stationär. Den stationära lösningen kommer vara av typen \( A \cos ( \omega_0 n) + B \sin ( \omega_0 n) \)</p>
 <p><strong>systemfunktionen H(z)</strong> – z-transformen av impulssvaret. z-transformen går generellt mellan \( (-\infty , \infty) \) men för kausala system endast ner till 0. \[ H(z) = \sum_{-\infty}^{\infty} h(n)z^{-n} \]</p>
 <p><strong>systemdiagram</strong> – ritning av hur utdata förhåller sig till indata i frekvensdomänen.</p>
 <ul>
@@ -89,9 +93,10 @@ title: "Digital signalbehandling"
 <li><strong>härleda impulssvar</strong> – När man har \( Y(z) = H(z)X(z) \) löser man ut \( H(z) \) och inverstransformerar.</li>
 <li><strong>härleda amplitudfunktionen</strong> – Finn pol-/nollställen för \( H(z) \) och skissa amplituden över olika frekvenser.</li>
 </ul>
-<p><strong>inverstransformering</strong> – Kursens fetaste trixeri.</p>
+<p><strong>inverstransformering</strong> – Tips och tricks samlade nedan.</p>
 <ul>
-<li>komplexkonjugerande poler leder till kombination av sinus resp. kosinus-termer och man bör därför dela upp täljaren \( 1 + z^{-1} = 1 - 0.5z^{-1} + 1.5z^{-1} \)</li>
+<li>komplexkonjugerande poler leder till kombination av sinus resp. cosinus-termer och man bör därför i täljaren lägga till \( 1 - z^{-1} = 1 - z^{-1} + \alpha \cos ( \omega_0 ) z^{-1} - \alpha \cos ( \omega_0 ) z^{-1} \). Därefter delar man fördelaktigt upp täljaren i termer som behövs för att inverstransformera fram cosinus och resten. Typ så här \[ 1 - \alpha \cos ( \omega_0) z^{-1} \text{ (cosinus) \] Resten multiplicerar vi med \( \frac{ r \sin ( \omega_0 ) }{ r \sin ( \omega_0 ) } \) och får då en term som kan inverstransformeras till en sinusterm med en lustig konstant framför.</li>
+<li>då polerna är funna kan faktorerna skrivas \( 1 - p_1 z^{-1} \) Där \( p_1 = pol \)</li>
 </ul>
 <h3 id="fouriertransformen-hω">Fouriertransformen H(ω)</h3>
 <p>Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg – fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln. I utbyte mot att den existerar har den två krav: att impulssvaret är kausalt och stabilt.</p>
@@ -131,6 +136,7 @@ title: "Digital signalbehandling"
 <ul>
 <li>Om vi både har cos och sin i signalen bör man använda Eulers formler för att göra om signalen till enbart cosinus.</li>
 <li>Sinustermer ger upphov till fasskifte på π/2.</li>
+<li>Om man efter sampling vill lista alla möjliga egentliga frekvenser som kunnat ge upphov till den man fick får man <strong>INTE</strong> glömma att beräkna alla de negativa heltalsmultiplarna.</li>
 </ul>
 <p><strong>Filma hjul</strong> – Viktigt att tänka på är vilken period hjulet har. Har hjulet fyra ekrar kommer hjulet verka ha 1/4 periodtid, eftersom hjulet verkar vara tillbaka i ursprungsläget när alla ekrar snurrat 1/4ω. Detta leder till att frekvensområdet krymps och infinner sig halvvägs till de närmaste ekrarna och heltalet k multipliceras nu med 1/4.</p>
 <p>\[ f_0 = \frac{F}{F_s} \pm \frac{1}{4} k , \quad -1/8 \leq f \leq 1/8 \]</p>
@@ -139,7 +145,7 @@ title: "Digital signalbehandling"
 <p>\[ f’ = \frac{F}{F_s} D \pm k , \quad -0.5 &lt; f’ &lt; 0.5 \]’&gt;</p>
 <p><strong>uppsamplas/interpoleras</strong> – ökar sampeltakten med faktor \( I \) i en signal genom att lägga in \( I \) nollor mellan varje egentligt signalvärde. Den interpolerade sekvensen förhåller sig på följande sätt till den ursprungliga sekvensen \( Y( \omega ) = X( I \omega) \). Detta betyder att alla frekvenser mellan -0.5<em>I och 0.5</em>I i \( X( \omega) \) kommer komma med i \( Y( \omega) \) men med frekvenserna dividerade med I.</p>
 <p>\[ f’ = \frac{ \pm \frac{F}{F_s} \pm k}{I} , \quad -0.5 &lt; f’ &lt; 0.5 \]’&gt;</p>
-<p><em>terminologi</em> + \( F_0 \) – analoga signalens frekvens (Hz) + \( T_s \) – perioden mellan varje sampel (sec) + \( F_s \) – sampeltakten (Hz)</p>
+<p><em>terminologi</em> + \( F_0 \) – analoga signalens frekvens (Hz) + \( T_s \) – perioden mellan varje sampel (sec) + \( F_s \) – sampeltakten (Hz) + \( f’ \) – den uppfattade frekvensen efter sampling</p>
 <h2 id="analys">Analys</h2>
 <p><strong>pol-/nollställe-diagram</strong> – Analysverktyg som visar hur systemet kommer behandla olika z. För z i nollställen kommer \( H(z) = 0 \). På motsvarande sätt kommer \( H(z) = \infty \) när z är på en pol. Genom att faktorisera \( H(z) = \frac{B(z)}{A(z)} \) och sedan finna rötterna till de båda funktionerna finner vi också poler och nollställen för systemfunktionen. Rötterna till \( B(z) \) ger oss våra nollställen och \( A(z) \) våra poler. Tänk på att förlänga kvoten med z för att få nämnaren på kvadratisk form. När rötterna är funna är det alltid fördelaktigt att skriva om \( H(z) \) så att pol- och nollställen blir synliga.</p>
 <ul>
@@ -150,12 +156,14 @@ title: "Digital signalbehandling"
 <li><strong>mixed phase system</strong> – H(z) med nollställen både inuti och utanför enhetscirkeln.</li>
 <li><strong>kausalt system</strong> – om antalet poler är större än eller lika med antalet nollställen.</li>
 </ul>
-<p><strong>amplitudfunktionen eller \( |H(\omega)| \)</strong> – För att se vilka frekvenser en signal består av.</p>
-<h1 id="frekvensrespons-eller-homega-det-samma-som-amplitudfunktionen"><strong>frekvensrespons eller \( H(\omega) \)</strong> – Det samma som amplitudfunktionen?</h1>
-<p><strong>fasfunktionen eller \( arg(H(\omega)) \)</strong> – För att se hur insignalen fasförskjuts för olika vinkelhastigheter.</p>
+<p><strong>frekvensrespons eller \( H(\omega) \)</strong> – Funktion som innehåller info om både amplitud och fas. Dess absolutbelopp ger upphov till amplitudfunktionen och dess argument är fasfunktionen.</p>
+<p><strong>amplitudfunktionen eller \( |H(\omega)| \)</strong> – För att se vilka frekvenser en signal förstärker eller dödar. \[ |H( \omega_0 ) = \frac{ |V_1| }{ |U_1| |U_2| } \]</p>
+<p><strong>fasfunktionen eller \( arg(H(\omega)) \)</strong> – För att se hur insignalen fasförskjuts för olika frekvenser. Går att skissa m.h.a. pol-/nollställe-diagram genom att summera \( arg(V_i) - arg(U_i) \) där \( V_i \) är avståndet från den aktuella frekvensen till nollställe och \( U_i \) är motsvarande för poler.</p>
 <ul>
-<li><strong>rak linje</strong> – linjär fasförskjutning</li>
+<li><strong>raka linjer</strong> – linjär fasförskjutning innebär att om det existerar poler finns de i origo. Hack i grafen förekommer på nollställen.</li>
+<li><strong>¬raka linjer</strong> – resultatet av poler utanför origo.</li>
 </ul>
+<p><strong>linjär fasförskjutning</strong> – När alla frekvenser förändras med en konstant förskjutning. Filtret \( H( \omega ) = A( \omega) e^{j \Phi( \omega )} \) kommer göra precis det. Förändringen bestäms av \( \Phi(\omega) \). Alla symmetriska och antisymmetriska, d.v.s. \( \begin{Bmatrix} 2 &amp; 1 &amp; 0 &amp; -1 &amp; -2 \end{Bmatrix} \) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar.</p>
 <p><strong>stabilitet</strong></p>
 <ul>
 <li>alla poler i origo</li>
@@ -163,21 +171,20 @@ title: "Digital signalbehandling"
 <li>finit impulssvar</li>
 </ul>
 <h2 id="systemtyper">Systemtyper</h2>
-<p><strong>LTI</strong> – Linjära tidsinvarianta system. Dessa kommer i två varianter beskrivna nedan:</p>
-<p><strong>FIR-system</strong> – Finite impulse response-system</p>
+<p><strong>LTI</strong> – Linjära tidsinvarianta system. Dessa kommer i två varianter beskrivna nedan.</p>
+<p><strong>FIR-system</strong> – Finite impulse response</p>
 <ul>
 <li>impulssvaret är av finit längd</li>
 <li>alltid stabilt</li>
 <li>alla poler i origo</li>
 <li>kan ha en fasförskjutning</li>
 </ul>
-<p><strong>IIR-system</strong> – Infinite impulse response-system (feedbacksystem)</p>
+<p><strong>IIR-system</strong> – Infinite impulse response (feedbacksystem)</p>
 <ul>
 <li>oändligt impulssvar</li>
 <li>stabilt iff alla poler ligger innanför enhetscirkeln</li>
 <li>kan inte ha fasförskjutning</li>
 </ul>
-<p><strong>linjär fasförskjutning</strong> – När alla frekvenser förändras med en konstant förskjutning. Filtret \( H( \omega ) = A( \omega) e^{j \Phi( \omega )} \) kommer göra precis det. Förändringen bestäms av \( \Phi(\omega) \). Alla symmetriska och antisymmetriska, d.v.s. \( \begin{Bmatrix} 2 &amp; 1 &amp; 0 &amp; -1 &amp; -2 \end{Bmatrix} \) impulssvar genererar linjär fas. För att undvika fasförskjutning ö.h.t. krävs antingen att h(n) är statiskt, d.v.s. att det inte består av minneselement, eller att det inte är ett kausalt impulssvar.</p>
 <h2 id="matematik">Matematik</h2>
 <p><strong>Euler’s formler</strong></p>
 <p>\[ \cos x = \frac{e^{ix} + e^{-ix}}{2}, \quad \sin x = \frac{e^{ix} - e^{-ix}}{2i} \]</p>
