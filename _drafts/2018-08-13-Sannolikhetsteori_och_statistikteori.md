@@ -1,4 +1,4 @@
-### DEL 1: Sannolikhet eller hur man beskriver slumpen
+## DEL 1: Sannolikhet eller hur man beskriver slumpen
 
 __utfall__ -- resultatet av ett slumpmässigt försök
 
@@ -163,10 +163,10 @@ Gör först om till fördelningsfunktion om täthetsfunktion
 ### 3. Väntevärden
 
 #### Note to self: 
-konstanter inuti väntevärdesfunktioner är korkat.
+konstanter inuti väntevärdesfunktioner ser dumt ut så flytta ut dem.
 
 #### Väntevärdet E(X) eller μ
- Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade resultatet blir.
+ Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade (__E__xpected) resultatet blir.
 
  __DEF:__
  \\[ E(X) = \\sum_kkp_X(k) \\] 
@@ -185,6 +185,7 @@ konstanter inuti väntevärdesfunktioner är korkat.
  \\[ E(\\sum_{i=1}^nX_i)=n\\mu \\]
 
 ##### Betingade väntevärden
+
 \\[ E(X|Y=k) = \\sum_{j=0}^\\infty jp_{X|Y=k}(j)\\]
 
 \\[ E(X|Y=y) = \\int_{-\\infty}^\\infty xf_{X|Y=y}(x)dx\\]
@@ -205,7 +206,7 @@ $$ V(X) = E(X^2)-[E(X)]^2 $$
 * Om oberoende och med samma σ: \\( V(\\sum_{i=1}^nX_i) = n\\sigma^2 \\)
 * Om oberoende och med samma σ samt µ: \\( V(\\bar{X})=\\sigma^2/n \\)
 
-Tänk på att använda formelsamlingen för att snabbt fastställa varians
+Tänk på att använda formelsamlingen för att snabbt fastställa variansen för de olika fördelningarna.
 
 
 #### Standardavvikelse D(X) eller σ
@@ -381,10 +382,9 @@ __periodiska tillstånd__ -- om det alltid krävs ett visst antal hopp för att 
 
 __aperiodiska tillstånd__ -- om det alltid går att komma tillbaka till ett tillstånd direkt..
 
------
 
 
-### DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
+## DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
 #### terminologi
 __parameterrummet__ -- de värden den sökta parametern kan tänkas anta.
@@ -423,7 +423,8 @@ stickprovsmedelvärdet \\[ \\bar{x} \\] är en väntevärdesriktig och konsisten
 ##### σ^2
 stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2
 
-#### Maximum-likelihood-metoden -- ML-metoden
+__Maximum-likelihood-metoden -- ML-metoden__ -- Om man vill skatta en parameter till en täthets/sannolikhetsfunktion. Genom att sätta in varje mätdata i sin sannolikhetsfunktion och sedan multiplicera alla dessa får vi sannolikheten att utfallen blev just mätdatan. Vi utnyttjar nu att sannolikhetsfunktionen är som störst när avståndet mellan väntevärdet och mätdatan är som minst genom att derivera över den okända parametern och söka maxpunkt.
+
 1. Skapa 
 \\[ L(\\theta) = P(X_1 = x_1, X_2 = x_2,...,X_n = x_n;\\theta) \\]
 alt.
@@ -432,12 +433,14 @@ alt.
 2. Finn funktionens maxpunkt genom ex. derivering över theta.
 3. Funktionens största värde är det mest sannolika scenariot.
 
-#### Minsta-kvadrat-metoden -- MK-metoden
+__Minsta-kvadrat-metoden -- MK-metoden__ -- Om man vill skatta en parameter till en täthets/sannolikhetsfunktion. När man vet hur parametern förhåller sig till mätdatan kan man ställa upp en summa där varje term motsvarar \\( (x_i - g( \\theta ) )^2 \\). Genom att finna derivatans minimum får vi reda på det värde på θ som gör differanserna så små som möjligt. Så hur går man då tillväga? Jo genom att skapa funktionen \\( Q( \\theta )) \\) och sedan derivera denna och finna minimum för
+
 \\[ Q(\\theta) = \\sum_{i=1}^n [x_i - \\mu_i (\\theta)]^2 \\]
-Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta. Så hur går man då tillväga? Jo genom att skapa funktionen \\( Q( \\theta )) \\) och sedan derivera denna och finna minimum för
 \\[ \\frac{dQ}{d \\theta} Q( \\theta ) \\]
 
-Flera parametrar? Lös partialderivatorna och sedan ekvationssystemet.
+* Viss mätdata sämre än resten? Använd vikter framför termerna i \\( Q ( \\theta ) \\) så att de sämre mätningarna får mindre betydelse.
+
+* Flera parametrar? Lös partialderivatorna och sedan ekvationssystemet.
 
 
 ### 8. Intevallskattning

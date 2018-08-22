@@ -20,4 +20,5 @@ Välkomna till min hämndaktion, kära mor eller mormor! Med denna lista i rock�
 13. [Så talade Zarathustra](https://www.adlibris.com/se/bok/sa-talade-zarathustra-en-bok-for-alla-och-ingen-9789173272025)
 14. [The Pragmatic Programmer](https://www.adlibris.com/se/bok/the-pragmatic-programmer-9780201616224)
 15. [Civilization and its discontents](https://www.adlibris.com/se/bok/civilization-and-its-discontents-9780141395890)
+16. [minidator](https://www.inet.se/produkt/2213153/intel-nuc-i5-7260u-kabylake)
 
