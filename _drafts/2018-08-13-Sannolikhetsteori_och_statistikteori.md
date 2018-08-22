@@ -70,7 +70,8 @@ __Lagen om total sannolikhet__ -- genom att summera de olika produkter som ges a
 
 \\[P(A) = \\sum_{i=1}^{n} P(H_i)P(A|H_i)\\]
 
-__Bayes sats__ -- när man behöver vända på en betingad sannolikhet
+__Bayes sats__ -- när man behöver vända på en betingad sannolikhet. Nämnaren i bråket är alltså högerledet i lagen om total sannolikhet.
+
 \\[P(H_i|A) = \\frac{P(H_i)P(A|H_i)}{\\sum_{j=1}^{n} P(H_j)P(A|H_j)}\\]
 
 __Oberoende händelser__ -- \\( P(B|A) = P(B) \\)
@@ -132,8 +133,14 @@ Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.
 5. __Gammafördelning__
 
 
-__fördelningsfunktion__
+__fördelningsfunktion__ -- Funktion som för varje möjligt utfall beräknar sannolikheten att utfallet blir just detta eller lägre.
 
+__funktioner av stokastisk variabel__ -- När man vill veta hur en s.v., Y som beror av g(x), ser ut. Nedan följer generellt tillvägagångssätt för att beskriva \\( f_y (y) \\) i termer av den kända \\( f_x (y) \\). Med exemplet: \\( g(x) = |X| \\)
+
+1. Beskriv: \\( F_y (y) = P( Y \\leq y) \\)
+2. Byt ut Y mot g(X): \\( P( g(X) \\leq y) \\)
+3. Lös ut X: \\( P( -y \\leq X \\leq y) = F_X (y) - F_X (-y) \\) 
+4. \\(f_Y (y) = f_X (y) + f_X (-y) \\)
 
 __intensitet__
 
@@ -191,7 +198,7 @@ konstanter inuti väntevärdesfunktioner är korkat.
 
 #### Variansen V(X) eller σ²
 
-Variansen är en typ av spridningsmått.
+Variansen är en typ av spridningsmått. Vid beräkning av varians av en summa olika s.v. bör man __ALDRIG__ anta att inblandade s.v. är oberoende. GLÖM MED ANDRA ORD INTE KOVARIANSEN.
 
 __DEF:__
 \\[ V(X) = E[(X-\\mu)^2] \\] 
@@ -289,7 +296,7 @@ Om
 
 ### 5. De tre vännerna och Binomialfördelning
 
-#### binomialaren (med återläggning)
+#### binomialaren (fördelningen med återläggning)
 E(X) = np
 V(X) = npq
 
@@ -297,13 +304,16 @@ Om oberoende
 \\[ X \\in Bin(n_1,p) \\quad \\& Y \\in Bin(n_2,p) \\]
 \\[ X + Y \\in Bin(n_1+n_2,p) \\]
 
-**Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (> != >=)**
+**Obs! Glöm inte att Binomialfördelningen är diskret, håll därför koll på gränserna (> != >=)**
 
-Kan approximeras som 
+Kan approximeras till
 
 1. __poissonfördelning__ om p är litet
 2. __normalfördelning__ om n är stort
 N(np,sqrt(npq))
+
+Skillnad mellan två binomialfördelade s.v. approximeras till
+\\[ Y_1 - Y_2 \\in N(p_1 - p_2, \\sqrt{ \\frac{p_1 (1-p_2)}{n_1} + \\frac{ p_2 (1- p_1)}{n_2}} ) \\]
 
 #### Hypergeometriske (utan återläggning)
 E(X) = np
@@ -380,9 +390,6 @@ __asymptotisk fördelning__ -- om man i en ändlig kedja kan finna ett \\( r>0 \
 __periodiska tillstånd__ -- om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,... steg har Ei perioden 3.
 
 __aperiodiska tillstånd__ -- om det alltid går att komma tillbaka till ett tillstånd direkt..
-
------
-
 
 ### DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 

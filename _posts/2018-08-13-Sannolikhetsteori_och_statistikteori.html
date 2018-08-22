@@ -55,7 +55,8 @@ title: "Sannolikhetsteori och statistikteori"
 <p>Ger alltså ett samband mellan betingning och snitt.</p>
 <p><strong>Lagen om total sannolikhet</strong> – genom att summera de olika produkter som ges av sannolikheten för varje möjligt utfall \( H_i \) multiplicerat med sannolikheten att A händer om vi faktiskt fått \( H_i \) får vi den totala sannolikheten att A händer.</p>
 <p>\[P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)\]</p>
-<p><strong>Bayes sats</strong> – när man behöver vända på en betingad sannolikhet \[P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}\]</p>
+<p><strong>Bayes sats</strong> – när man behöver vända på en betingad sannolikhet. Nämnaren i bråket är alltså högerledet i lagen om total sannolikhet.</p>
+<p>\[P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}\]</p>
 <p><strong>Oberoende händelser</strong> – \( P(B|A) = P(B) \)</p>
 <p><strong>sannolikheten att minst en inträffar</strong> \[A_1 , A_2 , … , A_n \text{ är oberoende }, \quad P(A_i)=p_i\] \[1-(1-p_1)(1-p_2)…(1-p_n) = 1-(1-p)^n\]</p>
 <h3 id="endimensionella-stokastiska-variabler">1. Endimensionella stokastiska variabler</h3>
@@ -81,7 +82,14 @@ title: "Sannolikhetsteori och statistikteori"
 <li><p><strong>Weibull-fördelning</strong></p></li>
 <li><p><strong>Gammafördelning</strong></p></li>
 </ol>
-<p><strong>fördelningsfunktion</strong></p>
+<p><strong>fördelningsfunktion</strong> – Funktion som för varje möjligt utfall beräknar sannolikheten att utfallet blir just detta eller lägre.</p>
+<p><strong>funktioner av stokastisk variabel</strong> – När man vill veta hur en s.v., Y som beror av g(x), ser ut. Nedan följer generellt tillvägagångssätt för att beskriva \( f_y (y) \) i termer av den kända \( f_x (y) \). Med exemplet: \( g(x) = |X| \)</p>
+<ol type="1">
+<li>Beskriv: \( F_y (y) = P( Y \leq y) \)</li>
+<li>Byt ut Y mot g(X): \( P( g(X) \leq y) \)</li>
+<li>Lös ut X: \( P( -y \leq X \leq y) = F_X (y) - F_X (-y) \)</li>
+<li>\(f_Y (y) = f_X (y) + f_X (-y) \)</li>
+</ol>
 <p><strong>intensitet</strong></p>
 <h3 id="flerdimensionella-stokastiska-variabler">2. Flerdimensionella stokastiska variabler</h3>
 <h4 id="note-to-self">Note to self:</h4>
@@ -112,7 +120,7 @@ title: "Sannolikhetsteori och statistikteori"
 <p>\[ E(X|Y=k) = \sum_{j=0}^\infty jp_{X|Y=k}(j)\]</p>
 <p>\[ E(X|Y=y) = \int_{-\infty}^\infty xf_{X|Y=y}(x)dx\]</p>
 <h4 id="variansen-vx-eller-σ">Variansen V(X) eller σ²</h4>
-<p>Variansen är en typ av spridningsmått.</p>
+<p>Variansen är en typ av spridningsmått. Vid beräkning av varians av en summa olika s.v. bör man <strong>ALDRIG</strong> anta att inblandade s.v. är oberoende. GLÖM MED ANDRA ORD INTE KOVARIANSEN.</p>
 <p><strong>DEF:</strong> \[ V(X) = E[(X-\mu)^2] \]</p>
 <p><strong>Schysta satser:</strong> <span class="math display">\[ V(X) = E(X^2)-[E(X)]^2 \]</span> \[ V(aX+b) = a^2V(X) \] \[ V(X + Y) = V(X) + V(Y) + 2C(X,Y) \]</p>
 <ul>
@@ -177,15 +185,16 @@ title: "Sannolikhetsteori och statistikteori"
 <p>Om \[ X \in N(\mu,\sigma) \] så gäller att \[ Y=aX+b \in N(a\mu + b, |a|\sigma) \]</p>
 <p>Om \[ X_1,X_2,..,X_n \] är oberoende N(µ,σ) och \[ \bar{X} \] är medelvärdet så gäller att \[ \bar{X} \in N(\mu,\sigma/\sqrt{n}) \]</p>
 <h3 id="de-tre-vännerna-och-binomialfördelning">5. De tre vännerna och Binomialfördelning</h3>
-<h4 id="binomialaren-med-återläggning">binomialaren (med återläggning)</h4>
+<h4 id="binomialaren-fördelningen-med-återläggning">binomialaren (fördelningen med återläggning)</h4>
 <p>E(X) = np V(X) = npq</p>
 <p>Om oberoende \[ X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) \] \[ X + Y \in Bin(n_1+n_2,p) \]</p>
-<p><strong>Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (&gt; != &gt;=)</strong></p>
-<p>Kan approximeras som</p>
+<p><strong>Obs! Glöm inte att Binomialfördelningen är diskret, håll därför koll på gränserna (&gt; != &gt;=)</strong></p>
+<p>Kan approximeras till</p>
 <ol type="1">
 <li><strong>poissonfördelning</strong> om p är litet</li>
 <li><strong>normalfördelning</strong> om n är stort N(np,sqrt(npq))</li>
 </ol>
+<p>Skillnad mellan två binomialfördelade s.v. approximeras till \[ Y_1 - Y_2 \in N(p_1 - p_2, \sqrt{ \frac{p_1 (1-p_2)}{n_1} + \frac{ p_2 (1- p_1)}{n_2}} ) \]</p>
 <h4 id="hypergeometriske-utan-återläggning">Hypergeometriske (utan återläggning)</h4>
 <p>E(X) = np V(X) = ((N-n)/(N-1))np(1-p)</p>
 <p>Kan aproximeras som</p>
@@ -233,7 +242,6 @@ title: "Sannolikhetsteori och statistikteori"
 <p><strong>asymptotisk fördelning</strong> – om man i en ändlig kedja kan finna ett \( r&gt;0 \) så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en <strong>asymptotisk</strong> fördelning</p>
 <p><strong>periodiska tillstånd</strong> – om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3.</p>
 <p><strong>aperiodiska tillstånd</strong> – om det alltid går att komma tillbaka till ett tillstånd direkt..</p>
-<hr />
 <h3 id="del-2-statistik-eller-vilka-slutsatser-man-kan-dra-av-ett-datamaterial">DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial</h3>
 <h4 id="terminologi-1">terminologi</h4>
 <p><strong>parameterrummet</strong> – de värden den sökta parametern kan tänkas anta.</p>

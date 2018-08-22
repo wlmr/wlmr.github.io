@@ -9,19 +9,19 @@ Generella fallet:
 __impulssvar eller \\( h(n) \\)__ -- Beskrivningen av hur systemet förstärker input och hur snabbt den tonar bort. 
 
 + __härled differensekvation__ -- om \\( h(n) = \\begin{Bmatrix} 3 & 2 & 1 \\end{Bmatrix} \\) så kan man tänka på att \\( h(0) \\) är hur maskinen förstärker det senaste invärdet. Därför går \\( h(n) \\) att skriva om till \\( y(n) = h(0)x(n)+h(1)x(n-1)+h(2)x(n-2) \\)
-+ __härled systemfunktionen__ -- systemfunktionen är z transformen av impulssvaret. Transformera!
-+ __härled Fouriertransformen__ -- Fouriertransformen är som z transformen. Man behöver bara byta ut \\(z^{-n}\\) mot \\( e^{-j2 \\pi Ft} \\)
++ __härled systemfunktionen__ -- systemfunktionen är z-transformen av impulssvaret. Transformera!
++ __härled Fouriertransformen__ -- Fouriertransformen är som z-transformen. Man behöver bara byta ut \\(z^{-n}\\) mot \\( e^{-j2 \\pi Ft} \\)
 + __härled linjär autokorrektion__ -- \\( r{xx}(k)=x(k) * x(-k) \\). Man får \\( x(-k) \\) genom att snurra \\( x(n) \\) runt y-axeln.
 + __härled utsignal vid viss insignal__ -- om det är två diskreta vektorer -- falta! Annars kan det ofta vara smidigare att första z-transformera, multiplicera och sedan iverstransformera.
 
 
 ## Linjär faltning
 
-Som att ta impulssvaret \\( h(n) \\) och dra detta igenom input \\( x(n) \\) med \\( h(0) \\) i bräschen. Vid \\( y(0) \\) har bara \\( x(0) \\) hunnit skickas in. Detta multipliceras med \\( h(0) \\)--beskrivningen av hur systemet svarar på input. I nästa tidssteg kommer även \\( x(1) \\) ha skickats in i systemet, detta värde multipliceras nu med \\( h(0) \\). \\( x(0) \\) är inte helt borta ty \\( length(h(n))>1 \\) och multipliceras nu med \\( h(1) \\). Varje inputvärde klingar ut enligt \\( h(n) \\). Först ljuder det enligt \\( h(0) \\). I nästa t kommer samma inputvärde att ha avtagit och nu förstärkas enl. \\( h(1) \\). Att det avtar förutsätter givetvis att systemet är stabilt -- impulssvaret skulle lika gärna kunna förstärka varje indata och samtidigt skicka in tidigare utdata som indata (läs: feedback). 
+Som att ta impulssvaret \\( h(n) \\) och dra detta igenom input \\( x(n) \\) med \\( h(0) \\) i bräschen. Vid \\( y(0) \\) har bara \\( x(0) \\) hunnit skickas in. Detta multipliceras med \\( h(0) \\)--beskrivningen av hur systemet svarar på input. I nästa tidssteg kommer även \\( x(1) \\) ha skickats in i systemet, detta värde multipliceras nu med \\( h(0) \\). \\( x(0) \\) är inte helt borta ty \\( length(h(n))>1 \\) och multipliceras nu med \\( h(1) \\). Varje inputvärde klingar ut enligt \\( h(n) \\). Först ljuder det enligt \\( h(0) \\). I nästa t kommer samma inputvärde att ha avtagit och nu förstärkas enl. \\( h(1) \\). Att det avtar förutsätter givetvis att systemet är stabilt -- impulssvaret skulle lika gärna kunna förstärka varje indata och samtidigt skicka in tidigare utdata som indata (läs: feedback). faltningens \\( n = 0 \\) ges av det element där \\( h(0) \\text{ och } x(0) \\) summerades. \\( n = 0 \\) är understruket i signalerna.
 
-$$ x(n) = \begin{Bmatrix} 2 & 4 & 6 & 4 & 2 \end{Bmatrix} $$
+$$ x(n) = \begin{Bmatrix} 2 & \underline{4} & 6 & 4 & 2 \end{Bmatrix} $$
 
-\\[ h(n) = \\begin{Bmatrix} 3 & 2 & 1 \\end{Bmatrix} \\] 
+\\[ h(n) = \\begin{Bmatrix} \\underline{3} & 2 & 1 \\end{Bmatrix} \\] 
 
 \\[y(n) = \\sum_k h(n - k) x(k) \\]
 
@@ -88,29 +88,44 @@ Transformen för diskreta signaler. Från z-transformen av differensekvationen l
 + differensekvationen ges genom inverstransformering
 
 
-__bestäm y(n) med begynnelsevilkor__ -- Här använder man den s.k. ensidiga z-transformen. Denna variant börjar först sin summering vid \\( n = 0 \\). Så länge systemet i fråga inte är kausalt och genererar utdata redan när n är mindre än noll kommer dock tidsskifte att leda till ett annorlunda resultat
-
-\\[ Y(n-k) \\Leftrightarrow z^{-k} [ Y^+ (z) + \\sum_{n=1}^k x(-n) z^n ] \\]
-\\[ = [ y(-k)+y(-k+1)z^{-1} +...+ y(-1) z^{-k+1} + z^{-k} Y^+ (z) ] \\]
-
-+ __exempeluppgift__
-\\[ y(n)  = 0.5 y(n - 1) + x(n) \\]
-\\[ x(n)  = ( \\frac{1}{3})^n u(n) \\]
-\\[ y(-1) = 1 \\]
-
-
-__bestäm y(n) då insignalen är en sinusvåg__ -- Som vanligt kommer z-transformen \\( Y(z) \\) vara en produkt av \\( H(z) X(z) = \\frac{N(z)}{D(z)} X(z) \\). Genom partialbråksuppdelning erhålls summan \\( \\frac{N_1 (z)}{D(z)} + \\frac{C_0 + C_1 z^{-1}}{1-2 \\cos ( \\omega_0) z^{-1} + z^{-2}} \\). Efter inv. trans. är svaret funnet. Den vänstra termen är en transient lösning medan den andra är stationär. Den stationära lösningen kommer vara av typen \\( A \\cos ( \\omega_0 n) + B \\sin ( \\omega_0 n) \\)
-
 
 
 __systemfunktionen H(z)__ -- z-transformen av impulssvaret. z-transformen går generellt mellan \\( (-\\infty , \\infty) \\) men för kausala system endast ner till 0.
 \\[ H(z) = \\sum_{-\\infty}^{\\infty} h(n)z^{-n} \\]
 
+
 __systemdiagram__ -- ritning av hur utdata förhåller sig till indata i frekvensdomänen.
 
-+ __härleda differensekvation__ -- Kom ihåg att \\( Y(z) = H(z)X(z) \\). Systemdiagram är alltid "z-transformerade". Bilda hjälpfunktioner inne i diagrammet och härled hur de förhåller sig till varandra. När du har \\( Y(z) = H(z)X(z) \\) måste inverstransformera för att få differensekvationen.
-+ __härleda impulssvar__ -- När man har \\( Y(z) = H(z)X(z) \\) löser man ut \\( H(z) \\) och inverstransformerar.
-+ __härleda amplitudfunktionen__ -- Finn pol-/nollställen för \\( H(z) \\) och skissa amplituden över olika frekvenser.
+
+__härleda differensekvation__ -- Kom ihåg att \\( Y(z) = H(z)X(z) \\). Systemdiagram är alltid "z-transformerade". Bilda hjälpfunktioner inne i diagrammet och härled hur de förhåller sig till varandra. När du har \\( Y(z) = H(z)X(z) \\) måste inverstransformera för att få differensekvationen.
+
+
+__härleda impulssvar__ -- När man har \\( Y(z) = H(z)X(z) \\) löser man ut \\( H(z) \\) och inverstransformerar.
+
+
+__härleda amplitudfunktionen__ -- Finn pol-/nollställen för \\( H(z) \\) och skissa amplituden över olika frekvenser.
+
+
+__härled y(n) med begynnelsevilkor__ -- Här använder man den s.k. ensidiga z-transformen. Denna variant börjar först sin summering vid \\( n = 0 \\). Så länge systemet i fråga inte är kausalt och genererar utdata redan när n är mindre än noll kommer dock tidsskifte att leda till ett annorlunda resultat
+
+\\[ Y(n-k) \\Leftrightarrow z^{-k} [ Y^+ (z) + \\sum_{n=1}^k x(-n) z^n ] \\]
+\\[ = [ y(-k)+y(-k+1)z^{-1} +...+ y(-1) z^{-k+1} + z^{-k} Y^+ (z) ] \\]
+
+__generell lösning för enkelsidig z-transform__
+\\[ Y^+ (z) = \\frac{B_1 (z)}{A(z)} + \\frac{N_1 (z)}{Q(z)} + \\frac{N_0 (z)}{A(z)} \\]
+
++ \\( y_{st} = \\text{ stationary solution }  = \\frac{N_1 (z)}{Q(z)} \\) 
++ \\( y_{tr} = \\text{ transient solution }   = \\frac{B_1 (z)}{A(z)} \\)
++ \\( y_{zi} = \\text{ zero input solution }  = \\frac{N_0 (z)}{A(z)} \\)
++ \\( y_{zs} = \\text{ zero state solution }  = y_{st} + y_{tr} \\)
+
+_exempeluppgift_
+\\[ y(n)  = 0.5 y(n - 1) + x(n) \\]
+\\[ x(n)  = ( \\frac{1}{3})^n u(n) \\]
+\\[ y(-1) = 1 \\]
+
+
+__bestäm y(n) då insignalen är en sinusvåg__ -- Bör delas upp i två fall: kausal resp. oändlig input. I det förra fallet används z-transformen: Som vanligt kommer z-transformen \\( Y(z) \\) vara en produkt av \\( H(z) X(z) = \\frac{N(z)}{D(z)} X(z) \\). Genom partialbråksuppdelning erhålls summan \\( \\frac{N_1 (z)}{D(z)} + \\frac{C_0 + C_1 z^{-1}}{1-2 \\cos ( \\omega_0) z^{-1} + z^{-2}} \\). Efter inv. trans. är svaret funnet. Den vänstra termen är en transient lösning medan den andra är stationär. Den stationära lösningen kommer vara av typen \\( A \\cos ( \\omega_0 n) + B \\sin ( \\omega_0 n) \\) och är också lösningen till fallet då input är av oändlig längd.
 
 __inverstransformering__ -- Tips och tricks samlade nedan.
 
@@ -118,6 +133,9 @@ __inverstransformering__ -- Tips och tricks samlade nedan.
 \\[ 1 - \\alpha \\cos ( \\omega_0) z^{-1} \\text{ (cosinus) \\]
 Resten multiplicerar vi med \\( \\frac{ r \\sin ( \\omega_0 ) }{ r \\sin ( \\omega_0 ) } \\) och får då en term som kan inverstransformeras till en sinusterm med en lustig konstant framför.
 + då polerna är funna kan faktorerna skrivas \\( 1 - p_1 z^{-1} \\) Där \\( p_1 = pol \\)
++ om input består av två termer underlättar det att låta \\( y = y_1 + y_2 \\) där \\( y_i \\) är utsignalen för den i:te termen i insignalen.
+
+
 
 
 

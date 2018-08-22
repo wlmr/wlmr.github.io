@@ -27,15 +27,15 @@ title: "Digital signalbehandling"
 <p><strong>impulssvar eller \( h(n) \)</strong> – Beskrivningen av hur systemet förstärker input och hur snabbt den tonar bort.</p>
 <ul>
 <li><strong>härled differensekvation</strong> – om \( h(n) = \begin{Bmatrix} 3 &amp; 2 &amp; 1 \end{Bmatrix} \) så kan man tänka på att \( h(0) \) är hur maskinen förstärker det senaste invärdet. Därför går \( h(n) \) att skriva om till \( y(n) = h(0)x(n)+h(1)x(n-1)+h(2)x(n-2) \)</li>
-<li><strong>härled systemfunktionen</strong> – systemfunktionen är z transformen av impulssvaret. Transformera!</li>
-<li><strong>härled Fouriertransformen</strong> – Fouriertransformen är som z transformen. Man behöver bara byta ut \(z^{-n}\) mot \( e^{-j2 \pi Ft} \)</li>
+<li><strong>härled systemfunktionen</strong> – systemfunktionen är z-transformen av impulssvaret. Transformera!</li>
+<li><strong>härled Fouriertransformen</strong> – Fouriertransformen är som z-transformen. Man behöver bara byta ut \(z^{-n}\) mot \( e^{-j2 \pi Ft} \)</li>
 <li><strong>härled linjär autokorrektion</strong> – \( r{xx}(k)=x(k) * x(-k) \). Man får \( x(-k) \) genom att snurra \( x(n) \) runt y-axeln.</li>
 <li><strong>härled utsignal vid viss insignal</strong> – om det är två diskreta vektorer – falta! Annars kan det ofta vara smidigare att första z-transformera, multiplicera och sedan iverstransformera.</li>
 </ul>
 <h2 id="linjär-faltning">Linjär faltning</h2>
-<p>Som att ta impulssvaret \( h(n) \) och dra detta igenom input \( x(n) \) med \( h(0) \) i bräschen. Vid \( y(0) \) har bara \( x(0) \) hunnit skickas in. Detta multipliceras med \( h(0) \)–beskrivningen av hur systemet svarar på input. I nästa tidssteg kommer även \( x(1) \) ha skickats in i systemet, detta värde multipliceras nu med \( h(0) \). \( x(0) \) är inte helt borta ty \( length(h(n))&gt;1 \) och multipliceras nu med \( h(1) \). Varje inputvärde klingar ut enligt \( h(n) \). Först ljuder det enligt \( h(0) \). I nästa t kommer samma inputvärde att ha avtagit och nu förstärkas enl. \( h(1) \). Att det avtar förutsätter givetvis att systemet är stabilt – impulssvaret skulle lika gärna kunna förstärka varje indata och samtidigt skicka in tidigare utdata som indata (läs: feedback).</p>
-<p><span class="math display">\[ x(n) = \begin{Bmatrix} 2 &amp; 4 &amp; 6 &amp; 4 &amp; 2 \end{Bmatrix} \]</span></p>
-<p>\[ h(n) = \begin{Bmatrix} 3 &amp; 2 &amp; 1 \end{Bmatrix} \]</p>
+<p>Som att ta impulssvaret \( h(n) \) och dra detta igenom input \( x(n) \) med \( h(0) \) i bräschen. Vid \( y(0) \) har bara \( x(0) \) hunnit skickas in. Detta multipliceras med \( h(0) \)–beskrivningen av hur systemet svarar på input. I nästa tidssteg kommer även \( x(1) \) ha skickats in i systemet, detta värde multipliceras nu med \( h(0) \). \( x(0) \) är inte helt borta ty \( length(h(n))&gt;1 \) och multipliceras nu med \( h(1) \). Varje inputvärde klingar ut enligt \( h(n) \). Först ljuder det enligt \( h(0) \). I nästa t kommer samma inputvärde att ha avtagit och nu förstärkas enl. \( h(1) \). Att det avtar förutsätter givetvis att systemet är stabilt – impulssvaret skulle lika gärna kunna förstärka varje indata och samtidigt skicka in tidigare utdata som indata (läs: feedback). faltningens \( n = 0 \) ges av det element där \( h(0) \text{ och } x(0) \) summerades. \( n = 0 \) är understruket i signalerna.</p>
+<p><span class="math display">\[ x(n) = \begin{Bmatrix} 2 &amp; \underline{4} &amp; 6 &amp; 4 &amp; 2 \end{Bmatrix} \]</span></p>
+<p>\[ h(n) = \begin{Bmatrix} \underline{3} &amp; 2 &amp; 1 \end{Bmatrix} \]</p>
 <p>\[y(n) = \sum_k h(n - k) x(k) \]</p>
 <p><em>Exempel:</em> \[y(0) = h(0)x(0)+h(-1)x(1)+h(-2)x(2) \]</p>
 <p><em>properties</em></p>
@@ -80,23 +80,27 @@ title: "Digital signalbehandling"
 <li>Fouriertransformen ligger ett variabelbyte bort</li>
 <li>differensekvationen ges genom inverstransformering</li>
 </ul>
-<p><strong>bestäm y(n) med begynnelsevilkor</strong> – Här använder man den s.k. ensidiga z-transformen. Denna variant börjar först sin summering vid \( n = 0 \). Så länge systemet i fråga inte är kausalt och genererar utdata redan när n är mindre än noll kommer dock tidsskifte att leda till ett annorlunda resultat</p>
-<p>\[ Y(n-k) \Leftrightarrow z^{-k} [ Y^+ (z) + \sum_{n=1}^k x(-n) z^n ] \] \[ = [ y(-k)+y(-k+1)z^{-1} +…+ y(-1) z^{-k+1} + z^{-k} Y^+ (z) ] \]</p>
-<ul>
-<li><strong>exempeluppgift</strong> \[ y(n) = 0.5 y(n - 1) + x(n) \] \[ x(n) = ( \frac{1}{3})^n u(n) \] \[ y(-1) = 1 \]</li>
-</ul>
-<p><strong>bestäm y(n) då insignalen är en sinusvåg</strong> – Som vanligt kommer z-transformen \( Y(z) \) vara en produkt av \( H(z) X(z) = \frac{N(z)}{D(z)} X(z) \). Genom partialbråksuppdelning erhålls summan \( \frac{N_1 (z)}{D(z)} + \frac{C_0 + C_1 z^{-1}}{1-2 \cos ( \omega_0) z^{-1} + z^{-2}} \). Efter inv. trans. är svaret funnet. Den vänstra termen är en transient lösning medan den andra är stationär. Den stationära lösningen kommer vara av typen \( A \cos ( \omega_0 n) + B \sin ( \omega_0 n) \)</p>
 <p><strong>systemfunktionen H(z)</strong> – z-transformen av impulssvaret. z-transformen går generellt mellan \( (-\infty , \infty) \) men för kausala system endast ner till 0. \[ H(z) = \sum_{-\infty}^{\infty} h(n)z^{-n} \]</p>
 <p><strong>systemdiagram</strong> – ritning av hur utdata förhåller sig till indata i frekvensdomänen.</p>
+<p><strong>härleda differensekvation</strong> – Kom ihåg att \( Y(z) = H(z)X(z) \). Systemdiagram är alltid “z-transformerade”. Bilda hjälpfunktioner inne i diagrammet och härled hur de förhåller sig till varandra. När du har \( Y(z) = H(z)X(z) \) måste inverstransformera för att få differensekvationen.</p>
+<p><strong>härleda impulssvar</strong> – När man har \( Y(z) = H(z)X(z) \) löser man ut \( H(z) \) och inverstransformerar.</p>
+<p><strong>härleda amplitudfunktionen</strong> – Finn pol-/nollställen för \( H(z) \) och skissa amplituden över olika frekvenser.</p>
+<p><strong>härled y(n) med begynnelsevilkor</strong> – Här använder man den s.k. ensidiga z-transformen. Denna variant börjar först sin summering vid \( n = 0 \). Så länge systemet i fråga inte är kausalt och genererar utdata redan när n är mindre än noll kommer dock tidsskifte att leda till ett annorlunda resultat</p>
+<p>\[ Y(n-k) \Leftrightarrow z^{-k} [ Y^+ (z) + \sum_{n=1}^k x(-n) z^n ] \] \[ = [ y(-k)+y(-k+1)z^{-1} +…+ y(-1) z^{-k+1} + z^{-k} Y^+ (z) ] \]</p>
+<p><strong>generell enkelsidig z-transform</strong> \[ Y^+ (z) = \frac{B_1 (z)}{A(z)} + \frac{N_1 (z)}{Q(z)} + \frac{N_0 (z)}{A(z)} \]</p>
 <ul>
-<li><strong>härleda differensekvation</strong> – Kom ihåg att \( Y(z) = H(z)X(z) \). Systemdiagram är alltid “z-transformerade”. Bilda hjälpfunktioner inne i diagrammet och härled hur de förhåller sig till varandra. När du har \( Y(z) = H(z)X(z) \) måste inverstransformera för att få differensekvationen.</li>
-<li><strong>härleda impulssvar</strong> – När man har \( Y(z) = H(z)X(z) \) löser man ut \( H(z) \) och inverstransformerar.</li>
-<li><strong>härleda amplitudfunktionen</strong> – Finn pol-/nollställen för \( H(z) \) och skissa amplituden över olika frekvenser.</li>
+<li>\( y_{st} = \text{ stationary solution } = \frac{N_1 (z)}{Q(z)} \)</li>
+<li>\( y_{tr} = \text{ transient solution } = \frac{B_1 (z)}{A(z)} \)</li>
+<li>\( y_{zi} = \text{ zero input solution } = \frac{N_0 (z)}{A(z)} \)</li>
+<li>\( y_{zs} = \text{ zero state solution } = y_{st} + y_{tr} \)</li>
 </ul>
+<p><em>exempeluppgift</em> \[ y(n) = 0.5 y(n - 1) + x(n) \] \[ x(n) = ( \frac{1}{3})^n u(n) \] \[ y(-1) = 1 \]</p>
+<p><strong>bestäm y(n) då insignalen är en sinusvåg</strong> – Bör delas upp i två fall: kausal resp. oändlig input. I det förra fallet används z-transformen: Som vanligt kommer z-transformen \( Y(z) \) vara en produkt av \( H(z) X(z) = \frac{N(z)}{D(z)} X(z) \). Genom partialbråksuppdelning erhålls summan \( \frac{N_1 (z)}{D(z)} + \frac{C_0 + C_1 z^{-1}}{1-2 \cos ( \omega_0) z^{-1} + z^{-2}} \). Efter inv. trans. är svaret funnet. Den vänstra termen är en transient lösning medan den andra är stationär. Den stationära lösningen kommer vara av typen \( A \cos ( \omega_0 n) + B \sin ( \omega_0 n) \) och är också lösningen till fallet då input är av oändlig längd.</p>
 <p><strong>inverstransformering</strong> – Tips och tricks samlade nedan.</p>
 <ul>
 <li>komplexkonjugerande poler leder till kombination av sinus resp. cosinus-termer och man bör därför i täljaren lägga till \( 1 - z^{-1} = 1 - z^{-1} + \alpha \cos ( \omega_0 ) z^{-1} - \alpha \cos ( \omega_0 ) z^{-1} \). Därefter delar man fördelaktigt upp täljaren i termer som behövs för att inverstransformera fram cosinus och resten. Typ så här \[ 1 - \alpha \cos ( \omega_0) z^{-1} \text{ (cosinus) \] Resten multiplicerar vi med \( \frac{ r \sin ( \omega_0 ) }{ r \sin ( \omega_0 ) } \) och får då en term som kan inverstransformeras till en sinusterm med en lustig konstant framför.</li>
 <li>då polerna är funna kan faktorerna skrivas \( 1 - p_1 z^{-1} \) Där \( p_1 = pol \)</li>
+<li>om input består av två termer underlättar det att låta \( y = y_1 + y_2 \) där \( y_i \) är utsignalen för den i:te termen i insignalen.</li>
 </ul>
 <h3 id="fouriertransformen-hω">Fouriertransformen H(ω)</h3>
 <p>Verktyg för att ta reda på vilka frekvenser en signal består av. Lite som att blanda färg – fast baklänges. Fouriertransformen är z-transformen beräknad på enhetscirkeln. I utbyte mot att den existerar har den två krav: att impulssvaret är kausalt och stabilt.</p>
