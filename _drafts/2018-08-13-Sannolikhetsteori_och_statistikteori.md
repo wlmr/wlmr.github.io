@@ -70,7 +70,8 @@ __Lagen om total sannolikhet__ -- genom att summera de olika produkter som ges a
 
 \\[P(A) = \\sum_{i=1}^{n} P(H_i)P(A|H_i)\\]
 
-__Bayes sats__ -- när man behöver vända på en betingad sannolikhet
+__Bayes sats__ -- när man behöver vända på en betingad sannolikhet. Nämnaren i bråket är alltså högerledet i lagen om total sannolikhet.
+
 \\[P(H_i|A) = \\frac{P(H_i)P(A|H_i)}{\\sum_{j=1}^{n} P(H_j)P(A|H_j)}\\]
 
 __Oberoende händelser__ -- \\( P(B|A) = P(B) \\)
@@ -132,8 +133,14 @@ Sannolikhetsfunktionen kallas nu täthetsfunktion och betecknas med f.
 5. __Gammafördelning__
 
 
-__fördelningsfunktion__
+__fördelningsfunktion__ -- Funktion som för varje möjligt utfall beräknar sannolikheten att utfallet blir just detta eller lägre.
 
+__funktioner av stokastisk variabel__ -- När man vill veta hur en s.v., Y som beror av g(x), ser ut. Nedan följer generellt tillvägagångssätt för att beskriva \\( f_y (y) \\) i termer av den kända \\( f_x (y) \\). Med exemplet: \\( g(x) = |X| \\)
+
+1. Beskriv: \\( F_y (y) = P( Y \\leq y) \\)
+2. Byt ut Y mot g(X): \\( P( g(X) \\leq y) \\)
+3. Lös ut X: \\( P( -y \\leq X \\leq y) = F_X (y) - F_X (-y) \\) 
+4. \\(f_Y (y) = f_X (y) + f_X (-y) \\)
 
 __intensitet__
 
@@ -192,7 +199,7 @@ konstanter inuti väntevärdesfunktioner ser dumt ut så flytta ut dem.
 
 #### Variansen V(X) eller σ²
 
-Variansen är en typ av spridningsmått.
+Variansen är en typ av spridningsmått. Vid beräkning av varians av en summa olika s.v. bör man __ALDRIG__ anta att inblandade s.v. är oberoende. GLÖM MED ANDRA ORD INTE KOVARIANSEN.
 
 __DEF:__
 \\[ V(X) = E[(X-\\mu)^2] \\] 
@@ -290,7 +297,7 @@ Om
 
 ### 5. De tre vännerna och Binomialfördelning
 
-#### binomialaren (med återläggning)
+#### binomialaren (fördelningen med återläggning)
 E(X) = np
 V(X) = npq
 
@@ -298,13 +305,15 @@ Om oberoende
 \\[ X \\in Bin(n_1,p) \\quad \\& Y \\in Bin(n_2,p) \\]
 \\[ X + Y \\in Bin(n_1+n_2,p) \\]
 
-**Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (> != >=)**
+**Obs! Glöm inte att Binomialfördelningen är diskret, håll därför koll på gränserna (> != >=)**
 
-Kan approximeras som 
+Kan approximeras till
 
-1. __poissonfördelning__ om p är litet
-2. __normalfördelning__ om n är stort
-N(np,sqrt(npq))
+__poissonfördelning__ -- om p är litet
+__normalfördelning__ -- om npq > 10 kan man approximera med N(np,sqrt(npq)). Resultatet blir noggrannare om man vid beräkning av fördelningsfunktion adderar 1/2 till gränsen/gränserna.
+
+Skillnad mellan två binomialfördelade s.v. approximeras till
+\\[ Y_1 - Y_2 \\in N(p_1 - p_2, \\sqrt{ \\frac{p_1 (1-p_2)}{n_1} + \\frac{ p_2 (1- p_1)}{n_2}} ) \\]
 
 #### Hypergeometriske (utan återläggning)
 E(X) = np
@@ -386,7 +395,7 @@ __aperiodiska tillstånd__ -- om det alltid går att komma tillbaka till ett til
 
 ## DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
-#### terminologi
+### terminologi
 __parameterrummet__ -- de värden den sökta parametern kan tänkas anta.
 
 __stickprov__ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
@@ -402,6 +411,7 @@ __korrelationskoefficienten__
 
 ### 7. Punktskattning
 
+Lär dig uppskatta saker!
 
 __punktskattning__ -- den observerade sannolikheten -- ett utfall av stickprovsvariabeln
 \\[ \\theta_{obs}^*(x_1,x_2,...,x_n) \\]
@@ -415,13 +425,18 @@ __väntevärdesriktig__ -- punktskattning vars tillhörande stickprovsvariabel h
 __MSE__ -- mean square error -- medelkvadratfelet för en punktskattning -- mått på slumpmässigt fel
 \\[ MSE = E(( \\theta^* - \\theta)^2) \\]
 
-#### skattning av μ & σ
+__effektiv skattning__ -- om variansen för \\( V( \\theta^* ) \\leq V( \\hat{\\theta} ) \\) så är \\( \\theta^* \\) effektivare än den andra.
 
-##### µ
-stickprovsmedelvärdet \\[ \\bar{x} \\] är en väntevärdesriktig och konsistent skattning av µ
+#### Skattning av μ & σ
 
-##### σ^2
-stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2
+__µ__ -- stickprovsmedelvärdet \\[ \\bar{x} \\] är en väntevärdesriktig och konsistent skattning av µ och gäller för alla fördelningar
+
+__σ^2__ -- stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2 som gäller för alla fördelningar och ser ut så här om μ är känd
+\\[ \\frac{ 1 }{ n } \\sum_i^n (x_i - \\mu)^2 \\]
+Annars skattas μ med medelvärdet av mätdata och man får efter lite väntevärdesriktighetsjustering
+\\[ \\frac{ 1 }{ n - 1 } \\sum_i^n (x_i - \\bar{x})^2 \\]
+
+#### Skattningsfunktioner
 
 __Maximum-likelihood-metoden -- ML-metoden__ -- Om man vill skatta en parameter till en täthets/sannolikhetsfunktion. Genom att sätta in varje mätdata i sin sannolikhetsfunktion och sedan multiplicera alla dessa får vi sannolikheten att utfallen blev just mätdatan. Vi utnyttjar nu att sannolikhetsfunktionen är som störst när avståndet mellan väntevärdet och mätdatan är som minst genom att derivera över den okända parametern och söka maxpunkt.
 
@@ -442,6 +457,14 @@ __Minsta-kvadrat-metoden -- MK-metoden__ -- Om man vill skatta en parameter till
 
 * Flera parametrar? Lös partialderivatorna och sedan ekvationssystemet.
 
+#### Normalfördelningen
+
+__Två stickprov med samma σ__ -- M.h.a. ML-skattning får vi som väntat \\( ( \\mu_1 )_{obs}^* = \\bar{x} \\) samt \\( \\mu_2 )_{obs}^* = \\bar{y} \\). variansen, å andra sidan, skattas av 
+\\[ s^2 = \\frac{ \\sum_{i_1}^{n_1} (x_i - \\bar{x} )^2 +\\sum_{i_1}^{n_2} (y_i - \\bar{y} )^2 }{ (n_1 - 1 ) + (n_2 - 1 ) } \\]
+
+__n stickprov med samma σ__ -- En skattning som gäller oavsett hur många stickprov man blandar in ges av
+\\[ s^2 = \\frac{ Q_1 + ... + Q_n }{ (n_1 - 1) + ... + (n_2 - 1) } \\]
+\\( Q_i \\) är kvadratsumman kring medelvärdet.
 
 ### 8. Intevallskattning
 När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.
@@ -548,8 +571,7 @@ __signifikanstest__
 __konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför
 
 __styrkefunktionen__
-\\[ h(\\theta) = P(H_0 \\text{ förkastas}) \\]
-om θ är det rätta värdet 
+\\( h(\\theta) = P(H_0 \\text{ förkastas}) \\) om θ är det rätta värdet.
 
   + bör vara stort för alla θ som tillhör mothypotesen
   + bör vara litet för alla θ som tillhör nollhypotesen
@@ -557,15 +579,23 @@ om θ är det rätta värdet
 
 
 #### How to styrkefunktion
-1. create \\( u = \\frac{x - \\mu}{\\sigma} \\)
-2. make sure \\( u > \\lambda_\\alpha \\) as this means that it is less likely it happens than α
-3. solve for x
-4. create \\( h(\\theta) = P(x > \\lambda_\\alpha \\sigma + \\mu) \\)
-5. normalize h(θ) by adding -μ and dividing it all by σ
+
+1. \\( X \\in N( \\theta, 0.04) \\) Antag \\( H_0: \\theta = 2.0 \\) och sätt upp villkoret för att förkasta \\( H_0 \\). e.g. \\( | X - 2.0 | \\geq 0.04 \\lambda_{0.025} \\)
+2. Skapa nu styrkefunktionen \\(h(\\theta) = P(| X - 2.0 | \\geq 0.04 \\lambda_{0.025}) = 1 - P(-0.04 \\lambda_{0.025} \\leq X - 2.0 \\leq 0.04 \\lambda_{0.025}) \\). Denna duger inte än eftersom den inte beror av θ.
+3. Då styrkefunktionen alltså går ut på att få se sannolikheten att \\( H_0 \\) förkastas när \\( E(X) = \\theta \\) antar vi att \\( E(X) = \\theta \\) och bildar variabelbytet \\( u = \\frac{X - \\theta}{0.04} \\) för att kunna använda den standardiserade normalfördelningen.
+4. Via enklare räkning byter vi ut \\( (X - 2.0)/D \\) mot (\\( u \\) och kan då använda den standardiserade nomralfördelningens fördefördelningsfunktion
+\\[ h( \\theta ) = 1 - \\Phi ( \\lambda_{0.025} + \\frac{2.0 - \\theta}{0.04}) + \\Phi (- \\lambda_{0.025} + \\frac{2.0 - \\theta}{0.04})  \\]
+
 
 ### 10. Regressionsanalys
 
 När man vill se samband mellan två eller flera storheter.
+
+#### observera!
+
+* Använd alltid t-fördelningen när standardavvikelsen blivit skattad.
+
+* Logaritmera om \\( y_i = c e^{\\beta_{t_i}} \\epsilon_i \\) 
 
 #### Terminologi
 
@@ -578,7 +608,7 @@ __parameterskattningar__
 
 \\[ \\sum y_i , \\quad \\sum y_i^2 , \\quad S_{yy} = \\sum_{i=1}^n (y_i - \\bar{y})^2 = \\sum_{i=1}^n y_i^2 - \\frac{1}{n} (\\sum_{i=1}^n y_i)^2 \\]
 
-\\[ \\sum x_i y_i , \\quad  S_{xy} = \\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y}) = \\sum_{i=1}^n x_i y_i - \\bar{x} \\bar{y} \\]
+\\[ \\sum x_i y_i , \\quad  S_{xy} = \\sum_{i=1}^n (x_i - \\bar{x}) (y_i - \\bar{y}) = \\sum_{i=1}^n x_i y_i - \\frac{1}{n} (\\sum_{i=1}^n x_i) (\\sum_{i=1}^n y_i) \\]
 
 #### Punktskattningar
 

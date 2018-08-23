@@ -21,7 +21,7 @@ title: "Sannolikhetsteori och statistikteori"
   <![endif]-->
 </head>
 <body>
-<h3 id="del-1-sannolikhet-eller-hur-man-beskriver-slumpen">DEL 1: Sannolikhet eller hur man beskriver slumpen</h3>
+<h2 id="del-1-sannolikhet-eller-hur-man-beskriver-slumpen">DEL 1: Sannolikhet eller hur man beskriver slumpen</h2>
 <p><strong>utfall</strong> – resultatet av ett slumpmässigt försök</p>
 <p><strong>utfallsrummet</strong> – mängden möjliga utfall</p>
 <p><strong>händelse</strong> – samling utfall</p>
@@ -55,7 +55,8 @@ title: "Sannolikhetsteori och statistikteori"
 <p>Ger alltså ett samband mellan betingning och snitt.</p>
 <p><strong>Lagen om total sannolikhet</strong> – genom att summera de olika produkter som ges av sannolikheten för varje möjligt utfall \( H_i \) multiplicerat med sannolikheten att A händer om vi faktiskt fått \( H_i \) får vi den totala sannolikheten att A händer.</p>
 <p>\[P(A) = \sum_{i=1}^{n} P(H_i)P(A|H_i)\]</p>
-<p><strong>Bayes sats</strong> – när man behöver vända på en betingad sannolikhet \[P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}\]</p>
+<p><strong>Bayes sats</strong> – när man behöver vända på en betingad sannolikhet. Nämnaren i bråket är alltså högerledet i lagen om total sannolikhet.</p>
+<p>\[P(H_i|A) = \frac{P(H_i)P(A|H_i)}{\sum_{j=1}^{n} P(H_j)P(A|H_j)}\]</p>
 <p><strong>Oberoende händelser</strong> – \( P(B|A) = P(B) \)</p>
 <p><strong>sannolikheten att minst en inträffar</strong> \[A_1 , A_2 , … , A_n \text{ är oberoende }, \quad P(A_i)=p_i\] \[1-(1-p_1)(1-p_2)…(1-p_n) = 1-(1-p)^n\]</p>
 <h3 id="endimensionella-stokastiska-variabler">1. Endimensionella stokastiska variabler</h3>
@@ -81,7 +82,14 @@ title: "Sannolikhetsteori och statistikteori"
 <li><p><strong>Weibull-fördelning</strong></p></li>
 <li><p><strong>Gammafördelning</strong></p></li>
 </ol>
-<p><strong>fördelningsfunktion</strong></p>
+<p><strong>fördelningsfunktion</strong> – Funktion som för varje möjligt utfall beräknar sannolikheten att utfallet blir just detta eller lägre.</p>
+<p><strong>funktioner av stokastisk variabel</strong> – När man vill veta hur en s.v., Y som beror av g(x), ser ut. Nedan följer generellt tillvägagångssätt för att beskriva \( f_y (y) \) i termer av den kända \( f_x (y) \). Med exemplet: \( g(x) = |X| \)</p>
+<ol type="1">
+<li>Beskriv: \( F_y (y) = P( Y \leq y) \)</li>
+<li>Byt ut Y mot g(X): \( P( g(X) \leq y) \)</li>
+<li>Lös ut X: \( P( -y \leq X \leq y) = F_X (y) - F_X (-y) \)</li>
+<li>\(f_Y (y) = f_X (y) + f_X (-y) \)</li>
+</ol>
 <p><strong>intensitet</strong></p>
 <h3 id="flerdimensionella-stokastiska-variabler">2. Flerdimensionella stokastiska variabler</h3>
 <h4 id="note-to-self">Note to self:</h4>
@@ -100,9 +108,9 @@ title: "Sannolikhetsteori och statistikteori"
 </ul>
 <h3 id="väntevärden">3. Väntevärden</h3>
 <h4 id="note-to-self-1">Note to self:</h4>
-<p>konstanter inuti väntevärdesfunktioner är korkat.</p>
+<p>konstanter inuti väntevärdesfunktioner ser dumt ut så flytta ut dem.</p>
 <h4 id="väntevärdet-ex-eller-μ">Väntevärdet E(X) eller μ</h4>
-<p>Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade resultatet blir.</p>
+<p>Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade (__E__xpected) resultatet blir.</p>
 <p><strong>DEF:</strong> \[ E(X) = \sum_kkp_X(k) \] \[ E(X) = \int\limits_{-\infty}^{\infty} x f_X(x)dx \]</p>
 <p><strong>Y = g(X)</strong> – Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så kan man trixa enl. följande \[ E(Y) = \sum_kg(k)p_X(k)\] \[ E(X) = \int\limits_{-\infty}^{\infty} g(x) f_X(x)dx \]</p>
 <p>\[ E(X+Y) = E(X)+E(Y) \]</p>
@@ -112,7 +120,7 @@ title: "Sannolikhetsteori och statistikteori"
 <p>\[ E(X|Y=k) = \sum_{j=0}^\infty jp_{X|Y=k}(j)\]</p>
 <p>\[ E(X|Y=y) = \int_{-\infty}^\infty xf_{X|Y=y}(x)dx\]</p>
 <h4 id="variansen-vx-eller-σ">Variansen V(X) eller σ²</h4>
-<p>Variansen är en typ av spridningsmått.</p>
+<p>Variansen är en typ av spridningsmått. Vid beräkning av varians av en summa olika s.v. bör man <strong>ALDRIG</strong> anta att inblandade s.v. är oberoende. GLÖM MED ANDRA ORD INTE KOVARIANSEN.</p>
 <p><strong>DEF:</strong> \[ V(X) = E[(X-\mu)^2] \]</p>
 <p><strong>Schysta satser:</strong> <span class="math display">\[ V(X) = E(X^2)-[E(X)]^2 \]</span> \[ V(aX+b) = a^2V(X) \] \[ V(X + Y) = V(X) + V(Y) + 2C(X,Y) \]</p>
 <ul>
@@ -120,7 +128,7 @@ title: "Sannolikhetsteori och statistikteori"
 <li>Om oberoende och med samma σ: \( V(\sum_{i=1}^nX_i) = n\sigma^2 \)</li>
 <li>Om oberoende och med samma σ samt µ: \( V(\bar{X})=\sigma^2/n \)</li>
 </ul>
-<p>Tänk på att använda formelsamlingen för att snabbt fastställa varians</p>
+<p>Tänk på att använda formelsamlingen för att snabbt fastställa variansen för de olika fördelningarna.</p>
 <h4 id="standardavvikelse-dx-eller-σ">Standardavvikelse D(X) eller σ</h4>
 <p>Schyst mått då man får samma dimension som väntevärdet \[ D(X) = \sqrt{V(X)} \] \[ D(aX + b) = |a|D(X) \] Om oberoende: \[ D(X + Y) = \sqrt{D^2(X) + D^2(Y)} \]</p>
 <h4 id="variationskoefficienten">Variationskoefficienten</h4>
@@ -177,15 +185,13 @@ title: "Sannolikhetsteori och statistikteori"
 <p>Om \[ X \in N(\mu,\sigma) \] så gäller att \[ Y=aX+b \in N(a\mu + b, |a|\sigma) \]</p>
 <p>Om \[ X_1,X_2,..,X_n \] är oberoende N(µ,σ) och \[ \bar{X} \] är medelvärdet så gäller att \[ \bar{X} \in N(\mu,\sigma/\sqrt{n}) \]</p>
 <h3 id="de-tre-vännerna-och-binomialfördelning">5. De tre vännerna och Binomialfördelning</h3>
-<h4 id="binomialaren-med-återläggning">binomialaren (med återläggning)</h4>
+<h4 id="binomialaren-fördelningen-med-återläggning">binomialaren (fördelningen med återläggning)</h4>
 <p>E(X) = np V(X) = npq</p>
 <p>Om oberoende \[ X \in Bin(n_1,p) \quad \&amp; Y \in Bin(n_2,p) \] \[ X + Y \in Bin(n_1+n_2,p) \]</p>
-<p><strong>Obs! Glöm inte att bin är diskret, håll därför koll på gränserna (&gt; != &gt;=)</strong></p>
-<p>Kan approximeras som</p>
-<ol type="1">
-<li><strong>poissonfördelning</strong> om p är litet</li>
-<li><strong>normalfördelning</strong> om n är stort N(np,sqrt(npq))</li>
-</ol>
+<p><strong>Obs! Glöm inte att Binomialfördelningen är diskret, håll därför koll på gränserna (&gt; != &gt;=)</strong></p>
+<p>Kan approximeras till</p>
+<p><strong>poissonfördelning</strong> – om p är litet <strong>normalfördelning</strong> – om npq &gt; 10 kan man approximera med N(np,sqrt(npq)). Resultatet blir noggrannare om man vid beräkning av fördelningsfunktion adderar 1/2 till gränsen/gränserna.</p>
+<p>Skillnad mellan två binomialfördelade s.v. approximeras till \[ Y_1 - Y_2 \in N(p_1 - p_2, \sqrt{ \frac{p_1 (1-p_2)}{n_1} + \frac{ p_2 (1- p_1)}{n_2}} ) \]</p>
 <h4 id="hypergeometriske-utan-återläggning">Hypergeometriske (utan återläggning)</h4>
 <p>E(X) = np V(X) = ((N-n)/(N-1))np(1-p)</p>
 <p>Kan aproximeras som</p>
@@ -233,33 +239,39 @@ title: "Sannolikhetsteori och statistikteori"
 <p><strong>asymptotisk fördelning</strong> – om man i en ändlig kedja kan finna ett \( r&gt;0 \) så beskaffat att alla element i någon kolonn i matrisen P^r är positiva, existerar det en <strong>asymptotisk</strong> fördelning</p>
 <p><strong>periodiska tillstånd</strong> – om det alltid krävs ett visst antal hopp för att komma tillbaka till ett tillstånd är tillståndet periodiskt. t.ex. om processen bara kan nå tillbaka till Ei efter 3,6,9,… steg har Ei perioden 3.</p>
 <p><strong>aperiodiska tillstånd</strong> – om det alltid går att komma tillbaka till ett tillstånd direkt..</p>
-<hr />
-<h3 id="del-2-statistik-eller-vilka-slutsatser-man-kan-dra-av-ett-datamaterial">DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial</h3>
-<h4 id="terminologi-1">terminologi</h4>
+<h2 id="del-2-statistik-eller-vilka-slutsatser-man-kan-dra-av-ett-datamaterial">DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial</h2>
+<h3 id="terminologi-1">terminologi</h3>
 <p><strong>parameterrummet</strong> – de värden den sökta parametern kan tänkas anta.</p>
 <p><strong>stickprov</strong> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v.</p>
 <p><strong>stickprovsvariansen</strong> \[ s^2 = \frac{1}{n-1} \sum_{j=1}^n (x_j - \bar{x})^2 \]</p>
 <p><strong>kovariansen</strong> mellan x- och y-värdena i en datamängd \( ( x_1 , y_1 ),( x_2 , y_2 ),…,( x_n , y_n ) \) \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \]</p>
 <p><strong>korrelationskoefficienten</strong> \[ r = \frac{c_{xy}}{s_xs_y} \]</p>
 <h3 id="punktskattning">7. Punktskattning</h3>
+<p>Lär dig uppskatta saker!</p>
 <p><strong>punktskattning</strong> – den observerade sannolikheten – ett utfall av stickprovsvariabeln \[ \theta_{obs}^*(x_1,x_2,…,x_n) \]</p>
 <p><strong>stickprovsvariabeln</strong> – en s.v. som punktskattningen är ett utfall av \[ \theta^*(X_1,X_2,…,X_n) \]</p>
 <p><strong>väntevärdesriktig</strong> – punktskattning vars tillhörande stickprovsvariabel har väntevärdet θ. dvs om \[ E(\theta^*) = \theta \]</p>
 <p><strong>MSE</strong> – mean square error – medelkvadratfelet för en punktskattning – mått på slumpmässigt fel \[ MSE = E(( \theta^* - \theta)^2) \]</p>
-<h4 id="skattning-av-μ-σ">skattning av μ &amp; σ</h4>
-<h5 id="µ">µ</h5>
-<p>stickprovsmedelvärdet \[ \bar{x} \] är en väntevärdesriktig och konsistent skattning av µ</p>
-<h5 id="σ2">σ^2</h5>
-<p>stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2</p>
-<h4 id="maximum-likelihood-metoden-ml-metoden">Maximum-likelihood-metoden – ML-metoden</h4>
+<p><strong>effektiv skattning</strong> – om variansen för \( V( \theta^* ) \leq V( \hat{\theta} ) \) så är \( \theta^* \) effektivare än den andra.</p>
+<h4 id="skattning-av-μ-σ">Skattning av μ &amp; σ</h4>
+<p><strong>µ</strong> – stickprovsmedelvärdet \[ \bar{x} \] är en väntevärdesriktig och konsistent skattning av µ och gäller för alla fördelningar</p>
+<p><strong>σ^2</strong> – stickprovsvariansen s^2 är en väntevärdesriktig skattning av σ^2 som gäller för alla fördelningar och ser ut så här om μ är känd \[ \frac{ 1 }{ n } \sum_i^n (x_i - \mu)^2 \] Annars skattas μ med medelvärdet av mätdata och man får efter lite väntevärdesriktighetsjustering \[ \frac{ 1 }{ n - 1 } \sum_i^n (x_i - \bar{x})^2 \]</p>
+<h4 id="skattningsfunktioner">Skattningsfunktioner</h4>
+<p><strong>Maximum-likelihood-metoden – ML-metoden</strong> – Om man vill skatta en parameter till en täthets/sannolikhetsfunktion. Genom att sätta in varje mätdata i sin sannolikhetsfunktion och sedan multiplicera alla dessa får vi sannolikheten att utfallen blev just mätdatan. Vi utnyttjar nu att sannolikhetsfunktionen är som störst när avståndet mellan väntevärdet och mätdatan är som minst genom att derivera över den okända parametern och söka maxpunkt.</p>
 <ol type="1">
 <li>Skapa \[ L(\theta) = P(X_1 = x_1, X_2 = x_2,…,X_n = x_n;\theta) \] alt. \[ L(\theta) = f_{X_1,X_2,…,X_n}(x_1,x_2,…,x_n;\theta) \] (A.k.a. likelihood-funktionen)</li>
 <li>Finn funktionens maxpunkt genom ex. derivering över theta.</li>
 <li>Funktionens största värde är det mest sannolika scenariot.</li>
 </ol>
-<h4 id="minsta-kvadrat-metoden-mk-metoden">Minsta-kvadrat-metoden – MK-metoden</h4>
-<p>\[ Q(\theta) = \sum_{i=1}^n [x_i - \mu_i (\theta)]^2 \] Går ut på att anta att det finns små försöksfel vid varje mätdatum och bara genom att minimera dessa finner man bästa skattning av theta. Så hur går man då tillväga? Jo genom att skapa funktionen \( Q( \theta )) \) och sedan derivera denna och finna minimum för \[ \frac{dQ}{d \theta} Q( \theta ) \]</p>
-<p>Flera parametrar? Lös partialderivatorna och sedan ekvationssystemet.</p>
+<p><strong>Minsta-kvadrat-metoden – MK-metoden</strong> – Om man vill skatta en parameter till en täthets/sannolikhetsfunktion. När man vet hur parametern förhåller sig till mätdatan kan man ställa upp en summa där varje term motsvarar \( (x_i - g( \theta ) )^2 \). Genom att finna derivatans minimum får vi reda på det värde på θ som gör differanserna så små som möjligt. Så hur går man då tillväga? Jo genom att skapa funktionen \( Q( \theta )) \) och sedan derivera denna och finna minimum för</p>
+<p>\[ Q(\theta) = \sum_{i=1}^n [x_i - \mu_i (\theta)]^2 \] \[ \frac{dQ}{d \theta} Q( \theta ) \]</p>
+<ul>
+<li><p>Viss mätdata sämre än resten? Använd vikter framför termerna i \( Q ( \theta ) \) så att de sämre mätningarna får mindre betydelse.</p></li>
+<li><p>Flera parametrar? Lös partialderivatorna och sedan ekvationssystemet.</p></li>
+</ul>
+<h4 id="normalfördelningen-1">Normalfördelningen</h4>
+<p><strong>Två stickprov med samma σ</strong> – M.h.a. ML-skattning får vi som väntat \( ( \mu_1 )<em>{obs}^* = \bar{x} \) samt \( \mu_2 )</em>{obs}^* = \bar{y} \). variansen, å andra sidan, skattas av \[ s^2 = \frac{ \sum_{i_1}^{n_1} (x_i - \bar{x} )^2 +\sum_{i_1}^{n_2} (y_i - \bar{y} )^2 }{ (n_1 - 1 ) + (n_2 - 1 ) } \]</p>
+<p><strong>n stickprov med samma σ</strong> – En skattning som gäller oavsett hur många stickprov man blandar in ges av \[ s^2 = \frac{ Q_1 + … + Q_n }{ (n_1 - 1) + … + (n_2 - 1) } \] \( Q_i \) är kvadratsumman kring medelvärdet.</p>
 <h3 id="intevallskattning">8. Intevallskattning</h3>
 <p>När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.</p>
 <h4 id="tillämpning-på-normalfördelningen">Tillämpning på normalfördelningen</h4>
@@ -310,7 +322,7 @@ title: "Sannolikhetsteori och statistikteori"
 <p><strong>testvariabel/teststorhet</strong> – observation av stickprovsvariabel</p>
 <p><strong>signifikanstest</strong> 1. Om \(t_{obs} \in \text{jätteosannolikt område} \) förkasta \( H_0 \) 2. Om \( t_{obs} \) å andra sidan är ett sannolikt utfall, även i vanliga fall så bör \( H_0 \) inte förkastas.</p>
 <p><strong>konfidensmetoden</strong> – genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför</p>
-<p><strong>styrkefunktionen</strong> \[ h(\theta) = P(H_0 \text{ förkastas}) \] om θ är det rätta värdet</p>
+<p><strong>styrkefunktionen</strong> \( h(\theta) = P(H_0 \text{ förkastas}) \) om θ är det rätta värdet.</p>
 <ul>
 <li>bör vara stort för alla θ som tillhör mothypotesen</li>
 <li>bör vara litet för alla θ som tillhör nollhypotesen</li>
@@ -318,20 +330,24 @@ title: "Sannolikhetsteori och statistikteori"
 </ul>
 <h4 id="how-to-styrkefunktion">How to styrkefunktion</h4>
 <ol type="1">
-<li>create \( u = \frac{x - \mu}{\sigma} \)</li>
-<li>make sure \( u &gt; \lambda_\alpha \) as this means that it is less likely it happens than α</li>
-<li>solve for x</li>
-<li>create \( h(\theta) = P(x &gt; \lambda_\alpha \sigma + \mu) \)</li>
-<li>normalize h(θ) by adding -μ and dividing it all by σ</li>
+<li>\( X \in N( \theta, 0.04) \) Antag \( H_0: \theta = 2.0 \) och sätt upp villkoret för att förkasta \( H_0 \). e.g. \( | X - 2.0 | \geq 0.04 \lambda_{0.025} \)</li>
+<li>Skapa nu styrkefunktionen \(h(\theta) = P(| X - 2.0 | \geq 0.04 \lambda_{0.025}) = 1 - P(-0.04 \lambda_{0.025} \leq X - 2.0 \leq 0.04 \lambda_{0.025}) \). Denna duger inte än eftersom den inte beror av θ.</li>
+<li>Då styrkefunktionen alltså går ut på att få se sannolikheten att \( H_0 \) förkastas när \( E(X) = \theta \) antar vi att \( E(X) = \theta \) och bildar variabelbytet \( u = \frac{X - \theta}{0.04} \) för att kunna använda den standardiserade normalfördelningen.</li>
+<li>Via enklare räkning byter vi ut \( (X - 2.0)/D \) mot (\( u \) och kan då använda den standardiserade nomralfördelningens fördefördelningsfunktion \[ h( \theta ) = 1 - \Phi ( \lambda_{0.025} + \frac{2.0 - \theta}{0.04}) + \Phi (- \lambda_{0.025} + \frac{2.0 - \theta}{0.04}) \]</li>
 </ol>
 <h3 id="regressionsanalys">10. Regressionsanalys</h3>
 <p>När man vill se samband mellan två eller flera storheter.</p>
+<h4 id="observera">observera!</h4>
+<ul>
+<li><p>Använd alltid t-fördelningen när standardavvikelsen blivit skattad.</p></li>
+<li><p>Logaritmera om \( y_i = c e^{\beta_{t_i}} \epsilon_i \)</p></li>
+</ul>
 <h4 id="terminologi-2">Terminologi</h4>
 <p><strong>teoretiska regressionslinjen</strong> \[ y = \alpha + \beta x \]</p>
 <p><strong>parameterskattningar</strong></p>
 <p>\[ \sum x_i , \quad \sum x_i^2 , \quad S_{xx} = \sum_{i=1}^n (x_i - \bar{x})^2 = \sum_{i=1}^n x_i^2 - \frac{1}{n} (\sum_{i=1}^n x_i)^2 \]</p>
 <p>\[ \sum y_i , \quad \sum y_i^2 , \quad S_{yy} = \sum_{i=1}^n (y_i - \bar{y})^2 = \sum_{i=1}^n y_i^2 - \frac{1}{n} (\sum_{i=1}^n y_i)^2 \]</p>
-<p>\[ \sum x_i y_i , \quad S_{xy} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}) = \sum_{i=1}^n x_i y_i - \bar{x} \bar{y} \]</p>
+<p>\[ \sum x_i y_i , \quad S_{xy} = \sum_{i=1}^n (x_i - \bar{x}) (y_i - \bar{y}) = \sum_{i=1}^n x_i y_i - \frac{1}{n} (\sum_{i=1}^n x_i) (\sum_{i=1}^n y_i) \]</p>
 <h4 id="punktskattningar">Punktskattningar</h4>
 <p>Remember MK-metoden? Bestäm minimum för</p>
 <p>\[ Q( \alpha , \beta ) = \sum_{i}^n (y_i - \mu_i)^2 \] \[ \mu_i = \alpha + \beta x_i \]</p>

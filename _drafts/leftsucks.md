@@ -1,3 +1,7 @@
+ökad antisemitism
+
+256 förvaltningsmyndigheter
+
 killmiddagar för att stävja de många självmorden bland pojkar aka problemet med pojkar är att de är för lite som tjejer.......(...)
 
 Vänsterfolk är mer konsensussökande än de på högern vilket leder till att högerfolk mycket oftare testar sina teser

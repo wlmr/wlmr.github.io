@@ -1,6 +1,6 @@
 #!/bin/bash
 # Run this together with the name of the _draft/-file that you want --mathjax to fix math for
-# $1 = filename without extention
+# $1 = filepath
 
 if [ -f $1 ]; then
   filename=$(echo $1 | sed -e "s/\..*$//" -e "s/^[^\/]*\///g" )
