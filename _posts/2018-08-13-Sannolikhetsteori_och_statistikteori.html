@@ -27,7 +27,7 @@ title: "Sannolikhetsteori och statistikteori"
 <p><strong>händelse</strong> – samling utfall</p>
 <p><strong>relativ frekvens</strong> – kvoten mellan antalet erhållet utfall och hela antalet utförda kast</p>
 <p><strong>disjunkta händelser</strong> – kan inte inträffa samtidigt</p>
-<p><strong>Kolmogorovs axiomsystem</strong>:</p>
+<p><strong>Kolmogorovs axiomsystem</strong></p>
 <ol type="1">
 <li>Händelsen P(A) måste ligga mellan 0 &amp; 1</li>
 <li>P(utfallsrummet) = 1</li>
@@ -37,6 +37,8 @@ title: "Sannolikhetsteori och statistikteori"
 <p><strong>Additionssatsen</strong> P(A or B) = P(A) + P(B) - P(A and B)</p>
 <p><strong>oberoende händelser</strong> – \( P(A \cap B) = P(A)P(B) \)</p>
 <p><strong>Booles olikhet</strong> – \( P(A \cup B) \leq P(A) + P(B) \)</p>
+<p><strong>De morgans lagar</strong> – bra att veta att även boolsk algebra är distributiv.</p>
+<p>\[ A \cup (B \cap C) = (A \cup B) \cap (A \cup C) \] \[ A \cap (B \cup C) = (A \cap B) \cup (A \cap C) \]</p>
 <h4 id="kombinatorik">Kombinatorik</h4>
 <p>Förutsättningar:</p>
 <ul>
@@ -107,19 +109,19 @@ title: "Sannolikhetsteori och statistikteori"
 <li>\[f_Z(z) = \int_{\infty}^{\infty} f_X(x)f_Y(z-x)dx\]</li>
 </ul>
 <h3 id="väntevärden">3. Väntevärden</h3>
-<h4 id="note-to-self-1">Note to self:</h4>
-<p>konstanter inuti väntevärdesfunktioner ser dumt ut så flytta ut dem.</p>
-<h4 id="väntevärdet-ex-eller-μ">Väntevärdet E(X) eller μ</h4>
+<p><strong>Note to self:</strong> konstanter inuti väntevärdesfunktioner ser dumt ut så flytta ut dem.</p>
+<h4 id="väntevärdetexμ">Väntevärdet/E(X)/μ</h4>
 <p>Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade (__E__xpected) resultatet blir.</p>
 <p><strong>DEF:</strong> \[ E(X) = \sum_kkp_X(k) \] \[ E(X) = \int\limits_{-\infty}^{\infty} x f_X(x)dx \]</p>
 <p><strong>Y = g(X)</strong> – Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så kan man trixa enl. följande \[ E(Y) = \sum_kg(k)p_X(k)\] \[ E(X) = \int\limits_{-\infty}^{\infty} g(x) f_X(x)dx \]</p>
 <p>\[ E(X+Y) = E(X)+E(Y) \]</p>
-<p>X &amp; Y oberoende \[ E(XY) = E(X)E(Y)\]</p>
-<p>Samling X med samma väntevärde µ \[ E(\sum_{i=1}^nX_i)=n\mu \]</p>
-<h5 id="betingade-väntevärden">Betingade väntevärden</h5>
+<p><strong>X &amp; Y oberoende</strong></p>
+<p>\[ E(XY) = E(X)E(Y)\]</p>
+<p>Samling X med samma väntevärde µ \[ E(\sum_{i=1}^n X_i)=n\mu \]</p>
+<p><strong>Betingade väntevärden</strong></p>
 <p>\[ E(X|Y=k) = \sum_{j=0}^\infty jp_{X|Y=k}(j)\]</p>
 <p>\[ E(X|Y=y) = \int_{-\infty}^\infty xf_{X|Y=y}(x)dx\]</p>
-<h4 id="variansen-vx-eller-σ">Variansen V(X) eller σ²</h4>
+<h4 id="variansenvxσ">Variansen/V(X)/σ²</h4>
 <p>Variansen är en typ av spridningsmått. Vid beräkning av varians av en summa olika s.v. bör man <strong>ALDRIG</strong> anta att inblandade s.v. är oberoende. GLÖM MED ANDRA ORD INTE KOVARIANSEN.</p>
 <p><strong>DEF:</strong> \[ V(X) = E[(X-\mu)^2] \]</p>
 <p><strong>Schysta satser:</strong> <span class="math display">\[ V(X) = E(X^2)-[E(X)]^2 \]</span> \[ V(aX+b) = a^2V(X) \] \[ V(X + Y) = V(X) + V(Y) + 2C(X,Y) \]</p>
@@ -243,9 +245,9 @@ title: "Sannolikhetsteori och statistikteori"
 <h3 id="terminologi-1">terminologi</h3>
 <p><strong>parameterrummet</strong> – de värden den sökta parametern kan tänkas anta.</p>
 <p><strong>stickprov</strong> – betecknas med lilla x = (x1,x2,…,xn) för n dimensionella s.v.</p>
-<p><strong>stickprovsvariansen</strong> \[ s^2 = \frac{1}{n-1} \sum_{j=1}^n (x_j - \bar{x})^2 \]</p>
-<p><strong>kovariansen</strong> mellan x- och y-värdena i en datamängd \( ( x_1 , y_1 ),( x_2 , y_2 ),…,( x_n , y_n ) \) \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \]</p>
-<p><strong>korrelationskoefficienten</strong> \[ r = \frac{c_{xy}}{s_xs_y} \]</p>
+<p><strong>stickprovsvariansen</strong> – \( s^2 = \frac{1}{n-1} \sum_{j=1}^n (x_j - \bar{x})^2 \)</p>
+<p><strong>kovariansen</strong> – mellan x- och y-värdena i en datamängd \( ( x_1 , y_1 ),( x_2 , y_2 ),…,( x_n , y_n ) \) \[ c_{xy} = \frac{1}{n-1}\sum_{i=1}^n(x_i-\bar{x})(y_i-\bar{y}) \]</p>
+<p><strong>korrelationskoefficienten</strong> – \( r = \frac{c_{xy}}{s_xs_y} \)</p>
 <h3 id="punktskattning">7. Punktskattning</h3>
 <p>Lär dig uppskatta saker!</p>
 <p><strong>punktskattning</strong> – den observerade sannolikheten – ett utfall av stickprovsvariabeln \[ \theta_{obs}^*(x_1,x_2,…,x_n) \]</p>
@@ -276,13 +278,14 @@ title: "Sannolikhetsteori och statistikteori"
 <p>När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.</p>
 <h4 id="tillämpning-på-normalfördelningen">Tillämpning på normalfördelningen</h4>
 <h4 id="ett-stickprov">Ett stickprov</h4>
-<h5 id="µ-okänt-σ-känt">µ okänt σ känt</h5>
+<p><strong>µ okänd σ känd</strong></p>
 <p>\[\mu* = \bar{x} \]</p>
-<h5 id="μ-känt-σ-okänt">μ känt σ okänt</h5>
+<p><strong>μ känd σ okänd</strong></p>
 <p><span class="math display">\[ (\sigma^2)_{obs}^* = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2 \]</span></p>
 <h5 id="konfidensintervall-för-väntevärdet">Konfidensintervall för väntevärdet</h5>
-<h5 id="känd-standardavvikelse">Känd standardavvikelse</h5>
-<p>En lämplig skattning av µ är aritmetiska medelvärdet av X. \[ \bar{X} \in N(\mu,D) \] \[ D = \sigma/\sqrt{n} \] \[ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) \]</p>
+<p><strong>σ känd</strong></p>
+<p>En lämplig skattning av µ är aritmetiska medelvärdet av X.</p>
+<p>\[ \bar{X} \in N(\mu,D) \] \[ D = \sigma/\sqrt{n} \] \[ I_\mu = (\bar{x}-\lambda_{\alpha/2}D,\bar{x}+\lambda_{\alpha/2}D) \]</p>
 <p>Allt detta följer av att:</p>
 <p>\[ \frac{\bar{X}-\mu}{D} \in N(0,1) \]</p>
 <p>Följaktligen gäller med sannolikheten 1-alfa att:</p>
@@ -293,13 +296,13 @@ title: "Sannolikhetsteori och statistikteori"
 <p>\[ D = 1.2/\sqrt{60} = 0.155 \]</p>
 <p>och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sätta upp följande ekvation:</p>
 <p>\[ 2 * 2.58 * 1.2/\sqrt{n} = 0.5 \]</p>
-<h5 id="okänd-standardavvikelse">Okänd standardavvikelse</h5>
+<p><strong>σ okänd</strong></p>
 <p>I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ</p>
 <p>\[ I_\mu = (\bar{x}-t_{\alpha/2}(f)d,\bar{x}+t_{\alpha/2}(f)d) \] \[ d = s/\sqrt{n}, \quad f = n-1 \]</p>
 <h5 id="konfidensintervall-för-standardavvikelsen">Konfidensintervall för standardavvikelsen</h5>
-<h5 id="känt-väntevärde">Känt väntevärde</h5>
+<p><strong>μ känd</strong></p>
 <p>Aint gonna happen gurl</p>
-<h6 id="okänt-väntevärde">Okänt väntevärde</h6>
+<p><strong>μ okänd</strong></p>
 <p>\[ I_\sigma = (k_1s,k_2s) \] \[ k_1 = \sqrt{(f/\chi_{\alpha/2}^2(f)} \] \[ k_2 = \sqrt{(f/\chi_{1-\alpha/2}^2(f)} \] \[ f = n-1 \]</p>
 <h4 id="två-stickprov">Två stickprov</h4>
 <p>När man vill mäta skillnaden mellan två stickprov. Om de två stickproven parvis korrelerar bör metoden tillhörande stickprov i par användas.</p>
@@ -308,8 +311,8 @@ title: "Sannolikhetsteori och statistikteori"
 <p>Om σ1 = σ2 = σ:</p>
 <p>\[ I_{\mu_1-\mu_2} = (\bar{x}-\bar{y}-t_{\alpha/2}(f)d,\bar{x}-\bar{y}+t_{\alpha/2}(f)d) \] \[ d = \sigma \sqrt{ \frac{1}{n_1} + \frac{1}{n_2}} \]</p>
 <h4 id="stickprov-i-par">Stickprov i par</h4>
-<p>När det utförs två mätningar på n olika objekt.</p>
-<p>Skapa \[ z = y - x \]</p>
+<p>När det utförs två mätningar på n olika objekt, t.ex. före och efter något har hänt. Då alla objekt kan skilja sig åt är det svårt att göra skattningar om de enskilda objekten men på samma gång perfekt läge för att skatta skillnaden mellan mätningarna.</p>
+<p>Skapa \( z = y - x \) och använd z för skattning av standardavvikelse.</p>
 <h3 id="hypotesprövning">9. Hypotesprövning</h3>
 <p><strong>nollhypotes</strong> – hypotesen att det inte föreligger något fenomen som kräver en förklaring. Betecknas: \( H_0 \)</p>
 <p><strong>mothypotes</strong> – hypotes som kan vara sann om inte nollhypotesen är det. Betecknas: \( H_i \)</p>
@@ -319,9 +322,11 @@ title: "Sannolikhetsteori och statistikteori"
 <li>signifikant** – 0.01</li>
 <li>signifikant*** – 0.001</li>
 </ul>
-<p><strong>testvariabel/teststorhet</strong> – observation av stickprovsvariabel</p>
+<p><strong>testvariabel/teststorhet</strong> – observation av stickprovsvariabel. Tackvare normalapproximation lämpar sig ofta testvariabler på formen \( ( \theta^* - \theta_0 )/D \). Där \( \theta^* \) är det skattade väntevärdet, \( \theta_0 \) är väntevärdet som gäller för nollhypotesen och \( D \) är standardavvikelsen för skattningen.</p>
 <p><strong>signifikanstest</strong> 1. Om \(t_{obs} \in \text{jätteosannolikt område} \) förkasta \( H_0 \) 2. Om \( t_{obs} \) å andra sidan är ett sannolikt utfall, även i vanliga fall så bör \( H_0 \) inte förkastas.</p>
-<p><strong>konfidensmetoden</strong> – genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför</p>
+<p><strong>direkt- och P-värdesmetoden</strong> – anta \( H_0 \) och beräkna sannolikheten att man får det utfall man fått eller något värre. “Värre” betyder alla utfall som är ännu mindre sannolika om \( H_0 \) stämmer.</p>
+<p><strong>konfidensmetoden</strong> – genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför.</p>
+<p><strong>Testkvantitet</strong> – använd testvariabel och tabell och se om testvariabeln är större eller mindre än en viss α-kvantil.</p>
 <p><strong>styrkefunktionen</strong> \( h(\theta) = P(H_0 \text{ förkastas}) \) om θ är det rätta värdet.</p>
 <ul>
 <li>bör vara stort för alla θ som tillhör mothypotesen</li>
@@ -339,9 +344,9 @@ title: "Sannolikhetsteori och statistikteori"
 <p>När man vill se samband mellan två eller flera storheter.</p>
 <h4 id="observera">observera!</h4>
 <ul>
-<li><p>Använd alltid t-fördelningen när standardavvikelsen blivit skattad.</p></li>
-<li><p>Logaritmera om \( y_i = c e^{\beta_{t_i}} \epsilon_i \)</p></li>
+<li>Använd alltid t-fördelningen när standardavvikelsen blivit skattad.</li>
 </ul>
+<p><strong>Icke linjära samband</strong> – Logaritmera \[ y_i = c e^{\beta_{t_i}} \epsilon_i \] \[ ln y_i = ln c + \beta t_i + ln \epsilon_i \] Glöm nu inte att använda \( ln y_i \), alltså inte \( y_i \). Samma gäller alla sådana termer.</p>
 <h4 id="terminologi-2">Terminologi</h4>
 <p><strong>teoretiska regressionslinjen</strong> \[ y = \alpha + \beta x \]</p>
 <p><strong>parameterskattningar</strong></p>
@@ -353,7 +358,6 @@ title: "Sannolikhetsteori och statistikteori"
 <p>\[ Q( \alpha , \beta ) = \sum_{i}^n (y_i - \mu_i)^2 \] \[ \mu_i = \alpha + \beta x_i \]</p>
 <p>Genom att sätta partialderivatorna till noll fås</p>
 <p>\[ \beta^* = \frac{S_{xy}}{S_{xx}} \quad \alpha^* = \bar{y} - \beta^* \bar{x} \]</p>
-<h5 id="skattning-av-σ">Skattning av σ</h5>
 <p>\[ ( \sigma^2 )^* = s^2 = \frac{Q_0}{n-2}, \quad Q_0 = S_{yy} - S_{xy}^2 / S_{xx} \]</p>
 <p>Observera att</p>
 <p>\[ \mu_0^* = \alpha^* + \beta^* x_0 \in N( \alpha + \beta x_0 , \sigma \sqrt{ \frac{1}{n} + \frac{(x_0 - \bar{x})^2}{S_{xx}}}) \]</p>
@@ -361,9 +365,18 @@ title: "Sannolikhetsteori och statistikteori"
 <p><strong>Prediktionsintervall för observationer</strong> – När man vill göra ett konfidensintervall för framtida observationer av \( Y \) för \( x = x_0 \)</p>
 <p><strong>Kalibreringsintervall</strong> – Då man erhållit värde \( y_0 \text{ på } y \), vad blir då \( x_0 \)</p>
 <h4 id="stokastiska-vektorer">Stokastiska vektorer</h4>
-<p><strong>stokastisk vektor</strong></p>
-<p><strong>väntevärdesvektorn</strong></p>
+<p><strong>stokastisk vektor</strong> – Kolonnvektor vars element är stokastiska variabler. Den kan alltså representera en n-dimensionell stokastisk variabel. \[ X = [X_1,…,X_n]^T \]</p>
+<p><strong>väntevärdesvektorn</strong> – Elementvis beräknade väntevärden för \( X \)</p>
+<p><strong>kovariansmatrisen</strong> – Också en funktion på \( X \). Denna genererar \( C(X_i,X_j) \) på \( X_{ij} \). Då \( C(X,X) = V(X) \) hittar man varianser för de olika s.v. på diagonalelementen.</p>
 <h4 id="multipel-regression">Multipel regression</h4>
-<h3 id="fallgropar">11. Fallgropar</h3>
+<p>För stilrenhet döps \( \alpha \) om till \( \beta_0 \).</p>
+<p>\[ y_i = \beta_0 + \beta_1 x_{i1} + … + \beta_k x_{ik} + \epsilon_i, \quad i=1,…,n \]</p>
+<p>Skriv modellen på matrisform för att generalisera ytterligare. \[ y = X \beta + \epsilon \]</p>
+<p><strong>QUICKGUIDE:</strong> – en guide för formelsamlingsägare: 1. Beräkna \( \beta^* \). 2. Beräkna \( s^2 = \frac{Q_0}{n-(p+1)} \)</p>
+<p><strong>TIPS:</strong> – för dig som vill bli regressiv king</p>
+<ul>
+<li><p><strong>Välj många olika kombinationer</strong> av \( x_{ij} \). – Om alla \( x_{ik} \) är samma kommer normalekvationen sakna entydlig lösning eftersom normalen då balanserar på en linje av mätdata och och inte är utspridd över axeln tillhörande \( x_{ik} \).</p></li>
+<li><p><strong>Håll koll på (n - (p + 1))</strong> – då summan återkommer i variansskattning och som antal frihetsgrader till t-fördelningen. <strong>p</strong> är antalet olika x-variabler och därav också antalet x-dataserier med <strong>n</strong> värden i varje serie.</p></li>
+</ul>
 </body>
 </html>

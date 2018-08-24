@@ -10,8 +10,7 @@ __relativ frekvens__ -- kvoten mellan antalet erhållet utfall och hela antalet 
 
 __disjunkta händelser__ -- kan inte inträffa samtidigt
 
-__Kolmogorovs axiomsystem__:
-
+__Kolmogorovs axiomsystem__
 
 1. Händelsen P(A) måste ligga mellan 0 & 1
 2. P(utfallsrummet) = 1
@@ -26,6 +25,12 @@ P(A or B) = P(A) + P(B) - P(A and B)
 __oberoende händelser__ -- \\( P(A \\cap B) = P(A)P(B) \\)
 
 __Booles olikhet__ -- \\( P(A \\cup B) \\leq P(A) + P(B) \\)
+
+__De morgans lagar__ -- bra att veta att även boolsk algebra är distributiv.
+
+\\[ A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C) \\]
+\\[ A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C) \\]
+
 
 #### Kombinatorik
 
@@ -169,35 +174,36 @@ Gör först om till fördelningsfunktion om täthetsfunktion
 
 ### 3. Väntevärden
 
-#### Note to self: 
+__Note to self:__
 konstanter inuti väntevärdesfunktioner ser dumt ut så flytta ut dem.
 
-#### Väntevärdet E(X) eller μ
- Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade (__E__xpected) resultatet blir.
+#### Väntevärdet/E(X)/μ
+Är ett typ av lägesmått, precis som medianen. E(X) är väntevärdet för X. E(X) berättar om vad det väntade (__E__xpected) resultatet blir.
 
- __DEF:__
- \\[ E(X) = \\sum_kkp_X(k) \\] 
- \\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} x f_X(x)dx \\]
+__DEF:__
+\\[ E(X) = \\sum_kkp_X(k) \\] 
+\\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} x f_X(x)dx \\]
 
- __Y = g(X)__ -- Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så kan man trixa enl. följande
+__Y = g(X)__ -- Väljer du att interfacea funktionen med en ny variabel som beror av X med samma gamla fördelning så kan man trixa enl. följande
 \\[ E(Y) = \\sum_kg(k)p_X(k)\\]
 \\[ E(X) = \\int\\limits_{-\\infty}^{\\infty} g(x) f_X(x)dx \\]
 
- \\[ E(X+Y) = E(X)+E(Y) \\]
+\\[ E(X+Y) = E(X)+E(Y) \\]
 
- X & Y oberoende 
- \\[ E(XY) = E(X)E(Y)\\]
- 
- Samling X med samma väntevärde µ
- \\[ E(\\sum_{i=1}^nX_i)=n\\mu \\]
+__X & Y oberoende__
 
-##### Betingade väntevärden
+\\[ E(XY) = E(X)E(Y)\\]
+
+Samling X med samma väntevärde µ
+\\[ E(\\sum_{i=1}^n X_i)=n\\mu \\]
+
+__Betingade väntevärden__
 
 \\[ E(X|Y=k) = \\sum_{j=0}^\\infty jp_{X|Y=k}(j)\\]
 
 \\[ E(X|Y=y) = \\int_{-\\infty}^\\infty xf_{X|Y=y}(x)dx\\]
 
-#### Variansen V(X) eller σ²
+#### Variansen/V(X)/σ²
 
 Variansen är en typ av spridningsmått. Vid beräkning av varians av en summa olika s.v. bör man __ALDRIG__ anta att inblandade s.v. är oberoende. GLÖM MED ANDRA ORD INTE KOVARIANSEN.
 
@@ -396,17 +402,17 @@ __aperiodiska tillstånd__ -- om det alltid går att komma tillbaka till ett til
 ## DEL 2: Statistik eller vilka slutsatser man kan dra av ett datamaterial
 
 ### terminologi
+
 __parameterrummet__ -- de värden den sökta parametern kan tänkas anta.
 
 __stickprov__ -- betecknas med lilla x = (x1,x2,...,xn) för n dimensionella s.v.
 
-__stickprovsvariansen__ \\[ s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\]
+__stickprovsvariansen__ -- \\( s^2 = \\frac{1}{n-1} \\sum_{j=1}^n (x_j - \\bar{x})^2 \\)
 
-__kovariansen__ mellan x- och y-värdena i en datamängd \\( ( x_1 , y_1 ),( x_2 , y_2 ),...,( x_n , y_n ) \\)
+__kovariansen__ -- mellan x- och y-värdena i en datamängd \\( ( x_1 , y_1 ),( x_2 , y_2 ),...,( x_n , y_n ) \\)
 \\[ c_{xy} = \\frac{1}{n-1}\\sum_{i=1}^n(x_i-\\bar{x})(y_i-\\bar{y}) \\]
 
-__korrelationskoefficienten__
-\\[ r = \\frac{c_{xy}}{s_xs_y} \\]
+__korrelationskoefficienten__ -- \\( r = \\frac{c_{xy}}{s_xs_y} \\)
 
 
 ### 7. Punktskattning
@@ -467,22 +473,27 @@ __n stickprov med samma σ__ -- En skattning som gäller oavsett hur många stic
 \\( Q_i \\) är kvadratsumman kring medelvärdet.
 
 ### 8. Intevallskattning
+
 När man vill veta hur stor sannolikhet det är att en okänd parameter ligger inom ett visst interval.
 
 #### Tillämpning på normalfördelningen
 
 #### Ett stickprov
 
-##### µ okänt σ känt
+__µ okänd σ känd__
 
 \\[\\mu* = \\bar{x} \\]
 
-##### μ känt σ okänt
+__μ känd σ okänd__
+
 $$ (\sigma^2)_{obs}^* = \frac{1}{n} \sum_{i=1}^{n} (x_i - \mu)^2 $$
 
 ##### Konfidensintervall för väntevärdet
-##### Känd standardavvikelse
+
+__σ känd__
+
 En lämplig skattning av µ är aritmetiska medelvärdet av X. 
+
 \\[ \\bar{X} \\in N(\\mu,D) \\]
 \\[ D = \\sigma/\\sqrt{n} \\]
 \\[ I_\\mu = (\\bar{x}-\\lambda_{\\alpha/2}D,\\bar{x}+\\lambda_{\\alpha/2}D) \\]
@@ -507,7 +518,7 @@ och man istället vill ha en mindre standardavvikelse, säg 0.5, så kan man sä
 
 \\[ 2 * 2.58 * 1.2/\\sqrt{n} = 0.5 \\]
 
-##### Okänd standardavvikelse
+__σ okänd__
 
 I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ 
 
@@ -516,11 +527,11 @@ I detta fallet gäller en helt galen lösning eftersom man behöver skatta σ
 
 ##### Konfidensintervall för standardavvikelsen
 
-##### Känt väntevärde 
+__μ känd__
 
 Aint gonna happen gurl
 
-###### Okänt väntevärde
+__μ okänd__
 
 \\[ I_\\sigma = (k_1s,k_2s) \\]
 \\[ k_1 = \\sqrt{(f/\\chi_{\\alpha/2}^2(f)} \\]
@@ -528,6 +539,7 @@ Aint gonna happen gurl
 \\[ f = n-1 \\]
 
 #### Två stickprov
+
 När man vill mäta skillnaden mellan två stickprov. Om de två stickproven parvis korrelerar bör metoden tillhörande stickprov i par användas.
 
 Om σ1 och σ2 är kända:
@@ -541,11 +553,10 @@ Om σ1 = σ2 = σ:
 \\[ d = \\sigma \\sqrt{ \\frac{1}{n_1} + \\frac{1}{n_2}} \\]
 
 #### Stickprov i par
-När det utförs två mätningar på n olika objekt. 
 
-Skapa \\[ z = y - x \\]
+När det utförs två mätningar på n olika objekt, t.ex. före och efter något har hänt. Då alla objekt kan skilja sig åt är det svårt att göra skattningar om de enskilda objekten men på samma gång perfekt läge för att skatta skillnaden mellan mätningarna.
 
-
+Skapa \\( z = y - x \\) och använd z för skattning av standardavvikelse.
 
 
 
@@ -562,13 +573,17 @@ __signifikansnivå/felrisk__ -- sannolikheten att nollhypotesen förkastas trots
   + signifikant** -- 0.01
   + signifikant*** -- 0.001
 
-__testvariabel/teststorhet__ -- observation av stickprovsvariabel
+__testvariabel/teststorhet__ -- observation av stickprovsvariabel. Tackvare normalapproximation lämpar sig ofta testvariabler på formen \\( ( \\theta^* - \\theta_0 )/D \\). Där \\( \\theta^* \\) är det skattade väntevärdet, \\( \\theta_0 \\) är väntevärdet som gäller för nollhypotesen och \\( D \\) är standardavvikelsen för skattningen.
 
 __signifikanstest__ 
 1. Om \\(t_{obs} \\in \\text{jätteosannolikt område} \\) förkasta \\( H_0 \\)
 2. Om \\( t_{obs} \\) å andra sidan är ett sannolikt utfall, även i vanliga fall så bör \\( H_0 \\) inte förkastas.
 
-__konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför
+__direkt- och P-värdesmetoden__ -- anta \\( H_0 \\) och beräkna sannolikheten att man får det utfall man fått eller något värre. "Värre" betyder alla utfall som är ännu mindre sannolika om \\( H_0 \\) stämmer.
+
+__konfidensmetoden__ -- genom att beräkna konfidensintervall för variabel och sedan förkasta nollhypotesen om värdet hamnar utanför.
+
+__Testkvantitet__ -- använd testvariabel och tabell och se om testvariabeln är större eller mindre än en viss α-kvantil.
 
 __styrkefunktionen__
 \\( h(\\theta) = P(H_0 \\text{ förkastas}) \\) om θ är det rätta värdet.
@@ -576,6 +591,7 @@ __styrkefunktionen__
   + bör vara stort för alla θ som tillhör mothypotesen
   + bör vara litet för alla θ som tillhör nollhypotesen
   + h(θ) kallas testets styrka för θ
+
 
 
 #### How to styrkefunktion
@@ -595,7 +611,10 @@ När man vill se samband mellan två eller flera storheter.
 
 * Använd alltid t-fördelningen när standardavvikelsen blivit skattad.
 
-* Logaritmera om \\( y_i = c e^{\\beta_{t_i}} \\epsilon_i \\) 
+__Icke linjära samband__ -- Logaritmera 
+\\[ y_i = c e^{\\beta_{t_i}} \\epsilon_i \\] 
+\\[ ln y_i = ln c + \\beta t_i + ln \\epsilon_i \\]
+Glöm nu inte att använda \\( ln y_i \\), alltså inte \\( y_i \\). Samma gäller alla sådana termer.
 
 #### Terminologi
 
@@ -621,8 +640,6 @@ Genom att sätta partialderivatorna till noll fås
 
 \\[ \\beta^* = \\frac{S_{xy}}{S_{xx}} \\quad \\alpha^* = \\bar{y} - \\beta^* \\bar{x} \\]
 
-##### Skattning av σ
-
 \\[ ( \\sigma^2 )^* = s^2 = \\frac{Q_0}{n-2}, \\quad Q_0 = S_{yy} - S_{xy}^2 / S_{xx} \\]
 
 Observera att
@@ -638,16 +655,30 @@ __Kalibreringsintervall__ -- Då man erhållit värde \\( y_0 \\text{ på } y \\
 
 
 #### Stokastiska vektorer
-__stokastisk vektor__
+__stokastisk vektor__ -- Kolonnvektor vars element är stokastiska variabler. Den kan alltså representera en n-dimensionell stokastisk variabel.
+\\[ X = [X_1,...,X_n]^T \\]
 
-__väntevärdesvektorn__ 
+__väntevärdesvektorn__ -- Elementvis beräknade väntevärden för \\( X \\)
+
+__kovariansmatrisen__ -- Också en funktion på \\( X \\). Denna genererar \\( C(X_i,X_j) \\) på \\( X_{ij} \\). Då \\( C(X,X) = V(X) \\) hittar man varianser för de olika s.v. på diagonalelementen.
 
 
 #### Multipel regression
 
+För stilrenhet döps \\( \\alpha \\) om till \\( \\beta_0 \\). 
 
+\\[ y_i = \\beta_0 + \\beta_1 x_{i1} + ... + \\beta_k x_{ik} + \\epsilon_i, \\quad i=1,...,n \\]
 
-### 11. Fallgropar
+Skriv modellen på matrisform för att generalisera ytterligare.
+\\[ y = X \\beta + \\epsilon \\]
 
+__QUICKGUIDE:__ -- en guide för formelsamlingsägare:
+1. Beräkna \\( \\beta^* \\).
+2. Beräkna \\( s^2 = \\frac{Q_0}{n-(p+1)} \\)  
 
+__TIPS:__ -- för dig som vill bli regressiv king
+
++ __Välj många olika kombinationer__ av \\( x_{ij} \\). -- Om alla \\( x_{ik} \\) är samma kommer normalekvationen sakna entydlig lösning eftersom normalen då balanserar på en linje av mätdata och och inte är utspridd över axeln tillhörande \\( x_{ik} \\). 
+
++ __Håll koll på (n - (p + 1))__ -- då summan återkommer i variansskattning och som antal frihetsgrader till t-fördelningen. __p__ är antalet olika x-variabler och därav också antalet x-dataserier med __n__ värden i varje serie. 
 
