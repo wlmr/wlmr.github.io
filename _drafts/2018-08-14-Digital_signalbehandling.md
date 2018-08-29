@@ -11,7 +11,7 @@ __impulssvar eller \\( h(n) \\)__ -- Beskrivningen av hur systemet förstärker 
 + __härled differensekvation__ -- om \\( h(n) = \\begin{Bmatrix} 3 & 2 & 1 \\end{Bmatrix} \\) så kan man tänka på att \\( h(0) \\) är hur maskinen förstärker det senaste invärdet. Därför går \\( h(n) \\) att skriva om till \\( y(n) = h(0)x(n)+h(1)x(n-1)+h(2)x(n-2) \\)
 + __härled systemfunktionen__ -- systemfunktionen är z-transformen av impulssvaret. Transformera!
 + __härled Fouriertransformen__ -- Fouriertransformen är som z-transformen. Man behöver bara byta ut \\(z^{-n}\\) mot \\( e^{-j2 \\pi Ft} \\)
-+ __härled linjär autokorrektion__ -- \\( r{xx}(k)=x(k) * x(-k) \\). Man får \\( x(-k) \\) genom att snurra \\( x(n) \\) runt y-axeln.
++ __härled linjär autokorrektion__ -- \\( r_{xx} (k)=x(k) * x(-k) \\). Man får \\( x(-k) \\) genom att snurra \\( x(n) \\) runt y-axeln.
 + __härled utsignal vid viss insignal__ -- om det är två diskreta vektorer -- falta! Annars kan det ofta vara smidigare att första z-transformera, multiplicera och sedan iverstransformera.
 
 
@@ -30,23 +30,23 @@ _Exempel:_
 
 _properties_
 
-+ commutativity -- spelar ingen roll vilken som är till vänster eller höger om tecknet
-+ associativity -- givet en faltning av tre signaler spelar det ingen roll vilka två som faltas först
-+ distributivity -- faltningen mellan en signal och en summa av två signaler kan utvidgas genom att istället räkna på faltningen mellan signalen och den ena signalen i summan pluss faltningen mellan signalen och den andra signalen i summan
-+ input-output -- faltning mellan impulssvar och input ger utsignalen
++ commutativity -- spelar ingen roll vilken som är till vänster eller höger om tecknet.
++ associativity -- givet en faltning av tre signaler spelar det ingen roll vilka två som faltas först.
++ distributivity -- faltningen mellan en signal och en summa av två signaler kan utvidgas genom att istället räkna på faltningen mellan signalen och den ena signalen i summan pluss faltningen mellan signalen och den andra signalen i summan.
++ input-output -- faltning mellan impulssvar och input ger utsignalen.
 
-_seriekoppling_ -- utsignalen av två impulssvar efter varandra är faltningen av dessa samt \\( x(n) \\)
+_seriekoppling_ -- utsignalen av två impulssvar efter varandra är faltningen av dessa samt \\( x(n) \\).
 
-_parallellkoppling_ -- utsignalen av två parallellkopplade impulssvar är faltningen mellan insignalen och summan av de två impulssvaren
+_parallellkoppling_ -- utsignalen av två parallellkopplade impulssvar är faltningen mellan insignalen och summan av de två impulssvaren.
 
 
 __korrelation__
 
 + __linjär korrelation__
-\\[ r{yx}(k)=y(k) * x(-k) \\]
+\\[ r_{yx} (k)=y(k) * x(-k) \\]
 
 + __linjär autokorrelationen__
-\\[ r{xx}(k)=x(k) * x(-k) \\]
+\\[ r_{xx}(k)=x(k) * x(-k) \\]
 
 + __\\( x(-n) \\) ?__
 \\[ x(n) = \\begin{Bmatrix} 2 & \\underline{4} & 6 & 4 & 2 \\end{Bmatrix} \\]
@@ -69,7 +69,7 @@ __cirkulär faltning mod m__ -- Som vanlig faltning fast med loopade signaler.
 
 __cirkulär korrelation modulo n__ -- 
 
-1. Spegelvänd den ena signalen runt \\( n = 0 )\\ och fortsätt sedan enl. stegen för cirkulär faltning.
+1. Spegelvänd den ena signalen runt \\( n = 0 )\\ __EFTER ATT DU JUSTERAT LÄNGDEN__ och fortsätt sedan enl. stegen för cirkulär faltning.
 
 
 ## Transformer
