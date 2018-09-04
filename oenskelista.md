@@ -21,4 +21,4 @@ Välkomna till min hämndaktion, kära mor eller mormor! Med denna lista i rock�
 14. [The Pragmatic Programmer](https://www.adlibris.com/se/bok/the-pragmatic-programmer-9780201616224)
 15. [Civilization and its discontents](https://www.adlibris.com/se/bok/civilization-and-its-discontents-9780141395890)
 16. [minidator](https://www.inet.se/produkt/2213153/intel-nuc-i5-7260u-kabylake)
-
+17. [The codding of the American mind](https://www.amazon.com/gp/product/0735224897/ref=as_li_qf_asin_il_tl?ie=UTF8&tag=quillette-20&creative=9325&linkCode=as2&creativeASIN=0735224897&linkId=b0f28b7a037b79c2e89325c6fe805830)
