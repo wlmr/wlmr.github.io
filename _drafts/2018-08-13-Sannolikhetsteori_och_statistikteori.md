@@ -17,7 +17,7 @@ __Kolmogorovs axiomsystem__
 3. om A & B är parvis oförenliga gäller \\( P(A) + P(B) = P(A \\cup B) \\)
 
 __komplementsatsen__
-P(A*) = 1 - P(A)
+P(A*) = 1 - P(A) 
 
 __Additionssatsen__
 P(A or B) = P(A) + P(B) - P(A and B)
@@ -26,7 +26,13 @@ __oberoende händelser__ -- \\( P(A \\cap B) = P(A)P(B) \\)
 
 __Booles olikhet__ -- \\( P(A \\cup B) \\leq P(A) + P(B) \\)
 
-__De morgans lagar__ -- bra att veta att även boolsk algebra är distributiv.
+__De morgans lagar__ -- lite schyst boolsk algebra.
+
+\\[ \\neg(A \\cap B) = \\neg A \\cup \\neg B \\]
+\\[ \\neg(A \\cup B) = \\neg A \\cap \\neg B \\]
+
+
+bra att veta att även boolsk algebra är distributiv.
 
 \\[ A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C) \\]
 \\[ A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C) \\]
