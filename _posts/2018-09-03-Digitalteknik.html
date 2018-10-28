@@ -1,0 +1,55 @@
+---
+layout: post
+title: "Digitalteknik"
+---
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>2018-09-03-Digitalteknik</title>
+  <style type="text/css">
+      code{white-space: pre-wrap;}
+      span.smallcaps{font-variant: small-caps;}
+      span.underline{text-decoration: underline;}
+      div.column{display: inline-block; vertical-align: top; width: 50%;}
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_CHTML-full" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+<h2 id="fsm-a.k.a.-flying-spaghetti-monster-or-finite-state-machine">fsm a.k.a. flying spaghetti monster or finite state machine</h2>
+<p><strong>finite state graph</strong></p>
+<ul>
+<li>the states are circles called vertices</li>
+<li>the transitions are arrows called edges</li>
+<li>one edge for each input</li>
+<li>one output combination for each input</li>
+</ul>
+<p><strong>switchfunktion</strong> – function of binary input signals with binary output signal. The function must be able to be specified in a table.</p>
+<p><strong>sekvenskrets</strong> – realization of wanted behaviour with binary inputs and binary output where the realization must contain some kind of memory element. Behaviour is specified in a state transition graph. The graph together with specified behaviour is called a finite state machine or automata.</p>
+<p><strong>set of states S</strong></p>
+<p><strong>a start state</strong></p>
+<p><strong>set of inputs Ι</strong></p>
+<p><strong>set of outputs Ζ</strong></p>
+<p><strong>output function λ(s,i)</strong></p>
+<p><strong>next state function δ(s,i)</strong></p>
+<p><strong>KLOCKSTYRD</strong> – will update every second wether or not the state has changed.</p>
+<p><strong>HÄNDELSESTYRD</strong> – will update every time unit as long as there is input to be processed.</p>
+<p><strong>trellis</strong> – google a picture</p>
+<h2 id="sequential-circuits">Sequential Circuits</h2>
+<p><strong>boolean function</strong> – mapping from n binary inputs to one binary output</p>
+<h2 id="algebraic-structures">Algebraic structures</h2>
+<p><strong>Euclid’s algorithm</strong> – how to find the remainder \( R_d(n) = n \% d \).</p>
+<p>rewrite \( n / d \) as <span class="math display">\[ n = qd + r , \quad 0 \leq r &lt; d\]</span> where \( q \) is the quotient, \( r \) the reminder and \(d\) the divisor.</p>
+<ol type="1">
+<li>divide \(n\) with \(d\)</li>
+<li>\( floor(n/d) \) is the integer part of the result</li>
+<li>\( n - floor(n/d) = r \)</li>
+</ol>
+<p>if \( R_d(n) = 0 \) then \( n | d \)</p>
+</body>
+</html>

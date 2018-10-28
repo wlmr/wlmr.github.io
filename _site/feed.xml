@@ -1,4 +1,396 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.3">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-05T08:59:28+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Digitalteknik</title><link href="http://localhost:4000/2018/09/03/Digitalteknik.html" rel="alternate" type="text/html" title="Digitalteknik" /><published>2018-09-03T00:00:00+02:00</published><updated>2018-09-03T00:00:00+02:00</updated><id>http://localhost:4000/2018/09/03/Digitalteknik</id><content type="html" xml:base="http://localhost:4000/2018/09/03/Digitalteknik.html">&lt;!DOCTYPE html&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2018-10-28T14:27:06+01:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Kompilatorer</title><link href="http://localhost:4000/2018/10/28/Kompilatorer.html" rel="alternate" type="text/html" title="Kompilatorer" /><published>2018-10-28T00:00:00+02:00</published><updated>2018-10-28T00:00:00+02:00</updated><id>http://localhost:4000/2018/10/28/Kompilatorer</id><content type="html" xml:base="http://localhost:4000/2018/10/28/Kompilatorer.html">&lt;h1 id=&quot;the-canonical-compiler&quot;&gt;the canonical compiler&lt;/h1&gt;
+
+&lt;p&gt;In this post I will try to summarize the structure of a typical compiler. A compiler is a program that transforms high level source code into assembly code. Assembly code is the closest thing we have to binary that is still made up of text. Hence before the compiler all code was written in assembly code. To get a feel of how slow it is to write assembly code here’s an example showing how to print a string to stdout:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.global _start
+.data
+message: .ascii &quot;printing this is all the code does!\n&quot;
+.text
+_start:
+movq $1, %rdi       # stdout file descriptor
+movq $message, %rsi # message to print
+movq $14, %rdx      # message length
+movq $1, %rax       # sys_write
+syscall
+movq $0, %rdi       # exit code = 0
+movq $60, %rax      # sys_exit
+syscall
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The compiler is built up of well defined components, each one piping its output to the next module. As a structure for this post I will start with the first module and move through the compiler, finishing of with assembly code generation.&lt;/p&gt;
+
+&lt;h2 id=&quot;the-different-modules&quot;&gt;The different modules&lt;/h2&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;lexical analysis/scanning&lt;/li&gt;
+  &lt;li&gt;syntactical analysis/parsing&lt;/li&gt;
+  &lt;li&gt;semantical analysis&lt;/li&gt;
+  &lt;li&gt;intermediate code generation&lt;/li&gt;
+  &lt;li&gt;optimization&lt;/li&gt;
+  &lt;li&gt;taget code generation&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;lexical-analysis--scanning&quot;&gt;lexical analysis / scanning&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;This is the first stage and therefore the one that uses the source code as input. In the scanning stage the code is transformed into defined tokens. This can be done using regular expression. A integer could perhaps be defined by the regular expression: INTEGER = 0&lt;/td&gt;
+      &lt;td&gt;[1-9][0-9]*. Saying that the number is either a 0 or a 1,2,3,4,5,6,7,8 or 9 followed by zero or more arbitrary ints.&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;Without introducing two rules this system could however lead to some ambiguities. E.g. what should be matched if the scanner finds the string “iffff”? Should it send back and IF-token or an ID? Introducing: &lt;strong&gt;longest match&lt;/strong&gt; and &lt;strong&gt;rule priority&lt;/strong&gt;. These are straightforward self-explanatory.&lt;/p&gt;
+
+&lt;h4 id=&quot;errors&quot;&gt;errors&lt;/h4&gt;
+
+&lt;p&gt;Errors in the code found in this stage are apropriatly refered to as lexical errors. These include all text that cannot be interpreted. E.g. “¤” in the code below:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int \¤ useless(int x){
+    return x;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If no errors are found this module will output a bunch of token and feed them into the next module.&lt;/p&gt;
+
+&lt;h3 id=&quot;syntactical-analysis--parsing&quot;&gt;syntactical analysis / parsing&lt;/h3&gt;
+
+&lt;p&gt;In this section the tokens are transformed into an abstract syntax tree or AST for short.&lt;/p&gt;
+
+&lt;p&gt;To create this tree we make use of Context-Free Grammars.&lt;/p&gt;
+
+&lt;h4 id=&quot;cfg&quot;&gt;CFG&lt;/h4&gt;
+
+&lt;p&gt;The Context-Free Grammar is a formal system made up of production rules, nonterminal symbols – one of them being the start symbol – and terminal symbols. Using this the parser recursively goes through the tokens. It usually looks something like this:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Exp -&amp;gt; Exp &quot;*&quot; Exp
+Exp -&amp;gt; Exp &quot;+&quot; Exp
+Exp -&amp;gt; INT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Using this notation in practice is as beautiful as it is powerful. This CFG is written in canonical form. There is also BNF – Backus-Naur Form – and EBNF – Extended Backus-Naur Form. In BNF the “|” operator is permitted, allowing for several productions to be place on one line:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Exp -&amp;gt; Exp &quot;*&quot; Exp | Exp &quot;+&quot; Exp | INT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;EBNF Goes even further and introduces *, +, [] and ().
+The “*” is called the Kleene-star and has the same meaning as in a regex, i.e. “zero or more” – i.e. a list. Also + is brought from the regex world. The [] creates an optional of whatever is inside the brackets.&lt;/p&gt;
+
+&lt;h5 id=&quot;translation&quot;&gt;translation&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;repetition: 
+  X -&amp;gt; AB*C
+  becomes
+  X -&amp;gt; ADC
+  D -&amp;gt; CD
+  D -&amp;gt; γ&lt;/li&gt;
+  &lt;li&gt;alternative:
+  X -&amp;gt; A(…)C
+  becomes
+  X -&amp;gt; ADC
+  D -&amp;gt; (…)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;example&quot;&gt;example&lt;/h5&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Program -&amp;gt; Func*
+Func    -&amp;gt; Type IdDecl IdDecl* Block
+Block   -&amp;gt; Stmt*;
+Stmt    -&amp;gt; Decl | Assi | CallStmt | While | If | Else | Ret
+
+...
+
+Else    -&amp;gt; Block
+Ret     -&amp;gt; Expr
+
+...
+
+Expr    -&amp;gt; Call | Binexpr | IdUse | IdDecl | Num
+
+...
+
+Type    -&amp;gt; BoolType | IntType
+
+...
+
+IdUse   -&amp;gt; &amp;lt;ID&amp;gt;
+IdDecl  -&amp;gt; &amp;lt;ID&amp;gt;
+Num     -&amp;gt; &amp;lt;Num&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;The CFG works by swapping the left hand side for the right hand side. An example:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;int inc(int v1){
+    return v1+1;
+}
+
+int div(int n, int d){
+    return n/d;
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;The root of the AST would be a PROGRAM node as this is the start symbol. The root node can have zero or more Funcs. In this case the PROGAM has two Funcs so these become the first leaves. From the first Func grows four new branches. Type becomes an IntType, IdDecl becomes and ID as “inc” doesnt correspond to any of the other tokens in the scanner. The second IdDecl corresponds to the function arguments. This grows to a new leaf of ID. The Block will in a similar way grow further and further until only &lt;strong&gt;terminals&lt;/strong&gt; remain.&lt;/p&gt;
+
+&lt;h4 id=&quot;ambiguities&quot;&gt;ambiguities&lt;/h4&gt;
+
+&lt;p&gt;If it is possible to derive two different parse trees from the one sentence the CFG is ambiguous. How can we get rid of ambiguities and make the process deterministic? First of all we have to decide if we want an &lt;strong&gt;LL&lt;/strong&gt;- or an &lt;strong&gt;LR-parser&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;h4 id=&quot;philosophy&quot;&gt;philosophy&lt;/h4&gt;
+
+&lt;p&gt;If you think about it you quickly realize that nothing cool in our world is designed top-down. The human brain doesn’t consist of a conscience ruling over the rest of the brain. No, our conscienceness is merely another part of the brain. There is no ship bridge issuing commands. The brain is simply a massive net of neurons. The neuron has no intelligence on its own, it can only respond to stimuli by firing electrical impulses. It is together in great numbers that meaning and complex behaviour starts to erupt. Not only the brain – every part of man works this way – we are in fact no more than a collection of cells and bacteria. It was when AI begun to be modelled bottom-up that the area became something to be proud of. It is why communism – top-down – failed and it is why capitalism – bottom-up – works. This is why cryptocurrencies, and decentralized systems are so cool. Top-down never occurs in nature and is very limited. Have this in mind when you learn about LL-parsing and LR-parsing.&lt;/p&gt;
+
+&lt;h4 id=&quot;ll&quot;&gt;LL&lt;/h4&gt;
+
+&lt;p&gt;The __L__eft to right __L__eftmost derivation-parser builds the tree top-down. The parser is also defined by how many lookahead tokens it incorporates. An LL(1) has only one lookahead. The number of lookaheads define how many tokens ahead the parser should look at before using a production rule. When designing a LL(1)-grammar there are two pitfalls to look out for namely left-recursion and common prefix. We will return to these in the construction section.&lt;/p&gt;
+
+&lt;h5 id=&quot;construction&quot;&gt;construction&lt;/h5&gt;
+
+&lt;p&gt;When constructing a LL(1)-parser we follow the following algorithm:&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;write the grammar on canonical form&lt;/li&gt;
+  &lt;li&gt;compute Nullable, FIRST and FOLLOW&lt;/li&gt;
+  &lt;li&gt;construct a LL-table using the results from the previous step&lt;/li&gt;
+  &lt;li&gt;if no conflicts occur the grammar is LL(1) and can be implemented using a recursive decent.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;The nonsense you were told to compute in step two turns out to be vital to the construction and is described below.&lt;/p&gt;
+
+&lt;p&gt;For each production p: X -&amp;gt; γ we want to check the following.
+&lt;strong&gt;First(γ)&lt;/strong&gt; – the set of tokens that occur first in a sentence derived from γ.
+&lt;strong&gt;Nullable(γ)&lt;/strong&gt; – is a function that tells you if it is possible to derive ε from γ.
+&lt;strong&gt;FOLLOW(X)&lt;/strong&gt; – the set of tokens that occur directly after an X-sentence.&lt;/p&gt;
+
+&lt;p&gt;The table should have a column for every possible terminal and a row for every nonterminal. E.g.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p_0: Stmt -&amp;gt; Expr
+p_1: Expr -&amp;gt; Expr &quot;*&quot; Expr
+p_2: Expr -&amp;gt; Expr &quot;+&quot; Expr
+p_5: Expr -&amp;gt; ID
+p_6: Expr -&amp;gt; INT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;LL-table&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;ID&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;”+”&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;”*”&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;INT&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;stmt&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;p_0&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;p_0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;expr&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;p_1,p_2&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt; &lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;p_1&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;We don’t have to continue further than to expr as we already have collisions in the table. The collision is caused by the previously mentioned common prefix and left-recursion problems.&lt;/p&gt;
+
+&lt;h5 id=&quot;solving-left-recursion&quot;&gt;solving left recursion&lt;/h5&gt;
+
+&lt;p&gt;As the LL-parser moves through the source code from left to right, substituting as soon as it finds a suitable match it can get stuck in endless recursion, substituting a nonterminal for itself. E.g.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p_0: Stmt -&amp;gt; Expr
+p_1: Expr -&amp;gt; Expr &quot;*&quot; Expr
+p_2: Expr -&amp;gt; Expr &quot;+&quot; Expr
+p_5: Expr -&amp;gt; ID
+p_6: Expr -&amp;gt; INT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;In p_1: Expr -&amp;gt; Expr “*” Expr -&amp;gt; (((Expr “*” Expr) “*” Expr) “*” Expr) “*” Expr -&amp;gt; …&lt;/p&gt;
+
+&lt;p&gt;As an LL-parser always choses the leftmost substitution it can end up deep in the depths of recursion.&lt;/p&gt;
+
+&lt;p&gt;To get rid of this endless recursion we rewrite the rules by creating the nonterminals Term and Factor. This way, Expr can’t be substituted into itself. The rule here is to avoid productions of the type X -&amp;gt; Xab. By introducing new variables this procedure becomes quite simple. This design is, however, still not working as we still have to deal with the problem of common prefix.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p_0: Stmt -&amp;gt; Expr
+p_1: Expr -&amp;gt; Term &quot;+&quot; Expr
+p_2: Term -&amp;gt; Factor &quot;*&quot; Term
+p_3: Term -&amp;gt; Factor
+p_4: Factor -&amp;gt; ID
+p_5: Factor -&amp;gt; INT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h5 id=&quot;solving-common-prefix&quot;&gt;solving common prefix&lt;/h5&gt;
+
+&lt;p&gt;Common prefix occurs when two or more productions of the same nonterminal starts with the same symbol. LL(1) cannot handle this, LL(2) can handle if the only first token is the same, LL(3) can handle if the two first tokens are the same, etc. In our grammar rule p_2 &amp;amp; p_3 contains a common prefix. By concatenating the two rules and introducing “Factors” as either being ε or ‘”*” Term’ we solve this.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;p_0: Stmt -&amp;gt; Expr
+p_1: Expr -&amp;gt; Term Terms
+p_2: Terms -&amp;gt; &quot;+&quot; Expr
+p_3: Terms -&amp;gt; ε
+p_4: Term -&amp;gt; Factor Factors
+p_5: Factors -&amp;gt; &quot;*&quot; Term
+p_6: Factors -&amp;gt; ε
+p_7: Factor -&amp;gt; ID
+p_8: Factor -&amp;gt; INT
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Ladies and gentlemen, I present to you a grammatically correct LL(1)-grammar.&lt;/p&gt;
+
+&lt;h4 id=&quot;lr&quot;&gt;LR&lt;/h4&gt;
+
+&lt;p&gt;Moving on the the cool stuff. LR builds the tree from the bottom.&lt;/p&gt;
+
+&lt;p&gt;By splitting the compiler into different parts only a little bit of it has to be changed to compile to another machine (&lt;strong&gt;Frame Layout&lt;/strong&gt; and &lt;strong&gt;Instruction Selection modules&lt;/strong&gt;). To change source code language only the modules up to &lt;strong&gt;Translate&lt;/strong&gt; needs to be altered.&lt;/p&gt;
+
+&lt;h3 id=&quot;different-stages&quot;&gt;Different stages:&lt;/h3&gt;
+
+&lt;p&gt;front end&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Lexical analysis – Breaking the source code down into tokens&lt;/li&gt;
+  &lt;li&gt;Syntactic analysis – Analyze the phrase structure of the program. Building an AST out of the different tokens.&lt;/li&gt;
+  &lt;li&gt;Semantic analysis – Checking types and names, to make sure all variable usages has been declared, and also assigns values to the&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;mid&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Frame Layout&lt;/li&gt;
+  &lt;li&gt;Translate&lt;/li&gt;
+  &lt;li&gt;Cononicalize&lt;/li&gt;
+  &lt;li&gt;Instruction Selection&lt;/li&gt;
+  &lt;li&gt;Control Flow Analysis&lt;/li&gt;
+  &lt;li&gt;Dataflow Analysis&lt;/li&gt;
+  &lt;li&gt;Register Allocation&lt;/li&gt;
+  &lt;li&gt;Code Emission&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;front-end&quot;&gt;Front end&lt;/h3&gt;
+
+&lt;p&gt;independent of code language (can be reused for different languages)&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Lexical analyzer (scanning)&lt;/strong&gt; – read the high level code and form different &lt;strong&gt;tokens&lt;/strong&gt;. SOURCE CODE TEXT -&amp;gt; TOKENS&lt;/p&gt;
+
+&lt;p&gt;Example of different tokens matched with regex&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;IF      - if&lt;/li&gt;
+  &lt;li&gt;THEN    - then&lt;/li&gt;
+  &lt;li&gt;FOR     - for&lt;/li&gt;
+  &lt;li&gt;ID      - \w+&lt;/li&gt;
+  &lt;li&gt;INT     - [1-9]&lt;/li&gt;
+  &lt;li&gt;FLOAT   - [1-9]*[0-9]+ .[0-9]+&lt;/li&gt;
+  &lt;li&gt;STRING  - “[a-zA-Z]”&lt;/li&gt;
+  &lt;li&gt;CHAR    - [a-zA-Z]&lt;/li&gt;
+  &lt;li&gt;PLUS    - +&lt;/li&gt;
+  &lt;li&gt;INCR    - ++&lt;/li&gt;
+  &lt;li&gt;NE      - !=&lt;/li&gt;
+  &lt;li&gt;SEMI    - ;&lt;/li&gt;
+  &lt;li&gt;COMMA   - ,&lt;/li&gt;
+  &lt;li&gt;LPAREN  - (&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;Tokens can also be matched using FSM - finite state machines or FA – finite automata – as they are refered to in the textbook.
+The finite automaton used must however be deterministic, i.e. one input answers to one edge and one edge only.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Rules for lexer:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;longest match – so that the lexer doesnt generate four ID/variable tokens of the word “word”&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Regex to DFA:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Syntactic analyzer (parsing)&lt;/strong&gt; – form a tree of all the &lt;strong&gt;tokens&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Semantic analyzer&lt;/strong&gt; – make sure all methods have correct number of parameters and so on. This generates an attrubuted tree.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;intermidiate code generator&lt;/strong&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;back-end&quot;&gt;Back end&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Optimizer&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Machine code generation&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;source prog -&amp;gt; compiler -&amp;gt; assembly program -&amp;gt; assembler -&amp;gt; object program + library -&amp;gt; linker -&amp;gt; executable code&lt;/p&gt;
+
+&lt;p&gt;stack – used i c-languages&lt;/p&gt;
+
+&lt;p&gt;heap –&lt;/p&gt;
+
+&lt;h2 id=&quot;java&quot;&gt;java&lt;/h2&gt;
+
+&lt;p&gt;A.java -&amp;gt; javac -&amp;gt; A.class&lt;/p&gt;
+
+&lt;p&gt;.class-files can be run in the java virtual machine.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;jvm&lt;/strong&gt; – written i c++&lt;/p&gt;
+
+&lt;h3 id=&quot;180910&quot;&gt;180910&lt;/h3&gt;
+
+&lt;p&gt;NFA – nondeterministic finite automata&lt;/p&gt;
+
+&lt;p&gt;Regex Vs. context-free grammar – With CFG recursion is simple to describe.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;CFG example:&lt;/strong&gt;
+P =&lt;/p&gt;
+
+&lt;p&gt;###180911&lt;/p&gt;
+
+&lt;h4 id=&quot;ambiguities-1&quot;&gt;ambiguities&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;bin expressions&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;priorities – by creating new non
+      change:
+      E -&amp;gt; E “+” E
+      E -&amp;gt; E “&lt;em&gt;” E
+      E -&amp;gt; INT | “(“ E “)”
+      to:
+      E -&amp;gt; E “+” T
+      E -&amp;gt; T
+      T -&amp;gt; T “&lt;/em&gt;” F
+      T -&amp;gt; F
+      F -&amp;gt; INT
+      F -&amp;gt; “(“ E “)”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;associativity&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;transforming-to-equivalent-grammar&quot;&gt;Transforming to equivalent grammar&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;canonical form
+      Expr -&amp;gt; Expr “+” Term
+      Expr -&amp;gt; Term
+      Term -&amp;gt; Term “*” Factor
+      Term -&amp;gt; Factor
+      Factor -&amp;gt; INT
+      Factor -&amp;gt; “(“ Expr “)”&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;BNF
+      Expr -&amp;gt; Expr “+” Ter    Expr -&amp;gt; Expr “+” Term&lt;/li&gt;
+  &lt;li&gt;EBNF&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ll-parsing&quot;&gt;LL-parsing&lt;/h4&gt;
+&lt;p&gt;a.k.a:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Leftmost-derivation&lt;/li&gt;
+  &lt;li&gt;Top down&lt;/li&gt;
+  &lt;li&gt;Recursive-descent&lt;/li&gt;
+  &lt;li&gt;Predictive parsing&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;LL-problems&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;common prefix – when several productions of the same nonterminal&lt;/li&gt;
+  &lt;li&gt;left recursion –&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;</content><author><name></name></author><summary type="html">the canonical compiler</summary></entry><entry><title type="html">Digitalteknik</title><link href="http://localhost:4000/2018/09/03/Digitalteknik.html" rel="alternate" type="text/html" title="Digitalteknik" /><published>2018-09-03T00:00:00+02:00</published><updated>2018-09-03T00:00:00+02:00</updated><id>http://localhost:4000/2018/09/03/Digitalteknik</id><content type="html" xml:base="http://localhost:4000/2018/09/03/Digitalteknik.html">&lt;!DOCTYPE html&gt;
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; lang=&quot;&quot; xml:lang=&quot;&quot;&gt;
 &lt;head&gt;
   &lt;meta charset=&quot;utf-8&quot; /&gt;
