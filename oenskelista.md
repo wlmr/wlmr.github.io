@@ -5,8 +5,6 @@ date:   2018-06-07 11:00:00 +0200
 ---
 Välkomna till min hämndaktion, kära mor eller mormor! Med denna lista i rockärmen kommer jag aldrig kunna säga att jag inte önskar mig något, någonsin igen.
 
-+ [Structure And Interpretation Of Computer Programs](https://www.bokus.com/bok/9780262510875/structure-and-interpretation-of-computer-programs/)
-+ [History of Western Philosophy](https://www.adlibris.com/se/bok/history-of-western-philosophy-9780415325059)
 + [Nätokraterna](https://www.bokus.com/bok/9789174371550/natokraterna-futuricatrilogin-del-1/)
 + [Trickster Makes This World](https://www.amazon.co.uk/Trickster-Makes-This-World-Imagination/dp/1847672256/%20ref=sr_1_1?s=books&ie=UTF8&qid=1341786586&sr=1-1)
 + [Guns Germs and Steel](https://www.bokus.com/bok/9780393061314/guns-germs-and-steel/)
