@@ -32,6 +32,23 @@ The compiler is built up of well defined components, each one piping its output 
 
 ### lexical analysis / scanning
 
+#### Example of token generation using regular expressions:
+
++ IF      - if
++ THEN    - then
++ FOR     - for
++ ID      - \w+
++ INT     - [1-9]
++ FLOAT   - ([1-9][0-9]\*|0)\.[0-9]+
++ STRING  - "[a-zA-Z]\+"
++ CHAR    - [a-zA-Z]
++ PLUS    - \+
++ INCR    - \++
++ NE      - !=
++ SEMI    - ;
++ COMMA   - ,
++ LPAREN  - (
+
 This is the first stage and therefore the one that uses the source code as input. In the scanning stage the code is transformed into defined tokens. This can be done using regular expression. A integer could perhaps be defined by the regular expression: INTEGER = 0|[1-9][0-9]\*. Saying that the number is either a 0 or a 1,2,3,4,5,6,7,8 or 9 followed by zero or more arbitrary ints. 
 
 Without introducing two rules this system could however lead to some ambiguities. E.g. what should be matched if the scanner finds the string "iffff"? Should it send back and IF-token or an ID? Introducing: __longest match__ and __rule priority__. These are straightforward self-explanatory. 
@@ -227,6 +244,162 @@ Moving on the the cool stuff. LR builds the tree from the bottom.
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## x86-64 Assembly
+
+The simplest of programs:
+
+.global \_start
+.text
+\_start:
+        movq $0, %rdi
+        movq $60, %rax
+        syscall
+
+Everything after __.global__ is visible to the linker and __\_start__ defines where to start executing. Everything defined under __.text__ should be read-only and executable. Hence all code goes there. __Syscall__ is an instruction using the RDI, RSI and RDX registers. Depending on what is in these at the time of the syscall the program will talk to the OS in some way.
+
+### Registers
+
+__RAX, RBX, RCX, RDX, RSI, RDI, RSP, RBP, RIP, R8, ..., R15__ are all 64 bit wide registers. These are used for storing temporary values.
+__RAX__ is typically used for storing return values.
+__RSP__ is the stack pointer which always points to the top of the stack.
+__RBP__ also known as the base pointer. Originating from the __rbp__ you can find all the variables on the stack.
+
+### Operands
+
+Each instruction takes 0-2 operands. The following types of operands exist:
+
++ Register or r
+    + %rdx -- the value stored in RDX
++ Immediate value (constant) or im
+    + $0 -- the decimal value 0
+    + $lbl -- address of label lbl
++ Memory location or m
+    + (%rdx) -- the the value at the address stored in RDX
+    + 8(%rbp) -- 
+
+
+### Procedures
+
+Essentially the methods of assembly code a procedure is a snippet of instructions that can be reused. For this purpose we have __call__ and __ret__. 
+
+__call__ -- pushes the instruction pointer register -- __RIP__ -- on to the stack and replaces it with the operand.
+
+__ret__ -- pops the return address from the stack and overwrites the __RIP__. 
+
+
+### Stack Management
+
+The stack will mostly look something like the table below. Upwards in the text means lower addresses. %rsp should always point to the top of the stack. The stack is used to keep track of outer values. For instance when entering a method from within a method the stack is used to remember the data necessary for the outer function until returning with the result from the inner method. 
+
+I believe the quickest way to learn is through examples so here goes:
+
+#### Entering a procedure, step by step
+
+
+1. Before we call a procedure it is important to push all parameters that we need to bring with us. Preferably we push them in reverse order. This way the first param will be highest up on the stack.
+```
+pushq param2
+pushq param1
+pushq param0
+```
+
+
+2. Now we call the procedure called function. This will push the current %rip to the top of the stack so that we know where to pick up the pieces after returning from the procedure.
+
+`call function`
+
+3. We are now inside the function and it is time to push the old base pointer. We do this so that we can get back to the previous params and variables.
+
+`pushq %rbp`
+
+4. Now only one thing remains before we can begin the actual procedure, namely updating %rsp to be on top of the stack.
+
+`movq %rsp, %rbp`
+
+5. Now that everything is set up correctly we can begin assigning values to variables or whatever you want your procedure to do. Local variables are to be put above the %rsp. The first variable should have the address -8(%rbp) and the following -16(%rbp), etc. When we have calculated the return value this should be added into the %rax by convention.
+
+|      STACK     |
+|:--------------:|
+|                | _ %rsp
+|Local variables | _ %rbp
+|Old base pointer|
+|Return address  |
+|param0          |
+|param1          |
+|param2          |
+
+6. Before we can begin the return journey we must clean up after us. First we remove all the local variables by assigning the value of the base pointer to the stack pointer.
+
+`movq %rbp, %rsp`
+
+7. Then we let the %rbp return home. We still have one thing to take care of before we can leave as well.
+
+`popq %rbp`
+
+8. Now we can return as well. We do this with the __ret__-instruction.
+
+`ret`
+
+9. Done! Our quest is over, we've returned successfully. Now the only thing that remains is to pop the arguments.
+
+### Loops and conditionals
+Conditionals in assembly are inverted since all we can do is jumping. Meaning we have to test if it is false and if so we have to jump out.
+
+While:
+```
+loop_start:
+    cmpq %r0x, %r1x
+    jge loop_end
+    #loop body
+    jmp loop_start
+loop_end:
+```
+
+If:
+```
+    cmpq $20, %rax
+    jl else
+    #do whatever
+    jmp fi
+else:
+    #do if condition was false
+fi:
+    #done!
+``` 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-----
+
+
 By splitting the compiler into different parts only a little bit of it has to be changed to compile to another machine (__Frame Layout__ and __Instruction Selection modules__). To change source code language only the modules up to __Translate__ needs to be altered.
 
 ### Different stages:
@@ -318,52 +491,6 @@ P =
 
 
 ###180911
-
-#### ambiguities
-
-+ bin expressions 
-+ priorities -- by creating new non
-        change:
-        E -> E "+" E
-        E -> E "*" E
-        E -> INT | "(" E ")"
-        to:
-        E -> E "+" T
-        E -> T
-        T -> T "*" F
-        T -> F
-        F -> INT
-        F -> "(" E ")"
-
-+ associativity
-
-#### Transforming to equivalent grammar
-
-+ canonical form
-        Expr -> Expr "+" Term
-        Expr -> Term
-        Term -> Term "*" Factor
-        Term -> Factor
-        Factor -> INT
-        Factor -> "(" Expr ")"
-
-+ BNF
-        Expr -> Expr "+" Ter    Expr -> Expr "+" Term
-+ EBNF
-
-
-#### LL-parsing
-a.k.a:
-
-+ Leftmost-derivation
-+ Top down
-+ Recursive-descent
-+ Predictive parsing
-
-__LL-problems__
-+ common prefix -- when several productions of the same nonterminal 
-+ left recursion --  
-
 
 
 
