@@ -109,8 +109,8 @@ __Push through blocking__ is a consequence of the priority inheritance protocol.
 + A semaphore can induce push-through blocking for thread _M_ if it is accessed both by a thread with lower priority and a thread with higher priority. _M_ doesn't have to have anything to do with the semaphore in question.
 
 
------
 ## Resource allocation graphs
+-----
 The four components of a graph:
 
 1. thread vertex - one possible state for a specific thread. drawn using a circle with the thread name inside.
@@ -123,8 +123,8 @@ If a thread tries locking many semaphores from inside each other, several vertic
 * __NOT DEADLOCK:__ R1 -> A <- R2 -> B -> R1
 
 
------
 ## concurrency in java
+-----
 
 __rule of thumb: syncronized__
 1. do not mix threads and monitors,
