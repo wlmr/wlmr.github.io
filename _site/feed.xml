@@ -1,4 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-26T13:19:04+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Concurrency</title><link href="http://localhost:4000/2019/04/18/Realtidsprogrammering.html" rel="alternate" type="text/html" title="Concurrency" /><published>2019-04-18T00:00:00+02:00</published><updated>2019-04-18T00:00:00+02:00</updated><id>http://localhost:4000/2019/04/18/Realtidsprogrammering</id><content type="html" xml:base="http://localhost:4000/2019/04/18/Realtidsprogrammering.html">&lt;h2 id=&quot;lingo&quot;&gt;Lingo&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-26T20:15:09+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Concurrency</title><link href="http://localhost:4000/2019/04/18/Realtidsprogrammering.html" rel="alternate" type="text/html" title="Concurrency" /><published>2019-04-18T00:00:00+02:00</published><updated>2019-04-18T00:00:00+02:00</updated><id>http://localhost:4000/2019/04/18/Realtidsprogrammering</id><content type="html" xml:base="http://localhost:4000/2019/04/18/Realtidsprogrammering.html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML&quot; async=&quot;&quot;&gt;&lt;/script&gt;
+
+&lt;p&gt;Welcome to my lexicon on the concurrent programming lingo. It covers all you need to know for the course on the subject at Lund University, Sweden.&lt;/p&gt;
+
+&lt;h3 id=&quot;general&quot;&gt;General&lt;/h3&gt;
 
 &lt;p&gt;&lt;strong&gt;busy-wait&lt;/strong&gt; – when a thread over and over again checks if some boolean has changed and it can continue. This is extremely inefficient in comparison to a system where a thread is signaled when something has changed.&lt;/p&gt;
 
@@ -18,26 +22,57 @@
 
 &lt;p&gt;&lt;strong&gt;priorites&lt;/strong&gt; – correctness of a program should never depend on priorites since these may not be obeyed on all platforms.&lt;/p&gt;
 
+&lt;p&gt;&lt;strong&gt;semphore&lt;/strong&gt; – way for thread to lock the door after itself after entering a critical section to guarantee exclusivity.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;counting semaphore – has a counter that increments when give is called and decrements when take is called.&lt;/li&gt;
+  &lt;li&gt;multistep semaphore – counter that permits incrementations with more than one.&lt;/li&gt;
+  &lt;li&gt;binary / mutex semaphore – guarantees mutual exclusion&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;context switch&lt;/strong&gt; – when the system changes running thread/process the preemptied thread needs to stash its data away for later. Steps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;em&gt;SAVE&lt;/em&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Turn off interrupts,&lt;/li&gt;
+      &lt;li&gt;push PC, registers on stack,&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;SWITCH&lt;/em&gt;
+    &lt;ol&gt;
+      &lt;li&gt;save stack pointer in process record,&lt;/li&gt;
+      &lt;li&gt;get new process record and restore stack pointer from it,&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;RESTORE&lt;/em&gt;
+    &lt;ol&gt;
+      &lt;li&gt;pop registers, PC from stack,&lt;/li&gt;
+      &lt;li&gt;turn on interrupts.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
 &lt;h3 id=&quot;scheduling&quot;&gt;Scheduling&lt;/h3&gt;
 
-&lt;p&gt;The main goal of scheduling is to get a concurrent program that is also correct in terms of timing. In order to be able to analyze a program several simplifications must be made. E.g.&lt;/p&gt;
+&lt;p&gt;The main goal of scheduling is to get a concurrent program that is also correct in terms of timing.&lt;/p&gt;
+
+&lt;p&gt;In order to be able to analyze a program several simplifications must be made. E.g.&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;threads must not depend on each other. I.e there can be no &lt;a href=&quot;#concurrency-in-java&quot;&gt;&lt;strong&gt;wait()&lt;/strong&gt; or &lt;strong&gt;notify()&lt;/strong&gt;&lt;/a&gt;,&lt;/li&gt;
   &lt;li&gt;there must be a fixed number of threads,&lt;/li&gt;
   &lt;li&gt;all threads are periodic with known periods,&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;cyclic executive scheduling&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;consists of
+&lt;p&gt;&lt;strong&gt;cyclic executive scheduling&lt;/strong&gt;
+consists of:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Major cycle length&lt;/strong&gt; the period it takes until all threads to have been in business at least once. &lt;em&gt;least common multiple&lt;/em&gt; of the periods of all the threads will guarantee that we get the shortest possible major cycle length, and hence the most effective major cycle length.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Minor cycle length&lt;/strong&gt; should be &lt;em&gt;greatest common divisor&lt;/em&gt; of the periods of all the threads as this leads to the longest minor cycle possible.
     &lt;ul&gt;
-      &lt;li&gt;&lt;strong&gt;major cycle length&lt;/strong&gt; the period it takes until all threads to have been in business at least once. &lt;em&gt;least common multiple&lt;/em&gt; of the periods of all the threads will guarantee that we get the shortest possible major cycle length, and hence the most effective major cycle length.&lt;/li&gt;
-      &lt;li&gt;&lt;strong&gt;minor cycle length&lt;/strong&gt; should be &lt;em&gt;greatest common divisor&lt;/em&gt; of the periods of all the threads as this leads to the longest minor cycle possible.&lt;/li&gt;
+      &lt;li&gt;&lt;strong&gt;Schedulable?&lt;/strong&gt; – simply try to fit all execution times within the corresponding threads period. Dividing and distributing an execution time is perfectly fine if left with no other option.&lt;/li&gt;
+      &lt;li&gt;Doesn’t need a scheduler as it will just follow a fixed schedule calculated beforehand.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;howto: simply try to fit all execution times within the corresponding threads period. Dividing and distributing an execution time is perfectly fine if left with no other option.&lt;/li&gt;
-  &lt;li&gt;doesn’t need a scheduler as it will just follow a fixed schedule.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;/ol&gt;
 
 &lt;p&gt;&lt;strong&gt;WCET&lt;/strong&gt; – worst-case execution time
 &lt;strong&gt;C&lt;/strong&gt; – execution time (WCET)
@@ -45,77 +80,55 @@
 &lt;strong&gt;T&lt;/strong&gt; – period
 &lt;strong&gt;U&lt;/strong&gt; – C/T – CPU utilization&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;rate monotonic scheduling–RMS&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Rate Monotonic Scheduling–RMS&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;short period &amp;lt;-&amp;gt; high priority&lt;/li&gt;
-  &lt;li&gt;can guarantee schedulability if sum of C/T for all n threads is below n(2^(1/n) - 1). N.B It might still be schedulable if above this bound.&lt;/li&gt;
-  &lt;li&gt;as soon as there are threads ready to carry out their tasks the one with the highest priority will. Even if a lower priority task is being executed the higher one will force it to preempt in favor of the higher one.&lt;/li&gt;
+  &lt;li&gt;can guarantee schedulability if sum of C/T for all n threads is below &lt;script type=&quot;math/tex&quot;&gt;n(2^{1/n} - 1)&lt;/script&gt;. N.B It might still be schedulable if above this bound.&lt;/li&gt;
+  &lt;li&gt;as soon as there are threads ready to carry out their threads the one with the highest priority will. Even if a lower priority thread is being executed a higher-priority one will always force it to a halt by preemption as soon as it is ready.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;fixed-priority scheduling&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;generalized RMS&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;earliest deadline first–EDF&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;highest priority is given to the thread that is closest to its deadline, this is checked every time a new task is released.&lt;/li&gt;
-&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Earliest Deadline First–EDF&lt;/strong&gt; – Highest priority is given to the thread that is closest to its deadline, this is checked every time a new thread is released.&lt;/p&gt;
 
 &lt;h3 id=&quot;priority-inversion&quot;&gt;Priority inversion&lt;/h3&gt;
 
-&lt;p&gt;Scenario: low prio thread: L, mid prio thread: M, high prio thread: H, shared resource R.&lt;/p&gt;
+&lt;p&gt;Scenario: low priority thread: &lt;em&gt;L&lt;/em&gt;, mid prio thread: &lt;em&gt;M&lt;/em&gt;, high prio thread: &lt;em&gt;H&lt;/em&gt;, shared resource R.&lt;/p&gt;
 &lt;ol&gt;
-  &lt;li&gt;L enters R,&lt;/li&gt;
-  &lt;li&gt;L is preempted by M,&lt;/li&gt;
-  &lt;li&gt;M is preempted by H,&lt;/li&gt;
-  &lt;li&gt;H tries to enter R but is locked out,&lt;/li&gt;
-  &lt;li&gt;Since H has nothing to do M continues its execution,&lt;/li&gt;
-  &lt;li&gt;H (and L) has to wait until M finishes. N.B. H is blocked by lower prio thread (since M is blocking L which needs to release R in order for H to continue.&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;L&lt;/em&gt; enters R,&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;L&lt;/em&gt; is preempted by &lt;em&gt;M&lt;/em&gt;,&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;M&lt;/em&gt; is preempted by &lt;em&gt;H&lt;/em&gt;,&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;H&lt;/em&gt; tries to enter R but is locked out,&lt;/li&gt;
+  &lt;li&gt;Since &lt;em&gt;H&lt;/em&gt; has nothing to do &lt;em&gt;M&lt;/em&gt; continues its execution,&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;H&lt;/em&gt; (and &lt;em&gt;L&lt;/em&gt;) has to wait until &lt;em&gt;M&lt;/em&gt; finishes. N.B. &lt;em&gt;H&lt;/em&gt; is blocked by lower prio thread (since &lt;em&gt;M&lt;/em&gt; is blocking &lt;em&gt;L&lt;/em&gt; which needs to release R in order for &lt;em&gt;H&lt;/em&gt; to continue.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;To counter priority inversion the concept of priority inheritance is introduced below.&lt;/p&gt;
+&lt;p&gt;To counter priority inversion the concept of priority inheritance is used.&lt;/p&gt;
 
-&lt;p&gt;&lt;strong&gt;basic priority inheritance&lt;/strong&gt;&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;low prio thread holding a resource will temporarily be raised to the priority of the higher prio thread requesting the resource.&lt;/li&gt;
-  &lt;li&gt;WCET for highest-priority thread = worst-case time to execute code in thread + for each used resource: maximum blocking time&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;transitive priority inheritance&lt;/strong&gt; can occur only in presence of nested critical sections. If A is blocked by C which in turn is blocked by D it is necessary for D to inherit A’s priority. If not D will be preempted by B and forced to wait around on B.&lt;/li&gt;
-  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;B_i = \sum_{k=1}^K usage(k,i)C(k)_&lt;/script&gt; where usage(k,i) returns 1 if semaphore is used by at least one task with a priority less than T_i and at least one task with a priority higher than or equal to the priority of T_i. Otherwise it returns 0.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;priority-ceiling protocol&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;immediate inheritance protocol&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;direct blocking&lt;/strong&gt; occurs when a high-priority task is blocked from accessing a resource due to it being held by the low-priority task. Direct blocking is necessary for mutual exclusion and has always been able to occur.&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;push through blocking&lt;/strong&gt; is a consequence of the priority inheritance protocol.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;Occurs when a mid-priority task cannot run due to a lower-priority task that has inherited a higher priority.&lt;/li&gt;
-  &lt;li&gt;Can affect tasks that has absolutely nothing to do with any shared resources.&lt;/li&gt;
-  &lt;li&gt;A semaphore can induce push-through blocking for task M if it is accessed both by a task with lower priority and a task with higher priority. M doesn’t have to have anything to do with the semaphore in question.&lt;/li&gt;
-  &lt;li&gt;only one of the lower-priority tasks can be within a blocking critical region protected by any given semaphore.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;&lt;strong&gt;context switch&lt;/strong&gt;&lt;/p&gt;
-
-&lt;p&gt;&lt;strong&gt;semphore&lt;/strong&gt;&lt;/p&gt;
+&lt;h3 id=&quot;basic-priority-inheritance&quot;&gt;Basic priority inheritance&lt;/h3&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;counting semaphore – has a counter that increments when give is called and decrements when take is called.&lt;/li&gt;
-  &lt;li&gt;binary semaphore –&lt;/li&gt;
-  &lt;li&gt;multistep semaphore – counter that permits incrementations with more than one.&lt;/li&gt;
-  &lt;li&gt;mutex semaphore – guarantees mutual exclusion&lt;/li&gt;
+  &lt;li&gt;&lt;em&gt;L&lt;/em&gt; holding a resource will temporarily be raised to the priority of the higher-priority thread requesting the resource.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;WCET&lt;/strong&gt; of &lt;em&gt;H&lt;/em&gt; = worst-case time to execute code in thread + for each used resource: maximum blocking time.&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Transitive priority inheritance&lt;/strong&gt; can occur only in presence of nested critical sections. If &lt;em&gt;A&lt;/em&gt; is blocked by &lt;em&gt;C&lt;/em&gt; which in turn is blocked by &lt;em&gt;D&lt;/em&gt; it is necessary for &lt;em&gt;D&lt;/em&gt; to inherit &lt;em&gt;A&lt;/em&gt;’s priority. If not &lt;em&gt;D&lt;/em&gt; will be preempted by &lt;em&gt;B&lt;/em&gt; and forced to wait around for &lt;em&gt;B&lt;/em&gt; to finish.&lt;/li&gt;
+  &lt;li&gt;&lt;script type=&quot;math/tex&quot;&gt;B_i = \sum_{k=1}^K usage(k,i)C(k)&lt;/script&gt; where usage(k,i) returns 1 if semaphore is used by at least one thread with a priority less than &lt;script type=&quot;math/tex&quot;&gt;T_i&lt;/script&gt; and at least one thread with a priority higher than or equal to the priority of &lt;script type=&quot;math/tex&quot;&gt;T_i&lt;/script&gt;. Otherwise it returns 0.&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;&lt;strong&gt;rule of thumb: syncronized&lt;/strong&gt;&lt;/p&gt;
-&lt;ol&gt;
-  &lt;li&gt;do not mix threads and monitors,&lt;/li&gt;
-  &lt;li&gt;all public methods in monitor should be syncronized,&lt;/li&gt;
-  &lt;li&gt;write a wrapper monitor if a class needs to be thread-safe,&lt;/li&gt;
-  &lt;li&gt;do not use syncronized blocks.&lt;/li&gt;
-&lt;/ol&gt;
+&lt;h3 id=&quot;priority-ceiling-protocol&quot;&gt;Priority-ceiling protocol&lt;/h3&gt;
 
-&lt;h2 id=&quot;question-2-resource-allocation-graphs&quot;&gt;Question 2: Resource allocation graphs&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;Direct blocking&lt;/strong&gt; occurs when a &lt;em&gt;H&lt;/em&gt; thread is blocked from accessing a resource due to it being held by a &lt;em&gt;L&lt;/em&gt; thread. Direct blocking is necessary for mutual exclusion and is able to occur in any preemptive-scheduler protocol.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;For every semaphore a thread is involved with only one of the lower-priority threads can be blocking within one critical region protected by one semaphore. for every semaphore.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Push through blocking&lt;/strong&gt; is a consequence of the priority inheritance protocol. The time that the thread could’ve been active but instead was preempted by lower-priority thread due to a temporarily raised priority.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Occurs when &lt;em&gt;M&lt;/em&gt;’s thread cannot run due to &lt;em&gt;L&lt;/em&gt;’s thread that has inherited a higher priority.&lt;/li&gt;
+  &lt;li&gt;Can affect threads that has absolutely nothing to do with any shared resources.&lt;/li&gt;
+  &lt;li&gt;A semaphore can induce push-through blocking for thread &lt;em&gt;M&lt;/em&gt; if it is accessed both by a thread with lower priority and a thread with higher priority. &lt;em&gt;M&lt;/em&gt; doesn’t have to have anything to do with the semaphore in question.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;hr /&gt;
+&lt;h2 id=&quot;resource-allocation-graphs&quot;&gt;Resource allocation graphs&lt;/h2&gt;
 &lt;p&gt;The four components of a graph:&lt;/p&gt;
 
 &lt;ol&gt;
@@ -125,23 +138,37 @@
   &lt;li&gt;request edge - directed edge from a thread to a resource means that the thread wants to lock that resource.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;If a thread tries locking many semaphores several instances of this thread must be instanciated in the graph.&lt;/p&gt;
+&lt;p&gt;If a thread tries locking many semaphores from inside each other, several vertices of this thread must be instanciated in the graph. Deadlock can occur if the graph contains cycles of edges that all are directed in the same direction, i.e.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;strong&gt;DEADLOCK:&lt;/strong&gt; R1 -&amp;gt; A -&amp;gt; R2 -&amp;gt; B -&amp;gt; R1&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;NOT DEADLOCK:&lt;/strong&gt; R1 -&amp;gt; A &amp;lt;- R2 -&amp;gt; B -&amp;gt; R1&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;h2 id=&quot;question-3-priorities-and-scheduling&quot;&gt;Question 3: Priorities and scheduling&lt;/h2&gt;
-
+&lt;hr /&gt;
 &lt;h2 id=&quot;concurrency-in-java&quot;&gt;concurrency in java&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;rule of thumb: syncronized&lt;/strong&gt;&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;do not mix threads and monitors,&lt;/li&gt;
+  &lt;li&gt;all public methods in monitor should be syncronized,&lt;/li&gt;
+  &lt;li&gt;write a wrapper monitor if a class needs to be thread-safe,&lt;/li&gt;
+  &lt;li&gt;do not use syncronized blocks.&lt;/li&gt;
+&lt;/ol&gt;
 
 &lt;h3 id=&quot;keywords&quot;&gt;keywords&lt;/h3&gt;
 
-&lt;p&gt;&lt;strong&gt;volatile&lt;/strong&gt; guarantees that the variable that is declared volatile always is read from main memory, instead of being put in some CPU cache. This way every thread reads the same value, i.e. the one in main memory. Atomicity is ensured. N.B. without &lt;strong&gt;volatile&lt;/strong&gt; only reads and writes to reference variables and primitives (except long and double) are atomic.
-&lt;strong&gt;syncronized&lt;/strong&gt; only allows for one thread at a time to gain access to the method which has been declared syncronized. As a matter of fact any other thread trying to access any of the synchronized methods in the class would be blocked. Can also be placed as a block of code inside a method. A syncronized method has &lt;strong&gt;three&lt;/strong&gt; compartments for the threads:&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;volatile&lt;/strong&gt; guarantees that the variable that is declared volatile always is read from main memory, instead of being put in some CPU cache. This way every thread reads the same value, i.e. the one in main memory. Atomicity is ensured. N.B. without &lt;strong&gt;volatile&lt;/strong&gt; only reads and writes to reference variables and primitives (except long and double) are atomic.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;syncronized&lt;/strong&gt; only allows for one thread at a time to gain access to the method which has been declared syncronized. As a matter of fact any other thread trying to access any of the synchronized methods in the class would be blocked. Can also be placed as a block of code inside a method. A syncronized method has &lt;strong&gt;three&lt;/strong&gt; compartments for the threads:&lt;/p&gt;
 &lt;ol&gt;
   &lt;li&gt;exclusive area, where only one thread can be simultaneously.&lt;/li&gt;
   &lt;li&gt;monitor queue, where threads wait for the one in the exclusive area to finish or call &lt;strong&gt;wait()&lt;/strong&gt;.&lt;/li&gt;
   &lt;li&gt;condition queue, where threads that have called &lt;strong&gt;wait()&lt;/strong&gt; are put, usually waiting for a condition to be met.&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;p&gt;&lt;strong&gt;wait()&lt;/strong&gt; makes the thread executing within the monitor to step out of the exclusive area and into the condition queue, allowing for another thread to try its luck. &lt;strong&gt;wait()&lt;/strong&gt; should always be placed inside a while(someBool) &lt;strong&gt;wait()&lt;/strong&gt;;. &lt;strong&gt;wait(long timeout)&lt;/strong&gt; and &lt;strong&gt;wait(long timeout, int nanos)&lt;/strong&gt; for waiting x number of milliseconds and x number of nanoseconds respectively. These should be used with care, however, as &lt;strong&gt;notify()&lt;/strong&gt; from some obscure subclass can interfere. To avoid mentioned &lt;strong&gt;notify()&lt;/strong&gt; one can implement the while-loop as follows.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;wait()&lt;/strong&gt; makes the thread executing within the monitor to step out of the exclusive area and into the condition queue, allowing for another thread to try its luck. &lt;strong&gt;wait()&lt;/strong&gt; should always be placed inside a while(someBool).&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;wait(long timeout)&lt;/strong&gt; and &lt;strong&gt;wait(long timeout, int nanos)&lt;/strong&gt; for waiting x number of milliseconds and x number of nanoseconds respectively. These should be used with care, however, as &lt;strong&gt;notify()&lt;/strong&gt; from some obscure subclass can interfere. To avoid mentioned &lt;strong&gt;notify()&lt;/strong&gt; one can implement the while-loop as follows.&lt;/p&gt;
 &lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;synchronized monitorSleep(longtimeout) throws InterruptedException {
     long tf = System.currentTimeMillis()+timeout;
     while((timeout=tf-System.currentTimeMillis())&amp;gt;0) wait(timeout);
@@ -152,16 +179,23 @@
 
 &lt;p&gt;&lt;strong&gt;notifyAll()&lt;/strong&gt; does the same as &lt;strong&gt;notify()&lt;/strong&gt; but for every thread in the condition queue. &lt;strong&gt;USE THIS INSTEAD OF notify()&lt;/strong&gt;.&lt;/p&gt;
 
-&lt;h3 id=&quot;thread&quot;&gt;Thread&lt;/h3&gt;
+&lt;h3 id=&quot;javalangthread&quot;&gt;java.lang.Thread&lt;/h3&gt;
 
 &lt;p&gt;Using threads in java requires java.lang.Thread package. Threads are started using method start. A thread must have a runnable object (an object that implements the interface java.lang.Runnable). However, extending thread will take care of this since Thread already implements Runnable&lt;/p&gt;
 
-&lt;ul&gt;
-  &lt;li&gt;&lt;strong&gt;interrupt()&lt;/strong&gt; – changes a state in the thread that can be checked with &lt;strong&gt;isInterrupted()&lt;/strong&gt;. To check for the currentThread the static &lt;strong&gt;interrupted()&lt;/strong&gt; exists.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;sleep(long millis)&lt;/strong&gt; – makes the thread wait for x number of milliseconds. Telling the OS that it is OK to swap currentThread. Sleeps the currentThread no matter which thread you call sleep with.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;isAlive()&lt;/strong&gt; – false if the thread has terminated or not been started. True if it is active at time of check.&lt;/li&gt;
-  &lt;li&gt;&lt;strong&gt;join()&lt;/strong&gt; – waits for the thread to die before continuing&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">Lingo</summary></entry><entry><title type="html">Kompilatorer</title><link href="http://localhost:4000/2018/10/28/Kompilatorer.html" rel="alternate" type="text/html" title="Kompilatorer" /><published>2018-10-28T00:00:00+02:00</published><updated>2018-10-28T00:00:00+02:00</updated><id>http://localhost:4000/2018/10/28/Kompilatorer</id><content type="html" xml:base="http://localhost:4000/2018/10/28/Kompilatorer.html">&lt;h1 id=&quot;the-canonical-compiler&quot;&gt;the canonical compiler&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;interrupt()&lt;/strong&gt; – changes a state in the thread that can be checked and reset with &lt;strong&gt;interrupted()&lt;/strong&gt;. All threads that need to be able to be killed must actively check the &lt;strong&gt;interrupted()&lt;/strong&gt;. E.g.&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;public void run() {
+    while(!interrupted()) { 
+        ...
+        ...
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;sleep(long millis)&lt;/strong&gt; – makes the thread wait for x number of milliseconds. Telling the OS that it is OK to swap currentThread. Sleeps the currentThread no matter which thread you call sleep with.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;isAlive()&lt;/strong&gt; – false if the thread has terminated or not been started. True if it is active at time of check. If &lt;strong&gt;isAlive()&lt;/strong&gt; returns false right after a call to &lt;strong&gt;start()&lt;/strong&gt; the thread must have terminated. If it returns true on the other hand it means the thread cannot have been started before.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;join()&lt;/strong&gt; – waits for the thread to return false from &lt;strong&gt;isAlive()&lt;/strong&gt; before continuing.&lt;/p&gt;</content><author><name></name></author><summary type="html"></summary></entry><entry><title type="html">Kompilatorer</title><link href="http://localhost:4000/2018/10/28/Kompilatorer.html" rel="alternate" type="text/html" title="Kompilatorer" /><published>2018-10-28T00:00:00+02:00</published><updated>2018-10-28T00:00:00+02:00</updated><id>http://localhost:4000/2018/10/28/Kompilatorer</id><content type="html" xml:base="http://localhost:4000/2018/10/28/Kompilatorer.html">&lt;h1 id=&quot;the-canonical-compiler&quot;&gt;the canonical compiler&lt;/h1&gt;
 
 &lt;p&gt;In this post I will try to summarize the structure of a typical compiler. A compiler is a program that transforms high level source code into assembly code. Assembly code is the closest thing we have to binary that is still made up of text. Hence before the compiler all code was written in assembly code. To get a feel of how slow it is to write assembly code here’s an example showing how to print a string to stdout:&lt;/p&gt;
 
