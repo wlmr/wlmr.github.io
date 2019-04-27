@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-26T23:08:05+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Concurrency</title><link href="http://localhost:4000/2019/04/18/Realtidsprogrammering.html" rel="alternate" type="text/html" title="Concurrency" /><published>2019-04-18T00:00:00+02:00</published><updated>2019-04-18T00:00:00+02:00</updated><id>http://localhost:4000/2019/04/18/Realtidsprogrammering</id><content type="html" xml:base="http://localhost:4000/2019/04/18/Realtidsprogrammering.html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML&quot; async=&quot;&quot;&gt;&lt;/script&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.8.4">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2019-04-27T07:33:51+02:00</updated><id>http://localhost:4000/</id><title type="html">wlmr</title><subtitle>This is where I will keep useful info and share my opinions.</subtitle><entry><title type="html">Concurrency</title><link href="http://localhost:4000/2019/04/18/Realtidsprogrammering.html" rel="alternate" type="text/html" title="Concurrency" /><published>2019-04-18T00:00:00+02:00</published><updated>2019-04-18T00:00:00+02:00</updated><id>http://localhost:4000/2019/04/18/Realtidsprogrammering</id><content type="html" xml:base="http://localhost:4000/2019/04/18/Realtidsprogrammering.html">&lt;script src=&quot;https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-MML-AM_CHTML&quot; async=&quot;&quot;&gt;&lt;/script&gt;
 
 &lt;p&gt;Welcome to my lexicon on the concurrent programming lingo. It covers all you need to know for the course on the subject at Lund University, Sweden.&lt;/p&gt;
 
@@ -84,8 +84,15 @@ consists of:&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;short period &amp;lt;-&amp;gt; high priority&lt;/li&gt;
   &lt;li&gt;can guarantee schedulability if sum of C/T for all n threads is below &lt;script type=&quot;math/tex&quot;&gt;n(2^{1/n} - 1)&lt;/script&gt;. N.B It might still be schedulable if above this bound.&lt;/li&gt;
-  &lt;li&gt;as soon as there are threads ready to carry out their threads the one with the highest priority will. Even if a lower priority thread is being executed a higher-priority one will always force it to a halt by preemption as soon as it is ready.&lt;/li&gt;
+  &lt;li&gt;as soon as there are threads ready to carry out their tasks the one with the highest priority will start. Even if a lower priority thread is running a higher-priority one will always force it to a halt by preemption as soon as it is ready.&lt;/li&gt;
   &lt;li&gt;&lt;strong&gt;fixed-priority scheduling&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Deadline Monotonic Scheduling–DMS&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;same as RMS but with deadlines instead of periods.&lt;/li&gt;
+  &lt;li&gt;short deadline &amp;lt;-&amp;gt; high priority.&lt;/li&gt;
+  &lt;li&gt;schedulable if R &amp;lt; D.&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;p&gt;&lt;strong&gt;Earliest Deadline First–EDF&lt;/strong&gt; – Highest priority is given to the thread that is closest to its deadline, this is checked every time a new thread is released.&lt;/p&gt;

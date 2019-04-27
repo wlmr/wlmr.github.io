@@ -70,8 +70,13 @@ __U__ -- C/T -- CPU utilization
 __Rate Monotonic Scheduling--RMS__ 
 + short period <-> high priority
 + can guarantee schedulability if sum of C/T for all n threads is below $$n(2^{1/n} - 1)$$. N.B It might still be schedulable if above this bound.
-+ as soon as there are threads ready to carry out their threads the one with the highest priority will. Even if a lower priority thread is being executed a higher-priority one will always force it to a halt by preemption as soon as it is ready.
++ as soon as there are threads ready to carry out their tasks the one with the highest priority will start. Even if a lower priority thread is running a higher-priority one will always force it to a halt by preemption as soon as it is ready.
 + __fixed-priority scheduling__
+
+__Deadline Monotonic Scheduling--DMS__
+* same as RMS but with deadlines instead of periods.
+* short deadline <-> high priority.
+* schedulable if R < D.
 
 
 __Earliest Deadline First--EDF__ -- Highest priority is given to the thread that is closest to its deadline, this is checked every time a new thread is released.
