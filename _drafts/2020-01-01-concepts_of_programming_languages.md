@@ -732,11 +732,14 @@ __6. activation records__
 |:-------------------:|
 | __local variables__ | 
 |   __parameters__    | 
+|  __dynamic link__\* |
 | __return address__  |
+
+\* only used for languages with stack-dynamic variables
 
 For a language with __static variables__ only these activation records are the same throughout the execution, with one __activation record__ for each subprogram. 
 
-With __stack-dynamic variables__ the records have to grow dynamically on the stack, as recursion forces the stack to be able to hold multiple instances of the same subprogram's __activation record__ at once.
+With __stack-dynamic variables__ the records have to grow dynamically on the stack, as recursion forces the stack to be able to hold multiple instances of the same subprogram's __activation record__ at once. The __dynamic link__ points to the callers __activation record__ and makes it able to backtrack through previous scopes to find nonlocal variables. 
 
 
 
