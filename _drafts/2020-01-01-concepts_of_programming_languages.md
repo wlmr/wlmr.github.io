@@ -396,6 +396,8 @@ Functions also have types. The function _f_ takes an int and a string and return
 
 For a function with type _T1 -> U1_ to be substituted by another of type _T2 -> U2_ it is required that T1 <: T2 and U2 <: U1.
 
+I.e. The  type of a function is a subtype of the  type of another function if (all else being the same)the result type is more specific,or any of the argument types are more general.
+
 
 __20. type classes__\
 Lets you specify traits that your generic parameters must have implemented. E.g. to compare two objects of type _T_ with the operator __>__ _T_ must have defined how such a comparison should be carried out.
@@ -448,7 +450,7 @@ Lets say R and W both have type INTEGER32.
 What happens when R is swapped for the subtype 1..10?
 The return value of get() would be limited to a number between 1 and 10. You could say that as we vary R towards a subtype ReadBox<R> is also varied towards a subtype. Hence R is __covariant__.  
 
-What happens when W is swapped for the supertype 1..10?
+What happens when W is swapped for the subtype 1..10?
 The argument of put(v: W) now accepts only 1..10 and is more flexible. So as we vary W towards a subtype WriteBox<W> varies towards a supertype. W is __contravariant__.
 
 Basically: 
@@ -486,7 +488,7 @@ Example of sum type:
           | Leaf Int
           | Node Tree Tree
 
-Since all algebraic datatypes either have a finite number of _variants_, or a very fixed structure all of them fit perfectly for __pattern-matching__. This is true as pattern-matching works by defining procedures to take if the input has some certain property. So for the above sum type _Tree_ we only need three patterns if we, for instance, want to calculate the height of the tree.
+Since all algebraic datatypes either have a finite number of _variants_, or a very fixed structure all of them fit perfectly for __pattern-matching__. This is true as pattern-matching works by defining procedures to take if the input has some certain property. So for the above sum type _Tree_ we only need three patterns if we, for instance, want to calculate the height of the tree: One for each of _Empty_, _Leaf_ and _Node_.
 
 __26. automatic Type Inference__\
 Functionality present in some strongly statically typed languages.
@@ -506,52 +508,236 @@ true && false is a boolean expression.
 __3. Different forms of object equality, including reference equality and structural equality__\
 
 __4. operand evaluation order and how it affects the outcome of programs__\
+
+
 __5. short-circuit evaluation and how it affects the outcome of programs__\
 The expression `if true || doesn't_matter then order_66` will cause short-circuiting. This means that since `true ||` always returns true, no matter what the second operand evaluates to, it wont even execute that code. Instead it will always execute order 66. HA HA HA.
 
 __6. referential transparency and side effects__\
-__Referential transparency__ is a property of a program. In a program with this property any two expressions that has the same value could be swapped without effecting the output. In other words, these expressions have no side effects.
+In a program with the property of __referential transparency__ any two expressions that has the same value could be swapped without effecting the output. In other words, these expressions have no side effects.
 
-A function can have __side effects__ meaning it, apart from the returned result, might have changed some global variable. 
+A function or expression can have __side effects__, meaning it, apart from returning a result, might have changed some variable outside of its local environment. 
 
 __7. list comprehensions and their semantics__
 
 A typical example of a list comprehension:
-
-[(heil,hitler) | heil <- [69..88], hitler <- "cancer"]
-
-This generates a list of tuples of the type (Int,Char).
+```
+[(heil,pepe) | heil <- [69..88], pepe <- "cancer"]
+```
+This generates the following list: `[(69,'c'),(69,'a'),(69,'n'),(69,'c'),(69,'e'),(69,'r'),(70,'c'),(70,'a'),(70,'n'),(70,'c'),(70,'e'),...,(88,'r')]`.
 
 __8. type coercion expressions, both explicit and implicit, including narrowing conversions and widening conversions__\
+Some languages allows for arithmetic operators to have operands of different types in the same expression. This forces one of these values to be converted to into the other, using __implicit type coercion__. These languages suffer a penalty to __reliability__ since error detection is reduced and these conversion conventions can be unclear and/or unpredictable. 
+
+__Explicit type coercion__ is type conversion called by the writer. Examples: 
+```
+(int) angle
+float(sum)
+```
+
+For example, converting a double to a float in Java is a __narrowing conversion__, because the range of double is much larger than that of float.
+
+A __widening conversion__ converts a value to a type that can include at least approximations of all of the values of the original type. __For example__, converting an int to a float in Java is a widening conversion.
+
+__NOTA BENE!__
+All though it might seem that way at first glance not all __widening conversions__ are safe. __Example__:
+Consider converting the biggest possible value of an int to a float. 
+
+
 __9. conditional expressions__\
+
 
 
 ## 9. Statements and Control Constructs
 -------------------------------------------------------------------------------------
-#### Concepts
-1. assignment statements, including compound assignment
-2. two-way selection statements
-3. multiple-selection statements
-4. counter-controlled loops
-5. logically controlled loops
-6. datastructure-controlled loops
+#### covered in: 
++ 7.7 – 7.7.5 (incl.)
++ 8.2.1
++ 8.2.2 – 8.2.2.2
++ 8.3.1
++ 8.3.2
++ 8.3.4
 
+#### Concepts
+__1. assignment statements, including compound assignment__\
+__Assignment statements__ provides the mechanism by which the user can dynamically change the bindings of values to variables.
+
+An example of a __compound assignment__ is `sum += value`, which is syntactic sugar for `sum = sum + value`.
+
+__2. two-way selection statements__
+```
+//example 1: use of special words
+if control_expression 
+    then clause
+    else clause
+
+//example 2: use of brackets
+if (control_expression) { 
+    clause
+} else {
+    clause
+}
+
+//example 3: use of indentation
+if control_expression: 
+    clause
+else: 
+    clause
+
+```
+
+Without brackets or indentation rules cancers such as these can arise:
+```
+if (sum == 0)
+    if (count == 0)
+        result = 0;
+else
+    result = 1;
+``` 
+Which if-statement does the else belong to?
+
+To secure _example 1_ from above cancer-example introduce the keyword _end_ to end every _then_-block.  
+
+__3. multiple-selection statements__
+Often called the __switch-statement__, this generalization of the __if-statement__ allows the selection of one of any number of statements.
+
+design issues include:
++ Is execution flow through the structure restricted to include just a single selectable segment?
++ How should unrepresented selector expression values be handled, if at all?
+
+__Example:__
+```
+switch (expression) {
+    case constant_expression_1 : statement_1;
+    . . .
+    case constant_n : statement_n;
+    [default: statement_(n+1)]
+}
+```
+
+
+__4. counter-controlled loops a.k.a. for-loops__
+
+`for (int i = 0; i < 5; i += 2)`
+>
+__loop parameters:__
+1. _initial value:_ 0
+2. _terminal value:_ 5
+3. _stepsize:_ 2
+
+
+__5. logically controlled loops a.k.a. while-loops__
+
+`while (expression)`
+
+More general version of a loop than __counter-controlled__ ones. Hence all __counter-controlled loops__ can be implemented using __logically controlled loops__.
+
+Most languages have keywords such as 
++ __break__ -- terminates the loop completely. In Java __break__ can be followed by a label. If so it will break out of the loop, and continuing at that label.
++ __continue__ -- in C++, C and Python allows the rest of the code of that particular iteration to be skipped.
+
+__Design Issues__
+1. pretest or posttest?
+
+
+__6. datastructure-controlled loops__
+
+A general ­data-​­based iteration statement uses a ­user-​­defined data structure and a ­user-​­defined function (the iterator) to go through the structure’s elements.
+
+__Example:__
+```
+//in Java this will iterate over the strings in myList
+for (String myElement : myList) { . . . }
+```
 
 ## 10. Subprograms and Parameter Passing
 -------------------------------------------------------------------------------------
+
 #### Concepts
-1. subprograms, including formal arguments and actual arguments
-2. local variables in subprograms
-3. nested subprograms
-4. parameter passing modes
-    by value
-    by result
-    by value-result
-    by reference
-    by name
-    by need
-5. subprograms as parameters, subprograms as return values, Closures
-6. activation records
+1. __subprograms, including formal arguments and actual arguments__
+__Formal arguments__ are the parameters in the subprogram header. These are, upon call, bound to the __actual parameters__, i.e. the actual variables passed as parameters in the subprogram call.
+
+2. __local variables in subprograms__
+
+Usually __stack-dynamic__, but could also be declared static. 
+
+3. __nested subprograms__
+
+The idea of declaring subprograms within subprograms. If the nested subprogram only is needed by the outer subprogram why place it somewhere else than inside it?
+
+Well, you have to allocate and deallocate the nested subprogram every time the outer one is called.
+
+4. __parameter passing modes__
+   
+  Formal parameters are characterized by one of three distinct semantics models: (1) They can receive data from the corresponding actual parameter; (2) they can transmit data to the actual parameter; or (3) they can do both. These models are called __in mode__, __out mode__, and __inout mode__, respectively.
+   + __by value__ -- __in mode__ where the formal parameter is bound to a copy of the actual parameter. 
+   + __by result__ -- __out mode__. The actual parameter is never exposed to the subprogram. Instead it simply writes its result to this parameter before control is transferred back to the caller.
+   + __by value-result__ -- __inout mode__. First __pass by value__ then __pass by result__.
+   + __by reference__ -- __inout mode__. A pointer to the actual parameter is bound to the formal parameter, allowing for access to the actual parameter. No extra space and time for copies required. Just slick, hardcore programming.
+   + __by name__ -- __inout mode__. A pass-​by-​­name formal parameter is bound to an access method at the time of the subprogram call, but the actual binding to a value or an address is delayed until the formal parameter is assigned or referenced.
+   + __by need__ -- same as __pass-by-name__, only it evaluates the parameter at most once and then stores that evaluation as formal parameter.
+
+
+__5. subprograms as parameters, subprograms as return values, Closures__
+
+A language that allows subprograms as parameters is said to have __first-order functions__. 
+
+If a language allows nested subprograms a question regarding what referencing environment the passed subprogram should use arise. As an example of each binding type we consider the execution of sub2 when it is called in sub4, in the script below. Three options exist: 
+
+1. __shallow binding__ -- the environment of the call statement that enacts the passed subprogram. The referencing environment of that execution is that of sub4. Analogous to __dynamic scoping__.
+2. __deep binding__ -- the environment of the definition of the passed subprogram. The referencing environment of sub2’s execution is that of sub1. Analogous to __static scoping__.
+3. __ad hoc binding__ -- the environment of the call statement that passed the subprogram as an actual parameter. The binding is to the local x in
+sub3.
+
+```
+function sub1() {
+    var x;
+    function sub2() {
+        alert(x); // Creates a dialog box with the value of x
+    };
+    function sub3() {
+        var x;
+        x = 3;
+        sub4(sub2);
+    };
+    function sub4(subx) {
+        var x;
+        x = 4;
+        subx();
+    };
+    x = 1;
+    sub3();
+};
+```
+Static-scoped languages uses __deep binding__.
+Dynamic-scoped languages uses __shallow binding__.
+
+
+A __closure__ is subprogram and the referencing environment where it was defined.
+
+__Example__ where the __closure__ is the anonymous function defined inside `makeAdder`: 
+```
+function makeAdder(x) {
+    return function(y) {return x + y;}
+}
+. . .
+var add10 = makeAdder(10);
+add10(20);
+```
+
+
+__6. activation records__
+
+| Activation record   |
+|:-------------------:|
+| __local variables__ | 
+|   __parameters__    | 
+| __return address__  |
+
+For a language with __static variables__ only these activation records are the same throughout the execution, with one __activation record__ for each subprogram. 
+
+With __stack-dynamic variables__ the records have to grow dynamically on the stack, as recursion forces the stack to be able to hold multiple instances of the same subprogram's __activation record__ at once.
+
 
 
 ## 11. Pointers, References, and Arrays
