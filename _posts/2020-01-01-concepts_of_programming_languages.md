@@ -1,4 +1,10 @@
+layout: page
+title: "Concepts of programming languages"
+date: 2020-01-11 16:50:10 -0000
+
+
 ## Chapter 1. Language Critique
+
 -------------------------------------------------------------------------------------
 
 There are __nine__ characteristics of programming languages, all affecting the readability, writability and/or reliability in different ways:
